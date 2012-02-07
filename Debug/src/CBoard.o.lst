@@ -1,0 +1,141 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"CBoard.cpp"
+  23              	.Ltext0:
+  24              		.file 1 "../src/CBoard.cpp"
+ 16962              		.align	1
+ 16963              		.global	_ZN6CBoardC2Ev
+ 16964              		.thumb
+ 16965              		.thumb_func
+ 16967              	_ZN6CBoardC2Ev:
+ 16968              	.LFB30:
+   1:../src/CBoard.cpp **** /*
+   2:../src/CBoard.cpp ****  * CBoard.cpp
+   3:../src/CBoard.cpp ****  *
+   4:../src/CBoard.cpp ****  *  Created on: Jan 29, 2012
+   5:../src/CBoard.cpp ****  *      Author: artur
+   6:../src/CBoard.cpp ****  */
+   7:../src/CBoard.cpp **** 
+   8:../src/CBoard.cpp **** // STM includes
+   9:../src/CBoard.cpp **** #include <stm32f10x_gpio.h>
+  10:../src/CBoard.cpp **** #include <stm32f10x_rcc.h>
+  11:../src/CBoard.cpp **** 
+  12:../src/CBoard.cpp **** #include "../inc/CBoard.hpp"
+  13:../src/CBoard.cpp **** 
+  14:../src/CBoard.cpp **** CBoard::CBoard() {
+ 16969              		.loc 1 14 0
+ 16970              		.cfi_startproc
+ 16971              		@ args = 0, pretend = 0, frame = 0
+ 16972              		@ frame_needed = 0, uses_anonymous_args = 0
+ 16973              	.LVL0:
+ 16974 0000 10B5     		push	{r4, lr}
+ 16975              	.LCFI0:
+ 16976              		.cfi_def_cfa_offset 8
+ 16977              		.loc 1 14 0
+ 16978 0002 0446     		mov	r4, r0
+ 16979              		.cfi_offset 14, -4
+ 16980              		.cfi_offset 4, -8
+ 16981              	.LBB2:
+  15:../src/CBoard.cpp **** 
+  16:../src/CBoard.cpp **** 	// no GPIO_AFIODeInit(), GPIO_DeInit() and RCC_DeInit()
+  17:../src/CBoard.cpp **** 	SystemInit();
+ 16982              		.loc 1 17 0
+ 16983 0004 FFF7FEFF 		bl	SystemInit
+ 16984              	.LVL1:
+ 16985              	.LBE2:
+  18:../src/CBoard.cpp **** 
+  19:../src/CBoard.cpp **** }
+ 16986              		.loc 1 19 0
+ 16987 0008 2046     		mov	r0, r4
+ 16988 000a 10BD     		pop	{r4, pc}
+ 16989              		.cfi_endproc
+ 16990              	.LFE30:
+ 16992              		.global	_ZN6CBoardC1Ev
+ 16993              		.thumb_set _ZN6CBoardC1Ev,_ZN6CBoardC2Ev
+ 16994              		.section	.text._ZN6CBoardD2Ev,"ax",%progbits
+ 16995              		.align	1
+ 16996              		.global	_ZN6CBoardD2Ev
+ 16997              		.thumb
+ 16998              		.thumb_func
+ 17000              	_ZN6CBoardD2Ev:
+ 17001              	.LFB33:
+  20:../src/CBoard.cpp **** 
+  21:../src/CBoard.cpp **** CBoard::~CBoard() {
+ 17002              		.loc 1 21 0
+ 17003              		.cfi_startproc
+ 17004              		@ args = 0, pretend = 0, frame = 0
+ 17005              		@ frame_needed = 0, uses_anonymous_args = 0
+ 17006              	.LVL2:
+ 17007 0000 10B5     		push	{r4, lr}
+ 17008              	.LCFI1:
+ 17009              		.cfi_def_cfa_offset 8
+ 17010              		.loc 1 21 0
+ 17011 0002 0446     		mov	r4, r0
+ 17012              		.cfi_offset 14, -4
+ 17013              		.cfi_offset 4, -8
+ 17014              	.LBB3:
+  22:../src/CBoard.cpp **** 
+  23:../src/CBoard.cpp **** 	// destroy all the fields
+  24:../src/CBoard.cpp **** 	GPIO_AFIODeInit();
+ 17015              		.loc 1 24 0
+ 17016 0004 FFF7FEFF 		bl	GPIO_AFIODeInit
+ 17017              	.LVL3:
+  25:../src/CBoard.cpp **** 	GPIO_DeInit(GPIOA);
+ 17018              		.loc 1 25 0
+ 17019 0008 0648     		ldr	r0, .L5
+ 17020 000a FFF7FEFF 		bl	GPIO_DeInit
+  26:../src/CBoard.cpp **** 	GPIO_DeInit(GPIOC);
+ 17021              		.loc 1 26 0
+ 17022 000e 0648     		ldr	r0, .L5+4
+ 17023 0010 FFF7FEFF 		bl	GPIO_DeInit
+  27:../src/CBoard.cpp **** 	GPIO_DeInit(GPIOD);
+ 17024              		.loc 1 27 0
+ 17025 0014 0548     		ldr	r0, .L5+8
+ 17026 0016 FFF7FEFF 		bl	GPIO_DeInit
+  28:../src/CBoard.cpp **** 
+  29:../src/CBoard.cpp **** 	RCC_DeInit();
+ 17027              		.loc 1 29 0
+ 17028 001a FFF7FEFF 		bl	RCC_DeInit
+ 17029              	.LBE3:
+  30:../src/CBoard.cpp **** }
+ 17030              		.loc 1 30 0
+ 17031 001e 2046     		mov	r0, r4
+ 17032 0020 10BD     		pop	{r4, pc}
+ 17033              	.L6:
+ 17034 0022 00BF     		.align	2
+ 17035              	.L5:
+ 17036 0024 00080140 		.word	1073809408
+ 17037 0028 00100140 		.word	1073811456
+ 17038 002c 00140140 		.word	1073812480
+ 17039              		.cfi_endproc
+ 17040              	.LFE33:
+ 17042              		.global	_ZN6CBoardD1Ev
+ 17043              		.thumb_set _ZN6CBoardD1Ev,_ZN6CBoardD2Ev
+ 17044              		.text
+ 17045              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 CBoard.cpp
+     /tmp/cceGNZL2.s:16962  .text._ZN6CBoardC2Ev:00000000 $t
+     /tmp/cceGNZL2.s:16967  .text._ZN6CBoardC2Ev:00000000 _ZN6CBoardC2Ev
+     /tmp/cceGNZL2.s:16967  .text._ZN6CBoardC2Ev:00000000 _ZN6CBoardC1Ev
+     /tmp/cceGNZL2.s:16995  .text._ZN6CBoardD2Ev:00000000 $t
+     /tmp/cceGNZL2.s:17000  .text._ZN6CBoardD2Ev:00000000 _ZN6CBoardD2Ev
+     /tmp/cceGNZL2.s:17036  .text._ZN6CBoardD2Ev:00000024 $d
+     /tmp/cceGNZL2.s:17000  .text._ZN6CBoardD2Ev:00000000 _ZN6CBoardD1Ev
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+SystemInit
+GPIO_AFIODeInit
+GPIO_DeInit
+RCC_DeInit

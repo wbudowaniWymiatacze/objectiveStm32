@@ -1,0 +1,1856 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"stm3210b_eval.c"
+  23              	.Ltext0:
+  24              		.file 1 "../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c"
+ 20000              		.align	2
+ 20003              	GPIO_PORT:
+ 20004 0000 00100140 		.word	1073811456
+ 20005 0004 00100140 		.word	1073811456
+ 20006 0008 00100140 		.word	1073811456
+ 20007 000c 00100140 		.word	1073811456
+ 20008              		.global	GPIO_PIN
+ 20009              		.section	.rodata
+ 20010              		.align	2
+ 20013              	GPIO_PIN:
+ 20014 0000 4000     		.short	64
+ 20015 0002 8000     		.short	128
+ 20016 0004 0001     		.short	256
+ 20017 0006 0002     		.short	512
+ 20018              		.global	GPIO_CLK
+ 20019              		.align	2
+ 20022              	GPIO_CLK:
+ 20023 0008 10000000 		.word	16
+ 20024 000c 10000000 		.word	16
+ 20025 0010 10000000 		.word	16
+ 20026 0014 10000000 		.word	16
+ 20027              		.global	BUTTON_PORT
+ 20028              		.data
+ 20029              		.align	2
+ 20032              	BUTTON_PORT:
+ 20033 0010 00080140 		.word	1073809408
+ 20034 0014 00100140 		.word	1073811456
+ 20035 0018 000C0140 		.word	1073810432
+ 20036 001c 00180140 		.word	1073813504
+ 20037 0020 00180140 		.word	1073813504
+ 20038 0024 00140140 		.word	1073812480
+ 20039 0028 00140140 		.word	1073812480
+ 20040 002c 00140140 		.word	1073812480
+ 20041              		.global	BUTTON_PIN
+ 20042              		.section	.rodata
+ 20043              		.align	2
+ 20046              	BUTTON_PIN:
+ 20047 0018 0100     		.short	1
+ 20048 001a 0020     		.short	8192
+ 20049 001c 0002     		.short	512
+ 20050 001e 0100     		.short	1
+ 20051 0020 0200     		.short	2
+ 20052 0022 0001     		.short	256
+ 20053 0024 0040     		.short	16384
+ 20054 0026 0010     		.short	4096
+ 20055              		.global	BUTTON_CLK
+ 20056              		.align	2
+ 20059              	BUTTON_CLK:
+ 20060 0028 04000000 		.word	4
+ 20061 002c 10000000 		.word	16
+ 20062 0030 08000000 		.word	8
+ 20063 0034 40000000 		.word	64
+ 20064 0038 40000000 		.word	64
+ 20065 003c 20000000 		.word	32
+ 20066 0040 20000000 		.word	32
+ 20067 0044 20000000 		.word	32
+ 20068              		.global	BUTTON_EXTI_LINE
+ 20069              		.align	2
+ 20072              	BUTTON_EXTI_LINE:
+ 20073 0048 0100     		.short	1
+ 20074 004a 0020     		.short	8192
+ 20075 004c 0002     		.short	512
+ 20076 004e 0100     		.short	1
+ 20077 0050 0200     		.short	2
+ 20078 0052 0001     		.short	256
+ 20079 0054 0040     		.short	16384
+ 20080 0056 0010     		.short	4096
+ 20081              		.global	BUTTON_PORT_SOURCE
+ 20082              		.align	2
+ 20085              	BUTTON_PORT_SOURCE:
+ 20086 0058 0000     		.short	0
+ 20087 005a 0200     		.short	2
+ 20088 005c 0100     		.short	1
+ 20089 005e 0400     		.short	4
+ 20090 0060 0400     		.short	4
+ 20091 0062 0300     		.short	3
+ 20092 0064 0300     		.short	3
+ 20093 0066 0300     		.short	3
+ 20094              		.global	BUTTON_PIN_SOURCE
+ 20095              		.align	2
+ 20098              	BUTTON_PIN_SOURCE:
+ 20099 0068 0000     		.short	0
+ 20100 006a 0D00     		.short	13
+ 20101 006c 0900     		.short	9
+ 20102 006e 0000     		.short	0
+ 20103 0070 0100     		.short	1
+ 20104 0072 0800     		.short	8
+ 20105 0074 0E00     		.short	14
+ 20106 0076 0C00     		.short	12
+ 20107              		.global	BUTTON_IRQn
+ 20108              		.align	2
+ 20111              	BUTTON_IRQn:
+ 20112 0078 0600     		.short	6
+ 20113 007a 2800     		.short	40
+ 20114 007c 1700     		.short	23
+ 20115 007e 0600     		.short	6
+ 20116 0080 0700     		.short	7
+ 20117 0082 1700     		.short	23
+ 20118 0084 2800     		.short	40
+ 20119 0086 2800     		.short	40
+ 20120              		.global	COM_USART
+ 20121              		.data
+ 20122              		.align	2
+ 20125              	COM_USART:
+ 20126 0030 00380140 		.word	1073821696
+ 20127 0034 00440040 		.word	1073759232
+ 20128              		.global	COM_TX_PORT
+ 20129              		.align	2
+ 20132              	COM_TX_PORT:
+ 20133 0038 00080140 		.word	1073809408
+ 20134 003c 00140140 		.word	1073812480
+ 20135              		.global	COM_RX_PORT
+ 20136              		.align	2
+ 20139              	COM_RX_PORT:
+ 20140 0040 00080140 		.word	1073809408
+ 20141 0044 00140140 		.word	1073812480
+ 20142              		.global	COM_USART_CLK
+ 20143              		.section	.rodata
+ 20144              		.align	2
+ 20147              	COM_USART_CLK:
+ 20148 0088 00400000 		.word	16384
+ 20149 008c 00000200 		.word	131072
+ 20150              		.global	COM_TX_PORT_CLK
+ 20151              		.align	2
+ 20154              	COM_TX_PORT_CLK:
+ 20155 0090 04000000 		.word	4
+ 20156 0094 20000000 		.word	32
+ 20157              		.global	COM_RX_PORT_CLK
+ 20158              		.align	2
+ 20161              	COM_RX_PORT_CLK:
+ 20162 0098 04000000 		.word	4
+ 20163 009c 20000000 		.word	32
+ 20164              		.global	COM_TX_PIN
+ 20165              		.align	2
+ 20168              	COM_TX_PIN:
+ 20169 00a0 0002     		.short	512
+ 20170 00a2 2000     		.short	32
+ 20171              		.global	COM_RX_PIN
+ 20172              		.align	2
+ 20175              	COM_RX_PIN:
+ 20176 00a4 0004     		.short	1024
+ 20177 00a6 4000     		.short	64
+ 20178              		.text
+ 20179              		.align	2
+ 20180              		.global	STM_EVAL_LEDInit
+ 20181              		.thumb
+ 20182              		.thumb_func
+ 20184              	STM_EVAL_LEDInit:
+ 20185              	.LFB29:
+   1:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+   2:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   ******************************************************************************
+   3:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @file    stm3210b_eval.c
+   4:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @author  MCD Application Team
+   5:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @version V4.5.0
+   6:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @date    07-March-2011
+   7:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief   This file provides
+   8:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *            - set of firmware functions to manage Leds, push-button and COM ports
+   9:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *            - low level initialization functions for SD card (on SPI), SPI serial
+  10:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *              flash (sFLASH) and temperature sensor (LM75)
+  11:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *          available on STM3210B-EVAL evaluation board from STMicroelectronics.    
+  12:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   ******************************************************************************
+  13:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @attention
+  14:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *
+  15:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  16:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  17:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  18:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  19:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  20:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  21:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *
+  22:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  23:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   ******************************************************************************  
+  24:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  25:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+  26:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /* Includes ------------------------------------------------------------------*/
+  27:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** #include "stm3210b_eval.h"
+  28:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  29:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @addtogroup Utilities
+  30:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  31:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  32:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  33:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @addtogroup STM32_EVAL
+  34:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  35:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  36:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  37:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @addtogroup STM3210B_EVAL
+  38:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  39:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  40:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****       
+  41:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @defgroup STM3210B_EVAL_LOW_LEVEL 
+  42:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief This file provides firmware functions to manage Leds, push-buttons, 
+  43:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *        COM ports, SD card on SPI, serial flash (sFLASH), serial EEPROM (sEE) 
+  44:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *        and temperature sensor (LM75) available on STM3210B-EVAL evaluation
+  45:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *        board from STMicroelectronics.
+  46:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  47:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  48:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  49:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @defgroup STM3210B_EVAL_LOW_LEVEL_Private_TypesDefinitions
+  50:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  51:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  52:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+  53:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @}
+  54:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  55:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  56:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  57:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @defgroup STM3210B_EVAL_LOW_LEVEL_Private_Defines
+  58:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  59:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  60:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+  61:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @}
+  62:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  63:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  64:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  65:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @defgroup STM3210B_EVAL_LOW_LEVEL_Private_Macros
+  66:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  67:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  68:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+  69:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @}
+  70:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  71:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  72:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  73:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @defgroup STM3210B_EVAL_LOW_LEVEL_Private_Variables
+  74:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+  75:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+  76:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** GPIO_TypeDef* GPIO_PORT[LEDn] = {LED1_GPIO_PORT, LED2_GPIO_PORT, LED3_GPIO_PORT,
+  77:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                  LED4_GPIO_PORT};
+  78:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t GPIO_PIN[LEDn] = {LED1_PIN, LED2_PIN, LED3_PIN,
+  79:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                  LED4_PIN};
+  80:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint32_t GPIO_CLK[LEDn] = {LED1_GPIO_CLK, LED2_GPIO_CLK, LED3_GPIO_CLK,
+  81:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                  LED4_GPIO_CLK};
+  82:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  83:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** GPIO_TypeDef* BUTTON_PORT[BUTTONn] = {WAKEUP_BUTTON_GPIO_PORT, TAMPER_BUTTON_GPIO_PORT, 
+  84:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       KEY_BUTTON_GPIO_PORT, RIGHT_BUTTON_GPIO_PORT,
+  85:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       LEFT_BUTTON_GPIO_PORT, UP_BUTTON_GPIO_PORT,
+  86:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       DOWN_BUTTON_GPIO_PORT, SEL_BUTTON_GPIO_PORT}; 
+  87:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  88:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t BUTTON_PIN[BUTTONn] = {WAKEUP_BUTTON_PIN, TAMPER_BUTTON_PIN, 
+  89:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       KEY_BUTTON_PIN, RIGHT_BUTTON_PIN,
+  90:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       LEFT_BUTTON_PIN, UP_BUTTON_PIN,
+  91:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       DOWN_BUTTON_PIN, SEL_BUTTON_PIN}; 
+  92:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  93:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint32_t BUTTON_CLK[BUTTONn] = {WAKEUP_BUTTON_GPIO_CLK, TAMPER_BUTTON_GPIO_CLK,
+  94:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       KEY_BUTTON_GPIO_CLK, RIGHT_BUTTON_GPIO_CLK,
+  95:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       LEFT_BUTTON_GPIO_CLK, UP_BUTTON_GPIO_CLK,
+  96:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                       DOWN_BUTTON_GPIO_CLK, SEL_BUTTON_GPIO_CLK};
+  97:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+  98:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t BUTTON_EXTI_LINE[BUTTONn] = {WAKEUP_BUTTON_EXTI_LINE,
+  99:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                             TAMPER_BUTTON_EXTI_LINE, 
+ 100:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                             KEY_BUTTON_EXTI_LINE,
+ 101:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                             RIGHT_BUTTON_EXTI_LINE,
+ 102:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                             LEFT_BUTTON_EXTI_LINE,
+ 103:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                             UP_BUTTON_EXTI_LINE,
+ 104:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                             DOWN_BUTTON_EXTI_LINE,
+ 105:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                             SEL_BUTTON_EXTI_LINE};
+ 106:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 107:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t BUTTON_PORT_SOURCE[BUTTONn] = {WAKEUP_BUTTON_EXTI_PORT_SOURCE,
+ 108:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                               TAMPER_BUTTON_EXTI_PORT_SOURCE, 
+ 109:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                               KEY_BUTTON_EXTI_PORT_SOURCE,
+ 110:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                               RIGHT_BUTTON_EXTI_PORT_SOURCE,
+ 111:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                               LEFT_BUTTON_EXTI_PORT_SOURCE,
+ 112:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                               UP_BUTTON_EXTI_PORT_SOURCE,
+ 113:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                               DOWN_BUTTON_EXTI_PORT_SOURCE,
+ 114:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                               SEL_BUTTON_EXTI_PORT_SOURCE};
+ 115:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 								 
+ 116:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t BUTTON_PIN_SOURCE[BUTTONn] = {WAKEUP_BUTTON_EXTI_PIN_SOURCE,
+ 117:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                              TAMPER_BUTTON_EXTI_PIN_SOURCE, 
+ 118:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                              KEY_BUTTON_EXTI_PIN_SOURCE,
+ 119:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                              RIGHT_BUTTON_EXTI_PIN_SOURCE,
+ 120:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                              LEFT_BUTTON_EXTI_PIN_SOURCE,
+ 121:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                              UP_BUTTON_EXTI_PIN_SOURCE,
+ 122:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                              DOWN_BUTTON_EXTI_PIN_SOURCE,
+ 123:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                              SEL_BUTTON_EXTI_PIN_SOURCE}; 
+ 124:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 125:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t BUTTON_IRQn[BUTTONn] = {WAKEUP_BUTTON_EXTI_IRQn, TAMPER_BUTTON_EXTI_IRQn, 
+ 126:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                        KEY_BUTTON_EXTI_IRQn, RIGHT_BUTTON_EXTI_IRQn,
+ 127:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                        LEFT_BUTTON_EXTI_IRQn, UP_BUTTON_EXTI_IRQn,
+ 128:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                                        DOWN_BUTTON_EXTI_IRQn, SEL_BUTTON_EXTI_IRQn};
+ 129:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 130:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** USART_TypeDef* COM_USART[COMn] = {EVAL_COM1, EVAL_COM2}; 
+ 131:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 132:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** GPIO_TypeDef* COM_TX_PORT[COMn] = {EVAL_COM1_TX_GPIO_PORT, EVAL_COM2_TX_GPIO_PORT};
+ 133:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****  
+ 134:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** GPIO_TypeDef* COM_RX_PORT[COMn] = {EVAL_COM1_RX_GPIO_PORT, EVAL_COM2_RX_GPIO_PORT};
+ 135:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****  
+ 136:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint32_t COM_USART_CLK[COMn] = {EVAL_COM1_CLK, EVAL_COM2_CLK};
+ 137:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 138:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint32_t COM_TX_PORT_CLK[COMn] = {EVAL_COM1_TX_GPIO_CLK, EVAL_COM2_TX_GPIO_CLK};
+ 139:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****  
+ 140:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint32_t COM_RX_PORT_CLK[COMn] = {EVAL_COM1_RX_GPIO_CLK, EVAL_COM2_RX_GPIO_CLK};
+ 141:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 142:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t COM_TX_PIN[COMn] = {EVAL_COM1_TX_PIN, EVAL_COM2_TX_PIN};
+ 143:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 144:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** const uint16_t COM_RX_PIN[COMn] = {EVAL_COM1_RX_PIN, EVAL_COM2_RX_PIN};
+ 145:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 146:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 147:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 148:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @}
+ 149:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+ 150:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 151:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 152:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @defgroup STM3210B_EVAL_LOW_LEVEL_Private_FunctionPrototypes
+ 153:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+ 154:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+ 155:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 156:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 157:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @}
+ 158:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+ 159:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 160:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 161:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /** @defgroup STM3210B_EVAL_LOW_LEVEL_Private_Functions
+ 162:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @{
+ 163:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */ 
+ 164:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 165:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 166:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Configures LED GPIO.
+ 167:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  Led: Specifies the Led to be configured. 
+ 168:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:
+ 169:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED1
+ 170:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED2
+ 171:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED3
+ 172:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED4
+ 173:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 174:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 175:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void STM_EVAL_LEDInit(Led_TypeDef Led)
+ 176:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20186              		.loc 1 176 0
+ 20187              		.cfi_startproc
+ 20188              		@ args = 0, pretend = 0, frame = 16
+ 20189              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20190 0000 80B5     		push	{r7, lr}
+ 20191              	.LCFI0:
+ 20192              		.cfi_def_cfa_offset 8
+ 20193 0002 84B0     		sub	sp, sp, #16
+ 20194              	.LCFI1:
+ 20195              		.cfi_def_cfa_offset 24
+ 20196 0004 00AF     		add	r7, sp, #0
+ 20197              		.cfi_offset 14, -4
+ 20198              		.cfi_offset 7, -8
+ 20199              	.LCFI2:
+ 20200              		.cfi_def_cfa_register 7
+ 20201 0006 0346     		mov	r3, r0
+ 20202 0008 FB71     		strb	r3, [r7, #7]
+ 177:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef  GPIO_InitStructure;
+ 178:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 179:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Enable the GPIO_LED Clock */
+ 180:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(GPIO_CLK[Led], ENABLE);
+ 20203              		.loc 1 180 0
+ 20204 000a FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20205 000c 104B     		ldr	r3, .L2
+ 20206 000e 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20207 0012 1846     		mov	r0, r3
+ 20208 0014 4FF00101 		mov	r1, #1
+ 20209 0018 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 181:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 182:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Configure the GPIO_LED pin */
+ 183:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = GPIO_PIN[Led];
+ 20210              		.loc 1 183 0
+ 20211 001c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20212 001e 0D4B     		ldr	r3, .L2+4
+ 20213 0020 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 20214 0024 BB81     		strh	r3, [r7, #12]	@ movhi
+ 184:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 20215              		.loc 1 184 0
+ 20216 0026 4FF01003 		mov	r3, #16
+ 20217 002a FB73     		strb	r3, [r7, #15]
+ 185:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 20218              		.loc 1 185 0
+ 20219 002c 4FF00303 		mov	r3, #3
+ 20220 0030 BB73     		strb	r3, [r7, #14]
+ 186:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 187:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(GPIO_PORT[Led], &GPIO_InitStructure);
+ 20221              		.loc 1 187 0
+ 20222 0032 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20223 0034 084B     		ldr	r3, .L2+8
+ 20224 0036 53F82220 		ldr	r2, [r3, r2, lsl #2]
+ 20225 003a 07F10C03 		add	r3, r7, #12
+ 20226 003e 1046     		mov	r0, r2
+ 20227 0040 1946     		mov	r1, r3
+ 20228 0042 FFF7FEFF 		bl	GPIO_Init
+ 188:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20229              		.loc 1 188 0
+ 20230 0046 07F11007 		add	r7, r7, #16
+ 20231 004a BD46     		mov	sp, r7
+ 20232 004c 80BD     		pop	{r7, pc}
+ 20233              	.L3:
+ 20234 004e 00BF     		.align	2
+ 20235              	.L2:
+ 20236 0050 00000000 		.word	GPIO_CLK
+ 20237 0054 00000000 		.word	GPIO_PIN
+ 20238 0058 00000000 		.word	GPIO_PORT
+ 20239              		.cfi_endproc
+ 20240              	.LFE29:
+ 20242              		.align	2
+ 20243              		.global	STM_EVAL_LEDOn
+ 20244              		.thumb
+ 20245              		.thumb_func
+ 20247              	STM_EVAL_LEDOn:
+ 20248              	.LFB30:
+ 189:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 190:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 191:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Turns selected LED On.
+ 192:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  Led: Specifies the Led to be set on. 
+ 193:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:
+ 194:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED1
+ 195:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED2
+ 196:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED3
+ 197:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED4  
+ 198:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 199:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 200:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void STM_EVAL_LEDOn(Led_TypeDef Led)
+ 201:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20249              		.loc 1 201 0
+ 20250              		.cfi_startproc
+ 20251              		@ args = 0, pretend = 0, frame = 8
+ 20252              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20253              		@ link register save eliminated.
+ 20254 005c 80B4     		push	{r7}
+ 20255              	.LCFI3:
+ 20256              		.cfi_def_cfa_offset 4
+ 20257 005e 83B0     		sub	sp, sp, #12
+ 20258              	.LCFI4:
+ 20259              		.cfi_def_cfa_offset 16
+ 20260 0060 00AF     		add	r7, sp, #0
+ 20261              		.cfi_offset 7, -4
+ 20262              	.LCFI5:
+ 20263              		.cfi_def_cfa_register 7
+ 20264 0062 0346     		mov	r3, r0
+ 20265 0064 FB71     		strb	r3, [r7, #7]
+ 202:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_PORT[Led]->BSRR = GPIO_PIN[Led];     
+ 20266              		.loc 1 202 0
+ 20267 0066 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20268 0068 064B     		ldr	r3, .L5
+ 20269 006a 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20270 006e F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 20271 0070 054A     		ldr	r2, .L5+4
+ 20272 0072 32F81120 		ldrh	r2, [r2, r1, lsl #1]
+ 20273 0076 1A61     		str	r2, [r3, #16]
+ 203:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20274              		.loc 1 203 0
+ 20275 0078 07F10C07 		add	r7, r7, #12
+ 20276 007c BD46     		mov	sp, r7
+ 20277 007e 80BC     		pop	{r7}
+ 20278 0080 7047     		bx	lr
+ 20279              	.L6:
+ 20280 0082 00BF     		.align	2
+ 20281              	.L5:
+ 20282 0084 00000000 		.word	GPIO_PORT
+ 20283 0088 00000000 		.word	GPIO_PIN
+ 20284              		.cfi_endproc
+ 20285              	.LFE30:
+ 20287              		.align	2
+ 20288              		.global	STM_EVAL_LEDOff
+ 20289              		.thumb
+ 20290              		.thumb_func
+ 20292              	STM_EVAL_LEDOff:
+ 20293              	.LFB31:
+ 204:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 205:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 206:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Turns selected LED Off.
+ 207:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  Led: Specifies the Led to be set off. 
+ 208:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:
+ 209:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED1
+ 210:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED2
+ 211:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED3
+ 212:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED4 
+ 213:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 214:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 215:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void STM_EVAL_LEDOff(Led_TypeDef Led)
+ 216:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20294              		.loc 1 216 0
+ 20295              		.cfi_startproc
+ 20296              		@ args = 0, pretend = 0, frame = 8
+ 20297              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20298              		@ link register save eliminated.
+ 20299 008c 80B4     		push	{r7}
+ 20300              	.LCFI6:
+ 20301              		.cfi_def_cfa_offset 4
+ 20302 008e 83B0     		sub	sp, sp, #12
+ 20303              	.LCFI7:
+ 20304              		.cfi_def_cfa_offset 16
+ 20305 0090 00AF     		add	r7, sp, #0
+ 20306              		.cfi_offset 7, -4
+ 20307              	.LCFI8:
+ 20308              		.cfi_def_cfa_register 7
+ 20309 0092 0346     		mov	r3, r0
+ 20310 0094 FB71     		strb	r3, [r7, #7]
+ 217:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_PORT[Led]->BRR = GPIO_PIN[Led];  
+ 20311              		.loc 1 217 0
+ 20312 0096 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20313 0098 064B     		ldr	r3, .L8
+ 20314 009a 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20315 009e F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 20316 00a0 054A     		ldr	r2, .L8+4
+ 20317 00a2 32F81120 		ldrh	r2, [r2, r1, lsl #1]
+ 20318 00a6 5A61     		str	r2, [r3, #20]
+ 218:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20319              		.loc 1 218 0
+ 20320 00a8 07F10C07 		add	r7, r7, #12
+ 20321 00ac BD46     		mov	sp, r7
+ 20322 00ae 80BC     		pop	{r7}
+ 20323 00b0 7047     		bx	lr
+ 20324              	.L9:
+ 20325 00b2 00BF     		.align	2
+ 20326              	.L8:
+ 20327 00b4 00000000 		.word	GPIO_PORT
+ 20328 00b8 00000000 		.word	GPIO_PIN
+ 20329              		.cfi_endproc
+ 20330              	.LFE31:
+ 20332              		.align	2
+ 20333              		.global	STM_EVAL_LEDToggle
+ 20334              		.thumb
+ 20335              		.thumb_func
+ 20337              	STM_EVAL_LEDToggle:
+ 20338              	.LFB32:
+ 219:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 220:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 221:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Toggles the selected LED.
+ 222:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  Led: Specifies the Led to be toggled. 
+ 223:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:
+ 224:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED1
+ 225:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED2
+ 226:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED3
+ 227:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg LED4  
+ 228:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 229:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 230:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void STM_EVAL_LEDToggle(Led_TypeDef Led)
+ 231:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20339              		.loc 1 231 0
+ 20340              		.cfi_startproc
+ 20341              		@ args = 0, pretend = 0, frame = 8
+ 20342              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20343              		@ link register save eliminated.
+ 20344 00bc 80B4     		push	{r7}
+ 20345              	.LCFI9:
+ 20346              		.cfi_def_cfa_offset 4
+ 20347 00be 83B0     		sub	sp, sp, #12
+ 20348              	.LCFI10:
+ 20349              		.cfi_def_cfa_offset 16
+ 20350 00c0 00AF     		add	r7, sp, #0
+ 20351              		.cfi_offset 7, -4
+ 20352              	.LCFI11:
+ 20353              		.cfi_def_cfa_register 7
+ 20354 00c2 0346     		mov	r3, r0
+ 20355 00c4 FB71     		strb	r3, [r7, #7]
+ 232:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_PORT[Led]->ODR ^= GPIO_PIN[Led];
+ 20356              		.loc 1 232 0
+ 20357 00c6 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20358 00c8 094B     		ldr	r3, .L11
+ 20359 00ca 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20360 00ce F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 20361 00d0 074A     		ldr	r2, .L11
+ 20362 00d2 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 20363 00d6 D168     		ldr	r1, [r2, #12]
+ 20364 00d8 F879     		ldrb	r0, [r7, #7]	@ zero_extendqisi2
+ 20365 00da 064A     		ldr	r2, .L11+4
+ 20366 00dc 32F81020 		ldrh	r2, [r2, r0, lsl #1]
+ 20367 00e0 81EA0202 		eor	r2, r1, r2
+ 20368 00e4 DA60     		str	r2, [r3, #12]
+ 233:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20369              		.loc 1 233 0
+ 20370 00e6 07F10C07 		add	r7, r7, #12
+ 20371 00ea BD46     		mov	sp, r7
+ 20372 00ec 80BC     		pop	{r7}
+ 20373 00ee 7047     		bx	lr
+ 20374              	.L12:
+ 20375              		.align	2
+ 20376              	.L11:
+ 20377 00f0 00000000 		.word	GPIO_PORT
+ 20378 00f4 00000000 		.word	GPIO_PIN
+ 20379              		.cfi_endproc
+ 20380              	.LFE32:
+ 20382              		.align	2
+ 20383              		.global	STM_EVAL_PBInit
+ 20384              		.thumb
+ 20385              		.thumb_func
+ 20387              	STM_EVAL_PBInit:
+ 20388              	.LFB33:
+ 234:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 235:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 236:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Configures Button GPIO and EXTI Line.
+ 237:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  Button: Specifies the Button to be configured.
+ 238:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:   
+ 239:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_WAKEUP: Wakeup Push Button
+ 240:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_TAMPER: Tamper Push Button  
+ 241:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_KEY: Key Push Button 
+ 242:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_RIGHT: Joystick Right Push Button 
+ 243:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_LEFT: Joystick Left Push Button 
+ 244:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_UP: Joystick Up Push Button 
+ 245:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_DOWN: Joystick Down Push Button
+ 246:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_SEL: Joystick Sel Push Button
+ 247:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  Button_Mode: Specifies Button mode.
+ 248:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:   
+ 249:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_MODE_GPIO: Button will be used as simple IO 
+ 250:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_MODE_EXTI: Button will be connected to EXTI line with interrupt
+ 251:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *                     generation capability  
+ 252:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 253:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 254:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void STM_EVAL_PBInit(Button_TypeDef Button, ButtonMode_TypeDef Button_Mode)
+ 255:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20389              		.loc 1 255 0
+ 20390              		.cfi_startproc
+ 20391              		@ args = 0, pretend = 0, frame = 24
+ 20392              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20393 00f8 80B5     		push	{r7, lr}
+ 20394              	.LCFI12:
+ 20395              		.cfi_def_cfa_offset 8
+ 20396 00fa 86B0     		sub	sp, sp, #24
+ 20397              	.LCFI13:
+ 20398              		.cfi_def_cfa_offset 32
+ 20399 00fc 00AF     		add	r7, sp, #0
+ 20400              		.cfi_offset 14, -4
+ 20401              		.cfi_offset 7, -8
+ 20402              	.LCFI14:
+ 20403              		.cfi_def_cfa_register 7
+ 20404 00fe 0246     		mov	r2, r0
+ 20405 0100 0B46     		mov	r3, r1
+ 20406 0102 FA71     		strb	r2, [r7, #7]
+ 20407 0104 BB71     		strb	r3, [r7, #6]
+ 256:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 257:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   EXTI_InitTypeDef EXTI_InitStructure;
+ 258:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   NVIC_InitTypeDef NVIC_InitStructure;
+ 259:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 260:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Enable the BUTTON Clock */
+ 261:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(BUTTON_CLK[Button] | RCC_APB2Periph_AFIO, ENABLE);
+ 20408              		.loc 1 261 0
+ 20409 0106 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20410 0108 2F4B     		ldr	r3, .L17
+ 20411 010a 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20412 010e 43F00103 		orr	r3, r3, #1
+ 20413 0112 1846     		mov	r0, r3
+ 20414 0114 4FF00101 		mov	r1, #1
+ 20415 0118 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 262:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 263:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Configure Button pin as input floating */
+ 264:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 20416              		.loc 1 264 0
+ 20417 011c 4FF00403 		mov	r3, #4
+ 20418 0120 FB75     		strb	r3, [r7, #23]
+ 265:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = BUTTON_PIN[Button];
+ 20419              		.loc 1 265 0
+ 20420 0122 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20421 0124 294B     		ldr	r3, .L17+4
+ 20422 0126 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 20423 012a BB82     		strh	r3, [r7, #20]	@ movhi
+ 266:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(BUTTON_PORT[Button], &GPIO_InitStructure);
+ 20424              		.loc 1 266 0
+ 20425 012c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20426 012e 284B     		ldr	r3, .L17+8
+ 20427 0130 53F82220 		ldr	r2, [r3, r2, lsl #2]
+ 20428 0134 07F11403 		add	r3, r7, #20
+ 20429 0138 1046     		mov	r0, r2
+ 20430 013a 1946     		mov	r1, r3
+ 20431 013c FFF7FEFF 		bl	GPIO_Init
+ 267:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 268:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 269:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   if (Button_Mode == BUTTON_MODE_EXTI)
+ 20432              		.loc 1 269 0
+ 20433 0140 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 20434 0142 012B     		cmp	r3, #1
+ 20435 0144 3BD1     		bne	.L13
+ 270:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   {
+ 271:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     /* Connect Button EXTI Line to Button GPIO Pin */
+ 272:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     GPIO_EXTILineConfig(BUTTON_PORT_SOURCE[Button], BUTTON_PIN_SOURCE[Button]);
+ 20436              		.loc 1 272 0
+ 20437 0146 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20438 0148 224B     		ldr	r3, .L17+12
+ 20439 014a 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 20440 014e DAB2     		uxtb	r2, r3
+ 20441 0150 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 20442 0152 214B     		ldr	r3, .L17+16
+ 20443 0154 33F81130 		ldrh	r3, [r3, r1, lsl #1]
+ 20444 0158 DBB2     		uxtb	r3, r3
+ 20445 015a 1046     		mov	r0, r2
+ 20446 015c 1946     		mov	r1, r3
+ 20447 015e FFF7FEFF 		bl	GPIO_EXTILineConfig
+ 273:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 274:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     /* Configure Button EXTI line */
+ 275:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     EXTI_InitStructure.EXTI_Line = BUTTON_EXTI_LINE[Button];
+ 20448              		.loc 1 275 0
+ 20449 0162 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20450 0164 1D4B     		ldr	r3, .L17+20
+ 20451 0166 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 20452 016a FB60     		str	r3, [r7, #12]
+ 276:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+ 20453              		.loc 1 276 0
+ 20454 016c 4FF00003 		mov	r3, #0
+ 20455 0170 3B74     		strb	r3, [r7, #16]
+ 277:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 278:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     if(Button != BUTTON_WAKEUP)
+ 20456              		.loc 1 278 0
+ 20457 0172 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 20458 0174 002B     		cmp	r3, #0
+ 20459 0176 03D0     		beq	.L15
+ 279:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     {
+ 280:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****       EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;  
+ 20460              		.loc 1 280 0
+ 20461 0178 4FF00C03 		mov	r3, #12
+ 20462 017c 7B74     		strb	r3, [r7, #17]
+ 20463 017e 02E0     		b	.L16
+ 20464              	.L15:
+ 281:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     }
+ 282:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     else
+ 283:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     {
+ 284:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****       EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;  
+ 20465              		.loc 1 284 0
+ 20466 0180 4FF00803 		mov	r3, #8
+ 20467 0184 7B74     		strb	r3, [r7, #17]
+ 20468              	.L16:
+ 285:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     }
+ 286:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+ 20469              		.loc 1 286 0
+ 20470 0186 4FF00103 		mov	r3, #1
+ 20471 018a BB74     		strb	r3, [r7, #18]
+ 287:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     EXTI_Init(&EXTI_InitStructure);
+ 20472              		.loc 1 287 0
+ 20473 018c 07F10C03 		add	r3, r7, #12
+ 20474 0190 1846     		mov	r0, r3
+ 20475 0192 FFF7FEFF 		bl	EXTI_Init
+ 288:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 289:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     /* Enable and set Button EXTI Interrupt to the lowest priority */
+ 290:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     NVIC_InitStructure.NVIC_IRQChannel = BUTTON_IRQn[Button];
+ 20476              		.loc 1 290 0
+ 20477 0196 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20478 0198 114B     		ldr	r3, .L17+24
+ 20479 019a 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 20480 019e DBB2     		uxtb	r3, r3
+ 20481 01a0 3B72     		strb	r3, [r7, #8]
+ 291:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
+ 20482              		.loc 1 291 0
+ 20483 01a2 4FF00F03 		mov	r3, #15
+ 20484 01a6 7B72     		strb	r3, [r7, #9]
+ 292:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
+ 20485              		.loc 1 292 0
+ 20486 01a8 4FF00F03 		mov	r3, #15
+ 20487 01ac BB72     		strb	r3, [r7, #10]
+ 293:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+ 20488              		.loc 1 293 0
+ 20489 01ae 4FF00103 		mov	r3, #1
+ 20490 01b2 FB72     		strb	r3, [r7, #11]
+ 294:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 295:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     NVIC_Init(&NVIC_InitStructure); 
+ 20491              		.loc 1 295 0
+ 20492 01b4 07F10803 		add	r3, r7, #8
+ 20493 01b8 1846     		mov	r0, r3
+ 20494 01ba FFF7FEFF 		bl	NVIC_Init
+ 20495              	.L13:
+ 296:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   }
+ 297:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20496              		.loc 1 297 0
+ 20497 01be 07F11807 		add	r7, r7, #24
+ 20498 01c2 BD46     		mov	sp, r7
+ 20499 01c4 80BD     		pop	{r7, pc}
+ 20500              	.L18:
+ 20501 01c6 00BF     		.align	2
+ 20502              	.L17:
+ 20503 01c8 00000000 		.word	BUTTON_CLK
+ 20504 01cc 00000000 		.word	BUTTON_PIN
+ 20505 01d0 00000000 		.word	BUTTON_PORT
+ 20506 01d4 00000000 		.word	BUTTON_PORT_SOURCE
+ 20507 01d8 00000000 		.word	BUTTON_PIN_SOURCE
+ 20508 01dc 00000000 		.word	BUTTON_EXTI_LINE
+ 20509 01e0 00000000 		.word	BUTTON_IRQn
+ 20510              		.cfi_endproc
+ 20511              	.LFE33:
+ 20513              		.align	2
+ 20514              		.global	STM_EVAL_PBGetState
+ 20515              		.thumb
+ 20516              		.thumb_func
+ 20518              	STM_EVAL_PBGetState:
+ 20519              	.LFB34:
+ 298:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 299:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 300:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Returns the selected Button state.
+ 301:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  Button: Specifies the Button to be checked.
+ 302:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:    
+ 303:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_WAKEUP: Wakeup Push Button
+ 304:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_TAMPER: Tamper Push Button  
+ 305:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_KEY: Key Push Button 
+ 306:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_RIGHT: Joystick Right Push Button 
+ 307:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_LEFT: Joystick Left Push Button 
+ 308:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_UP: Joystick Up Push Button 
+ 309:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_DOWN: Joystick Down Push Button
+ 310:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg BUTTON_SEL: Joystick Sel Push Button    
+ 311:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval The Button GPIO pin value.
+ 312:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 313:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** uint32_t STM_EVAL_PBGetState(Button_TypeDef Button)
+ 314:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20520              		.loc 1 314 0
+ 20521              		.cfi_startproc
+ 20522              		@ args = 0, pretend = 0, frame = 8
+ 20523              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20524 01e4 80B5     		push	{r7, lr}
+ 20525              	.LCFI15:
+ 20526              		.cfi_def_cfa_offset 8
+ 20527 01e6 82B0     		sub	sp, sp, #8
+ 20528              	.LCFI16:
+ 20529              		.cfi_def_cfa_offset 16
+ 20530 01e8 00AF     		add	r7, sp, #0
+ 20531              		.cfi_offset 14, -4
+ 20532              		.cfi_offset 7, -8
+ 20533              	.LCFI17:
+ 20534              		.cfi_def_cfa_register 7
+ 20535 01ea 0346     		mov	r3, r0
+ 20536 01ec FB71     		strb	r3, [r7, #7]
+ 315:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   return GPIO_ReadInputDataBit(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 20537              		.loc 1 315 0
+ 20538 01ee FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20539 01f0 084B     		ldr	r3, .L20
+ 20540 01f2 53F82220 		ldr	r2, [r3, r2, lsl #2]
+ 20541 01f6 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 20542 01f8 074B     		ldr	r3, .L20+4
+ 20543 01fa 33F81130 		ldrh	r3, [r3, r1, lsl #1]
+ 20544 01fe 1046     		mov	r0, r2
+ 20545 0200 1946     		mov	r1, r3
+ 20546 0202 FFF7FEFF 		bl	GPIO_ReadInputDataBit
+ 20547 0206 0346     		mov	r3, r0
+ 316:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20548              		.loc 1 316 0
+ 20549 0208 1846     		mov	r0, r3
+ 20550 020a 07F10807 		add	r7, r7, #8
+ 20551 020e BD46     		mov	sp, r7
+ 20552 0210 80BD     		pop	{r7, pc}
+ 20553              	.L21:
+ 20554 0212 00BF     		.align	2
+ 20555              	.L20:
+ 20556 0214 00000000 		.word	BUTTON_PORT
+ 20557 0218 00000000 		.word	BUTTON_PIN
+ 20558              		.cfi_endproc
+ 20559              	.LFE34:
+ 20561              		.align	2
+ 20562              		.global	STM_EVAL_COMInit
+ 20563              		.thumb
+ 20564              		.thumb_func
+ 20566              	STM_EVAL_COMInit:
+ 20567              	.LFB35:
+ 317:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 318:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 319:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Configures COM port.
+ 320:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  COM: Specifies the COM port to be configured.
+ 321:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   This parameter can be one of following parameters:    
+ 322:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg COM1
+ 323:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *     @arg COM2  
+ 324:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  USART_InitStruct: pointer to a USART_InitTypeDef structure that
+ 325:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   *   contains the configuration information for the specified USART peripheral.
+ 326:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 327:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 328:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void STM_EVAL_COMInit(COM_TypeDef COM, USART_InitTypeDef* USART_InitStruct)
+ 329:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20568              		.loc 1 329 0
+ 20569              		.cfi_startproc
+ 20570              		@ args = 0, pretend = 0, frame = 16
+ 20571              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20572 021c 80B5     		push	{r7, lr}
+ 20573              	.LCFI18:
+ 20574              		.cfi_def_cfa_offset 8
+ 20575 021e 84B0     		sub	sp, sp, #16
+ 20576              	.LCFI19:
+ 20577              		.cfi_def_cfa_offset 24
+ 20578 0220 00AF     		add	r7, sp, #0
+ 20579              		.cfi_offset 14, -4
+ 20580              		.cfi_offset 7, -8
+ 20581              	.LCFI20:
+ 20582              		.cfi_def_cfa_register 7
+ 20583 0222 0346     		mov	r3, r0
+ 20584 0224 3960     		str	r1, [r7, #0]
+ 20585 0226 FB71     		strb	r3, [r7, #7]
+ 330:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 331:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 332:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Enable GPIO clock */
+ 333:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(COM_TX_PORT_CLK[COM] | COM_RX_PORT_CLK[COM] | RCC_APB2Periph_AFIO, ENABLE)
+ 20586              		.loc 1 333 0
+ 20587 0228 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20588 022a 344B     		ldr	r3, .L25
+ 20589 022c 53F82220 		ldr	r2, [r3, r2, lsl #2]
+ 20590 0230 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 20591 0232 334B     		ldr	r3, .L25+4
+ 20592 0234 53F82130 		ldr	r3, [r3, r1, lsl #2]
+ 20593 0238 42EA0303 		orr	r3, r2, r3
+ 20594 023c 43F00103 		orr	r3, r3, #1
+ 20595 0240 1846     		mov	r0, r3
+ 20596 0242 4FF00101 		mov	r1, #1
+ 20597 0246 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 334:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 335:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   if (COM == COM1)
+ 20598              		.loc 1 335 0
+ 20599 024a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 20600 024c 002B     		cmp	r3, #0
+ 20601 024e 09D1     		bne	.L23
+ 336:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   {
+ 337:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     RCC_APB2PeriphClockCmd(COM_USART_CLK[COM], ENABLE); 
+ 20602              		.loc 1 337 0
+ 20603 0250 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20604 0252 2C4B     		ldr	r3, .L25+8
+ 20605 0254 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20606 0258 1846     		mov	r0, r3
+ 20607 025a 4FF00101 		mov	r1, #1
+ 20608 025e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 20609 0262 0EE0     		b	.L24
+ 20610              	.L23:
+ 338:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   }
+ 339:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   else
+ 340:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   {
+ 341:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     /* Enable the USART2 Pins Software Remapping */
+ 342:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     GPIO_PinRemapConfig(GPIO_Remap_USART2, ENABLE);
+ 20611              		.loc 1 342 0
+ 20612 0264 4FF00800 		mov	r0, #8
+ 20613 0268 4FF00101 		mov	r1, #1
+ 20614 026c FFF7FEFF 		bl	GPIO_PinRemapConfig
+ 343:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     RCC_APB1PeriphClockCmd(COM_USART_CLK[COM], ENABLE);
+ 20615              		.loc 1 343 0
+ 20616 0270 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20617 0272 244B     		ldr	r3, .L25+8
+ 20618 0274 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20619 0278 1846     		mov	r0, r3
+ 20620 027a 4FF00101 		mov	r1, #1
+ 20621 027e FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+ 20622              	.L24:
+ 344:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   }
+ 345:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 346:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Configure USART Tx as alternate function push-pull */
+ 347:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+ 20623              		.loc 1 347 0
+ 20624 0282 4FF01803 		mov	r3, #24
+ 20625 0286 FB73     		strb	r3, [r7, #15]
+ 348:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = COM_TX_PIN[COM];
+ 20626              		.loc 1 348 0
+ 20627 0288 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20628 028a 1F4B     		ldr	r3, .L25+12
+ 20629 028c 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 20630 0290 BB81     		strh	r3, [r7, #12]	@ movhi
+ 349:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 20631              		.loc 1 349 0
+ 20632 0292 4FF00303 		mov	r3, #3
+ 20633 0296 BB73     		strb	r3, [r7, #14]
+ 350:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(COM_TX_PORT[COM], &GPIO_InitStructure);
+ 20634              		.loc 1 350 0
+ 20635 0298 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20636 029a 1C4B     		ldr	r3, .L25+16
+ 20637 029c 53F82220 		ldr	r2, [r3, r2, lsl #2]
+ 20638 02a0 07F10C03 		add	r3, r7, #12
+ 20639 02a4 1046     		mov	r0, r2
+ 20640 02a6 1946     		mov	r1, r3
+ 20641 02a8 FFF7FEFF 		bl	GPIO_Init
+ 351:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 352:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 353:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Configure USART Rx as input floating */
+ 354:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 20642              		.loc 1 354 0
+ 20643 02ac 4FF00403 		mov	r3, #4
+ 20644 02b0 FB73     		strb	r3, [r7, #15]
+ 355:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = COM_RX_PIN[COM];
+ 20645              		.loc 1 355 0
+ 20646 02b2 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20647 02b4 164B     		ldr	r3, .L25+20
+ 20648 02b6 33F81230 		ldrh	r3, [r3, r2, lsl #1]
+ 20649 02ba BB81     		strh	r3, [r7, #12]	@ movhi
+ 356:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(COM_RX_PORT[COM], &GPIO_InitStructure);
+ 20650              		.loc 1 356 0
+ 20651 02bc FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20652 02be 154B     		ldr	r3, .L25+24
+ 20653 02c0 53F82220 		ldr	r2, [r3, r2, lsl #2]
+ 20654 02c4 07F10C03 		add	r3, r7, #12
+ 20655 02c8 1046     		mov	r0, r2
+ 20656 02ca 1946     		mov	r1, r3
+ 20657 02cc FFF7FEFF 		bl	GPIO_Init
+ 357:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 358:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* USART configuration */
+ 359:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   USART_Init(COM_USART[COM], USART_InitStruct);
+ 20658              		.loc 1 359 0
+ 20659 02d0 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20660 02d2 114B     		ldr	r3, .L25+28
+ 20661 02d4 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20662 02d8 1846     		mov	r0, r3
+ 20663 02da 3968     		ldr	r1, [r7, #0]
+ 20664 02dc FFF7FEFF 		bl	USART_Init
+ 360:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     
+ 361:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /* Enable USART */
+ 362:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   USART_Cmd(COM_USART[COM], ENABLE);
+ 20665              		.loc 1 362 0
+ 20666 02e0 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 20667 02e2 0D4B     		ldr	r3, .L25+28
+ 20668 02e4 53F82230 		ldr	r3, [r3, r2, lsl #2]
+ 20669 02e8 1846     		mov	r0, r3
+ 20670 02ea 4FF00101 		mov	r1, #1
+ 20671 02ee FFF7FEFF 		bl	USART_Cmd
+ 363:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20672              		.loc 1 363 0
+ 20673 02f2 07F11007 		add	r7, r7, #16
+ 20674 02f6 BD46     		mov	sp, r7
+ 20675 02f8 80BD     		pop	{r7, pc}
+ 20676              	.L26:
+ 20677 02fa 00BF     		.align	2
+ 20678              	.L25:
+ 20679 02fc 00000000 		.word	COM_TX_PORT_CLK
+ 20680 0300 00000000 		.word	COM_RX_PORT_CLK
+ 20681 0304 00000000 		.word	COM_USART_CLK
+ 20682 0308 00000000 		.word	COM_TX_PIN
+ 20683 030c 00000000 		.word	COM_TX_PORT
+ 20684 0310 00000000 		.word	COM_RX_PIN
+ 20685 0314 00000000 		.word	COM_RX_PORT
+ 20686 0318 00000000 		.word	COM_USART
+ 20687              		.cfi_endproc
+ 20688              	.LFE35:
+ 20690              		.align	2
+ 20691              		.global	SD_LowLevel_DeInit
+ 20692              		.thumb
+ 20693              		.thumb_func
+ 20695              	SD_LowLevel_DeInit:
+ 20696              	.LFB36:
+ 364:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 365:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 366:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  DeInitializes the SD/SD communication.
+ 367:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  None
+ 368:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 369:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 370:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void SD_LowLevel_DeInit(void)
+ 371:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20697              		.loc 1 371 0
+ 20698              		.cfi_startproc
+ 20699              		@ args = 0, pretend = 0, frame = 8
+ 20700              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20701 031c 80B5     		push	{r7, lr}
+ 20702              	.LCFI21:
+ 20703              		.cfi_def_cfa_offset 8
+ 20704 031e 82B0     		sub	sp, sp, #8
+ 20705              	.LCFI22:
+ 20706              		.cfi_def_cfa_offset 16
+ 20707 0320 00AF     		add	r7, sp, #0
+ 20708              		.cfi_offset 14, -4
+ 20709              		.cfi_offset 7, -8
+ 20710              	.LCFI23:
+ 20711              		.cfi_def_cfa_register 7
+ 372:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef  GPIO_InitStructure;
+ 373:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 374:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_Cmd(SD_SPI, DISABLE); /*!< SD_SPI disable */
+ 20712              		.loc 1 374 0
+ 20713 0322 2148     		ldr	r0, .L28
+ 20714 0324 4FF00001 		mov	r1, #0
+ 20715 0328 FFF7FEFF 		bl	SPI_Cmd
+ 375:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_I2S_DeInit(SD_SPI);   /*!< DeInitializes the SD_SPI */
+ 20716              		.loc 1 375 0
+ 20717 032c 1E48     		ldr	r0, .L28
+ 20718 032e FFF7FEFF 		bl	SPI_I2S_DeInit
+ 376:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 377:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< SD_SPI Periph clock disable */
+ 378:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(SD_SPI_CLK, DISABLE); 
+ 20719              		.loc 1 378 0
+ 20720 0332 4FF48050 		mov	r0, #4096
+ 20721 0336 4FF00001 		mov	r1, #0
+ 20722 033a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 379:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 380:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI pins: SCK */
+ 381:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_SPI_SCK_PIN;
+ 20723              		.loc 1 381 0
+ 20724 033e 4FF02003 		mov	r3, #32
+ 20725 0342 BB80     		strh	r3, [r7, #4]	@ movhi
+ 382:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 20726              		.loc 1 382 0
+ 20727 0344 4FF00403 		mov	r3, #4
+ 20728 0348 FB71     		strb	r3, [r7, #7]
+ 383:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_SPI_SCK_GPIO_PORT, &GPIO_InitStructure);
+ 20729              		.loc 1 383 0
+ 20730 034a 07F10403 		add	r3, r7, #4
+ 20731 034e 1748     		ldr	r0, .L28+4
+ 20732 0350 1946     		mov	r1, r3
+ 20733 0352 FFF7FEFF 		bl	GPIO_Init
+ 384:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 385:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI pins: MISO */
+ 386:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_SPI_MISO_PIN;
+ 20734              		.loc 1 386 0
+ 20735 0356 4FF04003 		mov	r3, #64
+ 20736 035a BB80     		strh	r3, [r7, #4]	@ movhi
+ 387:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_SPI_MISO_GPIO_PORT, &GPIO_InitStructure);
+ 20737              		.loc 1 387 0
+ 20738 035c 07F10403 		add	r3, r7, #4
+ 20739 0360 1248     		ldr	r0, .L28+4
+ 20740 0362 1946     		mov	r1, r3
+ 20741 0364 FFF7FEFF 		bl	GPIO_Init
+ 388:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 389:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI pins: MOSI */
+ 390:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_SPI_MOSI_PIN;
+ 20742              		.loc 1 390 0
+ 20743 0368 4FF08003 		mov	r3, #128
+ 20744 036c BB80     		strh	r3, [r7, #4]	@ movhi
+ 391:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_SPI_MOSI_GPIO_PORT, &GPIO_InitStructure);
+ 20745              		.loc 1 391 0
+ 20746 036e 07F10403 		add	r3, r7, #4
+ 20747 0372 0E48     		ldr	r0, .L28+4
+ 20748 0374 1946     		mov	r1, r3
+ 20749 0376 FFF7FEFF 		bl	GPIO_Init
+ 392:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 393:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI_CS_PIN pin: SD Card CS pin */
+ 394:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_CS_PIN;
+ 20750              		.loc 1 394 0
+ 20751 037a 4FF48053 		mov	r3, #4096
+ 20752 037e BB80     		strh	r3, [r7, #4]	@ movhi
+ 395:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_CS_GPIO_PORT, &GPIO_InitStructure);
+ 20753              		.loc 1 395 0
+ 20754 0380 07F10403 		add	r3, r7, #4
+ 20755 0384 0A48     		ldr	r0, .L28+8
+ 20756 0386 1946     		mov	r1, r3
+ 20757 0388 FFF7FEFF 		bl	GPIO_Init
+ 396:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 397:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI_DETECT_PIN pin: SD Card detect pin */
+ 398:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_DETECT_PIN;
+ 20758              		.loc 1 398 0
+ 20759 038c 4FF08003 		mov	r3, #128
+ 20760 0390 BB80     		strh	r3, [r7, #4]	@ movhi
+ 399:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_DETECT_GPIO_PORT, &GPIO_InitStructure);
+ 20761              		.loc 1 399 0
+ 20762 0392 07F10403 		add	r3, r7, #4
+ 20763 0396 0748     		ldr	r0, .L28+12
+ 20764 0398 1946     		mov	r1, r3
+ 20765 039a FFF7FEFF 		bl	GPIO_Init
+ 400:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20766              		.loc 1 400 0
+ 20767 039e 07F10807 		add	r7, r7, #8
+ 20768 03a2 BD46     		mov	sp, r7
+ 20769 03a4 80BD     		pop	{r7, pc}
+ 20770              	.L29:
+ 20771 03a6 00BF     		.align	2
+ 20772              	.L28:
+ 20773 03a8 00300140 		.word	1073819648
+ 20774 03ac 00080140 		.word	1073809408
+ 20775 03b0 00100140 		.word	1073811456
+ 20776 03b4 00180140 		.word	1073813504
+ 20777              		.cfi_endproc
+ 20778              	.LFE36:
+ 20780              		.align	2
+ 20781              		.global	SD_LowLevel_Init
+ 20782              		.thumb
+ 20783              		.thumb_func
+ 20785              	SD_LowLevel_Init:
+ 20786              	.LFB37:
+ 401:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 402:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 403:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Initializes the SD_SPI and CS pins.
+ 404:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  None
+ 405:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 406:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 407:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void SD_LowLevel_Init(void)
+ 408:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20787              		.loc 1 408 0
+ 20788              		.cfi_startproc
+ 20789              		@ args = 0, pretend = 0, frame = 24
+ 20790              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20791 03b8 80B5     		push	{r7, lr}
+ 20792              	.LCFI24:
+ 20793              		.cfi_def_cfa_offset 8
+ 20794 03ba 86B0     		sub	sp, sp, #24
+ 20795              	.LCFI25:
+ 20796              		.cfi_def_cfa_offset 32
+ 20797 03bc 00AF     		add	r7, sp, #0
+ 20798              		.cfi_offset 14, -4
+ 20799              		.cfi_offset 7, -8
+ 20800              	.LCFI26:
+ 20801              		.cfi_def_cfa_register 7
+ 409:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef  GPIO_InitStructure;
+ 410:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitTypeDef   SPI_InitStructure;
+ 411:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 412:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< SD_SPI_CS_GPIO, SD_SPI_MOSI_GPIO, SD_SPI_MISO_GPIO, SD_SPI_DETECT_GPIO 
+ 413:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****        and SD_SPI_SCK_GPIO Periph clock enable */
+ 414:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(SD_CS_GPIO_CLK | SD_SPI_MOSI_GPIO_CLK | SD_SPI_MISO_GPIO_CLK |
+ 20802              		.loc 1 414 0
+ 20803 03be 4FF05400 		mov	r0, #84
+ 20804 03c2 4FF00101 		mov	r1, #1
+ 20805 03c6 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 415:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                          SD_SPI_SCK_GPIO_CLK | SD_DETECT_GPIO_CLK, ENABLE);
+ 416:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 417:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< SD_SPI Periph clock enable */
+ 418:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(SD_SPI_CLK, ENABLE); 
+ 20806              		.loc 1 418 0
+ 20807 03ca 4FF48050 		mov	r0, #4096
+ 20808 03ce 4FF00101 		mov	r1, #1
+ 20809 03d2 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 419:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 420:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 421:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI pins: SCK */
+ 422:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_SPI_SCK_PIN;
+ 20810              		.loc 1 422 0
+ 20811 03d6 4FF02003 		mov	r3, #32
+ 20812 03da BB82     		strh	r3, [r7, #20]	@ movhi
+ 423:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 20813              		.loc 1 423 0
+ 20814 03dc 4FF00303 		mov	r3, #3
+ 20815 03e0 BB75     		strb	r3, [r7, #22]
+ 424:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+ 20816              		.loc 1 424 0
+ 20817 03e2 4FF01803 		mov	r3, #24
+ 20818 03e6 FB75     		strb	r3, [r7, #23]
+ 425:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_SPI_SCK_GPIO_PORT, &GPIO_InitStructure);
+ 20819              		.loc 1 425 0
+ 20820 03e8 07F11403 		add	r3, r7, #20
+ 20821 03ec 2C48     		ldr	r0, .L31
+ 20822 03ee 1946     		mov	r1, r3
+ 20823 03f0 FFF7FEFF 		bl	GPIO_Init
+ 426:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 427:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI pins: MOSI */
+ 428:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_SPI_MOSI_PIN;
+ 20824              		.loc 1 428 0
+ 20825 03f4 4FF08003 		mov	r3, #128
+ 20826 03f8 BB82     		strh	r3, [r7, #20]	@ movhi
+ 429:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_SPI_MOSI_GPIO_PORT, &GPIO_InitStructure);
+ 20827              		.loc 1 429 0
+ 20828 03fa 07F11403 		add	r3, r7, #20
+ 20829 03fe 2848     		ldr	r0, .L31
+ 20830 0400 1946     		mov	r1, r3
+ 20831 0402 FFF7FEFF 		bl	GPIO_Init
+ 430:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 431:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI pins: MISO */
+ 432:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_SPI_MISO_PIN;
+ 20832              		.loc 1 432 0
+ 20833 0406 4FF04003 		mov	r3, #64
+ 20834 040a BB82     		strh	r3, [r7, #20]	@ movhi
+ 433:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;  
+ 20835              		.loc 1 433 0
+ 20836 040c 4FF00403 		mov	r3, #4
+ 20837 0410 FB75     		strb	r3, [r7, #23]
+ 434:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_SPI_MISO_GPIO_PORT, &GPIO_InitStructure);
+ 20838              		.loc 1 434 0
+ 20839 0412 07F11403 		add	r3, r7, #20
+ 20840 0416 2248     		ldr	r0, .L31
+ 20841 0418 1946     		mov	r1, r3
+ 20842 041a FFF7FEFF 		bl	GPIO_Init
+ 435:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 436:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI_CS_PIN pin: SD Card CS pin */
+ 437:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_CS_PIN;
+ 20843              		.loc 1 437 0
+ 20844 041e 4FF48053 		mov	r3, #4096
+ 20845 0422 BB82     		strh	r3, [r7, #20]	@ movhi
+ 438:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 20846              		.loc 1 438 0
+ 20847 0424 4FF01003 		mov	r3, #16
+ 20848 0428 FB75     		strb	r3, [r7, #23]
+ 439:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_CS_GPIO_PORT, &GPIO_InitStructure);
+ 20849              		.loc 1 439 0
+ 20850 042a 07F11403 		add	r3, r7, #20
+ 20851 042e 1D48     		ldr	r0, .L31+4
+ 20852 0430 1946     		mov	r1, r3
+ 20853 0432 FFF7FEFF 		bl	GPIO_Init
+ 440:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 441:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure SD_SPI_DETECT_PIN pin: SD Card detect pin */
+ 442:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = SD_DETECT_PIN;
+ 20854              		.loc 1 442 0
+ 20855 0436 4FF08003 		mov	r3, #128
+ 20856 043a BB82     		strh	r3, [r7, #20]	@ movhi
+ 443:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+ 20857              		.loc 1 443 0
+ 20858 043c 4FF04803 		mov	r3, #72
+ 20859 0440 FB75     		strb	r3, [r7, #23]
+ 444:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(SD_DETECT_GPIO_PORT, &GPIO_InitStructure);
+ 20860              		.loc 1 444 0
+ 20861 0442 07F11403 		add	r3, r7, #20
+ 20862 0446 1848     		ldr	r0, .L31+8
+ 20863 0448 1946     		mov	r1, r3
+ 20864 044a FFF7FEFF 		bl	GPIO_Init
+ 445:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 446:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< SD_SPI Config */
+ 447:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
+ 20865              		.loc 1 447 0
+ 20866 044e 4FF00003 		mov	r3, #0
+ 20867 0452 3B80     		strh	r3, [r7, #0]	@ movhi
+ 448:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
+ 20868              		.loc 1 448 0
+ 20869 0454 4FF48273 		mov	r3, #260
+ 20870 0458 7B80     		strh	r3, [r7, #2]	@ movhi
+ 449:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
+ 20871              		.loc 1 449 0
+ 20872 045a 4FF00003 		mov	r3, #0
+ 20873 045e BB80     		strh	r3, [r7, #4]	@ movhi
+ 450:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_CPOL = SPI_CPOL_High;
+ 20874              		.loc 1 450 0
+ 20875 0460 4FF00203 		mov	r3, #2
+ 20876 0464 FB80     		strh	r3, [r7, #6]	@ movhi
+ 451:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;
+ 20877              		.loc 1 451 0
+ 20878 0466 4FF00103 		mov	r3, #1
+ 20879 046a 3B81     		strh	r3, [r7, #8]	@ movhi
+ 452:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
+ 20880              		.loc 1 452 0
+ 20881 046c 4FF40073 		mov	r3, #512
+ 20882 0470 7B81     		strh	r3, [r7, #10]	@ movhi
+ 453:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+ 20883              		.loc 1 453 0
+ 20884 0472 4FF00803 		mov	r3, #8
+ 20885 0476 BB81     		strh	r3, [r7, #12]	@ movhi
+ 454:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
+ 20886              		.loc 1 454 0
+ 20887 0478 4FF00003 		mov	r3, #0
+ 20888 047c FB81     		strh	r3, [r7, #14]	@ movhi
+ 455:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_InitStructure.SPI_CRCPolynomial = 7;
+ 20889              		.loc 1 455 0
+ 20890 047e 4FF00703 		mov	r3, #7
+ 20891 0482 3B82     		strh	r3, [r7, #16]	@ movhi
+ 456:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_Init(SD_SPI, &SPI_InitStructure);
+ 20892              		.loc 1 456 0
+ 20893 0484 3B46     		mov	r3, r7
+ 20894 0486 0948     		ldr	r0, .L31+12
+ 20895 0488 1946     		mov	r1, r3
+ 20896 048a FFF7FEFF 		bl	SPI_Init
+ 457:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 458:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_Cmd(SD_SPI, ENABLE); /*!< SD_SPI enable */
+ 20897              		.loc 1 458 0
+ 20898 048e 0748     		ldr	r0, .L31+12
+ 20899 0490 4FF00101 		mov	r1, #1
+ 20900 0494 FFF7FEFF 		bl	SPI_Cmd
+ 459:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20901              		.loc 1 459 0
+ 20902 0498 07F11807 		add	r7, r7, #24
+ 20903 049c BD46     		mov	sp, r7
+ 20904 049e 80BD     		pop	{r7, pc}
+ 20905              	.L32:
+ 20906              		.align	2
+ 20907              	.L31:
+ 20908 04a0 00080140 		.word	1073809408
+ 20909 04a4 00100140 		.word	1073811456
+ 20910 04a8 00180140 		.word	1073813504
+ 20911 04ac 00300140 		.word	1073819648
+ 20912              		.cfi_endproc
+ 20913              	.LFE37:
+ 20915              		.align	2
+ 20916              		.global	sFLASH_LowLevel_DeInit
+ 20917              		.thumb
+ 20918              		.thumb_func
+ 20920              	sFLASH_LowLevel_DeInit:
+ 20921              	.LFB38:
+ 460:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 461:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 462:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  DeInitializes the peripherals used by the SPI FLASH driver.
+ 463:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  None
+ 464:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 465:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 466:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void sFLASH_LowLevel_DeInit(void)
+ 467:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 20922              		.loc 1 467 0
+ 20923              		.cfi_startproc
+ 20924              		@ args = 0, pretend = 0, frame = 8
+ 20925              		@ frame_needed = 1, uses_anonymous_args = 0
+ 20926 04b0 80B5     		push	{r7, lr}
+ 20927              	.LCFI27:
+ 20928              		.cfi_def_cfa_offset 8
+ 20929 04b2 82B0     		sub	sp, sp, #8
+ 20930              	.LCFI28:
+ 20931              		.cfi_def_cfa_offset 16
+ 20932 04b4 00AF     		add	r7, sp, #0
+ 20933              		.cfi_offset 14, -4
+ 20934              		.cfi_offset 7, -8
+ 20935              	.LCFI29:
+ 20936              		.cfi_def_cfa_register 7
+ 468:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 469:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 470:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Disable the sFLASH_SPI  */
+ 471:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_Cmd(sFLASH_SPI, DISABLE);
+ 20937              		.loc 1 471 0
+ 20938 04b6 1C48     		ldr	r0, .L34
+ 20939 04b8 4FF00001 		mov	r1, #0
+ 20940 04bc FFF7FEFF 		bl	SPI_Cmd
+ 472:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 473:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< DeInitializes the sFLASH_SPI */
+ 474:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   SPI_I2S_DeInit(sFLASH_SPI);
+ 20941              		.loc 1 474 0
+ 20942 04c0 1948     		ldr	r0, .L34
+ 20943 04c2 FFF7FEFF 		bl	SPI_I2S_DeInit
+ 475:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 476:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< sFLASH_SPI Periph clock disable */
+ 477:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(sFLASH_SPI_CLK, DISABLE);
+ 20944              		.loc 1 477 0
+ 20945 04c6 4FF48050 		mov	r0, #4096
+ 20946 04ca 4FF00001 		mov	r1, #0
+ 20947 04ce FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 478:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 479:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_SPI pins: SCK */
+ 480:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_SPI_SCK_PIN;
+ 20948              		.loc 1 480 0
+ 20949 04d2 4FF02003 		mov	r3, #32
+ 20950 04d6 BB80     		strh	r3, [r7, #4]	@ movhi
+ 481:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 20951              		.loc 1 481 0
+ 20952 04d8 4FF00403 		mov	r3, #4
+ 20953 04dc FB71     		strb	r3, [r7, #7]
+ 482:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_SPI_SCK_GPIO_PORT, &GPIO_InitStructure);
+ 20954              		.loc 1 482 0
+ 20955 04de 07F10403 		add	r3, r7, #4
+ 20956 04e2 1248     		ldr	r0, .L34+4
+ 20957 04e4 1946     		mov	r1, r3
+ 20958 04e6 FFF7FEFF 		bl	GPIO_Init
+ 483:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 484:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_SPI pins: MISO */
+ 485:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_SPI_MISO_PIN;
+ 20959              		.loc 1 485 0
+ 20960 04ea 4FF04003 		mov	r3, #64
+ 20961 04ee BB80     		strh	r3, [r7, #4]	@ movhi
+ 486:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_SPI_MISO_GPIO_PORT, &GPIO_InitStructure);
+ 20962              		.loc 1 486 0
+ 20963 04f0 07F10403 		add	r3, r7, #4
+ 20964 04f4 0D48     		ldr	r0, .L34+4
+ 20965 04f6 1946     		mov	r1, r3
+ 20966 04f8 FFF7FEFF 		bl	GPIO_Init
+ 487:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 488:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_SPI pins: MOSI */
+ 489:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_SPI_MOSI_PIN;
+ 20967              		.loc 1 489 0
+ 20968 04fc 4FF08003 		mov	r3, #128
+ 20969 0500 BB80     		strh	r3, [r7, #4]	@ movhi
+ 490:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_SPI_MOSI_GPIO_PORT, &GPIO_InitStructure);
+ 20970              		.loc 1 490 0
+ 20971 0502 07F10403 		add	r3, r7, #4
+ 20972 0506 0948     		ldr	r0, .L34+4
+ 20973 0508 1946     		mov	r1, r3
+ 20974 050a FFF7FEFF 		bl	GPIO_Init
+ 491:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 492:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_CS_PIN pin: sFLASH Card CS pin */
+ 493:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_CS_PIN;
+ 20975              		.loc 1 493 0
+ 20976 050e 4FF01003 		mov	r3, #16
+ 20977 0512 BB80     		strh	r3, [r7, #4]	@ movhi
+ 494:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_CS_GPIO_PORT, &GPIO_InitStructure);
+ 20978              		.loc 1 494 0
+ 20979 0514 07F10403 		add	r3, r7, #4
+ 20980 0518 0448     		ldr	r0, .L34+4
+ 20981 051a 1946     		mov	r1, r3
+ 20982 051c FFF7FEFF 		bl	GPIO_Init
+ 495:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 20983              		.loc 1 495 0
+ 20984 0520 07F10807 		add	r7, r7, #8
+ 20985 0524 BD46     		mov	sp, r7
+ 20986 0526 80BD     		pop	{r7, pc}
+ 20987              	.L35:
+ 20988              		.align	2
+ 20989              	.L34:
+ 20990 0528 00300140 		.word	1073819648
+ 20991 052c 00080140 		.word	1073809408
+ 20992              		.cfi_endproc
+ 20993              	.LFE38:
+ 20995              		.align	2
+ 20996              		.global	sFLASH_LowLevel_Init
+ 20997              		.thumb
+ 20998              		.thumb_func
+ 21000              	sFLASH_LowLevel_Init:
+ 21001              	.LFB39:
+ 496:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 497:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 498:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Initializes the peripherals used by the SPI FLASH driver.
+ 499:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  None
+ 500:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 501:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 502:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void sFLASH_LowLevel_Init(void)
+ 503:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 21002              		.loc 1 503 0
+ 21003              		.cfi_startproc
+ 21004              		@ args = 0, pretend = 0, frame = 8
+ 21005              		@ frame_needed = 1, uses_anonymous_args = 0
+ 21006 0530 80B5     		push	{r7, lr}
+ 21007              	.LCFI30:
+ 21008              		.cfi_def_cfa_offset 8
+ 21009 0532 82B0     		sub	sp, sp, #8
+ 21010              	.LCFI31:
+ 21011              		.cfi_def_cfa_offset 16
+ 21012 0534 00AF     		add	r7, sp, #0
+ 21013              		.cfi_offset 14, -4
+ 21014              		.cfi_offset 7, -8
+ 21015              	.LCFI32:
+ 21016              		.cfi_def_cfa_register 7
+ 504:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 505:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 506:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< sFLASH_SPI_CS_GPIO, sFLASH_SPI_MOSI_GPIO, sFLASH_SPI_MISO_GPIO 
+ 507:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****        and sFLASH_SPI_SCK_GPIO Periph clock enable */
+ 508:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(sFLASH_CS_GPIO_CLK | sFLASH_SPI_MOSI_GPIO_CLK | sFLASH_SPI_MISO_GPIO_CLK |
+ 21017              		.loc 1 508 0
+ 21018 0536 4FF00400 		mov	r0, #4
+ 21019 053a 4FF00101 		mov	r1, #1
+ 21020 053e FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 509:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                          sFLASH_SPI_SCK_GPIO_CLK, ENABLE);
+ 510:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 511:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< sFLASH_SPI Periph clock enable */
+ 512:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(sFLASH_SPI_CLK, ENABLE);
+ 21021              		.loc 1 512 0
+ 21022 0542 4FF48050 		mov	r0, #4096
+ 21023 0546 4FF00101 		mov	r1, #1
+ 21024 054a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 513:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 514:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_SPI pins: SCK */
+ 515:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_SPI_SCK_PIN;
+ 21025              		.loc 1 515 0
+ 21026 054e 4FF02003 		mov	r3, #32
+ 21027 0552 BB80     		strh	r3, [r7, #4]	@ movhi
+ 516:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 21028              		.loc 1 516 0
+ 21029 0554 4FF00303 		mov	r3, #3
+ 21030 0558 BB71     		strb	r3, [r7, #6]
+ 517:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+ 21031              		.loc 1 517 0
+ 21032 055a 4FF01803 		mov	r3, #24
+ 21033 055e FB71     		strb	r3, [r7, #7]
+ 518:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_SPI_SCK_GPIO_PORT, &GPIO_InitStructure);
+ 21034              		.loc 1 518 0
+ 21035 0560 07F10403 		add	r3, r7, #4
+ 21036 0564 1448     		ldr	r0, .L37
+ 21037 0566 1946     		mov	r1, r3
+ 21038 0568 FFF7FEFF 		bl	GPIO_Init
+ 519:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 520:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_SPI pins: MOSI */
+ 521:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_SPI_MOSI_PIN;
+ 21039              		.loc 1 521 0
+ 21040 056c 4FF08003 		mov	r3, #128
+ 21041 0570 BB80     		strh	r3, [r7, #4]	@ movhi
+ 522:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_SPI_MOSI_GPIO_PORT, &GPIO_InitStructure);
+ 21042              		.loc 1 522 0
+ 21043 0572 07F10403 		add	r3, r7, #4
+ 21044 0576 1048     		ldr	r0, .L37
+ 21045 0578 1946     		mov	r1, r3
+ 21046 057a FFF7FEFF 		bl	GPIO_Init
+ 523:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 524:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_SPI pins: MISO */
+ 525:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_SPI_MISO_PIN;
+ 21047              		.loc 1 525 0
+ 21048 057e 4FF04003 		mov	r3, #64
+ 21049 0582 BB80     		strh	r3, [r7, #4]	@ movhi
+ 526:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;  
+ 21050              		.loc 1 526 0
+ 21051 0584 4FF00403 		mov	r3, #4
+ 21052 0588 FB71     		strb	r3, [r7, #7]
+ 527:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_SPI_MISO_GPIO_PORT, &GPIO_InitStructure);
+ 21053              		.loc 1 527 0
+ 21054 058a 07F10403 		add	r3, r7, #4
+ 21055 058e 0A48     		ldr	r0, .L37
+ 21056 0590 1946     		mov	r1, r3
+ 21057 0592 FFF7FEFF 		bl	GPIO_Init
+ 528:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 529:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure sFLASH_CS_PIN pin: sFLASH Card CS pin */
+ 530:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = sFLASH_CS_PIN;
+ 21058              		.loc 1 530 0
+ 21059 0596 4FF01003 		mov	r3, #16
+ 21060 059a BB80     		strh	r3, [r7, #4]	@ movhi
+ 531:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ 21061              		.loc 1 531 0
+ 21062 059c 4FF01003 		mov	r3, #16
+ 21063 05a0 FB71     		strb	r3, [r7, #7]
+ 532:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(sFLASH_CS_GPIO_PORT, &GPIO_InitStructure);
+ 21064              		.loc 1 532 0
+ 21065 05a2 07F10403 		add	r3, r7, #4
+ 21066 05a6 0448     		ldr	r0, .L37
+ 21067 05a8 1946     		mov	r1, r3
+ 21068 05aa FFF7FEFF 		bl	GPIO_Init
+ 533:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 21069              		.loc 1 533 0
+ 21070 05ae 07F10807 		add	r7, r7, #8
+ 21071 05b2 BD46     		mov	sp, r7
+ 21072 05b4 80BD     		pop	{r7, pc}
+ 21073              	.L38:
+ 21074 05b6 00BF     		.align	2
+ 21075              	.L37:
+ 21076 05b8 00080140 		.word	1073809408
+ 21077              		.cfi_endproc
+ 21078              	.LFE39:
+ 21080              		.align	2
+ 21081              		.global	LM75_LowLevel_DeInit
+ 21082              		.thumb
+ 21083              		.thumb_func
+ 21085              	LM75_LowLevel_DeInit:
+ 21086              	.LFB40:
+ 534:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 535:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 536:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  DeInitializes the LM75_I2C.
+ 537:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  None
+ 538:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 539:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 540:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void LM75_LowLevel_DeInit(void)
+ 541:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 21087              		.loc 1 541 0
+ 21088              		.cfi_startproc
+ 21089              		@ args = 0, pretend = 0, frame = 8
+ 21090              		@ frame_needed = 1, uses_anonymous_args = 0
+ 21091 05bc 80B5     		push	{r7, lr}
+ 21092              	.LCFI33:
+ 21093              		.cfi_def_cfa_offset 8
+ 21094 05be 82B0     		sub	sp, sp, #8
+ 21095              	.LCFI34:
+ 21096              		.cfi_def_cfa_offset 16
+ 21097 05c0 00AF     		add	r7, sp, #0
+ 21098              		.cfi_offset 14, -4
+ 21099              		.cfi_offset 7, -8
+ 21100              	.LCFI35:
+ 21101              		.cfi_def_cfa_register 7
+ 542:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef  GPIO_InitStructure;
+ 543:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 544:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Disable LM75_I2C */
+ 545:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   I2C_Cmd(LM75_I2C, DISABLE);
+ 21102              		.loc 1 545 0
+ 21103 05c2 1848     		ldr	r0, .L40
+ 21104 05c4 4FF00001 		mov	r1, #0
+ 21105 05c8 FFF7FEFF 		bl	I2C_Cmd
+ 546:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< DeInitializes the LM75_I2C */
+ 547:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   I2C_DeInit(LM75_I2C);
+ 21106              		.loc 1 547 0
+ 21107 05cc 1548     		ldr	r0, .L40
+ 21108 05ce FFF7FEFF 		bl	I2C_DeInit
+ 548:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 549:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< LM75_I2C Periph clock disable */
+ 550:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB1PeriphClockCmd(LM75_I2C_CLK, DISABLE);
+ 21109              		.loc 1 550 0
+ 21110 05d2 4FF40010 		mov	r0, #2097152
+ 21111 05d6 4FF00001 		mov	r1, #0
+ 21112 05da FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+ 551:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     
+ 552:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure LM75_I2C pins: SCL */
+ 553:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = LM75_I2C_SCL_PIN;
+ 21113              		.loc 1 553 0
+ 21114 05de 4FF04003 		mov	r3, #64
+ 21115 05e2 BB80     		strh	r3, [r7, #4]	@ movhi
+ 554:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ 21116              		.loc 1 554 0
+ 21117 05e4 4FF00403 		mov	r3, #4
+ 21118 05e8 FB71     		strb	r3, [r7, #7]
+ 555:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(LM75_I2C_SCL_GPIO_PORT, &GPIO_InitStructure);
+ 21119              		.loc 1 555 0
+ 21120 05ea 07F10403 		add	r3, r7, #4
+ 21121 05ee 0E48     		ldr	r0, .L40+4
+ 21122 05f0 1946     		mov	r1, r3
+ 21123 05f2 FFF7FEFF 		bl	GPIO_Init
+ 556:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 557:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure LM75_I2C pins: SDA */
+ 558:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = LM75_I2C_SDA_PIN;
+ 21124              		.loc 1 558 0
+ 21125 05f6 4FF08003 		mov	r3, #128
+ 21126 05fa BB80     		strh	r3, [r7, #4]	@ movhi
+ 559:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(LM75_I2C_SDA_GPIO_PORT, &GPIO_InitStructure);
+ 21127              		.loc 1 559 0
+ 21128 05fc 07F10403 		add	r3, r7, #4
+ 21129 0600 0948     		ldr	r0, .L40+4
+ 21130 0602 1946     		mov	r1, r3
+ 21131 0604 FFF7FEFF 		bl	GPIO_Init
+ 560:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 561:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure LM75_I2C pin: SMBUS ALERT */
+ 562:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = LM75_I2C_SMBUSALERT_PIN;
+ 21132              		.loc 1 562 0
+ 21133 0608 4FF02003 		mov	r3, #32
+ 21134 060c BB80     		strh	r3, [r7, #4]	@ movhi
+ 563:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(LM75_I2C_SMBUSALERT_GPIO_PORT, &GPIO_InitStructure);
+ 21135              		.loc 1 563 0
+ 21136 060e 07F10403 		add	r3, r7, #4
+ 21137 0612 0548     		ldr	r0, .L40+4
+ 21138 0614 1946     		mov	r1, r3
+ 21139 0616 FFF7FEFF 		bl	GPIO_Init
+ 564:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 21140              		.loc 1 564 0
+ 21141 061a 07F10807 		add	r7, r7, #8
+ 21142 061e BD46     		mov	sp, r7
+ 21143 0620 80BD     		pop	{r7, pc}
+ 21144              	.L41:
+ 21145 0622 00BF     		.align	2
+ 21146              	.L40:
+ 21147 0624 00540040 		.word	1073763328
+ 21148 0628 000C0140 		.word	1073810432
+ 21149              		.cfi_endproc
+ 21150              	.LFE40:
+ 21152              		.align	2
+ 21153              		.global	LM75_LowLevel_Init
+ 21154              		.thumb
+ 21155              		.thumb_func
+ 21157              	LM75_LowLevel_Init:
+ 21158              	.LFB41:
+ 565:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 566:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** /**
+ 567:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @brief  Initializes the LM75_I2C.
+ 568:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @param  None
+ 569:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   * @retval None
+ 570:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   */
+ 571:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** void LM75_LowLevel_Init(void)
+ 572:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** {
+ 21159              		.loc 1 572 0
+ 21160              		.cfi_startproc
+ 21161              		@ args = 0, pretend = 0, frame = 8
+ 21162              		@ frame_needed = 1, uses_anonymous_args = 0
+ 21163 062c 80B5     		push	{r7, lr}
+ 21164              	.LCFI36:
+ 21165              		.cfi_def_cfa_offset 8
+ 21166 062e 82B0     		sub	sp, sp, #8
+ 21167              	.LCFI37:
+ 21168              		.cfi_def_cfa_offset 16
+ 21169 0630 00AF     		add	r7, sp, #0
+ 21170              		.cfi_offset 14, -4
+ 21171              		.cfi_offset 7, -8
+ 21172              	.LCFI38:
+ 21173              		.cfi_def_cfa_register 7
+ 573:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitTypeDef  GPIO_InitStructure;
+ 574:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 575:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< LM75_I2C Periph clock enable */
+ 576:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB1PeriphClockCmd(LM75_I2C_CLK, ENABLE);
+ 21174              		.loc 1 576 0
+ 21175 0632 4FF40010 		mov	r0, #2097152
+ 21176 0636 4FF00101 		mov	r1, #1
+ 21177 063a FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+ 577:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****     
+ 578:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< LM75_I2C_SCL_GPIO_CLK, LM75_I2C_SDA_GPIO_CLK 
+ 579:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****        and LM75_I2C_SMBUSALERT_GPIO_CLK Periph clock enable */
+ 580:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   RCC_APB2PeriphClockCmd(LM75_I2C_SCL_GPIO_CLK | LM75_I2C_SDA_GPIO_CLK |
+ 21178              		.loc 1 580 0
+ 21179 063e 4FF00800 		mov	r0, #8
+ 21180 0642 4FF00101 		mov	r1, #1
+ 21181 0646 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 581:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****                          LM75_I2C_SMBUSALERT_GPIO_CLK, ENABLE);
+ 582:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   
+ 583:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure LM75_I2C pins: SCL */
+ 584:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = LM75_I2C_SCL_PIN;
+ 21182              		.loc 1 584 0
+ 21183 064a 4FF04003 		mov	r3, #64
+ 21184 064e BB80     		strh	r3, [r7, #4]	@ movhi
+ 585:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ 21185              		.loc 1 585 0
+ 21186 0650 4FF00303 		mov	r3, #3
+ 21187 0654 BB71     		strb	r3, [r7, #6]
+ 586:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;
+ 21188              		.loc 1 586 0
+ 21189 0656 4FF01C03 		mov	r3, #28
+ 21190 065a FB71     		strb	r3, [r7, #7]
+ 587:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(LM75_I2C_SCL_GPIO_PORT, &GPIO_InitStructure);
+ 21191              		.loc 1 587 0
+ 21192 065c 07F10403 		add	r3, r7, #4
+ 21193 0660 0E48     		ldr	r0, .L43
+ 21194 0662 1946     		mov	r1, r3
+ 21195 0664 FFF7FEFF 		bl	GPIO_Init
+ 588:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 589:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure LM75_I2C pins: SDA */
+ 590:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = LM75_I2C_SDA_PIN;
+ 21196              		.loc 1 590 0
+ 21197 0668 4FF08003 		mov	r3, #128
+ 21198 066c BB80     		strh	r3, [r7, #4]	@ movhi
+ 591:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(LM75_I2C_SDA_GPIO_PORT, &GPIO_InitStructure);
+ 21199              		.loc 1 591 0
+ 21200 066e 07F10403 		add	r3, r7, #4
+ 21201 0672 0A48     		ldr	r0, .L43
+ 21202 0674 1946     		mov	r1, r3
+ 21203 0676 FFF7FEFF 		bl	GPIO_Init
+ 592:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** 
+ 593:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   /*!< Configure LM75_I2C pin: SMBUS ALERT */
+ 594:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Pin = LM75_I2C_SMBUSALERT_PIN;
+ 21204              		.loc 1 594 0
+ 21205 067a 4FF02003 		mov	r3, #32
+ 21206 067e BB80     		strh	r3, [r7, #4]	@ movhi
+ 595:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+ 21207              		.loc 1 595 0
+ 21208 0680 4FF04803 		mov	r3, #72
+ 21209 0684 FB71     		strb	r3, [r7, #7]
+ 596:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c ****   GPIO_Init(LM75_I2C_SMBUSALERT_GPIO_PORT, &GPIO_InitStructure); 
+ 21210              		.loc 1 596 0
+ 21211 0686 07F10403 		add	r3, r7, #4
+ 21212 068a 0448     		ldr	r0, .L43
+ 21213 068c 1946     		mov	r1, r3
+ 21214 068e FFF7FEFF 		bl	GPIO_Init
+ 597:../Utilities/STM32_EVAL/stm3210b_eval/stm3210b_eval.c **** }
+ 21215              		.loc 1 597 0
+ 21216 0692 07F10807 		add	r7, r7, #8
+ 21217 0696 BD46     		mov	sp, r7
+ 21218 0698 80BD     		pop	{r7, pc}
+ 21219              	.L44:
+ 21220 069a 00BF     		.align	2
+ 21221              	.L43:
+ 21222 069c 000C0140 		.word	1073810432
+ 21223              		.cfi_endproc
+ 21224              	.LFE41:
+ 21226              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm3210b_eval.c
+     /tmp/cckdSxyt.s:20003  .data:00000000 GPIO_PORT
+     /tmp/cckdSxyt.s:20000  .data:00000000 $d
+     /tmp/cckdSxyt.s:20013  .rodata:00000000 GPIO_PIN
+     /tmp/cckdSxyt.s:20010  .rodata:00000000 $d
+     /tmp/cckdSxyt.s:20022  .rodata:00000008 GPIO_CLK
+     /tmp/cckdSxyt.s:20032  .data:00000010 BUTTON_PORT
+     /tmp/cckdSxyt.s:20046  .rodata:00000018 BUTTON_PIN
+     /tmp/cckdSxyt.s:20059  .rodata:00000028 BUTTON_CLK
+     /tmp/cckdSxyt.s:20072  .rodata:00000048 BUTTON_EXTI_LINE
+     /tmp/cckdSxyt.s:20085  .rodata:00000058 BUTTON_PORT_SOURCE
+     /tmp/cckdSxyt.s:20098  .rodata:00000068 BUTTON_PIN_SOURCE
+     /tmp/cckdSxyt.s:20111  .rodata:00000078 BUTTON_IRQn
+     /tmp/cckdSxyt.s:20125  .data:00000030 COM_USART
+     /tmp/cckdSxyt.s:20132  .data:00000038 COM_TX_PORT
+     /tmp/cckdSxyt.s:20139  .data:00000040 COM_RX_PORT
+     /tmp/cckdSxyt.s:20147  .rodata:00000088 COM_USART_CLK
+     /tmp/cckdSxyt.s:20154  .rodata:00000090 COM_TX_PORT_CLK
+     /tmp/cckdSxyt.s:20161  .rodata:00000098 COM_RX_PORT_CLK
+     /tmp/cckdSxyt.s:20168  .rodata:000000a0 COM_TX_PIN
+     /tmp/cckdSxyt.s:20175  .rodata:000000a4 COM_RX_PIN
+     /tmp/cckdSxyt.s:20179  .text:00000000 $t
+     /tmp/cckdSxyt.s:20184  .text:00000000 STM_EVAL_LEDInit
+     /tmp/cckdSxyt.s:20236  .text:00000050 $d
+     /tmp/cckdSxyt.s:20242  .text:0000005c $t
+     /tmp/cckdSxyt.s:20247  .text:0000005c STM_EVAL_LEDOn
+     /tmp/cckdSxyt.s:20282  .text:00000084 $d
+     /tmp/cckdSxyt.s:20287  .text:0000008c $t
+     /tmp/cckdSxyt.s:20292  .text:0000008c STM_EVAL_LEDOff
+     /tmp/cckdSxyt.s:20327  .text:000000b4 $d
+     /tmp/cckdSxyt.s:20332  .text:000000bc $t
+     /tmp/cckdSxyt.s:20337  .text:000000bc STM_EVAL_LEDToggle
+     /tmp/cckdSxyt.s:20377  .text:000000f0 $d
+     /tmp/cckdSxyt.s:20382  .text:000000f8 $t
+     /tmp/cckdSxyt.s:20387  .text:000000f8 STM_EVAL_PBInit
+     /tmp/cckdSxyt.s:20503  .text:000001c8 $d
+     /tmp/cckdSxyt.s:20513  .text:000001e4 $t
+     /tmp/cckdSxyt.s:20518  .text:000001e4 STM_EVAL_PBGetState
+     /tmp/cckdSxyt.s:20556  .text:00000214 $d
+     /tmp/cckdSxyt.s:20561  .text:0000021c $t
+     /tmp/cckdSxyt.s:20566  .text:0000021c STM_EVAL_COMInit
+     /tmp/cckdSxyt.s:20679  .text:000002fc $d
+     /tmp/cckdSxyt.s:20690  .text:0000031c $t
+     /tmp/cckdSxyt.s:20695  .text:0000031c SD_LowLevel_DeInit
+     /tmp/cckdSxyt.s:20773  .text:000003a8 $d
+     /tmp/cckdSxyt.s:20780  .text:000003b8 $t
+     /tmp/cckdSxyt.s:20785  .text:000003b8 SD_LowLevel_Init
+     /tmp/cckdSxyt.s:20908  .text:000004a0 $d
+     /tmp/cckdSxyt.s:20915  .text:000004b0 $t
+     /tmp/cckdSxyt.s:20920  .text:000004b0 sFLASH_LowLevel_DeInit
+     /tmp/cckdSxyt.s:20990  .text:00000528 $d
+     /tmp/cckdSxyt.s:20995  .text:00000530 $t
+     /tmp/cckdSxyt.s:21000  .text:00000530 sFLASH_LowLevel_Init
+     /tmp/cckdSxyt.s:21076  .text:000005b8 $d
+     /tmp/cckdSxyt.s:21080  .text:000005bc $t
+     /tmp/cckdSxyt.s:21085  .text:000005bc LM75_LowLevel_DeInit
+     /tmp/cckdSxyt.s:21147  .text:00000624 $d
+     /tmp/cckdSxyt.s:21152  .text:0000062c $t
+     /tmp/cckdSxyt.s:21157  .text:0000062c LM75_LowLevel_Init
+     /tmp/cckdSxyt.s:21222  .text:0000069c $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphClockCmd
+GPIO_Init
+GPIO_EXTILineConfig
+EXTI_Init
+NVIC_Init
+GPIO_ReadInputDataBit
+GPIO_PinRemapConfig
+RCC_APB1PeriphClockCmd
+USART_Init
+USART_Cmd
+SPI_Cmd
+SPI_I2S_DeInit
+SPI_Init
+I2C_Cmd
+I2C_DeInit

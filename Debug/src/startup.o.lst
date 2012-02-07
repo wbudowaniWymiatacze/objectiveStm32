@@ -1,0 +1,244 @@
+   1              	# 1 "../src/startup.S"
+   1              	/******************************************************************************
+   1              	...
+   0              	
+   0              	
+   2              	* author: Freddie Chopin, http://www.freddiechopin.info/
+   3              	* file: startup.S
+   4              	* last change: 2012-01-07
+   5              	*
+   6              	* chip: ARMv7-M (Cortex-M3)
+   7              	* compiler: arm-none-eabi-gcc (Sourcery CodeBench Lite 2011.09-69) 4.6.1
+   8              	*
+   9              	* description:
+  10              	* ARMv7-M (Cortex-M3) assembly startup code
+  11              	******************************************************************************/
+  12              	
+  13              	/*
+  14              	+=============================================================================+
+  15              	| includes
+  16              	+=============================================================================+
+  17              	*/
+  18              	
+  19              	#include "../inc/hdr/hdr_special_registers.h"
+   1              	/** \file hdr_special_registers.h
+   2              	 * \brief Header with definition of bits in special registers in ARMv7-M core
+   3              	 * \author Freddie Chopin, http://www.freddiechopin.info/
+   4              	 * \date 2012-01-07
+   5              	 */
+   6              	
+   7              	/******************************************************************************
+   8              	* chip: ARMv7-M (Cortex-M3)
+   9              	* compiler: arm-none-eabi-gcc (Sourcery CodeBench Lite 2011.09-69) 4.6.1
+  10              	******************************************************************************/
+  11              	
+  12              	#ifndef HDR_SPECIAL_REGISTERS_H_
+  13              	#define HDR_SPECIAL_REGISTERS_H_
+  14              	
+  15              	/*
+  16              	+-----------------------------------------------------------------------------+
+  17              	| PRIMASK - Register to mask out configurable exceptions
+  18              	+-----------------------------------------------------------------------------+
+  19              	*/
+  20              	
+  21              	#define PRIMASK_MASK_EXCEPTIONS_bit			0
+  22              	
+  23              	#define PRIMASK_MASK_EXCEPTIONS				(1 << PRIMASK_MASK_EXCEPTIONS_bit)
+  24              	
+  25              	/*
+  26              	+-----------------------------------------------------------------------------+
+  27              	| FAULTMASK - Register to raise priority to the HardFault level
+  28              	+-----------------------------------------------------------------------------+
+  29              	*/
+  30              	
+  31              	#define FAULTMASK_MASK_EXCEPTIONS_bit		0
+  32              	
+  33              	#define FAULTMASK_MASK_EXCEPTIONS			(1 << FAULTMASK_MASK_EXCEPTIONS_bit)
+  34              	
+  35              	/*
+  36              	+-----------------------------------------------------------------------------+
+  37              	| CONTROL - The special-purpose control register
+  38              	+-----------------------------------------------------------------------------+
+  39              	*/
+  40              	
+  41              	#define CONTROL_THREAD_UNPRIVILEGED_bit		0
+  42              	#define CONTROL_ALTERNATE_STACK_bit			1
+  43              	
+  44              	#define CONTROL_THREAD_UNPRIVILEGED			(1 << CONTROL_THREAD_UNPRIVILEGED_bit)
+  45              	#define CONTROL_ALTERNATE_STACK				(1 << CONTROL_ALTERNATE_STACK_bit)
+  46              	
+  20              	
+  21              	/*
+  22              	+=============================================================================+
+  23              	| ARMv7-M (Cortex-M3) startup code
+  24              	+=============================================================================+
+  25              	*/
+  26              	
+  27              	.text
+  28              	.balign 2
+  29              	.syntax unified
+  30              	.thumb
+  31              	.thumb_func
+  32              	.global Reset_Handler
+  33              	
+  34              	Reset_Handler:
+  35              	
+  36              	/*
+  37              	+-----------------------------------------------------------------------------+
+  38              	| Initialize the process stack pointer
+  39              	+-----------------------------------------------------------------------------+
+  40              	*/
+  41              	
+  42 0000 1248     		ldr		r0, =__process_stack_end
+  43 0002 80F30988 		msr		PSP, r0
+  44              	
+  45              	/*
+  46              	+-----------------------------------------------------------------------------+
+  47              	| Thread mode uses process stack (PSP) and is privileged
+  48              	+-----------------------------------------------------------------------------+
+  49              	*/
+  50              	
+  51 0006 0220     		movs	r0, #CONTROL_ALTERNATE_STACK
+  52 0008 80F31488 		msr		CONTROL, r0
+  53 000c BFF36F8F 		isb
+  54              	
+  55              	/*
+  56              	+-----------------------------------------------------------------------------+
+  57              	| Branch to low_level_init_0() function (.data and .bss are not initialized!)
+  58              	+-----------------------------------------------------------------------------+
+  59              	*/
+  60              	
+  61 0010 0F48     		ldr		r0, =low_level_init_0
+  62 0012 8047     		blx		r0
+  63              	
+  64              	/*
+  65              	+-----------------------------------------------------------------------------+
+  66              	| Initialize .data section
+  67              	+-----------------------------------------------------------------------------+
+  68              	*/
+  69              	
+  70 0014 0F49     		ldr		r1, =__data_init_start
+  71 0016 104A     	    ldr		r2, =__data_start
+  72 0018 104B     	    ldr		r3, =__data_end
+  73              	
+  74 001a 9A42     	1:	cmp		r2, r3
+  75 001c 3EBF     		ittt	lo
+  76 001e 51F8040B 		ldrlo	r0, [r1], #4
+  77 0022 42F8040B 		strlo	r0, [r2], #4
+  78 0026 F8E7     		blo		1b
+  79              	
+  80              	/*
+  81              	+-----------------------------------------------------------------------------+
+  82              	| Zero-init .bss section
+  83              	+-----------------------------------------------------------------------------+
+  84              	*/
+  85              	
+  86 0028 0020     		movs	r0, #0
+  87 002a 0D49     		ldr		r1, =__bss_start
+  88 002c 0D4A     		ldr		r2, =__bss_end
+  89              	
+  90 002e 9142     	1:	cmp		r1, r2
+  91 0030 3CBF     		itt		lo
+  92 0032 41F8040B 		strlo	r0, [r1], #4
+  93 0036 FAE7     		blo		1b
+  94              	
+  95              	/*
+  96              	+-----------------------------------------------------------------------------+
+  97              	| Call C++ constructors for global and static objects
+  98              	+-----------------------------------------------------------------------------+
+  99              	*/
+ 100              	#ifdef __USES_CXX
+ 101 0038 0B48     		ldr		r0, =__libc_init_array
+ 102 003a 8047     		blx		r0
+ 103              	#endif
+ 104              	
+ 105              	/*
+ 106              	+-----------------------------------------------------------------------------+
+ 107              	| Branch to low_level_init_1() function
+ 108              	+-----------------------------------------------------------------------------+
+ 109              	*/
+ 110              	
+ 111 003c 0B48     		ldr		r0, =low_level_init_1
+ 112 003e 8047     		blx		r0
+ 113              	
+ 114              	/*
+ 115              	+-----------------------------------------------------------------------------+
+ 116              	| Branch to main() with link
+ 117              	+-----------------------------------------------------------------------------+
+ 118              	*/
+ 119              	
+ 120 0040 0B48     		ldr		r0, =main
+ 121 0042 8047     		blx		r0
+ 122              	
+ 123              	/*
+ 124              	+-----------------------------------------------------------------------------+
+ 125              	| Call C++ destructors for global and static objects
+ 126              	+-----------------------------------------------------------------------------+
+ 127              	*/
+ 128              	#ifdef __USES_CXX
+ 129 0044 0B48     		ldr		r0, =__libc_fini_array
+ 130 0046 8047     		blx		r0
+ 131              	#endif
+ 132              	
+ 133              	/*
+ 134              	+-----------------------------------------------------------------------------+
+ 135              	| On return - loop till the end of the world
+ 136              	+-----------------------------------------------------------------------------+
+ 137              	*/
+ 138              	
+ 139 0048 FEE7     		b		.
+ 140              	
+ 141              	/*
+ 142              	+=============================================================================+
+ 143              	| __default_low_level_init() - replacement for undefined low_level_init_0()
+ 144              	| and/or low_level_init_1(). This function just returns.
+ 145              	+=============================================================================+
+ 146              	*/
+ 147              	
+ 148              	.text
+ 149              	.balign 2
+ 150              	.syntax unified
+ 151              	.thumb
+ 152              	.thumb_func
+ 153              	.global __default_low_level_init
+ 154              	
+ 155              	__default_low_level_init:
+ 156 004a 7047     		bx		lr
+ 157              	
+ 158              	/*
+ 159              	+=============================================================================+
+ 160              	| assign undefined low_level_init_0() and/or low_level_init_1() to
+ 161              	| __default_low_level_init()
+ 162              	+=============================================================================+
+ 163              	*/
+ 164              	
+ 165              	.weak	low_level_init_0
+ 166              	.global	low_level_init_0
+ 167              	.set	low_level_init_0, __default_low_level_init
+ 168              	
+ 169              	.weak	low_level_init_1
+ 170              	.global	low_level_init_1
+ 171 004c 00000000 	.set	low_level_init_1, __default_low_level_init
+ 171      00000000 
+ 171      00000000 
+ 171      00000000 
+ 171      00000000 
+DEFINED SYMBOLS
+    ../src/startup.S:28     .text:00000000 $t
+    ../src/startup.S:34     .text:00000000 Reset_Handler
+    ../src/startup.S:155    .text:0000004a low_level_init_0
+    ../src/startup.S:155    .text:0000004a low_level_init_1
+    ../src/startup.S:155    .text:0000004a __default_low_level_init
+    ../src/startup.S:171    .text:0000004c $d
+                   .debug_aranges:0000000c $d
+
+UNDEFINED SYMBOLS
+__process_stack_end
+__data_init_start
+__data_start
+__data_end
+__bss_start
+__bss_end
+__libc_init_array
+main
+__libc_fini_array

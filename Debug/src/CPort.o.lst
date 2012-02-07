@@ -1,0 +1,149 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"CPort.cpp"
+  23              	.Ltext0:
+  24              		.file 1 "../src/CPort.cpp"
+ 1017              		.align	1
+ 1018              		.global	_ZN5CPortD2Ev
+ 1019              		.thumb
+ 1020              		.thumb_func
+ 1022              	_ZN5CPortD2Ev:
+ 1023              	.LFB4:
+   1:../src/CPort.cpp **** /*
+   2:../src/CPort.cpp ****  * CPort.cpp
+   3:../src/CPort.cpp ****  *
+   4:../src/CPort.cpp ****  *  Created on: Jan 29, 2012
+   5:../src/CPort.cpp ****  *      Author: artur
+   6:../src/CPort.cpp ****  */
+   7:../src/CPort.cpp **** 
+   8:../src/CPort.cpp **** #include "../inc/CPort.hpp"
+   9:../src/CPort.cpp **** 
+  10:../src/CPort.cpp **** CPort::CPort() {
+  11:../src/CPort.cpp **** 	// TODO Auto-generated constructor stub
+  12:../src/CPort.cpp **** 
+  13:../src/CPort.cpp **** }
+  14:../src/CPort.cpp **** 
+  15:../src/CPort.cpp **** CPort::~CPort() {
+ 1024              		.loc 1 15 0
+ 1025              		.cfi_startproc
+ 1026              		@ args = 0, pretend = 0, frame = 0
+ 1027              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1028              		@ link register save eliminated.
+ 1029              	.LVL0:
+ 1030              	.LBB2:
+ 1031              		.loc 1 15 0
+ 1032 0000 014B     		ldr	r3, .L3
+ 1033 0002 0360     		str	r3, [r0, #0]
+ 1034              	.LBE2:
+  16:../src/CPort.cpp **** 	// TODO Auto-generated destructor stub
+  17:../src/CPort.cpp **** }
+ 1035              		.loc 1 17 0
+ 1036 0004 7047     		bx	lr
+ 1037              	.L4:
+ 1038 0006 00BF     		.align	2
+ 1039              	.L3:
+ 1040 0008 08000000 		.word	.LANCHOR0+8
+ 1041              		.cfi_endproc
+ 1042              	.LFE4:
+ 1044              		.global	_ZN5CPortD1Ev
+ 1045              		.thumb_set _ZN5CPortD1Ev,_ZN5CPortD2Ev
+ 1046              		.section	.text._ZN5CPortD0Ev,"ax",%progbits
+ 1047              		.align	1
+ 1048              		.global	_ZN5CPortD0Ev
+ 1049              		.thumb
+ 1050              		.thumb_func
+ 1052              	_ZN5CPortD0Ev:
+ 1053              	.LFB6:
+  15:../src/CPort.cpp **** CPort::~CPort() {
+ 1054              		.loc 1 15 0
+ 1055              		.cfi_startproc
+ 1056              		@ args = 0, pretend = 0, frame = 0
+ 1057              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1058              	.LVL1:
+ 1059 0000 10B5     		push	{r4, lr}
+ 1060              	.LCFI0:
+ 1061              		.cfi_def_cfa_offset 8
+  15:../src/CPort.cpp **** CPort::~CPort() {
+ 1062              		.loc 1 15 0
+ 1063 0002 0446     		mov	r4, r0
+ 1064              		.cfi_offset 14, -4
+ 1065              		.cfi_offset 4, -8
+ 1066              		.loc 1 17 0
+ 1067 0004 FFF7FEFF 		bl	_ZN5CPortD1Ev
+ 1068              	.LVL2:
+ 1069 0008 2046     		mov	r0, r4
+ 1070 000a FFF7FEFF 		bl	_ZdlPv
+ 1071 000e 2046     		mov	r0, r4
+ 1072 0010 10BD     		pop	{r4, pc}
+ 1073              		.cfi_endproc
+ 1074              	.LFE6:
+ 1076              		.section	.text._ZN5CPortC2Ev,"ax",%progbits
+ 1077              		.align	1
+ 1078              		.global	_ZN5CPortC2Ev
+ 1079              		.thumb
+ 1080              		.thumb_func
+ 1082              	_ZN5CPortC2Ev:
+ 1083              	.LFB1:
+  10:../src/CPort.cpp **** CPort::CPort() {
+ 1084              		.loc 1 10 0
+ 1085              		.cfi_startproc
+ 1086              		@ args = 0, pretend = 0, frame = 0
+ 1087              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1088              		@ link register save eliminated.
+ 1089              	.LVL3:
+ 1090              	.LBB3:
+  10:../src/CPort.cpp **** CPort::CPort() {
+ 1091              		.loc 1 10 0
+ 1092 0000 014B     		ldr	r3, .L9
+ 1093 0002 0360     		str	r3, [r0, #0]
+ 1094              	.LBE3:
+  13:../src/CPort.cpp **** }
+ 1095              		.loc 1 13 0
+ 1096 0004 7047     		bx	lr
+ 1097              	.L10:
+ 1098 0006 00BF     		.align	2
+ 1099              	.L9:
+ 1100 0008 08000000 		.word	.LANCHOR0+8
+ 1101              		.cfi_endproc
+ 1102              	.LFE1:
+ 1104              		.global	_ZN5CPortC1Ev
+ 1105              		.thumb_set _ZN5CPortC1Ev,_ZN5CPortC2Ev
+ 1106              		.global	_ZTV5CPort
+ 1107              		.section	.rodata._ZTV5CPort,"a",%progbits
+ 1108              		.align	3
+ 1109              		.set	.LANCHOR0,. + 0
+ 1112              	_ZTV5CPort:
+ 1113 0000 00000000 		.word	0
+ 1114 0004 00000000 		.word	0
+ 1115 0008 00000000 		.word	_ZN5CPortD1Ev
+ 1116 000c 00000000 		.word	_ZN5CPortD0Ev
+ 1117              		.text
+ 1118              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 CPort.cpp
+     /tmp/cc9IMAlh.s:1017   .text._ZN5CPortD2Ev:00000000 $t
+     /tmp/cc9IMAlh.s:1022   .text._ZN5CPortD2Ev:00000000 _ZN5CPortD2Ev
+     /tmp/cc9IMAlh.s:1040   .text._ZN5CPortD2Ev:00000008 $d
+     /tmp/cc9IMAlh.s:1022   .text._ZN5CPortD2Ev:00000000 _ZN5CPortD1Ev
+     /tmp/cc9IMAlh.s:1047   .text._ZN5CPortD0Ev:00000000 $t
+     /tmp/cc9IMAlh.s:1052   .text._ZN5CPortD0Ev:00000000 _ZN5CPortD0Ev
+     /tmp/cc9IMAlh.s:1077   .text._ZN5CPortC2Ev:00000000 $t
+     /tmp/cc9IMAlh.s:1082   .text._ZN5CPortC2Ev:00000000 _ZN5CPortC2Ev
+     /tmp/cc9IMAlh.s:1100   .text._ZN5CPortC2Ev:00000008 $d
+     /tmp/cc9IMAlh.s:1082   .text._ZN5CPortC2Ev:00000000 _ZN5CPortC1Ev
+     /tmp/cc9IMAlh.s:1112   .rodata._ZTV5CPort:00000000 _ZTV5CPort
+     /tmp/cc9IMAlh.s:1108   .rodata._ZTV5CPort:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+_ZdlPv

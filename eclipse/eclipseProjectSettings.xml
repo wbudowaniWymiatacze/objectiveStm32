@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+<includepath workspace_path="true">/${ProjName}/Libraries/STM32F10x_StdPeriph_Driver/inc</includepath>
+<includepath workspace_path="true">/${ProjName}/Libraries/CMSIS/CM3/CoreSupport</includepath>
+<includepath workspace_path="true">/${ProjName}/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x</includepath>
+
+</language>
+<language name="C++ Source File">
+<includepath workspace_path="true">/${ProjName}/inc</includepath>
+<includepath workspace_path="true">/${ProjName}/Libraries/CMSIS/CM3/CoreSupport</includepath>
+<includepath workspace_path="true">/${ProjName}/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x</includepath>
+<includepath workspace_path="true">/${ProjName}/Libraries/STM32F10x_StdPeriph_Driver/inc</includepath>
+<includepath workspace_path="true">/${ProjName}/interface</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+<macro>
+<name>STM32F10X_MD</name><value/>
+</macro>
+<macro>
+<name>USE_STDPERIPH_DRIVER</name><value/>
+</macro>
+
+</language>
+<language name="C++ Source File">
+<macro>
+<name>STM32F103VBXX</name><value/>
+</macro>
+<macro>
+<name>STM32F10X_MD</name><value/>
+</macro>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>
