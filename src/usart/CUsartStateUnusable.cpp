@@ -6,14 +6,15 @@
  */
 
 #include <CUsartStateUnusable.hpp>
+#include <CUsartStateUsable.hpp>
 
 void CUsartStateUnusable::nextState( CUsartState *	currentState,
 		 	 	 	 	 	 	 	 bool			switchToNextState )
 {
 	if ( switchToNextState == true )
 	{
-		currentState = new CUsartStateUsable;
 		delete this;
+		currentState = new CUsartStateUsable;
 	}
 }
 

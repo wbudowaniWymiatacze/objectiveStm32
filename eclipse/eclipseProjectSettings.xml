@@ -12,6 +12,11 @@
 </language>
 <language name="C++ Source File">
 <includepath workspace_path="true">/${ProjName}/inc</includepath>
+<includepath workspace_path="true">/${ProjName}/inc/gpio</includepath>
+<includepath workspace_path="true">/${ProjName}/inc/usart</includepath>
+<includepath workspace_path="true">/${ProjName}/Boards</includepath>
+<includepath workspace_path="true">/${ProjName}/Boards/boards/f1xx/f103</includepath>
+<includepath workspace_path="true">/${ProjName}/Boards/numberOfPorts</includepath>
 <includepath workspace_path="true">/${ProjName}/Libraries/CMSIS/CM3/CoreSupport</includepath>
 <includepath workspace_path="true">/${ProjName}/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x</includepath>
 <includepath workspace_path="true">/${ProjName}/Libraries/STM32F10x_StdPeriph_Driver/inc</includepath>

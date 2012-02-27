@@ -11,7 +11,6 @@
 #include <boardDefs.hpp>
 
 #include <CUsartState.hpp>
-#include <CUsartStateUsable.hpp>
 
 /*
  * except nextState none of the functions does anything

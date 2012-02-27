@@ -73,6 +73,7 @@ extern "C" {
 +=============================================================================+
 */
 
+#include <stddef.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -114,8 +115,8 @@ extern int errno;
 
 int _close_r(struct _reent *r, int file)
 {
-	r = r;									// suppress warning
-	file = file;							// suppress warning
+	(void)r;									// suppress warning
+	(void)file;							// suppress warning
 
 	return -1;
 }
@@ -142,10 +143,10 @@ int _close_r(struct _reent *r, int file)
 
 int _execve_r(struct _reent *r, const char *path, char *const argv[], char *const envp[])
 {
-	r = r;									// suppress warning
-	path = path;							// suppress warning
-	argv = argv;							// suppress warning
-	envp = envp;							// suppress warning
+	(void)r;									// suppress warning
+	(void)path;							// suppress warning
+	(void)argv;							// suppress warning
+	(void)envp;							// suppress warning
 
 	errno = ENOMEM;
 	return -1;
@@ -164,7 +165,7 @@ int _execve_r(struct _reent *r, const char *path, char *const argv[], char *cons
 
 void _exit(int status)
 {
-	status = status;						// suppress warning
+	(void)status;						// suppress warning
 
 	while (1);
 }
@@ -182,7 +183,7 @@ void _exit(int status)
 
 pid_t _fork_r(struct _reent *r)
 {
-	r = r;									// suppress warning
+	(void)r;									// suppress warning
 
 	errno = EAGAIN;
 	return -1;
@@ -205,9 +206,9 @@ pid_t _fork_r(struct _reent *r)
 
 int _fstat_r(struct _reent *r, int file, struct stat *st)
 {
-	r = r;									// suppress warning
-	file = file;							// suppress warning
-	st = st;								// suppress warning
+	(void)r;									// suppress warning
+	(void)file;							// suppress warning
+	(void)st;								// suppress warning
 
 	st->st_mode = S_IFCHR;
 	return 0;
@@ -226,7 +227,7 @@ int _fstat_r(struct _reent *r, int file, struct stat *st)
 
 pid_t _getpid_r(struct _reent *r)
 {
-	r = r;									// suppress warning
+	(void)r;									// suppress warning
 
 	return 1;
 }
@@ -245,8 +246,8 @@ pid_t _getpid_r(struct _reent *r)
 
 int _isatty_r(struct _reent *r, int file)
 {
-	r = r;									// suppress warning
-	file = file;							// suppress warning
+	(void)r;									// suppress warning
+	(void)file;							// suppress warning
 
 	return 1;
 }
@@ -266,9 +267,9 @@ int _isatty_r(struct _reent *r, int file)
 
 int _kill_r(struct _reent *r, pid_t pid, int signal)
 {
-	r = r;									// suppress warning
-	pid = pid;								// suppress warning
-	signal = signal;						// suppress warning
+	(void)r;									// suppress warning
+	(void)pid;								// suppress warning
+	(void)signal;						// suppress warning
 
 	errno = EINVAL;
 	return -1;
@@ -290,9 +291,9 @@ int _kill_r(struct _reent *r, pid_t pid, int signal)
 
 int _link_r(struct _reent *r, const char *old, const char *new)
 {
-	r = r;									// suppress warning
-	old = old;								// suppress warning
-	new = new;								// suppress warning
+	(void)r;									// suppress warning
+	(void)old;								// suppress warning
+	(void)new;								// suppress warning
 
 	errno = EMLINK;
 	return -1;
@@ -315,10 +316,10 @@ int _link_r(struct _reent *r, const char *old, const char *new)
 
 off_t _lseek_r(struct _reent *r, int file, off_t offset, int whence)
 {
-	r = r;									// suppress warning
-	file = file;							// suppress warning
-	offset = offset;						// suppress warning
-	whence = whence;						// suppress warning
+	(void)r;									// suppress warning
+	(void)file;							// suppress warning
+	(void)offset;						// suppress warning
+	(void)whence;						// suppress warning
 
 	return 0;
 }
@@ -340,10 +341,10 @@ off_t _lseek_r(struct _reent *r, int file, off_t offset, int whence)
 
 int _open_r(struct _reent *r, const char *pathname, int flags, int mode)
 {
-	r = r;									// suppress warning
-	pathname = pathname;					// suppress warning
-	flags = flags;							// suppress warning
-	mode = mode;							// suppress warning
+	(void)r;									// suppress warning
+	(void)pathname;					// suppress warning
+	(void)flags;							// suppress warning
+	(void)mode;							// suppress warning
 
 	return -1;
 }
@@ -362,12 +363,12 @@ int _open_r(struct _reent *r, const char *pathname, int flags, int mode)
 * \return 0 for success.
 *//*-------------------------------------------------------------------------*/
 
-ssize_t _read_r(struct _reent *r, int file, void *buf, size_t nbyte)
+ssize_t _read_r(struct _reent *r, int file, void *buf, int nbyte)
 {
-	r = r;									// suppress warning
-	file = file;							// suppress warning
-	buf = buf;								// suppress warning
-	nbyte = nbyte;							// suppress warning
+	(void)r;									// suppress warning
+	(void)file;							// suppress warning
+	(void)buf;								// suppress warning
+	(void)nbyte;							// suppress warning
 
 	return 0;
 }
@@ -393,7 +394,7 @@ caddr_t _sbrk_r(struct _reent *r, int size)
 	static char *current_heap_end = &__heap_start;
 	char *previous_heap_end;
 
-	r = r;									// suppress warning
+	(void)r;									// suppress warning
 
 	previous_heap_end = current_heap_end;
 
@@ -424,8 +425,8 @@ caddr_t _sbrk_r(struct _reent *r, int size)
 
 int _stat_r(struct _reent *r, const char *pathname, struct stat *st)
 {
-	r = r;									// suppress warning
-	pathname = pathname;					// suppress warning
+	(void)r;									// suppress warning
+	(void)pathname;					// suppress warning
 
 	st->st_mode = S_IFCHR;
 	return 0;
@@ -446,8 +447,8 @@ int _stat_r(struct _reent *r, const char *pathname, struct stat *st)
 
 int _times_r(struct _reent *r, struct tms *buf)
 {
-	r = r;									// suppress warning
-	buf = buf;								// suppress warning
+	(void)r;									// suppress warning
+	(void)buf;								// suppress warning
 
 	return -1;
 }
@@ -457,8 +458,8 @@ int _times_r(struct _reent *r, struct tms *buf)
 #if SYSCALLS_HAVE_UNLINK_R == 1
 
 /*------------------------------------------------------------------------*//**
-* \brief Remove a file’s directory entry.
-* \details Remove a file’s directory entry.
+* \brief Remove a fileï¿½s directory entry.
+* \details Remove a fileï¿½s directory entry.
 *
 * \param [in] pathname points to the path name that names the file to be
 * unlinked.
@@ -467,8 +468,8 @@ int _times_r(struct _reent *r, struct tms *buf)
 
 int _unlink_r(struct _reent *r, const char *pathname)
 {
-	r = r;									// suppress warning
-	pathname = pathname;					// suppress warning
+	(void)r;									// suppress warning
+	(void)pathname;					// suppress warning
 
 	errno = ENOENT;
 	return -1;
@@ -489,8 +490,8 @@ int _unlink_r(struct _reent *r, const char *pathname)
 
 pid_t _wait_r(struct _reent *r, int *stat_loc)
 {
-	r = r;									// suppress warning
-	stat_loc = stat_loc;					// suppress warning
+	(void)r;									// suppress warning
+	(void)stat_loc;					// suppress warning
 
 	errno = ECHILD;
 	return -1;
@@ -510,12 +511,13 @@ pid_t _wait_r(struct _reent *r, int *stat_loc)
 * \return 0 for success.
 *//*-------------------------------------------------------------------------*/
 
-ssize_t _write_r(struct _reent *r, int file, const void *buf, size_t nbyte)
+
+ssize_t _write_r(struct _reent *r, int file, const void *buf, int nbyte)
 {
-	r = r;									// suppress warning
-	file = file;							// suppress warning
-	buf = buf;								// suppress warning
-	nbyte = nbyte;							// suppress warning
+	(void)r;									// suppress warning
+	(void)file;							// suppress warning
+	(void)buf;								// suppress warning
+	(void)nbyte;							// suppress warning
 
 	return 0;
 }
