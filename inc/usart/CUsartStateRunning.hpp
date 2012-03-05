@@ -25,6 +25,16 @@ public:
 	}
 
 	/*
+	 * enabling APB is not allowed in this state,
+	 * so the function does nothing
+	 */
+	void apbEnable( uint32_t apb1Value,
+					uint32_t apb2Value )
+	{
+
+	}
+
+	/*
 	 * gpio initialisation is not allowed in this state,
 	 * so the function does nothing
 	 */
@@ -64,6 +74,10 @@ public:
 	{
 
 	}
+
+	void deinit( USART_TypeDef *	id,
+			 	 uint32_t			apb1,
+			 	 uint32_t			apb2 );
 
 	~CUsartStateRunning() {}
 };

@@ -19,6 +19,9 @@ public:
 
 	void remap( uint32_t	remapValue );
 
+	void apbEnable( uint32_t apb1Value,
+					uint32_t apb2Value );
+
 	/*
 	 * initialise needed GPIO
 	 */
@@ -53,6 +56,9 @@ public:
 
 	void nextState( CUsartState *	currentState,
 					bool			switchToNextState );
+	void deinit( USART_TypeDef *	id,
+				 uint32_t			apb1,
+				 uint32_t			apb2 );
 
 	~CUsartStateUsable() {}
 };

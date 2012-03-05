@@ -14,6 +14,8 @@ class CUsartState {
 public:
 	CUsartState() {}
 	virtual void remap( uint32_t	remapValue ) = 0;
+	virtual void apbEnable( uint32_t	apb1Value,
+							uint32_t	apb2Value ) = 0;
 	virtual void gpioInit( uint32_t				port,
 						   uint32_t				pin,
 						   GPIOSpeed_TypeDef	speed,
@@ -24,6 +26,9 @@ public:
 	virtual void write() = 0;
 	virtual void nextState( CUsartState *	currentState,
  	 	 	 	 	 	 	bool			switchToNextState ) = 0;
+	virtual void deinit( USART_TypeDef *	id,
+						 uint32_t			apb1,
+						 uint32_t			apb2 ) = 0;
 	virtual ~CUsartState() {}
 };
 

@@ -28,15 +28,11 @@ public:
 	~CUsart();
 
 private:
-	void setUsartStmId();
-	// TODO: co, jeżeli inny USART niż USART3 ma partial i full
-	void setRemapVal();
 	friend class CUsartState;
+	void setId();
 
-	usartX			m_gpios;
-	CUsartState *	m_usartState;
-	USART_TypeDef *	m_usartStmId;
-	uint32_t		m_remapValue;
+	usartX					m_usartParams;
+	CUsartState *			m_usartState;
 };
 
 template < typename usartX >
@@ -44,26 +40,22 @@ CUsart< usartX >::CUsart()
 {
 	m_usartState = new CUsartStateUnusable;
 
-	bool gpiosSet = CGpioManager::getGpio( m_gpios.port,
-											m_gpios.rx );
-	gpiosSet &= CGpioManager::getGpio( m_gpios.port,
-										m_gpios.tx );
+	bool gpiosSet = CGpioManager::getGpio( m_usartParams.port,
+										   m_usartParams.rx );
+	gpiosSet &= CGpioManager::getGpio( m_usartParams.port,
+									   m_usartParams.tx );
 
 	if ( gpiosSet == false )
 	{
-		CGpioManager::releaseGpio( m_gpios.port,
-								   m_gpios.rx );
-		CGpioManager::releaseGpio( m_gpios.port,
-								   m_gpios.tx );
+		CGpioManager::releaseGpio( m_usartParams.port,
+				   	   	   	   	   m_usartParams.rx );
+		CGpioManager::releaseGpio( m_usartParams.port,
+								   m_usartParams.tx );
 	}
-
-	setUsartStmId();
-	setRemapVal();
 
 	m_usartState->nextState( m_usartState, gpiosSet );
 }
 
-// przenieść inicjację do konstruktora USART
 template < typename usartX >
 void CUsart< usartX >::init( GPIOSpeed_TypeDef		rxSpeed,
 							 GPIOMode_TypeDef		rxMode,
@@ -71,67 +63,76 @@ void CUsart< usartX >::init( GPIOSpeed_TypeDef		rxSpeed,
 							 GPIOMode_TypeDef		txMode,
 							 USART_InitTypeDef	&	usartConfig )
 {
-	m_usartState->remap( m_remapValue );
+	m_usartState->remap( m_usartParams.remap );
 	// initialise GPIOs
-	m_usartState->gpioInit( m_gpios.port,
-							m_gpios.rx,
+	m_usartState->gpioInit( m_usartParams.port,
+							m_usartParams.rx,
 							rxSpeed,
 							rxMode );
-	m_usartState->gpioInit( m_gpios.port,
-							m_gpios.tx,
+	m_usartState->gpioInit( m_usartParams.port,
+							m_usartParams.tx,
 							txSpeed,
 							txMode );
 
 	//initialise usart
-	m_usartState->init( m_usartStmId,
+	m_usartState->init( m_usartParams.id,
 						usartConfig );
 }
-
-template < >
-void CUsart< SUsart1 >::setUsartStmId()
-{
-	m_usartStmId = USART1;
-}
-
-template < >
-void CUsart< SUsart2 >::setUsartStmId()
-{
-	m_usartStmId = USART2;
-}
-
-//template < >
-//void CUsart< SUsart3 >::setUsartStmId()
-//{
-//	m_usartStmId = USART3;
-//}
-
-template < >
-void CUsart< SUsart1 >::setRemapVal()
-{
-	m_remapValue = GPIO_Remap_USART1;
-}
-
-template < >
-void CUsart< SUsart2 >::setRemapVal()
-{
-	m_remapValue = GPIO_Remap_USART2;
-}
-
-// TODO: sprawdzić różnicę między FULL, a PARTIAL
-//template < >
-//void CUsart< SUsart3 >::setRemapVal()
-//{
-//	m_remapValue = GPIO_FullRemap_USART3;
-//}
 
 template < typename usartX >
 CUsart< usartX >::~CUsart()
 {
-	CGpioManager::releaseGpio( m_gpios.port,
-							   m_gpios.rx );
-	CGpioManager::releaseGpio( m_gpios.port,
-							   m_gpios.tx );
+	m_usartState->deinit( m_usartParams.id,
+						  m_usartParams.apb1,
+						  m_usartParams.apb2 );
+
+	CGpioManager::releaseGpio( m_usartParams.port,
+							   m_usartParams.rx );
+	CGpioManager::releaseGpio( m_usartParams.port,
+							   m_usartParams.tx );
 	delete m_usartState;
+}
+
+template < >
+void CUsart< SUsart1 >::setId()
+{
+	m_usartParams.id = USART1;
+}
+
+template < >
+void CUsart< SUsart2 >::setId()
+{
+	m_usartParams.id = USART1;
+}
+
+template < >
+void CUsart< SUsart3 >::setId()
+{
+	m_usartParams.id = USART2;
+}
+
+template < >
+void CUsart< SUsart4 >::setId()
+{
+	m_usartParams.id = USART2;
+}
+
+template < >
+void CUsart< SUsart5 >::setId()
+{
+	m_usartParams.id = USART3;
+}
+
+template < >
+void CUsart< SUsart6 >::setId()
+{
+	m_usartParams.id = USART3;
+}
+
+template < >
+void CUsart< SUsart7 >::setId()
+{
+	m_usartParams.id = USART3;
 }
 
 #endif /* CUSART_HPP_ */

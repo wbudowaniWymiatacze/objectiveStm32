@@ -4,9 +4,7 @@
  *  Created on: Jan 21, 2012
  *      Author: artur
  */
-// ST includes
-#include <stm32f10x_gpio.h>
-#include <stm32f10x_usart.h>
+#include <boardDefs.hpp>
 
 #include <CUsart.hpp>
 #include <TypePeriph.hpp>
