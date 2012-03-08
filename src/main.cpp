@@ -6,13 +6,18 @@
  */
 #include <boardDefs.hpp>
 
+#include <CGpioManager.hpp>
+#include <CRcc.hpp>
 #include <CUsart.hpp>
 #include <TypePeriph.hpp>
 
 int main()
 {
+	CGpioManager gpioMngr;
+	CRcc rccMngr;
 	USART_InitTypeDef usartConf;
-	CUsart< SUsart1 > usart1;
+	CUsart< SUsart1 > usart1( gpioMngr,
+							  rccMngr );
 
 	usartConf.USART_BaudRate = 115200;
 	usartConf.USART_WordLength = USART_WordLength_8b;

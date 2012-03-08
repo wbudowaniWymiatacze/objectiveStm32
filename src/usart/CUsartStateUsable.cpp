@@ -10,19 +10,17 @@
 #include <CRcc.hpp>
 #include <CUsartStateUsable.hpp>
 
-using namespace Rcc;
-
 void CUsartStateUsable::remap( uint32_t	remapValue )
 {
-	CGpioManager::remap( remapValue );
+	m_gpioManager->remap( remapValue );
 }
 
 
 void CUsartStateUsable::apbEnable( uint32_t apb1Value,
 								   uint32_t apb2Value )
 {
-	CRcc::apb1Enable( apb1Value );
-	CRcc::apb2Enable( apb2Value );
+	m_rccManager->apb1Enable( apb1Value );
+	m_rccManager->apb2Enable( apb2Value );
 }
 
 
@@ -36,7 +34,7 @@ void CUsartStateUsable::gpioInit( uint32_t			port,
 	gpioConfig.GPIO_Pin		= pin;
 	gpioConfig.GPIO_Speed	= speed;
 	gpioConfig.GPIO_Mode	= mode;
-	CGpioManager::initGpio( port, &gpioConfig );
+	m_gpioManager->initGpio( port, &gpioConfig );
 }
 
 
@@ -61,7 +59,8 @@ void CUsartStateUsable::nextState( CUsartState *	currentState,
 {
 	if ( switchToNextState == true )
 	{
-		currentState = new CUsartStateRunning;
+		currentState = new CUsartStateRunning( m_gpioManager,
+											   m_rccManager );
 		delete this;
 	}
 }
@@ -82,7 +81,7 @@ void CUsartStateUsable::deinit( USART_TypeDef *	id,
 //	id->CR2 &= CR2_CLOCK_CLEAR_Mask;
 
 	// disable APB
-	CRcc::apb1Disable( apb1 );
-	CRcc::apb2Disable( apb2 );
+	m_rccManager->apb1Disable( apb1 );
+	m_rccManager->apb2Disable( apb2 );
 }
 

@@ -14,7 +14,8 @@ void CUsartStateUnusable::nextState( CUsartState *	currentState,
 	if ( switchToNextState == true )
 	{
 		delete this;
-		currentState = new CUsartStateUsable;
+		currentState = new CUsartStateUsable( m_gpioManager,
+											  m_rccManager );
 	}
 }
 

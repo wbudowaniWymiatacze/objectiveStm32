@@ -10,6 +10,9 @@
 
 #include <boardDefs.hpp>
 
+#include <CGpioManager.hpp>
+#include <CRcc.hpp>
+
 class CUsartState {
 public:
 	CUsartState() {}
@@ -22,8 +25,12 @@ public:
 						   GPIOMode_TypeDef		mode ) = 0;
 	virtual void init( USART_TypeDef *		usartId,
 			   	   	   USART_InitTypeDef &	periphConfig ) = 0;
-	virtual void read() = 0;
-	virtual void write() = 0;
+	virtual void read( USART_TypeDef *	usartId,
+			   	   	   uint16_t *		data,
+			   	   	   uint8_t			nData ) = 0;
+	virtual void write( USART_TypeDef *	usartId,
+						uint16_t *		data,
+						uint8_t			nData ) = 0;
 	virtual void nextState( CUsartState *	currentState,
  	 	 	 	 	 	 	bool			switchToNextState ) = 0;
 	virtual void deinit( USART_TypeDef *	id,

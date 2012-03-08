@@ -10,10 +10,16 @@
 
 #include <boardDefs.hpp>
 
+#include <CGpioManager.hpp>
+#include <CRcc.hpp>
 #include "CUsartState.hpp"
 
 class CUsartStateRunning: public CUsartState {
 public:
+
+	CUsartStateRunning( CGpioManager *	gpioManager,
+					   	CRcc *			rccManager ) :
+	m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
 
 	/*
 	 * remapping is not allowed in this state,
@@ -59,12 +65,16 @@ public:
 	/*
 	 * TODO: implement read
 	 */
-	void read();
+	void read( USART_TypeDef *	usartId,
+			   uint16_t *		data,
+			   uint8_t			nData );
 
 	/*
-	 * TODO: implement write
+	 * write data to USART
 	 */
-	void write();
+	void write( USART_TypeDef *	usartId,
+				uint16_t *		data,
+				uint8_t			nData );
 
 	/*
 	 * no next state exists so the function does nothing
@@ -80,6 +90,9 @@ public:
 			 	 uint32_t			apb2 );
 
 	~CUsartStateRunning() {}
+private:
+	CGpioManager *	m_gpioManager;
+	CRcc *			m_rccManager;
 };
 
 #endif /* CUSARTSTATERUNNING_HPP_ */

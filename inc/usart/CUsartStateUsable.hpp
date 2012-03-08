@@ -11,11 +11,16 @@
 #include <boardDefs.hpp>
 
 #include <CGpioManager.hpp>
+#include <CRcc.hpp>
 #include <CUsartState.hpp>
 #include <CUsartStateRunning.hpp>
 
 class CUsartStateUsable : public CUsartState {
 public:
+
+	CUsartStateUsable( CGpioManager *	gpioManager,
+					   CRcc	*			rccManager ) :
+	m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
 
 	void remap( uint32_t	remapValue );
 
@@ -41,7 +46,9 @@ public:
 	/*
 	 * read does nothing in this state
 	 */
-	void read()
+	void read( USART_TypeDef *	usartId,
+			   uint16_t *		data,
+			   uint8_t			nData )
 	{
 
 	}
@@ -49,7 +56,9 @@ public:
 	/*
 	 * read does nothing in this state
 	 */
-	void write()
+	void write( USART_TypeDef *	usartId,
+			    uint16_t *		data,
+			    uint8_t			nData )
 	{
 
 	}
@@ -61,6 +70,9 @@ public:
 				 uint32_t			apb2 );
 
 	~CUsartStateUsable() {}
+private:
+	CGpioManager *	m_gpioManager;
+	CRcc *			m_rccManager;
 };
 
 #endif /* CUSARTSTATEUSABLE_HPP_ */

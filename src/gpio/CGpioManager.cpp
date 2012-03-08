@@ -12,12 +12,6 @@
 
 #include <gpioPortAddress.hpp>
 
-/*
- * keeps the information whether the pin on the given port is
- * used by any peripheral
- */
-bool gPortPinUsed[ NUMBER_OF_PORTS ][ NUMBER_OF_PINS_PER_PORT ];
-
 CGpioManager::CGpioManager() {
 	// TODO Auto-generated constructor stub
 
@@ -25,17 +19,17 @@ CGpioManager::CGpioManager() {
 
 bool CGpioManager::checkPortPinAvailability( unsigned short port, unsigned short pin )
 {
-	return gPortPinUsed[ port ][ pin ];
+	return m_portPinUsed[ port ][ pin ];
 }
 
 void CGpioManager::setPortPinUnused( unsigned short port, unsigned short pin )
 {
-	gPortPinUsed[ port ][ pin ] = false;
+	m_portPinUsed[ port ][ pin ] = false;
 }
 
 void CGpioManager::setPortPinUsed( unsigned short port, unsigned short pin )
 {
-	gPortPinUsed[ port ][ pin ] = true;
+	m_portPinUsed[ port ][ pin ] = true;
 }
 
 bool CGpioManager::getGpio( uint32_t port,

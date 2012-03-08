@@ -7,19 +7,13 @@
 #include <boardDefs.hpp>
 #include "../../inc/rcc/CRcc.hpp"
 
-namespace Rcc
-{
-
-uint32_t CRcc::m_apb1UseCounter[ sizeof( uint32_t ) ];
-uint32_t CRcc::m_apb2UseCounter[ sizeof( uint32_t ) ];
-
 CRcc::CRcc()
 {
 }
 
 void CRcc::apb1Enable( uint32_t apb1Value )
 {
-	CRcc::increaseUseCount( m_apb1UseCounter, apb1Value );
+	increaseUseCount( m_apb1UseCounter, apb1Value );
 	RCC_APB1PeriphClockCmd( apb1Value, ENABLE );
 }
 
@@ -44,7 +38,7 @@ void CRcc::apb1Disable( uint32_t apb1Value )
 
 void CRcc::apb2Enable( uint32_t apb2Value )
 {
-	CRcc::increaseUseCount( m_apb2UseCounter, apb2Value );
+	increaseUseCount( m_apb2UseCounter, apb2Value );
 	RCC_APB1PeriphClockCmd( apb2Value, ENABLE );
 }
 
@@ -76,7 +70,5 @@ inline void CRcc::increaseUseCount( uint32_t * useCounter, uint32_t value )
 		useCounter[ bitNumber ]++;
 		value -= 1<<bitNumber;
 	}
-}
-
 }
 
