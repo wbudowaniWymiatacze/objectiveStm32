@@ -10,19 +10,15 @@
 
 #include <boardDefs.hpp>
 
-#include <CGpioManager.hpp>
-#include <CRcc.hpp>
-
 class CUsartState {
 public:
 	CUsartState() {}
 	virtual void remap( uint32_t	remapValue ) = 0;
 	virtual void apbEnable( uint32_t	apb1Value,
 							uint32_t	apb2Value ) = 0;
-	virtual void gpioInit( uint32_t				port,
-						   uint32_t				pin,
-						   GPIOSpeed_TypeDef	speed,
-						   GPIOMode_TypeDef		mode ) = 0;
+	virtual void gpioInit( uint8_t				port,
+						   uint8_t				pin,
+						   GPIO_InitTypeDef &	gpioConfig ) = 0;
 	virtual void init( USART_TypeDef *		usartId,
 			   	   	   USART_InitTypeDef &	periphConfig ) = 0;
 	virtual void read( USART_TypeDef *	usartId,
@@ -35,7 +31,8 @@ public:
  	 	 	 	 	 	 	bool			switchToNextState ) = 0;
 	virtual void deinit( USART_TypeDef *	id,
 						 uint32_t			apb1,
-						 uint32_t			apb2 ) = 0;
+						 uint32_t			apb2,
+						 CUsartState *		usartState ) = 0;
 	virtual ~CUsartState() {}
 };
 

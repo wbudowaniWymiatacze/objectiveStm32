@@ -10,27 +10,27 @@
 
 #include <boardDefs.hpp>
 
+#include <IPeripheral.hpp>
+#include <SUsartConfig.hpp>
 #include <CGpioManager.hpp>
-#include <CRcc.hpp>
+#include <CRccManager.hpp>
 #include <CUsartState.hpp>
 #include <CUsartStateUnusable.hpp>
 #include <TypePeriph.hpp>
 
 // TODO: klasa bazowa interfejsu CPeripheralInterface, po której dziedziczą CUsart, CSpi itp.
 template < typename usartX >
-class CUsart {
+class CUsart : public IPeripheral {
 public:
 	CUsart( CGpioManager & gpioManager,
-			CRcc & rccManager );
-	void init( GPIOSpeed_TypeDef	rxSpeed,
-			   GPIOMode_TypeDef		rxMode,
-			   GPIOSpeed_TypeDef	txSpeed,
-			   GPIOMode_TypeDef		txMode,
-			   USART_InitTypeDef &	usartConfig );
+			CRccManager & rccManager );
+	void init( GPIO_InitTypeDef *	gpiosConfig,
+			   SPeriphConfig *		config );
 	void read( uint16_t *	data,
 			   uint8_t		nData );
 	void write( uint16_t *	data,
 			    uint8_t		nData );
+	void deinit();
 	~CUsart();
 
 private:
@@ -40,19 +40,24 @@ private:
 	usartX					m_usartParams;
 	CUsartState *			m_usartState;
 	CGpioManager 			m_gpioManager;
-	CRcc					m_rccManager;
+	CRccManager				m_rccManager;
 
 };
 
 template < typename usartX >
 CUsart< usartX >::CUsart( CGpioManager & gpioManager,
-						  CRcc & rccManager )
+						  CRccManager & rccManager )
 {
 	m_gpioManager = gpioManager;
 	m_rccManager = rccManager;
 	m_usartState = new CUsartStateUnusable( &m_gpioManager,
 											&m_rccManager );
+}
 
+template < typename usartX >
+void CUsart< usartX >::init( GPIO_InitTypeDef *	gpiosConfig,
+							 SPeriphConfig *	config )
+{
 	bool gpiosSet = m_gpioManager.getGpio( m_usartParams.port,
 										   m_usartParams.rx );
 	gpiosSet &= m_gpioManager.getGpio( m_usartParams.port,
@@ -67,29 +72,21 @@ CUsart< usartX >::CUsart( CGpioManager & gpioManager,
 	}
 
 	m_usartState->nextState( m_usartState, gpiosSet );
-}
 
-template < typename usartX >
-void CUsart< usartX >::init( GPIOSpeed_TypeDef		rxSpeed,
-							 GPIOMode_TypeDef		rxMode,
-							 GPIOSpeed_TypeDef		txSpeed,
-							 GPIOMode_TypeDef		txMode,
-							 USART_InitTypeDef	&	usartConfig )
-{
 	m_usartState->remap( m_usartParams.remap );
+
 	// initialise GPIOs
-	m_usartState->gpioInit( m_usartParams.port,
-							m_usartParams.rx,
-							rxSpeed,
-							rxMode );
-	m_usartState->gpioInit( m_usartParams.port,
-							m_usartParams.tx,
-							txSpeed,
-							txMode );
+	for( uint8_t nGpio = 0; nGpio<USART_NUMBER_GPIOS; nGpio++ )
+	{
+		m_usartState->gpioInit( m_usartParams.port,
+								m_usartParams.rx,
+								gpiosConfig[ nGpio ] );
+	}
 
 	//initialise usart
+	SUsartConfig * usartConfStruct = ( SUsartConfig * ) config;
 	m_usartState->init( m_usartParams.id,
-						usartConfig );
+						usartConfStruct->usartConfig );
 }
 
 template < typename usartX >
@@ -111,16 +108,22 @@ void CUsart< usartX >::write( uint16_t *	data,
 }
 
 template < typename usartX >
-CUsart< usartX >::~CUsart()
+void CUsart< usartX >::deinit()
 {
 	m_usartState->deinit( m_usartParams.id,
 						  m_usartParams.apb1,
-						  m_usartParams.apb2 );
+						  m_usartParams.apb2,
+						  m_usartState );
 
 	m_gpioManager.releaseGpio( m_usartParams.port,
 							   m_usartParams.rx );
 	m_gpioManager.releaseGpio( m_usartParams.port,
 							   m_usartParams.tx );
+}
+
+template < typename usartX >
+CUsart< usartX >::~CUsart()
+{
 	delete m_usartState;
 }
 

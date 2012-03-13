@@ -11,7 +11,7 @@
 #include <boardDefs.hpp>
 
 #include <CGpioManager.hpp>
-#include <CRcc.hpp>
+#include <CRccManager.hpp>
 #include <CUsartState.hpp>
 #include <CUsartStateRunning.hpp>
 
@@ -19,7 +19,7 @@ class CUsartStateUsable : public CUsartState {
 public:
 
 	CUsartStateUsable( CGpioManager *	gpioManager,
-					   CRcc	*			rccManager ) :
+					   CRccManager	*			rccManager ) :
 	m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
 
 	void remap( uint32_t	remapValue );
@@ -32,10 +32,9 @@ public:
 	 */
 
 	// TODO: zmienić na wywołanie z nr portu i pinu
-	void gpioInit( uint32_t				port,
-				   uint32_t				pin,
-				   GPIOSpeed_TypeDef	speed,
-				   GPIOMode_TypeDef		mode );
+	void gpioInit( uint8_t				port,
+				   uint8_t				pin,
+				   GPIO_InitTypeDef &	gpioConfig );
 
 	/*
 	 * initialise USART
@@ -67,12 +66,13 @@ public:
 					bool			switchToNextState );
 	void deinit( USART_TypeDef *	id,
 				 uint32_t			apb1,
-				 uint32_t			apb2 );
+				 uint32_t			apb2,
+				 CUsartState *		usartState );
 
 	~CUsartStateUsable() {}
 private:
 	CGpioManager *	m_gpioManager;
-	CRcc *			m_rccManager;
+	CRccManager *	m_rccManager;
 };
 
 #endif /* CUSARTSTATEUSABLE_HPP_ */

@@ -6,16 +6,18 @@
  */
 #include <boardDefs.hpp>
 
+#include <CManagersFactory.hpp>
 #include <CGpioManager.hpp>
-#include <CRcc.hpp>
+#include <CRccManager.hpp>
 #include <CUsart.hpp>
 #include <TypePeriph.hpp>
 
 int main()
 {
 	CGpioManager gpioMngr;
-	CRcc rccMngr;
-	USART_InitTypeDef usartConf;
+	CRccManager rccMngr;
+	SUsartConfig usartConfStruct;
+	USART_InitTypeDef usartConf = usartConfStruct.usartConfig;
 	CUsart< SUsart1 > usart1( gpioMngr,
 							  rccMngr );
 
@@ -26,11 +28,18 @@ int main()
 	usartConf.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	usartConf.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 
-	usart1.init( GPIO_Speed_50MHz,
-				 GPIO_Mode_IN_FLOATING,
-				 GPIO_Speed_50MHz,
-				 GPIO_Mode_AF_PP,
-				 usartConf );
+	GPIO_InitTypeDef gpiosConfig[ 2 ];
+
+	gpiosConfig[ 0 ].GPIO_Pin = 0;
+	gpiosConfig[ 0 ].GPIO_Speed = GPIO_Speed_50MHz;
+	gpiosConfig[ 0 ].GPIO_Mode = GPIO_Mode_IN_FLOATING;
+
+	gpiosConfig[ 1 ].GPIO_Pin = 0;
+	gpiosConfig[ 1 ].GPIO_Speed = GPIO_Speed_50MHz;
+	gpiosConfig[ 1 ].GPIO_Mode = GPIO_Mode_AF_PP;
+
+	usart1.init( gpiosConfig,
+				 &usartConfStruct );
 
 	return 0;
 }

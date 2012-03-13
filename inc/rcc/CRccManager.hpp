@@ -1,23 +1,22 @@
 /*
- * CRcc.hpp
+ * CRccManager.hpp
  *
  *  Created on: Mar 3, 2012
  *      Author: artur
  */
 
-#ifndef CRCC_HPP_
-#define CRCC_HPP_
+#ifndef CRCCMANAGER_HPP_
+#define CRCCMANAGER_HPP_
 
-
-// TODO: make it singleton?
-class CRcc {
+class CRccManager  {
 public:
-	CRcc();
+	CRccManager();
 	void apb1Enable( uint32_t apb1Value );
 	void apb1Disable( uint32_t apb1Value );
 	void apb2Enable( uint32_t apb2Value );
 	void apb2Disable( uint32_t apb2Value );
-	~CRcc() {}
+	CRccManager( CRccManager const & rccManager );
+	CRccManager & operator=( CRccManager const & rccManager );
 
 private:
 	inline void increaseUseCount( uint32_t * useCounter,
@@ -27,4 +26,4 @@ private:
 	uint32_t m_apb2UseCounter[ sizeof( uint32_t ) ];
 };
 
-#endif /* CRCC_HPP_ */
+#endif /* CRCCMANAGER_HPP_ */

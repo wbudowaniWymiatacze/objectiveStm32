@@ -7,8 +7,9 @@
 
 #include <boardDefs.hpp>
 
-#include <CRcc.hpp>
+#include <CRccManager.hpp>
 #include <CUsartStateUsable.hpp>
+#include <CUsartStateUnusable.hpp>
 
 void CUsartStateUsable::remap( uint32_t	remapValue )
 {
@@ -24,16 +25,11 @@ void CUsartStateUsable::apbEnable( uint32_t apb1Value,
 }
 
 
-void CUsartStateUsable::gpioInit( uint32_t			port,
-								  uint32_t			pin,
-								  GPIOSpeed_TypeDef	speed,
-								  GPIOMode_TypeDef	mode )
+void CUsartStateUsable::gpioInit( uint8_t				port,
+								  uint8_t				pin,
+								  GPIO_InitTypeDef &	gpioConfig )
 {
-	GPIO_InitTypeDef	gpioConfig;
-
 	gpioConfig.GPIO_Pin		= pin;
-	gpioConfig.GPIO_Speed	= speed;
-	gpioConfig.GPIO_Mode	= mode;
 	m_gpioManager->initGpio( port, &gpioConfig );
 }
 
@@ -68,7 +64,8 @@ void CUsartStateUsable::nextState( CUsartState *	currentState,
 
 void CUsartStateUsable::deinit( USART_TypeDef *	id,
 								uint32_t		apb1,
-								uint32_t		apb2 )
+								uint32_t		apb2,
+								CUsartState *	usartState )
 {
 	// Disable USART
 	USART_Cmd( id, DISABLE );
@@ -83,5 +80,10 @@ void CUsartStateUsable::deinit( USART_TypeDef *	id,
 	// disable APB
 	m_rccManager->apb1Disable( apb1 );
 	m_rccManager->apb2Disable( apb2 );
+
+	usartState = new CUsartStateUnusable( m_gpioManager,
+										  m_rccManager );
+
+	delete this;
 }
 

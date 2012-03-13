@@ -13,6 +13,7 @@
 #include <stm32f10x.h>
 #include <stm32f10x_rcc.h>
 
+#define USART_NUMBER_GPIOS					2
 #define CR2_CLOCK_CLEAR_Mask				((uint16_t)0xF0FF)  /*!< USART CR2 Clock Mask */
 
 // USART1

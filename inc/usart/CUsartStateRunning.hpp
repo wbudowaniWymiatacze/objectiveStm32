@@ -11,14 +11,14 @@
 #include <boardDefs.hpp>
 
 #include <CGpioManager.hpp>
-#include <CRcc.hpp>
+#include <CRccManager.hpp>
 #include "CUsartState.hpp"
 
 class CUsartStateRunning: public CUsartState {
 public:
 
 	CUsartStateRunning( CGpioManager *	gpioManager,
-					   	CRcc *			rccManager ) :
+					   	CRccManager *			rccManager ) :
 	m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
 
 	/*
@@ -44,10 +44,9 @@ public:
 	 * gpio initialisation is not allowed in this state,
 	 * so the function does nothing
 	 */
-	void gpioInit( uint32_t				port,
-				   uint32_t				pin,
-				   GPIOSpeed_TypeDef	speed,
-				   GPIOMode_TypeDef		mode )
+	void gpioInit( uint8_t				port,
+				   uint8_t				pin,
+				   GPIO_InitTypeDef &	gpioConfig )
 	{
 
 	}
@@ -87,12 +86,13 @@ public:
 
 	void deinit( USART_TypeDef *	id,
 			 	 uint32_t			apb1,
-			 	 uint32_t			apb2 );
+			 	 uint32_t			apb2,
+			 	 CUsartState *		usartState );
 
 	~CUsartStateRunning() {}
 private:
 	CGpioManager *	m_gpioManager;
-	CRcc *			m_rccManager;
+	CRccManager *	m_rccManager;
 };
 
 #endif /* CUSARTSTATERUNNING_HPP_ */

@@ -12,28 +12,37 @@
 
 #include <gpioPortAddress.hpp>
 
-CGpioManager::CGpioManager() {
-	// TODO Auto-generated constructor stub
+CGpioManager::CGpioManager()
+{
+	GPIO_TypeDef * gpioArr[] = { GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG };
 
+	for( uint8_t port=0; port<NUMBER_OF_PORTS; port++ )
+	{
+		m_gpioPortAddress[ port ] = gpioArr[ port ];
+		for( uint8_t pin=0; pin<NUMBER_OF_PINS_PER_PORT; pin++ )
+		{
+			m_portPinUsed[ port][ pin ] = false;
+		}
+	}
 }
 
-bool CGpioManager::checkPortPinAvailability( unsigned short port, unsigned short pin )
+bool CGpioManager::checkPortPinAvailability( uint8_t port, uint8_t pin )
 {
 	return m_portPinUsed[ port ][ pin ];
 }
 
-void CGpioManager::setPortPinUnused( unsigned short port, unsigned short pin )
+void CGpioManager::setPortPinUnused( uint8_t port, uint8_t pin )
 {
 	m_portPinUsed[ port ][ pin ] = false;
 }
 
-void CGpioManager::setPortPinUsed( unsigned short port, unsigned short pin )
+void CGpioManager::setPortPinUsed( uint8_t port, uint8_t pin )
 {
 	m_portPinUsed[ port ][ pin ] = true;
 }
 
-bool CGpioManager::getGpio( uint32_t port,
-		  	  	  	  	  	uint32_t pin )
+bool CGpioManager::getGpio( uint8_t port,
+		  	  	  	  	  	uint8_t pin )
 {
 
 	// check if the port and pin are used by another peripheral
@@ -55,19 +64,25 @@ void CGpioManager::remap( uint32_t remapValue )
 	GPIO_PinRemapConfig( remapValue, ENABLE );
 }
 
-void CGpioManager::initGpio( uint32_t			port,
+void CGpioManager::initGpio( uint8_t			port,
 					  	  	 GPIO_InitTypeDef *	gpioConfig )
 {
-	GPIO_Init( gpioPortAddress[ port ], gpioConfig );
+	GPIO_Init( m_gpioPortAddress[ port ], gpioConfig );
 }
 
-void CGpioManager::releaseGpio( uint32_t port,
-	 	 	 	 	 	 	 	uint32_t pin )
+void CGpioManager::releaseGpio( uint8_t port,
+	 	 	 	 	 	 	 	uint8_t pin )
 {
 	setPortPinUnused( port, pin );
 }
 
-CGpioManager::~CGpioManager() {
-	// TODO Auto-generated destructor stub
+CGpioManager & CGpioManager::operator=( CGpioManager const & gpioManager )
+{
+	return const_cast<CGpioManager &> ( gpioManager );
+}
+
+CGpioManager::CGpioManager( CGpioManager const & gpioManager )
+{
+	*this = const_cast<CGpioManager &> ( gpioManager );
 }
 

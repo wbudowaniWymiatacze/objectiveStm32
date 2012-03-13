@@ -10,33 +10,33 @@
 
 #include <boardDefs.hpp>
 
-#include <TypePeriph.hpp>
-
+/*
+ * only CManagersFactory can create it!!
+ */
 class CGpioManager {
 public:
 	CGpioManager();
-
 	/*
 	 * return true if pin on the port is free to use (not used by another
 	 * peripheral), false otherwise
 	 */
-	bool checkPortPinAvailability( unsigned short port, unsigned short pin );
+	bool checkPortPinAvailability( uint8_t port, uint8_t pin );
 
 	/*
 	 * sets pin on the port unused by any peripheral
 	 */
-	void setPortPinUnused( unsigned short port, unsigned short pin );
+	void setPortPinUnused( uint8_t port, uint8_t pin );
 
 	/*
 	 * sets pin on the port as used
 	 */
-	void setPortPinUsed( unsigned short port, unsigned short pin );
+	void setPortPinUsed( uint8_t port, uint8_t pin );
 
 	/*
 	 * returns false if the GPIOs are already in use
 	 */
-	bool getGpio( uint32_t port,
-				  uint32_t pin );
+	bool getGpio( uint8_t port,
+				  uint8_t pin );
 
 	/*
 	 * remap GPIOs
@@ -46,18 +46,20 @@ public:
 	/*
 	 * initialise GPIO
 	 */
-	void initGpio( uint32_t				port,
+	void initGpio( uint8_t				port,
 				   GPIO_InitTypeDef *	gpioConfig );
 
 	/*
 	 * set pins of given GPIOs as unused
 	 */
-	void releaseGpio( uint32_t port,
-			 	 	  uint32_t pin );
-	~CGpioManager();
+	void releaseGpio( uint8_t port,
+			 	 	  uint8_t pin );
+
+	CGpioManager & operator=( CGpioManager const & gpioManager );
+	CGpioManager( CGpioManager const & gpioManager );
 
 private:
-
+	GPIO_TypeDef * m_gpioPortAddress[ NUMBER_OF_PORTS ];
 	/*
 	 * keeps the information whether the pin on the given port is
 	 * used by any peripheral
