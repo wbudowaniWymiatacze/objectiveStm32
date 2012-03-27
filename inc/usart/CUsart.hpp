@@ -18,7 +18,9 @@
 #include <CUsartStateUnusable.hpp>
 #include <TypePeriph.hpp>
 
-// TODO: klasa bazowa interfejsu CPeripheralInterface, po której dziedziczą CUsart, CSpi itp.
+extern uint16_t g_usartReadBuffer[ 100 ];
+extern uint16_t g_usartWriteBuffer[ 100 ];
+
 template < typename usartX >
 class CUsart : public IPeripheral {
 public:
@@ -30,10 +32,18 @@ public:
 			   uint8_t		nData );
 	void write( uint16_t *	data,
 			    uint8_t		nData );
+	void interruptsOn( uint8_t	priority,
+					   uint8_t	subpriority );
+	void interruptsOff();
 	void deinit();
 	~CUsart();
 
 private:
+	/*
+	 * interrupt handler for USART.
+	 * To be defined if needed.
+	 */
+	static void USART_IRQHandler();
 	friend class CUsartState;
 	void setId();
 
@@ -108,6 +118,43 @@ void CUsart< usartX >::write( uint16_t *	data,
 }
 
 template < typename usartX >
+void CUsart< usartX >::interruptsOn( uint8_t	priority,
+				   	   	   	   	     uint8_t	subpriority )
+{
+	NVIC_InitTypeDef interruptConfig;
+
+	interruptConfig.NVIC_IRQChannel = m_usartParams.irqChannel;
+	interruptConfig.NVIC_IRQChannelPreemptionPriority = priority;
+	interruptConfig.NVIC_IRQChannelSubPriority = subpriority;
+	interruptConfig.NVIC_IRQChannelCmd = ENABLE;
+
+	m_usartState->interruptsConfig( interruptConfig );
+}
+
+template < typename usartX >
+void CUsart< usartX >::interruptsOff()
+{
+	NVIC_InitTypeDef interruptConfig;
+
+	interruptConfig.NVIC_IRQChannel = m_usartParams.irqChannel;
+	interruptConfig.NVIC_IRQChannelPreemptionPriority = 15;		// lowest priority
+	interruptConfig.NVIC_IRQChannelSubPriority = 0;				// don't know
+	interruptConfig.NVIC_IRQChannelCmd = DISABLE;
+
+	m_usartState->interruptsConfig( interruptConfig );
+}
+
+template < typename usartX >
+void CUsart< usartX >::USART_IRQHandler()
+{
+	if( USART_GetITStatus( CUsart< usartX >::m_usartParams.id, USART_IT_RXNE ) != RESET )
+	{
+		CUsart< usartX >::read( g_usartReadBuffer, 1 );
+		CUsart< usartX >::write( g_usartReadBuffer, 1);
+	}
+}
+
+template < typename usartX >
 void CUsart< usartX >::deinit()
 {
 	m_usartState->deinit( m_usartParams.id,
@@ -124,6 +171,7 @@ void CUsart< usartX >::deinit()
 template < typename usartX >
 CUsart< usartX >::~CUsart()
 {
+	interruptsOff();
 	delete m_usartState;
 }
 

@@ -77,6 +77,14 @@ public:
 	}
 
 	/*
+	 * interrupts cannot be configured in this state
+	 */
+	void interruptsConfig( NVIC_InitTypeDef & interruptsConfig )
+	{
+
+	}
+
+	/*
 	 * change state to CUsartStateUsable
 	 */
 	void nextState( CUsartState *	currentState,

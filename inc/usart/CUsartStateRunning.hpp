@@ -76,6 +76,11 @@ public:
 				uint8_t			nData );
 
 	/*
+	 * configure interrupts with the given configuration
+	 */
+	void interruptsConfig( NVIC_InitTypeDef & interruptsConfig );
+
+	/*
 	 * no next state exists so the function does nothing
 	 */
 	void nextState( CUsartState *	currentState,

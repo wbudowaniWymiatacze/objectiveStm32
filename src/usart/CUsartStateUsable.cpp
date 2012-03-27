@@ -50,6 +50,12 @@ void CUsartStateUsable::init( USART_TypeDef *		usartId,
 }
 
 
+void CUsartStateUsable::interruptsConfig( NVIC_InitTypeDef & interruptsConfig )
+{
+	NVIC_Init( &interruptsConfig );
+}
+
+
 void CUsartStateUsable::nextState( CUsartState *	currentState,
 		 	 	 	 	 	 	   bool				switchToNextState )
 {
