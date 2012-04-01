@@ -12,19 +12,19 @@ template < typename T >
 class CSingleton
 {
 public:
-	static T * getInstance()
-	{
-		static T instance;
-		return &instance;
-	}
+    static T * getInstance()
+    {
+    static T instance;
+    return &instance;
+    }
 
 protected:
-	CSingleton() {}
-	~CSingleton() {}
+    CSingleton() {}
+    ~CSingleton() {}
 
 private:
-	CSingleton( CSingleton< T > const & );
-	CSingleton< T > & operator=( CSingleton< T > const & );
+    CSingleton( CSingleton< T > const & );
+    CSingleton< T > & operator=( CSingleton< T > const & );
 };
 
 #endif /* CSINGLETON_HPP_ */

@@ -13,29 +13,29 @@
 
 CUsartIrqHandler::CUsartIrqHandler() {
 
-	for( uint32_t usartIndex=0; usartIndex<NUMBER_OF_USARTS; usartIndex++ )
-	{
-		m_usart[ usartIndex ] = 0;
-	}
+    for( uint32_t usartIndex=0; usartIndex<NUMBER_OF_USARTS; usartIndex++ )
+    {
+        m_usart[ usartIndex ] = 0;
+    }
 }
 
 CUsartIrqHandler::CUsartIrqHandler( IPeripheral * usart )
 {
-	for( uint32_t usartIndex=0; usartIndex<NUMBER_OF_USARTS; usartIndex++ )
-	{
-		m_usart[ usartIndex ] = 0;
-	}
+    for( uint32_t usartIndex=0; usartIndex<NUMBER_OF_USARTS; usartIndex++ )
+    {
+    m_usart[ usartIndex ] = 0;
+    }
 
-	registerPeripheral( usart );
+    registerPeripheral( usart );
 }
 
 void CUsartIrqHandler::registerPeripheral( IPeripheral * usart )
 {
-	m_usart[ usart->getIndex() ] = usart;
+    m_usart[ usart->getIndex() ] = usart;
 }
 
 void CUsartIrqHandler::unregisterPeripheral( IPeripheral * usart )
 {
-	m_usart[ usart->getIndex() ] = 0;
+    m_usart[ usart->getIndex() ] = 0;
 }
 

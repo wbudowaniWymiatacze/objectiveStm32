@@ -9,21 +9,26 @@
 #include <CUsartStateUsable.hpp>
 #include <EPeripheralState.hpp>
 
-void CUsartStateUnusable::nextState( CUsartState *	currentState,
-		 	 	 	 	 	 	 	 bool			switchToNextState )
+void CUsartStateUnusable::nextState( CUsartState *  currentState,
+                                     bool           switchToNextState )
 {
-	// TODO: najpierw sprawdzić czy udało się stworzyć nowy stan, później zależnie od tego
-	// przypisać currentState = nowyStan, albo nie zmieniać currentState
-	if ( switchToNextState == true )
-	{
-		delete this;
-		currentState = new CUsartStateUsable( m_gpioManager,
-											  m_rccManager );
-	}
+    if ( switchToNextState == true )
+    {
+    currentState = new CUsartStateUsable( m_gpioManager,
+                                          m_rccManager );
+    if( currentState == 0 )
+    {
+        currentState = this;
+    }
+    else
+    {
+        delete this;
+    }
+    }
 }
 
 EPeripheralState CUsartStateUnusable::getState()
 {
-	return m_stateInfo;
+    return m_stateInfo;
 }
 

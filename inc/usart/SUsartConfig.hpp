@@ -14,7 +14,7 @@
 
 struct SUsartConfig : public SPeriphConfig
 {
-	USART_InitTypeDef	usartConfig;
+    USART_InitTypeDef    usartConfig;
 };
 
 
