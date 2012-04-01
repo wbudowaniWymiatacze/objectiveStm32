@@ -8,9 +8,6 @@
 #include <CUsartStateRunning.hpp>
 #include <CUsartStateUsable.hpp>
 
-/*
- * TODO: implement read
- */
 void CUsartStateRunning::read( USART_TypeDef *	usartId,
 							   uint16_t *		data,
 							   uint8_t			nData )
@@ -21,9 +18,6 @@ void CUsartStateRunning::read( USART_TypeDef *	usartId,
 	}
 }
 
-/*
- * TODO: implement write
- */
 void CUsartStateRunning::write( USART_TypeDef *	usartId,
 								uint16_t *		data,
 								uint8_t			nData )
@@ -37,6 +31,11 @@ void CUsartStateRunning::write( USART_TypeDef *	usartId,
 			;
 		}
 	}
+}
+
+void CUsartStateRunning::interruptsConfig( NVIC_InitTypeDef & interruptsConfig )
+{
+	NVIC_Init( &interruptsConfig );
 }
 
 void CUsartStateRunning::deinit( USART_TypeDef *	id,

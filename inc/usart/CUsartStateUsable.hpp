@@ -62,6 +62,11 @@ public:
 
 	}
 
+	/*
+	 * configure interrupts with the given configuration
+	 */
+	void interruptsConfig( NVIC_InitTypeDef & interruptsConfig );
+
 	void nextState( CUsartState *	currentState,
 					bool			switchToNextState );
 	void deinit( USART_TypeDef *	id,

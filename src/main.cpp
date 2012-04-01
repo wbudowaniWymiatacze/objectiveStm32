@@ -6,11 +6,13 @@
  */
 #include <boardDefs.hpp>
 
-#include <CManagersFactory.hpp>
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
 #include <CUsart.hpp>
 #include <TypePeriph.hpp>
+
+uint16_t g_usartReadBuffer[ 100 ];
+uint16_t g_usartWriteBuffer[ 100 ];
 
 int main()
 {

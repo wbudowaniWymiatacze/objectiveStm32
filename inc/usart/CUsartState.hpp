@@ -27,6 +27,7 @@ public:
 	virtual void write( USART_TypeDef *	usartId,
 						uint16_t *		data,
 						uint8_t			nData ) = 0;
+	virtual void interruptsConfig( NVIC_InitTypeDef & interruptsConfig ) = 0;
 	virtual void nextState( CUsartState *	currentState,
  	 	 	 	 	 	 	bool			switchToNextState ) = 0;
 	virtual void deinit( USART_TypeDef *	id,
