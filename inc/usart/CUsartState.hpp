@@ -9,6 +9,7 @@
 #define CUSARTSTATE_HPP_
 
 #include <boardDefs.hpp>
+#include <EPeripheralState.hpp>
 
 class CUsartState {
 public:
@@ -34,6 +35,7 @@ public:
 						 uint32_t			apb1,
 						 uint32_t			apb2,
 						 CUsartState *		usartState ) = 0;
+	virtual EPeripheralState getState() = 0;
 	virtual ~CUsartState() {}
 };
 
