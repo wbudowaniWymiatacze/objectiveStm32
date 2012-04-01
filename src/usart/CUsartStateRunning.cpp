@@ -7,6 +7,7 @@
 
 #include <CUsartStateRunning.hpp>
 #include <CUsartStateUsable.hpp>
+#include <EPeripheralState.hpp>
 
 void CUsartStateRunning::read( USART_TypeDef *	usartId,
 							   uint16_t *		data,
@@ -52,5 +53,10 @@ void CUsartStateRunning::deinit( USART_TypeDef *	id,
 						 usartState );
 
 	delete this;
+}
+
+EPeripheralState CUsartStateRunning::getState()
+{
+	return m_stateInfo;
 }
 

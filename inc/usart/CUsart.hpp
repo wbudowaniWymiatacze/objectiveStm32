@@ -17,6 +17,7 @@
 #include <CUsartState.hpp>
 #include <CUsartStateUnusable.hpp>
 #include <TypePeriph.hpp>
+#include <EPeripheralState.hpp>
 
 extern uint16_t g_usartReadBuffer[ 100 ];
 extern uint16_t g_usartWriteBuffer[ 100 ];
@@ -32,25 +33,26 @@ public:
 			   uint8_t		nData );
 	void write( uint16_t *	data,
 			    uint8_t		nData );
+	void configureInterrupts( uint16_t	interruptSource );
+	void deconfigureInterrupts( uint16_t	interruptSource );
 	void interruptsOn( uint8_t	priority,
 					   uint8_t	subpriority );
 	void interruptsOff();
+	bool checkInterruptSource( uint16_t	interruptSource );
 	void deinit();
+	EPeripheralState getState();
+	uint32_t getIndex();
 	~CUsart();
 
 private:
-	/*
-	 * interrupt handler for USART.
-	 * To be defined if needed.
-	 */
-	static void USART_IRQHandler();
 	friend class CUsartState;
-	void setId();
+	void setIds();
 
 	usartX					m_usartParams;
 	CUsartState *			m_usartState;
 	CGpioManager 			m_gpioManager;
 	CRccManager				m_rccManager;
+	uint32_t				m_index;
 
 };
 
@@ -58,6 +60,7 @@ template < typename usartX >
 CUsart< usartX >::CUsart( CGpioManager & gpioManager,
 						  CRccManager & rccManager )
 {
+	setIds();
 	m_gpioManager = gpioManager;
 	m_rccManager = rccManager;
 	m_usartState = new CUsartStateUnusable( &m_gpioManager,
@@ -118,6 +121,22 @@ void CUsart< usartX >::write( uint16_t *	data,
 }
 
 template < typename usartX >
+void CUsart< usartX >::configureInterrupts( uint16_t	interruptSource )
+{
+	USART_ITConfig( m_usartParams.id,
+					interruptSource,
+					ENABLE );
+}
+
+template < typename usartX >
+void CUsart< usartX >::deconfigureInterrupts( uint16_t	interruptSource )
+{
+	USART_ITConfig( m_usartParams.id,
+					interruptSource,
+					DISABLE );
+}
+
+template < typename usartX >
 void CUsart< usartX >::interruptsOn( uint8_t	priority,
 				   	   	   	   	     uint8_t	subpriority )
 {
@@ -145,13 +164,9 @@ void CUsart< usartX >::interruptsOff()
 }
 
 template < typename usartX >
-void CUsart< usartX >::USART_IRQHandler()
+bool CUsart< usartX >::checkInterruptSource( uint16_t	interruptSource )
 {
-	if( USART_GetITStatus( CUsart< usartX >::m_usartParams.id, USART_IT_RXNE ) != RESET )
-	{
-		CUsart< usartX >::read( g_usartReadBuffer, 1 );
-		CUsart< usartX >::write( g_usartReadBuffer, 1);
-	}
+	return USART_GetITStatus( m_usartParams.id, interruptSource ) != RESET;
 }
 
 template < typename usartX >
@@ -169,6 +184,18 @@ void CUsart< usartX >::deinit()
 }
 
 template < typename usartX >
+EPeripheralState CUsart< usartX >::getState()
+{
+	return m_usartState->getState();
+}
+
+template < typename usartX >
+uint32_t CUsart< usartX >::getIndex()
+{
+	return m_index;
+}
+
+template < typename usartX >
 CUsart< usartX >::~CUsart()
 {
 	interruptsOff();
@@ -176,45 +203,52 @@ CUsart< usartX >::~CUsart()
 }
 
 template < >
-void CUsart< SUsart1 >::setId()
+void CUsart< SUsart1 >::setIds()
 {
-	m_usartParams.id = USART1;
+	m_usartParams.id	= USART1;
+	m_index				= 1;
 }
 
 template < >
-void CUsart< SUsart2 >::setId()
+void CUsart< SUsart2 >::setIds()
 {
-	m_usartParams.id = USART1;
+	m_usartParams.id	= USART1;
+	m_index				= 1;
 }
 
 template < >
-void CUsart< SUsart3 >::setId()
+void CUsart< SUsart3 >::setIds()
 {
-	m_usartParams.id = USART2;
+	m_usartParams.id	= USART2;
+	m_index				= 2;
 }
 
 template < >
-void CUsart< SUsart4 >::setId()
+void CUsart< SUsart4 >::setIds()
 {
-	m_usartParams.id = USART2;
+	m_usartParams.id 	= USART2;
+	m_index				= 2;
 }
 
 template < >
-void CUsart< SUsart5 >::setId()
+void CUsart< SUsart5 >::setIds()
 {
-	m_usartParams.id = USART3;
+	m_usartParams.id 	= USART3;
+	m_index				= 3;
 }
 
 template < >
-void CUsart< SUsart6 >::setId()
+void CUsart< SUsart6 >::setIds()
 {
-	m_usartParams.id = USART3;
+	m_usartParams.id	= USART3;
+	m_index				= 3;
 }
 
 template < >
-void CUsart< SUsart7 >::setId()
+void CUsart< SUsart7 >::setIds()
 {
-	m_usartParams.id = USART3;
+	m_usartParams.id	= USART3;
+	m_index				= 3;
 }
 
 #endif /* CUSART_HPP_ */

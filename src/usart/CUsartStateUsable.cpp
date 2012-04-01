@@ -10,6 +10,7 @@
 #include <CRccManager.hpp>
 #include <CUsartStateUsable.hpp>
 #include <CUsartStateUnusable.hpp>
+#include <EPeripheralState.hpp>
 
 void CUsartStateUsable::remap( uint32_t	remapValue )
 {
@@ -91,5 +92,10 @@ void CUsartStateUsable::deinit( USART_TypeDef *	id,
 										  m_rccManager );
 
 	delete this;
+}
+
+EPeripheralState CUsartStateUsable::getState()
+{
+	return m_stateInfo;
 }
 

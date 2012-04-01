@@ -37,7 +37,7 @@ public:
 	static void usart3Handler();
 
 private:
-	IPeripheral *	m_usart[ NUMBER_OF_USARTS ];
+	static IPeripheral *	m_usart[ NUMBER_OF_USARTS ];
 };
 
 #endif /* CUSARTIRQHANDLER_HPP_ */

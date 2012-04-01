@@ -13,6 +13,7 @@
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
 #include <CUsartState.hpp>
+#include <EPeripheralState.hpp>
 
 /*
  * except nextState none of the functions does anything
@@ -22,7 +23,7 @@ public:
 
 	CUsartStateUnusable( CGpioManager * gpioManager,
 						 CRccManager *	rccManager ) :
-	m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
+	m_gpioManager( gpioManager ), m_rccManager( rccManager ), m_stateInfo( EPeripheralStateUnusable ) {}
 
 	void remap( uint32_t	remapValue )
 	{
@@ -98,11 +99,14 @@ public:
 
 	}
 
+	EPeripheralState getState();
+
 	~CUsartStateUnusable() {}
 
 private:
 	CGpioManager *	m_gpioManager;
 	CRccManager *	m_rccManager;
+	EPeripheralState	m_stateInfo;
 };
 
 

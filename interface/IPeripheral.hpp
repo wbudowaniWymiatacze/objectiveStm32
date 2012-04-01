@@ -13,6 +13,7 @@
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
 #include <SPeriphConfig.hpp>
+#include <EPeripheralState.hpp>
 
 class IPeripheral
 {
@@ -75,6 +76,20 @@ public:
 			    		uint8_t		nData ) = 0;
 
 	/*
+	 * Enables interrupts sources which enable bits in Interrupt Enable
+	 * peripheral register correspond to the bits that are set in input argument
+	 */
+	virtual void configureInterrupts( uint16_t	interruptSource ) = 0;
+
+	/*
+	 * Disables interrupts sources which enable bits in Interrupt Enable
+	 * peripheral register correspond to the bits that are set in input argument
+	 */
+	virtual void deconfigureInterrupts( uint16_t	interruptSource ) = 0;
+
+	virtual bool checkInterruptSource( uint16_t	interruptSource ) = 0;
+
+	/*
 	 * Turns interrupts for a peripheral on and sets it to the specified
 	 * priority and subpriority
 	 *
@@ -97,13 +112,20 @@ public:
 	 */
 	virtual void deinit() = 0;
 
-	virtual ~IPeripheral() = 0;
+	virtual uint32_t getIndex() = 0;
+
+	/*
+	 * Returns enum that informs of the current state of a peripheral
+	 */
+	virtual EPeripheralState getState() = 0;
+
+	virtual ~IPeripheral() {} //= 0;
 };
 
-IPeripheral::~IPeripheral()
-{
-
-}
+//IPeripheral::~IPeripheral()
+//{
+//
+//}
 
 
 #endif /* IPERIPHERAL_HPP_ */

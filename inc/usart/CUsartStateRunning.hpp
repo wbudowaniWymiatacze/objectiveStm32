@@ -13,13 +13,14 @@
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
 #include "CUsartState.hpp"
+#include <EPeripheralState.hpp>
 
 class CUsartStateRunning: public CUsartState {
 public:
 
 	CUsartStateRunning( CGpioManager *	gpioManager,
 					   	CRccManager *			rccManager ) :
-	m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
+	m_gpioManager( gpioManager ), m_rccManager( rccManager ), m_stateInfo( EPeripheralStateUnusable ) {}
 
 	/*
 	 * remapping is not allowed in this state,
@@ -94,10 +95,13 @@ public:
 			 	 uint32_t			apb2,
 			 	 CUsartState *		usartState );
 
+	EPeripheralState getState();
+
 	~CUsartStateRunning() {}
 private:
 	CGpioManager *	m_gpioManager;
 	CRccManager *	m_rccManager;
+	EPeripheralState	m_stateInfo;
 };
 
 #endif /* CUSARTSTATERUNNING_HPP_ */
