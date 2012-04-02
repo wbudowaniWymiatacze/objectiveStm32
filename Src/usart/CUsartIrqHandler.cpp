@@ -9,7 +9,7 @@
 
 #include <IPeripheral.hpp>
 
-#include "../../inc/usart/CUsartIrqHandler.hpp"
+#include <CUsartIrqHandler.hpp>
 
 CUsartIrqHandler::CUsartIrqHandler() {
 

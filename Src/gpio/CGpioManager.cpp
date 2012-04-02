@@ -10,8 +10,6 @@
 #include <CGpioManager.hpp>
 #include <TypePeriph.hpp>
 
-#include <gpioPortAddress.hpp>
-
 CGpioManager::CGpioManager()
 {
     GPIO_TypeDef * gpioArr[] = { GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG };

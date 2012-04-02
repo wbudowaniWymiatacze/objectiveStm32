@@ -5,7 +5,7 @@
  *      Author: artur
  */
 #include <boardDefs.hpp>
-#include "../../inc/rcc/CRccManager.hpp"
+#include <CRccManager.hpp>
 
 CRccManager::CRccManager()
 {
