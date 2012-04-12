@@ -36,10 +36,10 @@ PROJECT = objectiveStm32
 CORE = cortex-m3
 
 # linker script
-LD_SCRIPT = ./src/stm32_flash.ld
+LD_SCRIPT = ./stm32_flash.ld
 
 # output folder (absolute or relative path, leave empty for in-tree compilation)
-OUT_DIR = Out
+OUT_DIR = out
 
 # C++ definitions (e.g. "-Dsymbol_with_value=0xDEAD -Dsymbol_without_value")
 CXX_DEFS = -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER
@@ -52,10 +52,18 @@ AS_DEFS =
 
 # include directories (absolute or relative paths to additional folders with
 # headers, current folder is always included)
-INC_DIRS =   $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
-INC_DIRS +=$(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/inc/
-INC_DIRS +=$(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
-
+INC_DIRS = Boards
+INC_DIRS += Boards/boards
+INC_DIRS += Boards/boards/f1xx
+INC_DIRS += Boards/boards/f1xx/f103
+INC_DIRS += Boards/hdr
+INC_DIRS += Boards/numberOfPorts
+INC_DIRS += Gpio/inc
+INC_DIRS += Rcc/inc
+INC_DIRS += Usart/inc
+INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
+INC_DIRS += $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/inc/
+INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
 
 # library directories (absolute or relative paths to additional folders with
 # libraries)
@@ -67,30 +75,39 @@ LIBS =
 
 # additional directories with source files (absolute or relative paths to
 # folders with source files, current folder is always included)
-SRCS_DIRS =   $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
-SRCS_DIRS+= $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/src/
-SRCS_DIRS+= $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
+SRC_DIRS = Boards
+SRC_DIRS += Boards/boards
+SRC_DIRS += Boards/boards/f1xx
+SRC_DIRS += Boards/boards/f1xx/f103
+SRC_DIRS += Boards/hdr
+SRC_DIRS += Boards/numberOfPorts
+SRC_DIRS += Gpio/src
+SRC_DIRS += Rcc/src
+SRC_DIRS += Usart/src
+SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
+SRC_DIRS += $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/src/
+SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
 
 # extension of C++ files
 CXX_EXT = cpp
 
 # wildcard for C++ source files (all files with CXX_EXT extension found in
-# current folder and SRCS_DIRS folders will be compiled and linked)
-CXX_SRCS = $(wildcard $(patsubst %, %/*.$(CXX_EXT), . $(SRCS_DIRS)))
+# current folder and SRC_DIRS folders will be compiled and linked)
+CXX_SRC = $(wildcard $(patsubst %, %/*.$(CXX_EXT), . $(SRC_DIRS)))
 
 # extension of C files
 C_EXT = c
 
 # wildcard for C source files (all files with C_EXT extension found in current
-# folder and SRCS_DIRS folders will be compiled and linked)
-C_SRCS = $(wildcard $(patsubst %, %/*.$(C_EXT), . $(SRCS_DIRS)))
+# folder and SRC_DIRS folders will be compiled and linked)
+C_SRC = $(wildcard $(patsubst %, %/*.$(C_EXT), . $(SRC_DIRS)))
 
 # extension of ASM files
 AS_EXT = S
 
 # wildcard for ASM source files (all files with AS_EXT extension found in
-# current folder and SRCS_DIRS folders will be compiled and linked)
-AS_SRCS = $(wildcard $(patsubst %, %/*.$(AS_EXT), . $(SRCS_DIRS)))
+# current folder and SRC_DIRS folders will be compiled and linked)
+AS_SRC = $(wildcard $(patsubst %, %/*.$(AS_EXT), . $(SRC_DIRS)))
 
 # optimization flags ("-O0" - no optimization, "-O1" - optimize, "-O2" -
 # optimize even more, "-Os" - optimize for size or "-O3" - optimize yet more) 
@@ -114,10 +131,10 @@ CXX_STD = gnu++98
 C_STD = gnu89
 
 #=============================================================================#
-# set the VPATH according to SRCS_DIRS
+# set the VPATH according to SRC_DIRS
 #=============================================================================#
 
-VPATH = $(SRCS_DIRS)
+VPATH = $(SRC_DIRS)
 
 #=============================================================================#
 # when using output folder, append trailing slash to its name
@@ -167,9 +184,9 @@ endif
 # do some formatting
 #=============================================================================#
 
-CXX_OBJS = $(addprefix $(OUT_DIR_F), $(notdir $(CXX_SRCS:.$(CXX_EXT)=.o)))
-C_OBJS = $(addprefix $(OUT_DIR_F), $(notdir $(C_SRCS:.$(C_EXT)=.o)))
-AS_OBJS = $(addprefix $(OUT_DIR_F), $(notdir $(AS_SRCS:.$(AS_EXT)=.o)))
+CXX_OBJS = $(addprefix $(OUT_DIR_F), $(notdir $(CXX_SRC:.$(CXX_EXT)=.o)))
+C_OBJS = $(addprefix $(OUT_DIR_F), $(notdir $(C_SRC:.$(C_EXT)=.o)))
+AS_OBJS = $(addprefix $(OUT_DIR_F), $(notdir $(AS_SRC:.$(AS_EXT)=.o)))
 OBJS = $(AS_OBJS) $(C_OBJS) $(CXX_OBJS) $(USER_OBJS)
 DEPS = $(OBJS:.o=.d)
 INC_DIRS_F = -I. $(patsubst %, -I%, $(INC_DIRS))
