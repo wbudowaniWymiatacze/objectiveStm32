@@ -42,10 +42,10 @@ LD_SCRIPT = ./stm32_flash.ld
 OUT_DIR = out
 
 # C++ definitions (e.g. "-Dsymbol_with_value=0xDEAD -Dsymbol_without_value")
-CXX_DEFS = -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER
+CXX_DEFS = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F103VBXX
 
 # C definitions
-C_DEFS = -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER
+C_DEFS = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F103VBXX
 
 # ASM definitions
 AS_DEFS =
@@ -61,6 +61,7 @@ INC_DIRS += Boards/numberOfPorts
 INC_DIRS += Gpio/inc
 INC_DIRS += Rcc/inc
 INC_DIRS += Usart/inc
+INC_DIRS += Interface
 INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
 INC_DIRS += $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/inc/
 INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/

@@ -10,12 +10,12 @@
 
 enum EPeripheralState
 {
-	EPeripheralStateUnusable,
-	EPeripheralStateUsable,
-	EPeripheralStateRunning
+    EPeripheralStateUnusable,
+    EPeripheralStateUsable,
+    EPeripheralStateRunning
 };
 
-typedef EPeripheralState	EPeripheralState;
+typedef EPeripheralState    EPeripheralState;
 
 
 #endif /* EPERIPHERALSTATE_HPP_ */
