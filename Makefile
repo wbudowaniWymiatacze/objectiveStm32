@@ -79,6 +79,7 @@ LIBS =
 SRC_DIRS = Boards
 SRC_DIRS += Boards/boards
 SRC_DIRS += Boards/boards/f1xx
+SRC_DIRS += Boards/boards/f1xx/mediumDensity
 SRC_DIRS += Boards/boards/f1xx/f103
 SRC_DIRS += Boards/hdr
 SRC_DIRS += Boards/numberOfPorts
