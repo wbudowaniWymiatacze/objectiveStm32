@@ -10,12 +10,24 @@
 #include <CRccManager.hpp>
 #include <CUsart.hpp>
 #include <TypePeriph.hpp>
+#include <SD/inc/sd.h>
 
 uint16_t g_usartReadBuffer[ 100 ];
 uint16_t g_usartWriteBuffer[ 100 ];
 
 int main()
 {
+    
+    
+    // SD_SPI start
+    
+    
+    
+    
+    
+    
+    
+    // SD SPI end
 	CGpioManager gpioMngr;
 	CRccManager rccMngr;
 	SUsartConfig usartConfStruct;
