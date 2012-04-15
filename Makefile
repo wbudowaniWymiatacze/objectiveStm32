@@ -41,12 +41,6 @@ LD_SCRIPT = ./stm32_flash.ld
 # output folder (absolute or relative path, leave empty for in-tree compilation)
 OUT_DIR = out
 
-# C++ definitions (e.g. "-Dsymbol_with_value=0xDEAD -Dsymbol_without_value")
-CXX_DEFS = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F103VBXX
-
-# C definitions
-C_DEFS = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F103VBXX
-
 # ASM definitions
 AS_DEFS =
 
@@ -54,16 +48,12 @@ AS_DEFS =
 # headers, current folder is always included)
 INC_DIRS = Boards
 INC_DIRS += Boards/boards
-INC_DIRS += Boards/boards/f1xx
-INC_DIRS += Boards/boards/f1xx/f103
 INC_DIRS += Boards/hdr
 INC_DIRS += Boards/numberOfPorts
 INC_DIRS += Gpio/inc
 INC_DIRS += Rcc/inc
 INC_DIRS += Usart/inc
 INC_DIRS += Interface
-INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
-INC_DIRS += $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/inc/
 INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
 
 # library directories (absolute or relative paths to additional folders with
@@ -78,16 +68,11 @@ LIBS =
 # folders with source files, current folder is always included)
 SRC_DIRS = Boards
 SRC_DIRS += Boards/boards
-SRC_DIRS += Boards/boards/f1xx
-SRC_DIRS += Boards/boards/f1xx/mediumDensity
-SRC_DIRS += Boards/boards/f1xx/f103
 SRC_DIRS += Boards/hdr
 SRC_DIRS += Boards/numberOfPorts
 SRC_DIRS += Gpio/src
 SRC_DIRS += Rcc/src
 SRC_DIRS += Usart/src
-SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
-SRC_DIRS += $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/src/
 SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
 
 # extension of C++ files
@@ -209,10 +194,13 @@ LD_FLAGS_F = $(CORE_FLAGS) $(LD_FLAGS) $(LIB_DIRS_F)
 #contents of output directory
 GENERATED = $(wildcard $(patsubst %, $(OUT_DIR_F)*.%, bin d dmp elf hex lss lst map o))
 
+# add board specific options
+-include Make/boardConfig.mk
+
 #=============================================================================#
 # make all
+# first, set TARGET variable used by boardConfig
 #=============================================================================#
-
 all : make_output_dir $(ELF) $(LSS) $(DMP) $(HEX) $(BIN) print_size
 
 # make object files dependent on Makefile
