@@ -20,8 +20,7 @@ int main()
 	CRccManager rccMngr;
 	SUsartConfig usartConfStruct;
 	USART_InitTypeDef usartConf = usartConfStruct.usartConfig;
-	CUsart< SUsart1 > usart1( gpioMngr,
-							  rccMngr );
+	CUsart< SUsart1 > usart1( gpioMngr, rccMngr );
 
 	usartConf.USART_BaudRate = 115200;
 	usartConf.USART_WordLength = USART_WordLength_8b;
@@ -31,8 +30,9 @@ int main()
 	usartConf.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 
 	GPIO_InitTypeDef gpiosConfig[ 2 ];
-
-	// mode dla USART Rx i Tx są określone - wywalić konieczność ustawiania GPIO_Mode,
+        
+        //@todo TODO
+        // mode dla USART Rx i Tx są określone - wywalić konieczność ustawiania GPIO_Mode,
 	// speed jako argument CUsart::init z wartością domyślną
 	gpiosConfig[ 0 ].GPIO_Pin = 0;
 	gpiosConfig[ 0 ].GPIO_Speed = GPIO_Speed_50MHz;
@@ -42,8 +42,7 @@ int main()
 	gpiosConfig[ 1 ].GPIO_Speed = GPIO_Speed_50MHz;
 	gpiosConfig[ 1 ].GPIO_Mode = GPIO_Mode_AF_PP;
 
-	usart1.init( gpiosConfig,
-				 &usartConfStruct );
+	usart1.init( gpiosConfig, &usartConfStruct );
 
 	return 0;
 }

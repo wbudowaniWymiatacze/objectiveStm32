@@ -19,8 +19,6 @@
 #include <TypePeriph.hpp>
 #include <EPeripheralState.hpp>
 
-#define USART_NUMBER_GPIOS            2
-
 extern uint16_t g_usartReadBuffer[ 100 ];
 extern uint16_t g_usartWriteBuffer[ 100 ];
 

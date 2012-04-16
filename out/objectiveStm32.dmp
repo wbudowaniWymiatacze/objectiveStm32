@@ -1,0 +1,821 @@
+
+out/objectiveStm32.elf:     file format elf32-littlearm
+out/objectiveStm32.elf
+architecture: arm, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x08000330
+
+Program Header:
+0x70000001 off    0x00025e10 vaddr 0x08015e10 paddr 0x08015e10 align 2**2
+         filesz 0x000001d8 memsz 0x000001d8 flags r--
+    LOAD off    0x00008000 vaddr 0x20000000 paddr 0x00000000 align 2**15
+         filesz 0x000005a0 memsz 0x00000ef0 flags rw-
+    LOAD off    0x00010000 vaddr 0x08000000 paddr 0x08000000 align 2**15
+         filesz 0x00015fe8 memsz 0x00015fe8 flags r-x
+private flags = 5000002: [Version5 EABI] [has entry point]
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   000001e4  08000000  08000000  00010000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .ARM.extab.text._Znwj 00000020  080001e4  080001e4  000101e4  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .ARM.extab.text.__gxx_personality_v0 00000024  08000204  08000204  00010204  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .ARM.extab.text.__cxa_pure_virtual 0000000c  08000228  08000228  00010228  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .ARM.extab.text.__cxa_begin_catch 00000020  08000234  08000234  00010234  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 .ARM.extab.text._ZN10__cxxabiv111__terminateEPFvvE 0000002c  08000254  08000254  00010254  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  6 .ARM.extab.text._ZN10__cxxabiv112__unexpectedEPFvvE 0000000c  08000280  08000280  00010280  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  7 .ARM.extab.text._ZSt10unexpectedv 0000000c  0800028c  0800028c  0001028c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  8 .ARM.extab.text.__cxa_call_unexpected 00000028  08000298  08000298  00010298  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  9 .ARM.extab.text._ZN9__gnu_cxx27__verbose_terminate_handlerEv 00000040  080002c0  080002c0  000102c0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 10 .ARM.extab    00000030  08000300  08000300  00010300  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 11 .text         00015ae0  08000330  08000330  00010330  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 12 .ARM.exidx    000001d8  08015e10  08015e10  00025e10  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 13 .data         000005a0  20000000  00000000  00008000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 14 .bss          00000038  200005a0  000005a0  000085a0  2**2
+                  ALLOC
+ 15 .bss._ZL10eh_globals 0000000c  200005d8  000005d8  000085a0  2**2
+                  ALLOC
+ 16 .bss._ZL14emergency_used 00000004  200005e4  000005e4  000085a0  2**2
+                  ALLOC
+ 17 .bss._ZL16emergency_buffer 00000800  200005e8  000005e8  000085a0  2**3
+                  ALLOC
+ 18 .bss.__new_handler 00000004  20000de8  00000de8  000085a0  2**2
+                  ALLOC
+ 19 .bss._ZZN9__gnu_cxx27__verbose_terminate_handlerEvE11terminating 00000001  20000dec  00000dec  000085a0  2**0
+                  ALLOC
+ 20 ._usrstack    00000103  20000ded  00000ded  000085a0  2**0
+                  ALLOC
+ 21 .ARM.attributes 00000025  00000000  00000000  00025fe8  2**0
+                  CONTENTS, READONLY
+ 22 .comment      0000002a  00000000  00000000  0002600d  2**0
+                  CONTENTS, READONLY
+ 23 .debug_aranges 00001780  00000000  00000000  00026038  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 24 .debug_pubnames 00003cef  00000000  00000000  000277b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 25 .debug_info   00012a98  00000000  00000000  0002b4a7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 26 .debug_abbrev 00003743  00000000  00000000  0003df3f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 27 .debug_line   00009673  00000000  00000000  00041682  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 28 .debug_frame  000067e0  00000000  00000000  0004acf8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 29 .debug_str    0000691b  00000000  00000000  000514d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 30 .debug_loc    000088b6  00000000  00000000  00057df3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 31 .debug_macinfo 008af955  00000000  00000000  000606a9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 32 .debug_ranges 00001548  00000000  00000000  00910000  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 33 .debug_pubtypes 000015d6  00000000  00000000  00911548  2**0
+                  CONTENTS, READONLY, DEBUGGING
+SYMBOL TABLE:
+08000000 l    d  .isr_vector	00000000 .isr_vector
+080001e4 l    d  .ARM.extab.text._Znwj	00000000 .ARM.extab.text._Znwj
+08000204 l    d  .ARM.extab.text.__gxx_personality_v0	00000000 .ARM.extab.text.__gxx_personality_v0
+08000228 l    d  .ARM.extab.text.__cxa_pure_virtual	00000000 .ARM.extab.text.__cxa_pure_virtual
+08000234 l    d  .ARM.extab.text.__cxa_begin_catch	00000000 .ARM.extab.text.__cxa_begin_catch
+08000254 l    d  .ARM.extab.text._ZN10__cxxabiv111__terminateEPFvvE	00000000 .ARM.extab.text._ZN10__cxxabiv111__terminateEPFvvE
+08000280 l    d  .ARM.extab.text._ZN10__cxxabiv112__unexpectedEPFvvE	00000000 .ARM.extab.text._ZN10__cxxabiv112__unexpectedEPFvvE
+0800028c l    d  .ARM.extab.text._ZSt10unexpectedv	00000000 .ARM.extab.text._ZSt10unexpectedv
+08000298 l    d  .ARM.extab.text.__cxa_call_unexpected	00000000 .ARM.extab.text.__cxa_call_unexpected
+080002c0 l    d  .ARM.extab.text._ZN9__gnu_cxx27__verbose_terminate_handlerEv	00000000 .ARM.extab.text._ZN9__gnu_cxx27__verbose_terminate_handlerEv
+08000300 l    d  .ARM.extab	00000000 .ARM.extab
+08000330 l    d  .text	00000000 .text
+08015e10 l    d  .ARM.exidx	00000000 .ARM.exidx
+20000000 l    d  .data	00000000 .data
+200005a0 l    d  .bss	00000000 .bss
+200005d8 l    d  .bss._ZL10eh_globals	00000000 .bss._ZL10eh_globals
+200005e4 l    d  .bss._ZL14emergency_used	00000000 .bss._ZL14emergency_used
+200005e8 l    d  .bss._ZL16emergency_buffer	00000000 .bss._ZL16emergency_buffer
+20000de8 l    d  .bss.__new_handler	00000000 .bss.__new_handler
+20000dec l    d  .bss._ZZN9__gnu_cxx27__verbose_terminate_handlerEvE11terminating	00000000 .bss._ZZN9__gnu_cxx27__verbose_terminate_handlerEvE11terminating
+20000ded l    d  ._usrstack	00000000 ._usrstack
+00000000 l    d  .ARM.attributes	00000000 .ARM.attributes
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_pubnames	00000000 .debug_pubnames
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_macinfo	00000000 .debug_macinfo
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_pubtypes	00000000 .debug_pubtypes
+f1e0f85f l       *ABS*	00000000 BootRAM
+08011a18 l       .text	00000000 LoopCopyDataInit
+08011a10 l       .text	00000000 CopyDataInit
+08011a2c l       .text	00000000 LoopFillZerobss
+08011a26 l       .text	00000000 FillZerobss
+08011a50 l       .text	00000000 Infinite_Loop
+00000000 l    df *ABS*	00000000 new_op.cc
+00000000 l    df *ABS*	00000000 eh_personality.cc
+08013a34 l     F .text	0000003c _ZL12read_sleb128PKhPl
+08013a70 l     F .text	000000aa _ZL28read_encoded_value_with_basehjPKhPj
+08013b1c l     F .text	0000004c _ZL21base_of_encoded_valuehP15_Unwind_Context
+08013b68 l     F .text	0000008a _ZL17parse_lsda_headerP15_Unwind_ContextPKhP16lsda_header_info
+00000000 l    df *ABS*	00000000 pure.cc
+00000000 l    df *ABS*	00000000 eh_catch.cc
+00000000 l    df *ABS*	00000000 eh_terminate.cc
+00000000 l    df *ABS*	00000000 eh_call.cc
+00000000 l    df *ABS*	00000000 vterminate.cc
+20000dec l     O .bss._ZZN9__gnu_cxx27__verbose_terminate_handlerEvE11terminating	00000001 _ZZN9__gnu_cxx27__verbose_terminate_handlerEvE11terminating
+00000000 l    df *ABS*	00000000 unwind-arm.c
+08009468 l     F .text	0000000a _Unwind_decode_target2
+08009474 l     F .text	00000014 selfrel_offset31
+08009488 l     F .text	0000005e search_EIT_table
+080094e8 l     F .text	000000ce get_eit_entry
+080095b8 l     F .text	00000068 restore_non_core_regs
+08009620 l     F .text	000000f4 unwind_phase2_forced
+08009714 l     F .text	00000030 unwind_phase2
+08009778 l     F .text	00000018 _Unwind_GetGR
+080097c4 l     F .text	0000001c _Unwind_SetGR
+080097e0 l     F .text	0000034a __gnu_unwind_pr_common
+00000000 l    df *ABS*	00000000 pr-support.c
+0800a24c l     F .text	00000034 next_unwind_byte
+0800a280 l     F .text	0000001a _Unwind_GetGR.clone.0
+0800a29c l     F .text	00000002 unwind_UCB_from_context
+00000000 l    df *ABS*	00000000 eh_arm.cc
+00000000 l    df *ABS*	00000000 cp-demangle.c
+0800033c l     F .text	000000a2 d_make_comp
+080003e0 l     F .text	0000004c d_make_name
+0800042c l     F .text	00000094 d_cv_qualifiers
+080004c0 l     F .text	000001bc d_substitution
+0800067c l     F .text	000000fa d_find_pack
+08000778 l     F .text	00000086 d_growable_string_callback_adapter
+08000800 l     F .text	00000052 d_number.clone.0
+08000854 l     F .text	0000005a d_call_offset
+080008b0 l     F .text	00000036 d_compact_number
+080008e8 l     F .text	00000046 d_template_param
+08000930 l     F .text	0000001e d_discriminator
+08000950 l     F .text	0000009c d_source_name
+080009ec l     F .text	0000071c d_type
+08001ed0 l     F .text	00000294 d_expression
+080015c4 l     F .text	000002dc d_name
+08001514 l     F .text	000000b0 d_template_args
+080011a4 l     F .text	0000003c d_bare_function_type
+08001108 l     F .text	0000009a d_parmlist
+080011e0 l     F .text	00000106 d_operator_name
+080012e8 l     F .text	0000022a d_unqualified_name
+08001e08 l     F .text	000000c6 d_expr_primary
+080018a0 l     F .text	00000544 d_encoding
+08001de4 l     F .text	00000022 d_mangled_name
+08002164 l     F .text	0000005c d_exprlist
+080021c0 l     F .text	00000152 d_append_string
+08002314 l     F .text	00005202 d_print_comp
+080090e8 l     F .text	000000a6 d_print_subexpr
+08007518 l     F .text	00000ede d_print_mod
+08008c6c l     F .text	000001ea d_print_function_type.clone.6
+08008fbc l     F .text	0000012c d_print_expr_op
+08008a90 l     F .text	000001da d_print_array_type.clone.5
+08008e58 l     F .text	00000162 d_print_cast.clone.7
+080083f8 l     F .text	00000696 d_print_mod_list
+08009190 l     F .text	000001d0 d_demangle_callback.clone.8
+08014b48 l     O .text	000000c4 standard_subs
+08014c0c l     O .text	00000280 cplus_demangle_builtin_types
+08014e8c l     O .text	00000350 cplus_demangle_operators
+00000000 l    df *ABS*	00000000 abort.c
+00000000 l    df *ABS*	00000000 fputc.c
+00000000 l    df *ABS*	00000000 fputs.c
+00000000 l    df *ABS*	00000000 fvwrite.c
+00000000 l    df *ABS*	00000000 fwrite.c
+00000000 l    df *ABS*	00000000 malloc.c
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 memchr.c
+00000000 l    df *ABS*	00000000 memcmp.c
+00000000 l    df *ABS*	00000000 memcpy.c
+00000000 l    df *ABS*	00000000 memmove.c
+00000000 l    df *ABS*	00000000 memset.c
+00000000 l    df *ABS*	00000000 mlock.c
+00000000 l    df *ABS*	00000000 putc.c
+00000000 l    df *ABS*	00000000 realloc.c
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 signal.c
+00000000 l    df *ABS*	00000000 sprintf.c
+00000000 l    df *ABS*	00000000 strcmp.c
+0800bc6c l     F .text	0000015c strcmp_unaligned
+00000000 l    df *ABS*	00000000 strcpy.c
+00000000 l    df *ABS*	00000000 strlen.c
+00000000 l    df *ABS*	00000000 strncmp.c
+00000000 l    df *ABS*	00000000 vfprintf.c
+080151e0 l     O .text	00000010 blanks.6598
+080151f0 l     O .text	00000010 zeroes.6599
+00000000 l    df *ABS*	00000000 syswrite.c
+00000000 l    df *ABS*	00000000 wbuf.c
+00000000 l    df *ABS*	00000000 wsetup.c
+00000000 l    df *ABS*	00000000 dtoa.c
+0800d7f0 l     F .text	0000012a quorem
+00000000 l    df *ABS*	00000000 fflush.c
+00000000 l    df *ABS*	00000000 findfp.c
+0800e9c4 l     F .text	00000004 __fp_lock
+0800e9c8 l     F .text	00000004 __fp_unlock
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 fwalk.c
+00000000 l    df *ABS*	00000000 locale.c
+20000504 l     O .data	00000020 lc_ctype_charset
+20000528 l     O .data	00000020 lc_message_charset
+20000548 l     O .data	00000038 lconv
+00000000 l    df *ABS*	00000000 makebuf.c
+00000000 l    df *ABS*	00000000 mprec.c
+08015260 l     O .text	0000000c p05.5124
+00000000 l    df *ABS*	00000000 s_fpclassify.c
+00000000 l    df *ABS*	00000000 stdio.c
+00000000 l    df *ABS*	00000000 vfprintf.c
+08015388 l     O .text	00000010 blanks.6542
+08015398 l     O .text	00000010 zeroes.6543
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 fclose.c
+080107a8 l       .text	00000000 .udivsi3_skip_div0_test
+00000000 l       *ABS*	00000000 shift
+00000000 l    df *ABS*	00000000 bpabi.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 stm32f10x_it.c
+00000000 l    df *ABS*	00000000 syscalls.c
+20000580 l     O .data	00000004 current_heap_end.4326
+00000000 l    df *ABS*	00000000 system_stm32f10x.c
+08011ca0 l     F .text	0000000a SetSysClock
+08011cac l     F .text	00000144 SetSysClockTo72
+00000000 l    df *ABS*	00000000 misc.c
+00000000 l    df *ABS*	00000000 stm32f10x_gpio.c
+00000000 l    df *ABS*	00000000 stm32f10x_rcc.c
+20000584 l     O .data	00000010 APBAHBPrescTable
+20000594 l     O .data	00000004 ADCPrescTable
+00000000 l    df *ABS*	00000000 stm32f10x_usart.c
+00000000 l    df *ABS*	00000000 main.cpp
+00000000 l    df *ABS*	00000000 CGpioManager.cpp
+08015460 l     O .text	0000001c _ZZN12CGpioManagerC2EvE3C.0
+00000000 l    df *ABS*	00000000 CRccManager.cpp
+00000000 l    df *ABS*	00000000 CUsartStateRunning.cpp
+00000000 l    df *ABS*	00000000 CUsartStateUnusable.cpp
+00000000 l    df *ABS*	00000000 CUsartStateUsable.cpp
+00000000 l    df *ABS*	00000000 del_op.cc
+00000000 l    df *ABS*	00000000 eh_throw.cc
+08013fe0 l     F .text	0000004a _ZL23__gxx_exception_cleanup19_Unwind_Reason_CodeP21_Unwind_Control_Block
+00000000 l    df *ABS*	00000000 eh_globals.cc
+200005d8 l     O .bss._ZL10eh_globals	0000000c _ZL10eh_globals
+00000000 l    df *ABS*	00000000 eh_alloc.cc
+200005e4 l     O .bss._ZL14emergency_used	00000004 _ZL14emergency_used
+200005e8 l     O .bss._ZL16emergency_buffer	00000800 _ZL16emergency_buffer
+00000000 l    df *ABS*	00000000 new_handler.cc
+00000000 l    df *ABS*	00000000 eh_exception.cc
+00000000 l    df *ABS*	00000000 eh_type.cc
+00000000 l    df *ABS*	00000000 si_class_type_info.cc
+00000000 l    df *ABS*	00000000 class_type_info.cc
+00000000 l    df *ABS*	00000000 tinfo.cc
+00000000 l    df *ABS*	00000000 impure.c
+20000004 l     O .data	000000f0 impure_data
+00000000 l    df *ABS*	00000000 eh_unex_handler.cc
+00000000 l    df *ABS*	00000000 eh_term_handler.cc
+00000000 l    df *ABS*	00000000 vectors.c
+00000000 l    df *ABS*	00000000 core_cm3.c
+00000000 l    df *ABS*	00000000 stm32f10x_adc.c
+00000000 l    df *ABS*	00000000 stm32f10x_bkp.c
+00000000 l    df *ABS*	00000000 stm32f10x_can.c
+00000000 l    df *ABS*	00000000 stm32f10x_cec.c
+00000000 l    df *ABS*	00000000 stm32f10x_crc.c
+00000000 l    df *ABS*	00000000 stm32f10x_dac.c
+00000000 l    df *ABS*	00000000 stm32f10x_dbgmcu.c
+00000000 l    df *ABS*	00000000 stm32f10x_dma.c
+00000000 l    df *ABS*	00000000 stm32f10x_exti.c
+00000000 l    df *ABS*	00000000 stm32f10x_flash.c
+00000000 l    df *ABS*	00000000 stm32f10x_fsmc.c
+00000000 l    df *ABS*	00000000 stm32f10x_i2c.c
+00000000 l    df *ABS*	00000000 stm32f10x_iwdg.c
+00000000 l    df *ABS*	00000000 stm32f10x_pwr.c
+00000000 l    df *ABS*	00000000 stm32f10x_rtc.c
+00000000 l    df *ABS*	00000000 stm32f10x_sdio.c
+00000000 l    df *ABS*	00000000 stm32f10x_spi.c
+00000000 l    df *ABS*	00000000 stm32f10x_tim.c
+00000000 l    df *ABS*	00000000 stm32f10x_wwdg.c
+00000000 l    df *ABS*	00000000 CUsartIrqHandler.cpp
+00000000 l    df *ABS*	00000000 reent.c
+08014514 g     F .text	0000003a __cxa_free_exception
+0800a204 g     F .text	00000022 ___Unwind_ForcedUnwind
+08009f24 g     F .text	00000070 __gnu_Unwind_RaiseException
+08011a50  w    F .text	00000002 EXTI2_IRQHandler
+20000000 g       *ABS*	00000000 __ram_start
+08014aec g     F .text	00000004 _ZNKSt9type_info15__is_function_pEv
+08013670  w    F .text	0000003c _ZN19CUsartStateUnusableD2Ev
+0800f8a0 g     F .text	00000034 _mprec_log10
+08014484 g     F .text	00000012 _ZSt10unexpectedv
+08013830 g     F .text	0000002c _ZN17CUsartStateUsable9apbEnableEmm
+0800f91c g     F .text	0000005a __any_on
+08011b2c g     F .text	0000001a _isatty_r
+08015360 g     O .text	00000028 __mprec_tinytens
+0801128c g     F .text	00000012 __aeabi_dcmple
+080137f0  w    F .text	00000020 _ZN17CUsartStateUsableD0Ev
+0800bdc8 g     F .text	000000ba strcpy
+08011374 g     F .text	00000030 __gnu_uldivmod_helper
+08013744  w    F .text	00000040 _ZN18CUsartStateRunningC1EP12CGpioManagerP11CRccManager
+080128e4  w    F .text	00000020 _ZN11CUsartStateC1Ev
+080111c8 g     F .text	0000007a __cmpdf2
+08011b70 g     F .text	0000001e _lseek_r
+08011a8c g     F .text	0000000a DebugMon_Handler
+20000df0 g       ._usrstack	00000000 _susrstack
+08009360 g     F .text	000000dc __cxa_demangle
+080111c8 g     F .text	0000007a __eqdf2
+080113a4 g     F .text	00000360 __divdi3
+00000000         *UND*	00000000 _ZTV11IIrqHandler
+080140ac g     F .text	00000076 __cxa_rethrow
+08010d38 g     F .text	0000005a __floatdidf
+08011b48 g     F .text	00000028 _kill_r
+080146dc g     F .text	00000014 _ZNSt9bad_allocD2Ev
+20010000 g       *ABS*	00000000 __ram_end
+080138e4 g     F .text	0000005e _ZN17CUsartStateUsable9nextStateEP11CUsartStateb
+08000330 g     F .text	00000000 __cxa_end_cleanup
+08011a50  w    F .text	00000002 TIM1_CC_IRQHandler
+0800ba34 g     F .text	0000003c _signal_r
+0800fa6c g     F .text	00000026 __sseek
+0800ea14 g     F .text	00000106 __sinit
+0800d5ec g     F .text	000000ea __swbuf_r
+08011a60 g     F .text	00000006 HardFault_Handler
+080149b8 g     F .text	00000014 _ZN10__cxxabiv120__si_class_type_infoD2Ev
+0800eed0 g     F .text	0000005a _setlocale_r
+08015744 g     O .text	00000025 _ZTSN10__cxxabiv120__si_class_type_infoE
+0800e9d8 g     F .text	0000002e __sfmoreglue
+0800b498 g     F .text	00000002 __malloc_unlock
+08013464 g     F .text	00000050 _ZN18CUsartStateRunning4readEP13USART_TypeDefPth
+08011a50  w    F .text	00000002 TIM6_IRQHandler
+08011aa4 g     F .text	0000000a SysTick_Handler
+08012e34  w    F .text	00000060 _ZN6CUsartI7SUsart1E6deinitEv
+08011df0 g     F .text	000000d8 NVIC_Init
+08011a50  w    F .text	00000002 PVD_IRQHandler
+08012eb0  w    F .text	00000028 _ZN6CUsartI7SUsart1E8getStateEv
+0800b32c g     F .text	000000b4 memmove
+08015e10 g       .text	00000000 _sidata
+080133c8  w    F .text	0000003c _ZN18CUsartStateRunningD2Ev
+08012a88  w    F .text	00000020 _ZN11IPeripheralC1Ev
+0800a0c0 g     F .text	00000000 __gnu_Unwind_Save_VFP
+08014854 g     F .text	0000000c _ZNSt9exceptionD2Ev
+0800ea08 g     F .text	0000000c _cleanup
+0800a1e0 g     F .text	00000022 _Unwind_Resume_or_Rethrow
+08011a98 g     F .text	0000000a PendSV_Handler
+08011a54 g     F .text	0000000a NMI_Handler
+0800f05c g     F .text	00000068 _Balloc
+08015fe8 g       *ABS*	00000000 __exidx_end
+08011a50  w    F .text	00000002 CAN2_RX1_IRQHandler
+08011a50  w    F .text	00000002 EXTI3_IRQHandler
+08009b34 g     F .text	00000004 __aeabi_unwind_cpp_pr0
+080111b8 g     F .text	0000008a __gtdf2
+080156b0 g     O .text	00000014 _ZTVSt13bad_exception
+00000000         *UND*	00000000 _ZN16CUsartIrqHandler7m_usartE
+08013094 g     F .text	0000001c _ZN12CGpioManager5remapEm
+0800a5dc g     F .text	0000000a _Unwind_GetRegionStart
+0800a1e0 g     F .text	00000022 ___Unwind_Resume_or_Rethrow
+08012784 g     F .text	00000040 USART_GetFlagStatus
+08011af0 g     F .text	00000024 _fstat_r
+200005d4 g     O .bss	00000004 errno
+0800fa2c g     F .text	00000004 __seofread
+08015e10 g       .text	00000000 _etext
+200005a0 g       .bss	00000000 _sbss
+0801300c g     F .text	0000003a _ZN12CGpioManager14setPortPinUsedEhh
+08013118 g     F .text	00000052 _ZN11CRccManagerC2Ev
+0800a228 g     F .text	00000022 _Unwind_Backtrace
+08011254 g     F .text	00000010 __aeabi_cdcmple
+08012958  w    F .text	00000040 _ZN19CUsartStateUnusableC1EP12CGpioManagerP11CRccManager
+08014358 g     F .text	00000070 __cxa_begin_cleanup
+08012904  w    F .text	00000034 _ZN11CUsartStateD1Ev
+0800a0a0 g     F .text	00000018 __restore_core_regs
+0800a0e0 g     F .text	00000000 __gnu_Unwind_Save_VFP_D_16_to_31
+080145a0 g     F .text	00000130 __cxa_call_unexpected
+08012bb4  w    F .text	0000010a _ZN6CUsartI7SUsart1E4initEP16GPIO_InitTypeDefP13SPeriphConfig
+08012d94  w    F .text	00000026 _ZN6CUsartI7SUsart1E21deconfigureInterruptsEt
+08009f20 g     F .text	00000004 _Unwind_GetCFA
+0800b1dc g     F .text	0000014e memcpy
+08013248 g     F .text	00000096 _ZN11CRccManager11apb2DisableEm
+08011244 g     F .text	00000020 __aeabi_cdrcmple
+08009790 g     F .text	00000032 _Unwind_VRS_Set
+0800e9cc g     F .text	0000000c _cleanup_r
+08014a20 g     F .text	0000000c _ZNK10__cxxabiv117__class_type_info20__do_find_public_srcEiPKvPKS0_S2_
+08012088 g     F .text	00000104 GPIO_PinRemapConfig
+0800bf90 g     F .text	00001640 _svfprintf_r
+08010cc8 g     F .text	00000022 __floatsidf
+08013670  w    F .text	0000003c _ZN19CUsartStateUnusableD1Ev
+080111c0 g     F .text	00000082 __ltdf2
+08011a50  w    F .text	00000002 EXTI0_IRQHandler
+08011a50  w    F .text	00000002 I2C2_EV_IRQHandler
+08014aac g     F .text	00000014 _ZN10__cxxabiv117__class_type_infoD1Ev
+08011318 g     F .text	00000000 __aeabi_uldivmod
+08011a50  w    F .text	00000002 CAN1_RX0_IRQHandler
+0800f978 g     F .text	00000090 __fpclassifyd
+0800f838 g     F .text	00000068 __ratio
+08012760 g     F .text	00000024 USART_ReceiveData
+0800ab50 g     F .text	00000010 malloc
+080107a8 g     F .text	0000025c __udivsi3
+0801337c  w    F .text	0000001c _ZN18CUsartStateRunning8gpioInitEhhR16GPIO_InitTypeDef
+0800ba70 g     F .text	00000056 _raise_r
+08015270 g     O .text	000000c8 __mprec_tens
+08011a78 g     F .text	00000006 UsageFault_Handler
+0800ef2c g     F .text	0000000a __locale_charset
+08012fd0 g     F .text	0000003a _ZN12CGpioManager16setPortPinUnusedEhh
+08012384 g     F .text	00000044 RCC_APB2PeriphClockCmd
+08013404  w    F .text	00000020 _ZN18CUsartStateRunningD0Ev
+08011a50  w    F .text	00000002 CAN2_SCE_IRQHandler
+08011a50  w    F .text	00000002 ADC1_2_IRQHandler
+200005a0 g     O .bss	00000004 __malloc_top_pad
+08011b14 g     F .text	00000018 _getpid_r
+08011ec8 g     F .text	000001c0 GPIO_Init
+0800a010 g     F .text	0000008e __gnu_Unwind_Backtrace
+20000524 g     O .data	00000004 __mb_cur_max
+08010ca8 g     F .text	0000001e __aeabi_ui2d
+080154b8 g     O .text	00000038 _ZTV19CUsartStateUnusable
+0800ef50 g     F .text	00000008 _localeconv_r
+080143c8 g     F .text	0000007a __gnu_end_cleanup
+0800f2bc g     F .text	00000012 __i2b
+0800a758 g     F .text	00000336 __sfvwrite_r
+08014a84 g     F .text	00000028 _ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
+0800bac8 g     F .text	00000052 __sigtramp_r
+20000000 g       .data	00000000 _sdata
+08011a50  w    F .text	00000002 SPI1_IRQHandler
+08012650 g     F .text	0000003e USART_Cmd
+08010a24 g     F .text	00000000 __aeabi_drsub
+08011bb0 g     F .text	00000054 _sbrk_r
+08011a50  w    F .text	00000002 TAMPER_IRQHandler
+0800a0d0 g     F .text	00000000 __gnu_Unwind_Save_VFP_D
+08015d90 g     O .text	00000020 _ZTVSt9type_info
+080130d8 g     F .text	00000026 _ZN12CGpioManager11releaseGpioEhh
+0801486c g     F .text	0000000a _ZNKSt9exception4whatEv
+08011b90 g     F .text	0000001e _read_r
+08013810 g     F .text	0000001e _ZN17CUsartStateUsable5remapEm
+08011278 g     F .text	00000012 __aeabi_dcmplt
+080128e4  w    F .text	00000020 _ZN11CUsartStateC2Ev
+08009b38 g     F .text	000003e6 _Unwind_VRS_Pop
+080106e0 g     F .text	000000b4 _fclose_r
+08011a50  w    F .text	00000002 CAN2_RX0_IRQHandler
+08009b2c  w    F .text	00000004 __aeabi_unwind_cpp_pr2
+08015570 g     O .text	0000000c _ZTISt9bad_alloc
+0800e99c g     F .text	00000026 fflush
+200005cc g     O .bss	00000004 __malloc_max_sbrked_mem
+0800a228 g     F .text	00000022 ___Unwind_Backtrace
+08010cec g     F .text	0000003a __extendsfdf2
+08010fe8 g     F .text	000001d0 __aeabi_ddiv
+08012d38  w    F .text	00000034 _ZN6CUsartI7SUsart1E5writeEPth
+080123c8 g     F .text	00000044 RCC_APB1PeriphClockCmd
+08010a30 g     F .text	00000276 __adddf3
+08015708 g     O .text	0000002c _ZTVN10__cxxabiv120__si_class_type_infoE
+08012938  w    F .text	00000020 _ZN11CUsartStateD0Ev
+0800f6c4 g     F .text	000000ac __b2d
+08015e10 g       *ABS*	00000000 __exidx_start
+08012e94  w    F .text	0000001a _ZN6CUsartI7SUsart1E8getIndexEv
+080132e0  w    F .text	00000058 _ZN11CRccManager16increaseUseCountEPmm
+08010d94 g     F .text	00000254 __aeabi_dmul
+08014a2c g     F .text	0000001a _ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
+080139cc g     F .text	00000008 _ZdlPv
+080151dc g     O .text	00000004 _global_impure_ptr
+00000000         *UND*	00000000 __main_stack_end
+08012dbc  w    F .text	00000030 _ZN6CUsartI7SUsart1E20checkInterruptSourceEt
+0800b5e8 g     F .text	0000041c _realloc_r
+08011a50  w    F .text	00000002 DMA2_Channel2_IRQHandler
+08011704 g     F .text	00000306 __udivdi3
+0800a198 g     F .text	00000022 ___Unwind_RaiseException
+08011a50  w    F .text	00000002 DMA1_Channel4_IRQHandler
+08015338 g     O .text	00000028 __mprec_bigtens
+080136ac  w    F .text	00000020 _ZN19CUsartStateUnusableD0Ev
+0800f180 g     F .text	00000098 __s2b
+0800a60c g     F .text	0000000e abort
+0800a1bc g     F .text	00000022 ___Unwind_Resume
+08010ca8 g     F .text	0000001e __floatunsidf
+0800f548 g     F .text	0000003c __mcmp
+080141f0 g     F .text	00000096 __cxa_end_catch
+0800ebb4 g     F .text	00000016 __fp_lock_all
+08012b38  w    F .text	0000005c _ZN6CUsartI7SUsart1ED2Ev
+08012890  w    F .text	00000034 _ZN11IPeripheralD2Ev
+08014860 g     F .text	0000000c _ZNSt13bad_exceptionD2Ev
+08012cc0  w    F .text	00000042 _ZN6CUsartI7SUsart1E13interruptsOffEv
+0801446c g     F .text	00000010 _ZSt9terminatev
+08012dec  w    F .text	00000046 _ZN6CUsartI7SUsart1E12interruptsOnEhh
+0800a0e8 g     F .text	00000000 __gnu_Unwind_Restore_WMMXD
+08011a50  w    F .text	00000002 USART3_IRQHandler
+08011a50  w    F .text	00000002 RTC_IRQHandler
+200005d8 g       .bss	00000000 _ebss
+080127c4 g     F .text	000000ca USART_GetITStatus
+08011a50  w    F .text	00000002 DMA1_Channel7_IRQHandler
+08011a0c  w    F .text	00000030 Reset_Handler
+080157ac g     O .text	00000022 _ZTSN10__cxxabiv117__class_type_infoE
+0800f218 g     F .text	0000003e __hi0bits
+0801321c g     F .text	0000002c _ZN11CRccManager10apb2EnableEm
+08013bf4 g     F .text	000003ec __gxx_personality_v0
+08011a50  w    F .text	00000002 CAN1_RX1_IRQHandler
+08015620 g     O .text	00000008 _ZTISt9exception
+080112c8 g     F .text	0000004e __fixdfsi
+08013614  w    F .text	00000018 _ZN19CUsartStateUnusable4readEP13USART_TypeDefPth
+08011a50  w    F .text	00000002 UART5_IRQHandler
+080135fc  w    F .text	00000016 _ZN19CUsartStateUnusable4initEP13USART_TypeDefR17USART_InitTypeDef
+080139b4 g     F .text	00000018 _ZN17CUsartStateUsable8getStateEv
+08014adc g     F .text	0000000c _ZNSt9type_infoD1Ev
+20000de8 g     O .bss.__new_handler	00000004 __new_handler
+0800a61c g     F .text	00000054 _fputc_r
+0800d5d0 g     F .text	0000001a write
+080137b4  w    F .text	0000003c _ZN17CUsartStateUsableD2Ev
+0800b49c g     F .text	00000090 _putc_r
+08014af4 g     F .text	00000014 _ZNSt9type_infoD0Ev
+08013644  w    F .text	00000014 _ZN19CUsartStateUnusable16interruptsConfigER16NVIC_InitTypeDef
+08011a50  w    F .text	00000002 TIM4_IRQHandler
+08010a30 g     F .text	00000276 __aeabi_dadd
+080111c0 g     F .text	00000082 __ledf2
+0801385c g     F .text	00000032 _ZN17CUsartStateUsable8gpioInitEhhR16GPIO_InitTypeDef
+08012aa8  w    F .text	00000090 _ZN6CUsartI7SUsart1EC2ER12CGpioManagerR11CRccManager
+08011a50  w    F .text	00000002 DMA2_Channel1_IRQHandler
+0800f3f8 g     F .text	000000a2 __pow5mult
+08010d28 g     F .text	0000006a __aeabi_ul2d
+08014af0 g     F .text	00000004 _ZNKSt9type_info11__do_upcastEPKN10__cxxabiv117__class_type_infoEPPv
+08013100 g     F .text	00000018 _ZN12CGpioManageraSERKS_
+0801362c  w    F .text	00000018 _ZN19CUsartStateUnusable5writeEP13USART_TypeDefPth
+0800a0b8 g     F .text	00000000 __gnu_Unwind_Restore_VFP
+08013944 g     F .text	0000006e _ZN17CUsartStateUsable6deinitEP13USART_TypeDefmmP11CUsartState
+08015240 g     O .text	00000020 __sf_fake_stderr
+08013520 g     F .text	00000018 _ZN18CUsartStateRunning16interruptsConfigER16NVIC_InitTypeDef
+08011a50  w    F .text	00000002 I2C1_EV_IRQHandler
+08012aa8  w    F .text	00000090 _ZN6CUsartI7SUsart1EC1ER12CGpioManagerR11CRccManager
+0800a1bc g     F .text	00000022 _Unwind_Resume
+0800a000 g     F .text	0000000e _Unwind_DeleteException
+08009ffc g     F .text	00000002 _Unwind_Complete
+0801218c g     F .text	000001f8 RCC_GetClocksFreq
+08013194 g     F .text	00000086 _ZN11CRccManager11apb1DisableEm
+08014a48 g     F .text	0000003c _ZNK10__cxxabiv117__class_type_info12__do_dyncastEiNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
+080112b4 g     F .text	00000012 __aeabi_dcmpgt
+08011a50  w    F .text	00000002 DMA1_Channel6_IRQHandler
+080149e8 g     F .text	00000038 _ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
+08012998 g     F .text	00000028 _ZN6CUsartI7SUsart1E6setIdsEv
+08011a50  w    F .text	00000002 UART4_IRQHandler
+08011a50  w    F .text	00000002 DMA2_Channel4_IRQHandler
+0800eba4 g     F .text	00000002 __sfp_lock_acquire
+08015648 g     O .text	00000012 _ZTSSt13bad_exception
+0800b0ec g     F .text	0000008a memchr
+0800bb58 g     F .text	00000044 _sprintf_r
+0801240c g     F .text	000001b0 USART_Init
+080135b4  w    F .text	00000014 _ZN19CUsartStateUnusable5remapEm
+0800ec8c g     F .text	00000198 _free_r
+08011a50  w    F .text	00000002 TIM3_IRQHandler
+08011a50  w    F .text	00000002 RCC_IRQHandler
+08012d04  w    F .text	00000034 _ZN6CUsartI7SUsart1E4readEPth
+0800ef38 g     F .text	0000000c __locale_mb_cur_max
+080112a0 g     F .text	00000012 __aeabi_dcmpge
+08011a50  w    F .text	00000002 TIM1_TRG_COM_IRQHandler
+08011a50  w    F .text	00000002 DMA1_Channel1_IRQHandler
+08013744  w    F .text	00000040 _ZN18CUsartStateRunningC2EP12CGpioManagerP11CRccManager
+08010a2c g     F .text	0000027a __aeabi_dsub
+08011a50 g       .text	00000002 Default_Handler
+200004fc g     O .data	00000004 __malloc_sbrk_base
+08013784  w    F .text	00000018 _ZN17CUsartStateUsable4readEP13USART_TypeDefPth
+08015d80 g     O .text	0000000d _ZTSSt9type_info
+08015420  w    O .text	0000003c _ZTV11IPeripheral
+08010d28 g     F .text	0000006a __floatundidf
+080146d0 g     F .text	0000000a _ZNKSt9bad_alloc4whatEv
+08014124 g     F .text	00000016 __cxa_pure_virtual
+0801316c g     F .text	00000028 _ZN11CRccManager10apb1EnableEm
+0800f49c g     F .text	000000aa __lshift
+08012958  w    F .text	00000040 _ZN19CUsartStateUnusableC2EP12CGpioManagerP11CRccManager
+08015548 g     O .text	00000014 _ZTVSt9bad_alloc
+0800bb2c g     F .text	00000010 signal
+0800fa9c g     F .text	00000108 __ssprint_r
+0800a2a0 g     F .text	0000030e __gnu_unwind_execute
+0801379c  w    F .text	00000018 _ZN17CUsartStateUsable5writeEP13USART_TypeDefPth
+08011a50  w    F .text	00000002 EXTI15_10_IRQHandler
+080153a8  w    O .text	0000003c _ZTV6CUsartI7SUsart1E
+00000100 g       *ABS*	00000000 _Minimum_Stack_Size
+08015560 g     O .text	0000000d _ZTSSt9bad_alloc
+0800bee4 g     F .text	000000ac strncmp
+080148f0 g     F .text	00000090 _ZNK10__cxxabiv120__si_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
+0800a0c8 g     F .text	00000000 __gnu_Unwind_Restore_VFP_D
+08012690 g     F .text	000000a6 USART_ITConfig
+0800f2d0 g     F .text	00000128 __multiply
+200005a4 g     O .bss	00000028 __malloc_current_mallinfo
+0800f770 g     F .text	000000c8 __d2b
+08014adc g     F .text	0000000c _ZNSt9type_infoD2Ev
+08014288 g     F .text	000000ce __cxa_type_match
+080148c8 g     F .text	00000026 _ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
+0800b5d4 g     F .text	00000012 realloc
+08009fa8 g     F .text	0000003c __gnu_Unwind_Resume
+08011a50  w    F .text	00000002 TIM7_IRQHandler
+080156a4 g     O .text	00000008 _ZTIN10__cxxabiv119__foreign_exceptionE
+08011ac8 g     F .text	0000001a _close_r
+08011a50  w    F .text	00000002 CAN2_TX_IRQHandler
+08010cc8 g     F .text	00000022 __aeabi_i2d
+08011a50  w    F .text	00000002 TIM5_IRQHandler
+0800a0d8 g     F .text	00000000 __gnu_Unwind_Restore_VFP_D_16_to_31
+08012b94  w    F .text	00000020 _ZN6CUsartI7SUsart1ED0Ev
+08013118 g     F .text	00000052 _ZN11CRccManagerC1Ev
+08012890  w    F .text	00000034 _ZN11IPeripheralD1Ev
+0800b178 g     F .text	00000064 memcmp
+0800aa90 g     F .text	0000009a _fwrite_r
+080146f0 g     F .text	0000001c _ZNSt9bad_allocD0Ev
+080149b8 g     F .text	00000014 _ZN10__cxxabiv120__si_class_type_infoD1Ev
+0800d6e8 g     F .text	00000102 __swsetup_r
+0800a198 g     F .text	00000022 _Unwind_RaiseException
+08010a20  w    F .text	00000002 __aeabi_ldiv0
+08011a50  w    F .text	00000002 EXTI9_5_IRQHandler
+08012b38  w    F .text	0000005c _ZN6CUsartI7SUsart1ED1Ev
+08010fe8 g     F .text	000001d0 __divdf3
+0800eb1c g     F .text	00000086 __sfp
+0800f8d4 g     F .text	00000048 __copybits
+08014ae8 g     F .text	00000004 _ZNKSt9type_info14__is_pointer_pEv
+200000f4 g     O .data	00000408 __malloc_av_
+0800ebb0 g     F .text	00000002 __sinit_lock_release
+08010d94 g     F .text	00000254 __muldf3
+0800fa08 g     F .text	00000022 __sread
+08015480 g     O .text	00000038 _ZTV18CUsartStateRunning
+08015628 g     O .text	00000014 _ZTVSt9exception
+08011a50  w    F .text	00000002 ETH_WKUP_IRQHandler
+08013538 g     F .text	00000062 _ZN18CUsartStateRunning6deinitEP13USART_TypeDefmmP11CUsartState
+0800b494 g     F .text	00000002 __malloc_lock
+08015770 g     O .text	0000002c _ZTVN10__cxxabiv117__class_type_infoE
+0801402c g     F .text	0000007e __cxa_throw
+0800e7d8 g     F .text	000001c2 _fflush_r
+08010684 g     F .text	0000005c _calloc_r
+08011a50  w    F .text	00000002 SPI2_IRQHandler
+08015200 g     O .text	00000020 __sf_fake_stdin
+08012d6c  w    F .text	00000026 _ZN6CUsartI7SUsart1E19configureInterruptsEt
+0800b3e0 g     F .text	000000b4 memset
+08013350  w    F .text	00000014 _ZN18CUsartStateRunning5remapEm
+08011a68 g     F .text	00000006 MemManage_Handler
+080129c0 g     F .text	000000c8 main
+200005d0 g     O .bss	00000004 __malloc_max_total_mem
+080125bc g     F .text	00000060 USART_ClockInit
+0800d6d8 g     F .text	00000010 __swbuf
+0801413c g     F .text	0000000a __cxa_get_globals_fast
+080107a8 g     F .text	00000000 __aeabi_uidiv
+08011a50  w    F .text	00000002 CAN1_TX_IRQHandler
+08011a80 g     F .text	0000000a SVC_Handler
+0800fa94 g     F .text	00000008 __sclose
+08011a50  w    F .text	00000002 DMA2_Channel5_IRQHandler
+08010794 g     F .text	0000000e fclose
+0800d91c g     F .text	00000eba _dtoa_r
+0800ab70 g     F .text	0000057a _malloc_r
+08014878 g     F .text	0000000a _ZNKSt13bad_exception4whatEv
+08010d38 g     F .text	0000005a __aeabi_l2d
+00000400 g       *ABS*	00000000 __Stack_Size
+0800bb3c g     F .text	0000000c _init_signal
+080157a0 g     O .text	0000000c _ZTIN10__cxxabiv117__class_type_infoE
+0800ee24 g     F .text	00000054 _fwalk
+08011a50  w    F .text	00000002 DMA1_Channel5_IRQHandler
+08014860 g     F .text	0000000c _ZNSt13bad_exceptionD1Ev
+08011a50  w    F .text	00000002 EXTI4_IRQHandler
+0800b52c g     F .text	000000a8 putc
+0800ebe4 g     F .text	000000a6 _malloc_trim_r
+08009f94 g     F .text	00000014 __gnu_Unwind_ForcedUnwind
+0801359c g     F .text	00000018 _ZN18CUsartStateRunning8getStateEv
+0800bbec g     F .text	0000007e strcmp
+20010000 g       *ABS*	00000000 __heap_end
+08012a88  w    F .text	00000020 _ZN11IPeripheralC2Ev
+08012ed8 g     F .text	000000c0 _ZN12CGpioManagerC1Ev
+08013048 g     F .text	0000004a _ZN12CGpioManager7getGpioEhh
+2000fbff g       *ABS*	00000000 __Stack_Init
+08011c24 g     F .text	0000007c SystemInit
+08009fe4 g     F .text	00000016 __gnu_Unwind_Resume_or_Rethrow
+080135e0  w    F .text	0000001c _ZN19CUsartStateUnusable8gpioInitEhhR16GPIO_InitTypeDef
+00000000  w      *UND*	00000000 __gnu_Unwind_Find_exidx
+00010000 g       *ABS*	00000000 __ram_size
+080111c8 g     F .text	0000007a __nedf2
+0800a0a0 g     F .text	00000018 restore_core_regs
+0800a184 g     F .text	00000000 __gnu_Unwind_Save_WMMXC
+080149cc g     F .text	0000001c _ZN10__cxxabiv120__si_class_type_infoD0Ev
+0800bb9c g     F .text	0000004e sprintf
+08011c04 g     F .text	0000001e _write_r
+08011a50  w    F .text	00000002 DMA1_Channel3_IRQHandler
+0800ef58 g     F .text	00000010 setlocale
+0800a604 g     F .text	00000006 _Unwind_GetTextRelBase
+08014550 g     F .text	0000004e __cxa_call_terminate
+08013338 g     F .text	00000018 _ZN11CRccManageraSERKS_
+08011a50  w    F .text	00000002 ETH_IRQHandler
+20000000 g     O .data	00000004 _impure_ptr
+08015640 g     O .text	00000008 _ZTIN10__cxxabiv115__forced_unwindE
+08011a50  w    F .text	00000002 TIM1_UP_IRQHandler
+0800ef4c g     F .text	00000004 __locale_cjk_lang
+08013424  w    F .text	00000040 _ZN17CUsartStateUsableC2EP12CGpioManagerP11CRccManager
+0800fba4 g     F .text	00000ae0 _svfiprintf_r
+08011a50  w    F .text	00000002 WWDG_IRQHandler
+0800f67c g     F .text	00000048 __ulp
+0800ebcc g     F .text	00000016 __fp_unlock_all
+0800a670 g     F .text	00000058 fputc
+0801565c g     O .text	00000024 _ZTSN10__cxxabiv119__foreign_exceptionE
+08012f98 g     F .text	00000038 _ZN12CGpioManager24checkPortPinAvailabilityEhh
+20000ef0 g       *ABS*	00000000 __heap_start
+08011ab0 g     F .text	0000000a TIM2_IRQHandler
+20000ef0 g       ._usrstack	00000000 _eusrstack
+0800a5e8 g     F .text	00000014 _Unwind_GetLanguageSpecificData
+08014154 g     F .text	0000009a __cxa_begin_catch
+08014aac g     F .text	00000014 _ZN10__cxxabiv117__class_type_infoD2Ev
+0801447c g     F .text	00000008 _ZN10__cxxabiv112__unexpectedEPFvvE
+08011a50  w    F .text	00000002 OTG_FS_WKUP_IRQHandler
+08015e10 g       .text	00000000 //.
+0800ef68 g     F .text	00000008 localeconv
+08009744 g     F .text	00000032 _Unwind_VRS_Get
+08011a50  w    F .text	00000002 TIM1_BRK_IRQHandler
+08012738 g     F .text	00000026 USART_SendData
+2000ffff g       *ABS*	00000000 _estack
+08014884 g     F .text	00000014 _ZNSt13bad_exceptionD0Ev
+2000059c g     O .data	00000004 _ZN10__cxxabiv119__terminate_handlerE
+0800a170 g     F .text	00000000 __gnu_Unwind_Restore_WMMXC
+0800943c g     F .text	0000002a __gcclibcxx_demangle_callback
+08010a04 g     F .text	0000001a __aeabi_uidivmod
+08011a50  w    F .text	00000002 EXTI1_IRQHandler
+08011264 g     F .text	00000012 __aeabi_dcmpeq
+08014498 g     F .text	0000007c __cxa_allocate_exception
+0800ab2c g     F .text	00000024 fwrite
+08015738 g     O .text	0000000c _ZTIN10__cxxabiv120__si_class_type_infoE
+0800a5b0 g     F .text	0000002a __gnu_unwind_frame
+0800a204 g     F .text	00000022 _Unwind_ForcedUnwind
+00000000         *UND*	00000000 _ZN11IIrqHandlerD2Ev
+200005a0 g       .data	00000000 _edata
+080138cc g     F .text	00000018 _ZN17CUsartStateUsable16interruptsConfigER16NVIC_InitTypeDef
+0800a6c8 g     F .text	00000080 _fputs_r
+080134b4 g     F .text	0000006c _ZN18CUsartStateRunning5writeEP13USART_TypeDefPth
+08011a50  w    F .text	00000002 RTCAlarm_IRQHandler
+08014854 g     F .text	0000000c _ZNSt9exceptionD1Ev
+08011abc g     F .text	0000000a USART2_IRQHandler
+080135c8  w    F .text	00000016 _ZN19CUsartStateUnusable9apbEnableEmm
+0800fa30 g     F .text	0000003a __swrite
+080139d4 g     F .text	00000060 _Znwj
+20000500 g     O .data	00000004 __malloc_trim_threshold
+08013364  w    F .text	00000016 _ZN18CUsartStateRunning9apbEnableEmm
+08013658  w    F .text	00000018 _ZN19CUsartStateUnusable6deinitEP13USART_TypeDefmmP11CUsartState
+0800ef44 g     F .text	00000008 __locale_msgcharset
+08000000 g     O .isr_vector	00000000 g_pfnVectors
+08012ed8 g     F .text	000000c0 _ZN12CGpioManagerC2Ev
+0800ee78 g     F .text	00000058 _fwalk_reent
+08014980 g     F .text	00000036 _ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
+0800f584 g     F .text	000000f6 __mdiff
+080112c8 g     F .text	0000004e __aeabi_d2iz
+08014444 g     F .text	00000028 _ZN10__cxxabiv111__terminateEPFvvE
+080133c8  w    F .text	0000003c _ZN18CUsartStateRunningD1Ev
+0800a12c g     F .text	00000000 __gnu_Unwind_Save_WMMXD
+080136cc g     F .text	0000005e _ZN19CUsartStateUnusable9nextStateEP11CUsartStateb
+080146dc g     F .text	00000014 _ZNSt9bad_allocD1Ev
+08011a50  w    F .text	00000002 I2C2_ER_IRQHandler
+08011a50  w    F .text	00000002 DMA1_Channel2_IRQHandler
+0800eba8 g     F .text	00000002 __sfp_lock_release
+080156f8 g     O .text	0000000c _ZTISt13bad_exception
+08015220 g     O .text	00000020 __sf_fake_stdout
+08013398  w    F .text	00000016 _ZN18CUsartStateRunning4initEP13USART_TypeDefR17USART_InitTypeDef
+08010a20  w    F .text	00000002 __aeabi_idiv0
+080130b0 g     F .text	00000026 _ZN12CGpioManager8initGpioEhP16GPIO_InitTypeDef
+08011a50  w    F .text	00000002 CAN1_SCE_IRQHandler
+080137b4  w    F .text	0000003c _ZN17CUsartStateUsableD1Ev
+08011a50  w    F .text	00000002 FLASH_IRQHandler
+08011ae4 g     F .text	0000000a _exit
+08011a70 g     F .text	00000006 BusFault_Handler
+08011a50  w    F .text	00000002 USART1_IRQHandler
+08014148 g     F .text	0000000a __cxa_get_globals
+0800ef70 g     F .text	000000ec __smakebuf_r
+20000598 g     O .data	00000004 _ZN10__cxxabiv120__unexpected_handlerE
+0800be84 g     F .text	0000005e strlen
+08011a50  w    F .text	00000002 OTG_FS_IRQHandler
+08011a50  w    F .text	00000002 SPI3_IRQHandler
+0800ba04 g     F .text	0000002e _init_signal_r
+08015d78 g     O .text	00000008 _ZTISt9type_info
+08009b30  w    F .text	00000004 __aeabi_unwind_cpp_pr1
+08011254 g     F .text	00000010 __aeabi_cdcmpeq
+080111b8 g     F .text	0000008a __gedf2
+080156c8 g     O .text	0000000d _ZTSSt9exception
+0801261c g     F .text	00000032 USART_ClockStructInit
+080148ac g     F .text	0000001a __cxa_current_exception_type
+08011344 g     F .text	00000030 __gnu_ldivmod_helper
+08014898 g     F .text	00000014 _ZNSt9exceptionD0Ev
+08011a50  w    F .text	00000002 I2C1_ER_IRQHandler
+08010cec g     F .text	0000003a __aeabi_f2d
+0800a748 g     F .text	00000010 fputs
+0800a5fc g     F .text	00000006 _Unwind_GetDataRelBase
+08013890 g     F .text	0000003c _ZN17CUsartStateUsable4initEP13USART_TypeDefR17USART_InitTypeDef
+00000000  w      *UND*	00000000 _Jv_RegisterClasses
+08010a2c g     F .text	0000027a __subdf3
+08012904  w    F .text	00000034 _ZN11CUsartStateD2Ev
+0800f258 g     F .text	00000064 __lo0bits
+080133b0  w    F .text	00000018 _ZN18CUsartStateRunning9nextStateEP11CUsartStateb
+080154f0 g     O .text	00000038 _ZTV17CUsartStateUsable
+0800bb48 g     F .text	0000000e __sigtramp
+08014b08 g     F .text	0000003a _ZNKSt9type_infoeqERKS_
+08013424  w    F .text	00000040 _ZN17CUsartStateUsableC1EP12CGpioManagerP11CRccManager
+080128c4  w    F .text	00000020 _ZN11IPeripheralD0Ev
+080156d8 g     O .text	00000020 _ZTSN10__cxxabiv115__forced_unwindE
+08014b44 g     F .text	00000004 _ZNKSt9type_info10__do_catchEPKS_PPvj
+0800bb1c g     F .text	0000000e raise
+0800ab60 g     F .text	00000010 free
+0800ebac g     F .text	00000002 __sinit_lock_acquire
+0801470c g     F .text	00000148 _ZN9__gnu_cxx27__verbose_terminate_handlerEv
+08011a50  w    F .text	00000002 DMA2_Channel3_IRQHandler
+0800f0fc g     F .text	00000084 __multadd
+08014ac0 g     F .text	0000001c _ZN10__cxxabiv117__class_type_infoD0Ev
+0800f0c4 g     F .text	00000036 _Bfree
+0801372c g     F .text	00000018 _ZN19CUsartStateUnusable8getStateEv
+080153e8  w    O .text	00000038 _ZTV11CUsartState
+
+

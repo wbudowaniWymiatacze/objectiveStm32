@@ -1,0 +1,7 @@
+
+target remote localhost:3333
+monitor reset halt
+load out/objectiveStm32.elf
+monitor reset run
+quit
+
