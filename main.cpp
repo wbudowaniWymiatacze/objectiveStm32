@@ -10,7 +10,7 @@
 #include <CRccManager.hpp>
 #include <CUsart.hpp>
 #include <TypePeriph.hpp>
-#include <SD/inc/sd.h>
+#include <sd.h>
 
 uint16_t g_usartReadBuffer[ 100 ];
 uint16_t g_usartWriteBuffer[ 100 ];
@@ -21,6 +21,12 @@ int main()
     
     // SD_SPI start
     
+    //Initialize the system timer
+    //time_init();
+    
+    
+   //Initialize card insert
+  //  card_insert_init();
     
     
     
