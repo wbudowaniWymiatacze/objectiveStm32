@@ -11,7 +11,6 @@
 
 void card_insert_init(void)
 {
-    /*RCC->APB2ENR |= CARD_INSERT_APB2ENR;                //enable cart insert PB9 */
-    RCC->APB2ENR |= CARD_INSERT_APB2ENR;                 //enable cart insert PB9
+    RCC->APB2ENR |= CARD_INSERT_APB2ENR;                //enable cart insert PB9 
     
 }
