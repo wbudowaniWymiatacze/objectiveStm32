@@ -21,12 +21,9 @@ int main()
     
     // SD_SPI start
     
-    //Initialize the system timer
-    //time_init();
-    
-    
+   
    //Initialize card insert
-  //  card_insert_init();
+    card_insert_init();
     
     
     

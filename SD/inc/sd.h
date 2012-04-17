@@ -8,12 +8,14 @@
 #ifndef SD_H
 #define	SD_H
 
-#define CARD_INSERT_PORT GPIOB                          // wg Kamami datasheet
-#define CARD_INSERT_PIN 9                               // wg Kamami datasheet
-#define CARD_INSERT_APB2ENR RCC_APB2Periph_GPIOB        // enable IOPBEN (RM 111)
-
 //Initialize card insert
 void card_insert_init(void);
+
+//Initialize leds 3 and 4
+void led_34_init(void);
+
+//Detect if card is in the slot
+bool card_inside (void);
 
 #endif	/* SD_H */
 
