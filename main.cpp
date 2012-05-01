@@ -44,6 +44,9 @@ int main()
 
 	usart1.init( gpiosConfig, &usartConfStruct );
 
+	uint16_t buffer[ 50 ] = { 0 };
+	usart1.write( buffer, 50 );
+
 	return 0;
 }
 

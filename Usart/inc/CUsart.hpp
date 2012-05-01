@@ -14,7 +14,7 @@
 #include <SUsartConfig.hpp>
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
-#include <CUsartState.hpp>
+#include <IPeriphState.hpp>
 #include <CUsartStateUnusable.hpp>
 #include <TypePeriph.hpp>
 #include <EPeripheralState.hpp>
@@ -40,16 +40,16 @@ public:
     void interruptsOff();
     bool checkInterruptSource( uint16_t interruptSource );
     void deinit();
+    inline void changeState( IPeriphState *   newState );
     EPeripheralState getState();
     uint32_t getIndex();
     ~CUsart();
 
 private:
-    friend class CUsartState;
     void setIds();
 
-    usartX          m_usartParams;
-    CUsartState *   m_usartState;
+    usartX         m_usartParams;
+    IPeriphState *  m_usartState;
     CGpioManager    m_gpioManager;
     CRccManager     m_rccManager;
     uint32_t        m_index;
@@ -58,18 +58,19 @@ private:
 
 template < typename usartX >
 CUsart< usartX >::CUsart( CGpioManager &    gpioManager,
-                          CRccManager &     rccManager )
+                             CRccManager &     rccManager )
 {
     setIds();
     m_gpioManager = gpioManager;
     m_rccManager = rccManager;
-    m_usartState = new CUsartStateUnusable( &m_gpioManager,
-                                            &m_rccManager );
+    CUsartStateUnusable * initialState = new CUsartStateUnusable( &m_gpioManager,
+                                                                  &m_rccManager );
+    changeState( initialState );
 }
 
 template < typename usartX >
 void CUsart< usartX >::init( GPIO_InitTypeDef * gpiosConfig,
-                             SPeriphConfig *    config )
+                                SPeriphConfig *    config )
 {
     bool gpiosSet = m_gpioManager.getGpio( m_usartParams.port,
                                            m_usartParams.rx );
@@ -84,7 +85,7 @@ void CUsart< usartX >::init( GPIO_InitTypeDef * gpiosConfig,
                                    m_usartParams.tx );
     }
 
-    m_usartState->nextState( m_usartState, gpiosSet );
+    changeState( m_usartState->nextState( gpiosSet ) );
 
     m_usartState->remap( m_usartParams.remap );
 
@@ -100,6 +101,8 @@ void CUsart< usartX >::init( GPIO_InitTypeDef * gpiosConfig,
     SUsartConfig * usartConfStruct = ( SUsartConfig * ) config;
     m_usartState->init( m_usartParams.id,
                         usartConfStruct->usartConfig );
+
+    changeState( m_usartState->nextState( true ) );
 }
 
 template < typename usartX >
@@ -172,15 +175,20 @@ bool CUsart< usartX >::checkInterruptSource( uint16_t   interruptSource )
 template < typename usartX >
 void CUsart< usartX >::deinit()
 {
-    m_usartState->deinit( m_usartParams.id,
-                          m_usartParams.apb1,
-                          m_usartParams.apb2,
-                          m_usartState );
+    changeState( m_usartState->deinit( m_usartParams.id,
+                                       m_usartParams.apb1,
+                                       m_usartParams.apb2 ) );
 
     m_gpioManager.releaseGpio( m_usartParams.port,
                                m_usartParams.rx );
     m_gpioManager.releaseGpio( m_usartParams.port,
                                m_usartParams.tx );
+}
+
+template < typename usartX >
+void CUsart< usartX >::changeState( IPeriphState *   newState )
+{
+    m_usartState = newState;
 }
 
 template < typename usartX >

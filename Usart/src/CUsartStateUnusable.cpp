@@ -5,26 +5,25 @@
  *      Author: artur
  */
 
+#include <IPeripheral.hpp>
+#include <IPeriphState.hpp>
 #include <CUsartStateUnusable.hpp>
 #include <CUsartStateUsable.hpp>
 #include <EPeripheralState.hpp>
 
-void CUsartStateUnusable::nextState( CUsartState *  currentState,
-                                     bool           switchToNextState )
+IPeriphState * CUsartStateUnusable::nextState( bool  switchToNextState )
 {
     if ( switchToNextState == true )
     {
-    currentState = new CUsartStateUsable( m_gpioManager,
-                                          m_rccManager );
-    if( currentState == 0 )
-    {
-        currentState = this;
+        IPeriphState * newState = new CUsartStateUsable( m_gpioManager,
+                                                          m_rccManager );
+        if( newState != 0 )
+        {
+            delete this;
+            return newState;
+        }
     }
-    else
-    {
-        delete this;
-    }
-    }
+    return this;
 }
 
 EPeripheralState CUsartStateUnusable::getState()

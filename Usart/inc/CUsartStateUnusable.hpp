@@ -12,17 +12,17 @@
 
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
-#include <CUsartState.hpp>
+#include <IPeriphState.hpp>
 #include <EPeripheralState.hpp>
 
 /*
  * except nextState none of the functions does anything
  */
-class CUsartStateUnusable : public CUsartState {
+class CUsartStateUnusable : public IPeriphState {
 public:
 
     CUsartStateUnusable( CGpioManager * gpioManager,
-                         CRccManager *  rccManager ) :
+                             CRccManager *  rccManager ) :
     m_gpioManager( gpioManager ), m_rccManager( rccManager ), m_stateInfo( EPeripheralStateUnusable ) {}
 
     void remap( uint32_t    remapValue )
@@ -86,17 +86,18 @@ public:
     }
 
     /*
-     * change state to CUsartStateUsable
+     * depending on the argument returns pointer to the
+     * new state or to the current state (in case
+     * switchToNextState == false or allocating new state
+     * was unsuccessful)
      */
-    void nextState( CUsartState *   currentState,
-                    bool            switchToNextState );
+    IPeriphState * nextState( bool  switchToNextState );
 
-    void deinit( USART_TypeDef *    id,
-                 uint32_t           apb1,
-                 uint32_t           apb2,
-                 CUsartState *      usartState )
+    IPeriphState * deinit( USART_TypeDef *    id,
+                            uint32_t           apb1,
+                            uint32_t           apb2 )
     {
-
+        return this;
     }
 
     EPeripheralState getState();

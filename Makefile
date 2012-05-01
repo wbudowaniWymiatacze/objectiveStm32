@@ -48,7 +48,7 @@ AS_DEFS =
 # headers, current folder is always included)
 INC_DIRS = Boards
 INC_DIRS += Boards/boards
-INC_DIRS += Boards/hdr
+INC_DIRS += hdr
 INC_DIRS += Boards/numberOfPorts
 INC_DIRS += Gpio/inc
 INC_DIRS += Rcc/inc
@@ -68,7 +68,7 @@ LIBS =
 # folders with source files, current folder is always included)
 SRC_DIRS = Boards
 SRC_DIRS += Boards/boards
-SRC_DIRS += Boards/hdr
+SRC_DIRS += hdr
 SRC_DIRS += Boards/numberOfPorts
 SRC_DIRS += Gpio/src
 SRC_DIRS += Rcc/src

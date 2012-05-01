@@ -12,10 +12,11 @@
 
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
-#include "CUsartState.hpp"
+#include <IPeripheral.hpp>
+#include <IPeriphState.hpp>
 #include <EPeripheralState.hpp>
 
-class CUsartStateRunning: public CUsartState {
+class CUsartStateRunning: public IPeriphState {
 public:
 
     CUsartStateRunning( CGpioManager *  gpioManager,
@@ -46,8 +47,8 @@ public:
      * so the function does nothing
      */
     void gpioInit( uint8_t              port,
-                   uint8_t              pin,
-                   GPIO_InitTypeDef &   gpioConfig )
+                    uint8_t              pin,
+                    GPIO_InitTypeDef &   gpioConfig )
     {
 
     }
@@ -57,7 +58,7 @@ public:
      * so the function does nothing
      */
     void init( USART_TypeDef *      usartId,
-               USART_InitTypeDef &  periphConfig )
+                USART_InitTypeDef &  periphConfig )
     {
 
     }
@@ -82,18 +83,17 @@ public:
     void interruptsConfig( NVIC_InitTypeDef &   interruptsConfig );
 
     /*
-     * no next state exists so the function does nothing
+     * cannot switch to the next state when in state Running
      */
-    void nextState( CUsartState *   currentState,
-                    bool            switchToNextState )
+    IPeriphState * nextState( bool  switchToNextState )
     {
-
+        ( void ) switchToNextState;
+        return this;
     }
 
-    void deinit( USART_TypeDef *    id,
-                 uint32_t           apb1,
-                 uint32_t           apb2,
-                 CUsartState *      usartState );
+    IPeriphState * deinit( USART_TypeDef *    id,
+                            uint32_t           apb1,
+                            uint32_t           apb2 );
 
     EPeripheralState getState();
 

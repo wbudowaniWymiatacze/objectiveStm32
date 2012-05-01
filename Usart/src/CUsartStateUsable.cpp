@@ -7,7 +7,9 @@
 
 #include <boardDefs.hpp>
 
+#include <IPeripheral.hpp>
 #include <CRccManager.hpp>
+#include <IPeriphState.hpp>
 #include <CUsartStateUsable.hpp>
 #include <CUsartStateUnusable.hpp>
 #include <EPeripheralState.hpp>
@@ -27,8 +29,8 @@ void CUsartStateUsable::apbEnable( uint32_t apb1Value,
 
 
 void CUsartStateUsable::gpioInit( uint8_t               port,
-                                  uint8_t               pin,
-                                  GPIO_InitTypeDef &    gpioConfig )
+                                       uint8_t               pin,
+                                       GPIO_InitTypeDef &    gpioConfig )
 {
     gpioConfig.GPIO_Pin    = pin;
     m_gpioManager->initGpio( port, &gpioConfig );
@@ -36,7 +38,7 @@ void CUsartStateUsable::gpioInit( uint8_t               port,
 
 
 void CUsartStateUsable::init( USART_TypeDef *       usartId,
-                              USART_InitTypeDef &   periphConfig )
+                                   USART_InitTypeDef &   periphConfig )
 {
     // Write USART parameters
     USART_Init( usartId, &periphConfig );
@@ -57,29 +59,26 @@ void CUsartStateUsable::interruptsConfig( NVIC_InitTypeDef & interruptsConfig )
 }
 
 
-void CUsartStateUsable::nextState( CUsartState *    currentState,
-                                    bool            switchToNextState )
+IPeriphState * CUsartStateUsable::nextState( bool    switchToNextState )
 {
     if ( switchToNextState == true )
     {
-    currentState = new CUsartStateRunning( m_gpioManager,
-                                           m_rccManager );
-    if( currentState == 0 )
-    {
-        currentState = this;
+        IPeriphState * newState = new CUsartStateRunning( m_gpioManager,
+                                                           m_rccManager );
+        if( newState != 0 )
+        {
+            delete this;
+            return newState;
+        }
     }
-    else
-    {
-        delete this;
-    }
-    }
+
+    return this;
 }
 
 
-void CUsartStateUsable::deinit( USART_TypeDef * id,
-                                uint32_t        apb1,
-                                uint32_t        apb2,
-                                CUsartState *   usartState )
+IPeriphState * CUsartStateUsable::deinit( USART_TypeDef * id,
+                                              uint32_t        apb1,
+                                              uint32_t        apb2 )
 {
     // Disable USART
     USART_Cmd( id, DISABLE );
@@ -95,10 +94,18 @@ void CUsartStateUsable::deinit( USART_TypeDef * id,
     m_rccManager->apb1Disable( apb1 );
     m_rccManager->apb2Disable( apb2 );
 
-    usartState = new CUsartStateUnusable( m_gpioManager,
-                                          m_rccManager );
+    IPeriphState * newState = new CUsartStateUnusable( m_gpioManager,
+                                                        m_rccManager );
 
-    delete this;
+    if ( newState != 0 )
+    {
+        delete this;
+        return newState;
+    }
+    else
+    {
+        return this;
+    }
 }
 
 EPeripheralState CUsartStateUsable::getState()

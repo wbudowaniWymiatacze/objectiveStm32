@@ -1,2 +1,6 @@
 /nbproject/private/
 /out/
+*~
+.cproject
+.project
+.settings

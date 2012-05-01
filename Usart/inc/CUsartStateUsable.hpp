@@ -12,16 +12,17 @@
 
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
-#include <CUsartState.hpp>
+#include <IPeripheral.hpp>
+#include <IPeriphState.hpp>
 #include <CUsartStateRunning.hpp>
 #include <EPeripheralState.hpp>
 
-class CUsartStateUsable : public CUsartState {
+class CUsartStateUsable : public IPeriphState {
 public:
 
     CUsartStateUsable( CGpioManager *   gpioManager,
-                       CRccManager *    rccManager ) :
-    m_gpioManager( gpioManager ), m_rccManager( rccManager ), m_stateInfo( EPeripheralStateUnusable ) {}
+                         CRccManager *    rccManager ) :
+    m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
 
     void remap( uint32_t    remapValue );
 
@@ -41,7 +42,7 @@ public:
      * initialise USART
      */
     void init( USART_TypeDef *      usartId,
-               USART_InitTypeDef &  periphConfig );
+                USART_InitTypeDef &  periphConfig );
 
     /*
      * read does nothing in this state
@@ -68,12 +69,17 @@ public:
      */
     void interruptsConfig( NVIC_InitTypeDef & interruptsConfig );
 
-    void nextState( CUsartState *   currentState,
-                    bool            switchToNextState );
-    void deinit( USART_TypeDef *    id,
-                 uint32_t           apb1,
-                 uint32_t           apb2,
-                 CUsartState *      usartState );
+    /*
+     * depending on the argument returns pointer to the
+     * new state or to the current state (in case
+     * switchToNextState == false or allocating new state
+     * was unsuccessful)
+     */
+    IPeriphState * nextState( bool  switchToNextState );
+
+    IPeriphState * deinit( USART_TypeDef *    id,
+                            uint32_t           apb1,
+                            uint32_t           apb2 );
 
     EPeripheralState getState();
 

@@ -13,6 +13,7 @@
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
 #include <SPeriphConfig.hpp>
+#include <IPeriphState.hpp>
 #include <EPeripheralState.hpp>
 
 class IPeripheral
@@ -113,6 +114,11 @@ public:
     virtual void deinit() = 0;
 
     virtual uint32_t getIndex() = 0;
+
+    /*
+     * changes current state of peripheral
+     */
+    virtual void changeState( IPeriphState *   newState ) = 0;
 
     /*
      * Returns enum that informs of the current state of a peripheral
