@@ -9,10 +9,10 @@
 
 CRccManager::CRccManager()
 {
-    for( uint8_t bit=0; bit<sizeof( uint32_t ); bit++ )
+    for( uint8_t bit=0; bit<sizeof( m_apb1UseCounter ); bit++ )
     {
-    m_apb1UseCounter[ bit ] = 0;
-    m_apb2UseCounter[ bit ] = 0;
+        m_apb1UseCounter[ bit ] = 0;
+        m_apb2UseCounter[ bit ] = 0;
     }
 }
 
@@ -73,10 +73,10 @@ inline void CRccManager::increaseUseCount( uint32_t * useCounter, uint32_t value
     uint32_t bitNumber = 0;
     while( value != 0 )
     {
-    // get the position of the MSB
-    bitNumber = __builtin_clz( value );
-    useCounter[ bitNumber ]++;
-    value -= 1<<bitNumber;
+        // get the position of the MSB
+        bitNumber = __builtin_ffs( value ) - 1; // __builtin_ffs returns index of ( LSB + 1 )
+        useCounter[ bitNumber ]++;
+        value -= 1<<bitNumber;
     }
 }
 

@@ -19,8 +19,8 @@ int main()
 	CGpioManager gpioMngr;
 	CRccManager rccMngr;
 	SUsartConfig usartConfStruct;
-	USART_InitTypeDef usartConf = usartConfStruct.usartConfig;
-	CUsart< SUsart1 > usart1( gpioMngr, rccMngr );
+	USART_InitTypeDef & usartConf = usartConfStruct.usartConfig;
+	CUsart< SUsart6 > usart1( gpioMngr, rccMngr );
 
 	usartConf.USART_BaudRate = 115200;
 	usartConf.USART_WordLength = USART_WordLength_8b;
@@ -44,8 +44,8 @@ int main()
 
 	usart1.init( gpiosConfig, &usartConfStruct );
 
-	uint16_t buffer[ 50 ] = { 0 };
-	usart1.write( buffer, 50 );
+	char buffer[] = { 'a', 'b', 'c', 'd' };
+	usart1.write( ( uint16_t * ) buffer, 4 );
 
 	return 0;
 }

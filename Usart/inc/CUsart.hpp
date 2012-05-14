@@ -87,6 +87,10 @@ void CUsart< usartX >::init( GPIO_InitTypeDef * gpiosConfig,
 
     changeState( m_usartState->nextState( gpiosSet ) );
 
+    // enable APBs
+    m_usartState->apbEnable( m_usartParams.apb1,
+                             m_usartParams.apb2 );
+
     m_usartState->remap( m_usartParams.remap );
 
     // initialise GPIOs

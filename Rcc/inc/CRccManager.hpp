@@ -22,8 +22,8 @@ private:
     inline void increaseUseCount( uint32_t * useCounter,
                   uint32_t value );
 
-    uint32_t m_apb1UseCounter[ sizeof( uint32_t ) ];
-    uint32_t m_apb2UseCounter[ sizeof( uint32_t ) ];
+    uint32_t m_apb1UseCounter[ 8*sizeof( uint32_t ) ];  // number of bits in uint32_t
+    uint32_t m_apb2UseCounter[ 8*sizeof( uint32_t ) ];  // number of bits in uint32_t
 };
 
 #endif /* CRCCMANAGER_HPP_ */
