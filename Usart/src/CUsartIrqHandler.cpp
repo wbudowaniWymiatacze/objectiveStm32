@@ -23,7 +23,7 @@ CUsartIrqHandler::CUsartIrqHandler( IPeripheral * usart )
 {
     for( uint32_t usartIndex=0; usartIndex<NUMBER_OF_USARTS; usartIndex++ )
     {
-    m_usart[ usartIndex ] = 0;
+        m_usart[ usartIndex ] = 0;
     }
 
     registerPeripheral( usart );
