@@ -1,3 +1,4 @@
+file out/objectiveStm32.elf
 target remote localhost:3333
 monitor reset init
 load out/objectiveStm32.elf

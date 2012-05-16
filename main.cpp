@@ -10,12 +10,29 @@
 #include <CRccManager.hpp>
 #include <TypePeriph.hpp>
 
+#include <stm32-P107.hpp>
+
+LED GreenLED;
+LED YellowLED;
+USART Console;
+
 int main()
 {
-	CGpioManager gpioMngr;
-	CRccManager rccMngr;
+    //LEDS
+    GreenLED.init(green);
+    YellowLED.init(yellow);
 
-	return 0;
+    GreenLED.On();
+    YellowLED.Off();
+    
+    int i=0;
+    while(1)
+    {
+        i++;
+    }
+        
+
+    return 0;
 }
 
 
