@@ -9,7 +9,7 @@
 #define STM32F103VCXX_DESC_HPP_
 
 // get number of ports and pins
-#include <stm32xxxxVxxx.hpp>
+#include <numberOfPorts/stm32xxxxVxxx.hpp>
 
 // number of timers
 #define GENERAL_PURPOSE_TIMERS		3

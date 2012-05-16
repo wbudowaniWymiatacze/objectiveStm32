@@ -26,7 +26,7 @@
  #include "boards/f1xx/gpio.hpp"
  #include "boards/f1xx/usart.hpp"
  #include "boards/f1xx/rcc.hpp"
- #endif
+#endif
 
 
 #endif /* BOARDDEFS_HPP_ */

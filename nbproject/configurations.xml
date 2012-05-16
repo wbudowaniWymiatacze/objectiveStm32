@@ -15,7 +15,7 @@
               <in>STM32F107VCxx_Desc.hpp</in>
             </df>
             <df name="mediumDensity">
-              <in>startup_stm32f10x_md.S</in>
+              <in>startup.S</in>
             </df>
             <in>gpio.hpp</in>
             <in>rcc.hpp</in>
@@ -27,8 +27,6 @@
         </df>
         <in>boardDefs.hpp</in>
       </df>
-      <df name="eclipse">
-      </df>
       <df name="Gpio">
         <df name="inc">
           <in>CGpioManager.hpp</in>
@@ -38,9 +36,16 @@
           <in>CGpioManager.cpp</in>
         </df>
       </df>
+      <df name="hdr">
+        <in>hdr_bitband.h</in>
+        <in>hdr_gpio.h</in>
+        <in>hdr_rcc.h</in>
+        <in>hdr_special_registers.h</in>
+      </df>
       <df name="Interface">
         <in>CSingleton.hpp</in>
         <in>EPeripheralState.hpp</in>
+        <in>IPeriphState.hpp</in>
         <in>IPeripheral.hpp</in>
         <in>SPeriphConfig.hpp</in>
         <in>TypePeriph.hpp</in>
@@ -181,26 +186,7 @@
       </df>
       <df name="scripts">
       </df>
-      <df name="Usart">
-        <df name="inc">
-          <in>CUsart.hpp</in>
-          <in>CUsartIrqHandler.hpp</in>
-          <in>CUsartState.hpp</in>
-          <in>CUsartStateRunning.hpp</in>
-          <in>CUsartStateUnusable.hpp</in>
-          <in>CUsartStateUsable.hpp</in>
-          <in>SUsartConfig.hpp</in>
-        </df>
-        <df name="src">
-          <in>CUsartIrqHandler.cpp</in>
-          <in>CUsartStateRunning.cpp</in>
-          <in>CUsartStateUnusable.cpp</in>
-          <in>CUsartStateUsable.cpp</in>
-        </df>
-      </df>
       <in>main.cpp</in>
-      <in>stm32f10x_it.c</in>
-      <in>stm32f10x_it.h</in>
       <in>syscalls.c</in>
       <in>vectors.c</in>
     </df>
@@ -231,11 +217,6 @@
           <executablePath></executablePath>
         </makeTool>
       </makefileType>
-      <item path="Boards/boards/f1xx/mediumDensity/startup_stm32f10x_md.S"
-            ex="true"
-            tool="4"
-            flavor="0">
-      </item>
       <item path="Gpio/inc/gpioPortAddress.hpp" ex="true" tool="3" flavor="0">
       </item>
       <item path="Interface/CSingleton.hpp" ex="true" tool="3" flavor="0">
@@ -443,17 +424,6 @@
           </incDir>
         </ccTool>
       </folder>
-      <folder path="objectiveStm32/Usart">
-        <ccTool>
-          <incDir>
-            <pElem>Interface</pElem>
-            <pElem>Rcc/inc</pElem>
-            <pElem>Usart/src</pElem>
-            <pElem>Usart/inc</pElem>
-            <pElem>Gpio/inc</pElem>
-          </incDir>
-        </ccTool>
-      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor="4">
         <ccTool>
           <incDir>
@@ -463,17 +433,6 @@
             <pElem>Gpio/inc</pElem>
           </incDir>
         </ccTool>
-      </item>
-      <item path="stm32f10x_it.c" ex="false" tool="0" flavor="2">
-        <cTool>
-          <incDir>
-            <pElem>Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x</pElem>
-            <pElem>Libraries/STM32F10x_StdPeriph_Driver/inc</pElem>
-            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/lib/gcc/arm-none-eabi/4.5.2/include</pElem>
-            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include</pElem>
-            <pElem>Libraries/CMSIS/CM3/CoreSupport</pElem>
-          </incDir>
-        </cTool>
       </item>
       <item path="syscalls.c" ex="false" tool="0" flavor="2">
         <cTool>

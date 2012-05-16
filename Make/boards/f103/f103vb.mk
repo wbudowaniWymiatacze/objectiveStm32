@@ -16,3 +16,5 @@ SRC_DIRS += Boards/boards/f1xx/mediumDensity
 SRC_DIRS += Boards/boards/f1xx/f103
 SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
 SRC_DIRS += $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/src/
+
+LD_SCRIPT = Boards/boards/f1xx/mediumDensity/stm32_flash.ld

@@ -17,3 +17,5 @@ SRC_DIRS += Boards/boards/f1xx/connectivityLine
 SRC_DIRS += Boards/boards/f1xx/f107
 SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/
 SRC_DIRS += $(ST_LIB)/Libraries/STM32F10x_StdPeriph_Driver/src/
+
+LD_SCRIPT = Boards/boards/f1xx/connectivityLine/stm32_flash.ld
