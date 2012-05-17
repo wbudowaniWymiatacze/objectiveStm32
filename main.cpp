@@ -12,6 +12,8 @@
 
 #include <stm32-P107.hpp>
 
+#include <CGpioOutput.hpp>
+
 LED GreenLED;
 LED YellowLED;
 USART Console;
@@ -19,20 +21,29 @@ USART Console;
 int main()
 {
     //LEDS
-    GreenLED.init(green);
+//    GreenLED.init(green);
     YellowLED.init(yellow);
 
-    GreenLED.On();
-    YellowLED.Off();
+//    GreenLED.On();
+    YellowLED.On();
+    
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+    
+    CGpioOutput Gpio(GPIOC, GPIO_Pin_6, GPIO_Speed_10MHz);
+    Gpio.init();
+    Gpio.set(true);
     
     int i=0;
     while(1)
     {
+        if(i>100000)
+        {
+            i=0;
+            Gpio.toogle();
+        }
         i++;
-    }
-        
+    }   
 
-    return 0;
 }
 
 
