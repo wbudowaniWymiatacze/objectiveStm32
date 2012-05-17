@@ -5,7 +5,7 @@
  *      Author: reymondo
  */
 #include <boardDefs.hpp>
-
+#include <CGpioManager.hpp>
 
 
 #ifndef STM32_P107_HPP_

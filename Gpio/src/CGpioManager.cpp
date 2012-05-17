@@ -39,24 +39,6 @@ void CGpioManager::setPortPinUsed( uint8_t port, uint8_t pin )
     m_portPinUsed[ port ][ pin ] = true;
 }
 
-bool CGpioManager::getGpio( uint8_t port,
-                            uint8_t pin )
-{
-
-    // check if the port and pin are used by another peripheral
-    bool portPinUsed = checkPortPinAvailability( port, pin );
-
-    if ( portPinUsed == true )
-    {
-    return false;
-    }
-
-    // set the port and the pin as used
-    setPortPinUsed( port, pin );
-
-    return true;
-}
-
 void CGpioManager::remap( uint32_t remapValue )
 {
     GPIO_PinRemapConfig( remapValue, ENABLE );
@@ -72,6 +54,65 @@ void CGpioManager::releaseGpio( uint8_t port,
                                 uint8_t pin )
 {
     setPortPinUnused( port, pin );
+}
+
+uint8_t CGpioManager::getPortIndex(GPIO_TypeDef * port)
+{
+/*    switch(port)
+    {
+        case GPIOA : 
+            return 0;
+        case GPIOB : 
+            return 1;
+        case GPIOC : 
+            return 2;
+        case GPIOD : 
+            return 3;
+        case GPIOE : 
+            return 4;
+        case GPIOF : 
+            return 5;
+        case GPIOG : 
+            return 6;
+    }*/
+    if(port==GPIOC)
+    {
+        return 4;
+    }
+    return 0;
+}
+    
+uint8_t CGpioManager::getPinIndex(uint16_t pin)
+{
+    switch(pin)
+    {
+        case GPIO_Pin_0 : 
+            return 0;
+        case GPIO_Pin_1 : 
+            return 1;
+        case GPIO_Pin_2 : 
+            return 2;
+        case GPIO_Pin_3 : 
+            return 3;
+        case GPIO_Pin_4 : 
+            return 4;
+        case GPIO_Pin_5 : 
+            return 5;
+        case GPIO_Pin_6 : 
+            return 6;
+        case GPIO_Pin_7 : 
+            return 7;
+        case GPIO_Pin_8 : 
+            return 8;
+        case GPIO_Pin_9 : 
+            return 9;
+            // ... TODO   
+        default :
+            return 0;
+                  
+                    
+    }
+    
 }
 
 CGpioManager & CGpioManager::operator=( CGpioManager const & gpioManager )
