@@ -28,11 +28,17 @@
       </df>
       <df name="Gpio">
         <df name="inc">
+          <in>CGpio.hpp</in>
+          <in>CGpioInput.hpp</in>
           <in>CGpioManager.hpp</in>
+          <in>CGpioOutput.hpp</in>
           <in>gpioPortAddress.hpp</in>
         </df>
         <df name="src">
+          <in>CGpio.cpp</in>
+          <in>CGpioInput.cpp</in>
           <in>CGpioManager.cpp</in>
+          <in>CGpioOutput.cpp</in>
         </df>
       </df>
       <df name="hdr">

@@ -1,3 +1,3 @@
 #!/bin/bash
-openocd -f openocd.cfg &
+openocd -f openocd.cfg
 

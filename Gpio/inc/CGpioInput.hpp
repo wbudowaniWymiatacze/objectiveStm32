@@ -13,9 +13,13 @@
 class CGpioInput: public CGpio {
 public:
     CGpioInput(GPIO_TypeDef * port, uint16_t pin, GPIOSpeed_TypeDef speed);
+    CGpioInput();
     virtual ~CGpioInput();
     
     bool get();
+    
+    void init();
+    
 private:
     
 

@@ -13,11 +13,15 @@
 class CGpioOutput : public CGpio {
 public:
     CGpioOutput(GPIO_TypeDef * port, uint16_t pin, GPIOSpeed_TypeDef speed);
+    CGpioOutput();
     virtual ~CGpioOutput();
     
     void set(bool state);
     void toogle();
     bool get();
+    
+    void init();
+    
 private:
 
 };

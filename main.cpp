@@ -20,16 +20,22 @@ USART Console;
 
 int main()
 {
-    //LEDS
+    //SystemInit();
+
+//LEDS
 //    GreenLED.init(green);
     YellowLED.init(yellow);
 
 //    GreenLED.On();
     YellowLED.On();
     
+    
+    CGpioManager GM;
+    
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
     
-    CGpioOutput Gpio(GPIOC, GPIO_Pin_6, GPIO_Speed_10MHz);
+    //CGpioOutput Gpio(GPIOC, GPIO_Pin_6, GPIO_Speed_10MHz);
+    CGpioOutput Gpio = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_6, GPIO_Speed_10MHz);
     Gpio.init();
     Gpio.set(true);
     
@@ -43,7 +49,6 @@ int main()
         }
         i++;
     }   
-
 }
 
 

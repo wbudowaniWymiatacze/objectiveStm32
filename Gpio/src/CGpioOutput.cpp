@@ -14,6 +14,11 @@ CGpio(port, pin, speed, GPIO_Mode_Out_PP)
     
 }
 
+CGpioOutput::CGpioOutput()
+{
+    
+}
+
 CGpioOutput::~CGpioOutput() 
 {
     
@@ -39,4 +44,9 @@ void CGpioOutput::toogle()
 bool CGpioOutput::get()
 {
     return GPIO_ReadInputDataBit(m_GpioPort,m_GpioPin) != RESET;
+}
+
+void CGpioOutput::init() 
+{
+    realInit();
 }

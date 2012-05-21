@@ -4,12 +4,14 @@
  *  Created on: Feb 7, 2012
  *      Author: artur
  */
+#include <boardDefs.hpp>
 #include <CGpio.hpp>
+#include <stdio.h>
+
 
 #ifndef CGPIOMANAGER_HPP_
 #define CGPIOMANAGER_HPP_
 
-#include <boardDefs.hpp>
 
 /*
  * only CManagersFactory can create it!!
@@ -72,6 +74,7 @@ public:
     CGpioManager( CGpioManager const & gpioManager );
 
 private:
+    CGpio m_usedGpios;
     GPIO_TypeDef * m_gpioPortAddress[ NUMBER_OF_PORTS ];
     /*
      * keeps the information whether the pin on the given port is
@@ -90,9 +93,12 @@ gpiotype CGpioManager::getGpio( GPIO_TypeDef * port,
     // check if the port and pin are used by another peripheral
     bool portPinUsed = checkPortPinAvailability( getPortIndex(port), getPinIndex(pin) );
 
+    //TODO
+    portPinUsed = false;
+    
     if ( portPinUsed == true )
     {
-    return CGpio(port, pin, speed);
+        return gpiotype();
     }
 
     // set the port and the pin as used

@@ -13,6 +13,7 @@
 class CGpio {
 public:
     CGpio(GPIO_TypeDef * port, uint16_t pin, GPIOSpeed_TypeDef speed, GPIOMode_TypeDef mode);
+    CGpio();
     
     virtual ~CGpio();
     
@@ -23,6 +24,7 @@ public:
     void init();
     
 protected:
+    void realInit();    
     GPIO_TypeDef *    m_GpioPort;
     uint16_t          m_GpioPin;
     GPIOSpeed_TypeDef m_GpioSpeed;    

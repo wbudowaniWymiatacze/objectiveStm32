@@ -16,6 +16,11 @@ CGpio::CGpio(GPIO_TypeDef * port, uint16_t pin, GPIOSpeed_TypeDef speed, GPIOMod
     
 }
 
+CGpio::CGpio()
+{
+    
+}
+
 CGpio::~CGpio() 
 {
     
@@ -37,6 +42,11 @@ bool CGpio::get()
 }
 
 void CGpio::init()
+{
+    
+}
+
+void CGpio::realInit()
 {
     GPIO_InitTypeDef GPIO_InitStructure;
     
