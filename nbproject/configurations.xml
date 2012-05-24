@@ -898,6 +898,23 @@
       </item>
       <item path="Gpio/inc/gpioPortAddress.hpp" ex="true" tool="3" flavor="0">
       </item>
+      <item path="Gpio/src/CGpio.cpp" ex="false" tool="1" flavor="4">
+        <ccTool>
+          <incDir>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="Gpio/src/CGpioManager.cpp" ex="false" tool="1" flavor="4">
+        <ccTool>
+          <incDir>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
+            <pElem>Interface</pElem>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
+          </incDir>
+        </ccTool>
+      </item>
       <item path="Interface/CSingleton.hpp" ex="true" tool="3" flavor="0">
       </item>
       <item path="Interface/EPeripheralState.hpp" ex="true" tool="3" flavor="0">
@@ -1071,7 +1088,6 @@
       <folder path="objectiveStm32/Gpio">
         <ccTool>
           <incDir>
-            <pElem>Interface</pElem>
             <pElem>Gpio/inc</pElem>
             <pElem>Gpio/src</pElem>
           </incDir>
@@ -1120,9 +1136,20 @@
       <item path="main.cpp" ex="false" tool="1" flavor="4">
         <ccTool>
           <incDir>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
             <pElem>Interface</pElem>
             <pElem>Rcc/inc</pElem>
             <pElem>Gpio/inc</pElem>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="stm32-P107.cpp" ex="false" tool="1" flavor="4">
+        <ccTool>
+          <incDir>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
+            <pElem>Gpio/inc</pElem>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
           </incDir>
         </ccTool>
       </item>

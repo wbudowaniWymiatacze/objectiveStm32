@@ -11,7 +11,7 @@
 CGpioOutput::CGpioOutput(GPIO_TypeDef * port, uint16_t pin, GPIOSpeed_TypeDef speed):
 CGpio(port, pin, speed, GPIO_Mode_Out_PP)
 {
-    
+  
 }
 
 CGpioOutput::CGpioOutput()

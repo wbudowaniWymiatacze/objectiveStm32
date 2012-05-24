@@ -7,6 +7,7 @@
 
 #include <boardDefs.hpp>
 
+
 #ifndef CGPIO_HPP
 #define	CGPIO_HPP
 
@@ -17,11 +18,15 @@ public:
     
     virtual ~CGpio();
     
-    void set(bool state);
-    void toogle();
-    bool get();
+    virtual void set(bool state);
+    virtual void toogle();
+    virtual bool get();
     
-    void init();
+    virtual void init();
+    
+    int operator == (CGpio const &);  
+    
+    void remap(uint32_t remapValue);
     
 protected:
     void realInit();    
