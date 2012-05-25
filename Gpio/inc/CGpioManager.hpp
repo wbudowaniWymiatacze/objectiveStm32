@@ -53,7 +53,7 @@ CGpio * CGpioManager::getGpio( GPIO_TypeDef * port,
                              uint16_t pin, 
                              GPIOSpeed_TypeDef speed )
 {
-    CGpio * gpio = new gpiotype(port, pin, speed);
+    CGpio * gpio;
     
     bool portPinUsed = isGpioUsed(gpio);
     //bool portPinUsed = false;
@@ -62,6 +62,7 @@ CGpio * CGpioManager::getGpio( GPIO_TypeDef * port,
         //gpio = new CGpio();
         gpio = m_emptyGpio;
     else
+        gpio = new gpiotype(port, pin, speed);
         m_usedGPios.push_front(gpio);
 
     return gpio;
