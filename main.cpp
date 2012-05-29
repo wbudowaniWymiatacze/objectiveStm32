@@ -8,39 +8,24 @@
 
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
-#include <TypePeriph.hpp>
-
-#include <stm32-P107.hpp>
-
+#include <TypePeriph.hpp>`
 #include <CGpioOutput.hpp>
-
-
-
-
-LED GreenLED;
-LED YellowLED;
-USART Console;
 
 int main()
 {
     //SystemInit();
-
-//LEDS
-    //GreenLED.init(green);
-    YellowLED.init(yellow);
-
-//    GreenLED.On();
-    //YellowLED.On();
-    
+   
     CGpioManager GM;
     
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
     
-    CGpio* Gpio = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_6, GPIO_Speed_10MHz);
-    
-    CGpio* Gpio2 = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_6, GPIO_Speed_10MHz);
+    CGpio* Gpio = GM.getGpio<CGpioOutput>(GPIOB,GPIO_Pin_0, GPIO_Speed_10MHz);
+    CGpio* Gpio3 = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_4, GPIO_Speed_10MHz);
     
     Gpio->init();
+    Gpio3->init();
+    
     Gpio->set(true);
     
     int i=0;
@@ -50,7 +35,7 @@ int main()
         {
             i=0;
             Gpio->toogle();
-            Gpio2->toogle();
+            Gpio3->toogle();
         }
         i++;
     }   

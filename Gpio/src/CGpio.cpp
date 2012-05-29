@@ -6,7 +6,6 @@
  */
 
 #include <CGpio.hpp>
-#include "stm32-P107.hpp"
 
 CGpio::CGpio(GPIO_TypeDef * port, uint16_t pin, GPIOSpeed_TypeDef speed, GPIOMode_TypeDef mode) :
         m_GpioPort(port),
@@ -53,10 +52,7 @@ int CGpio::operator ==(CGpio const & G)
 }
 
 void CGpio::realInit()
-{
-    extern LED YellowLED;
-    YellowLED.On();
-    
+{   
     GPIO_InitTypeDef GPIO_InitStructure;
     
     GPIO_InitStructure.GPIO_Speed = m_GpioSpeed;

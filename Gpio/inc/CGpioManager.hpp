@@ -53,18 +53,19 @@ CGpio * CGpioManager::getGpio( GPIO_TypeDef * port,
                              uint16_t pin, 
                              GPIOSpeed_TypeDef speed )
 {
-    CGpio * gpio;
+    CGpio * gpio = new gpiotype(port, pin, speed);
     
     bool portPinUsed = isGpioUsed(gpio);
     //bool portPinUsed = false;
     
     if ( portPinUsed == true )
-        //gpio = new CGpio();
+    {
+        delete gpio;
         gpio = m_emptyGpio;
+    }
     else
-        gpio = new gpiotype(port, pin, speed);
         m_usedGPios.push_front(gpio);
-
+    
     return gpio;
 }
 #endif /* CGPIOMANAGER_HPP_ */
