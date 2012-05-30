@@ -83,8 +83,8 @@ typedef struct
     static const uint8_t port       = USART3_PORT_PART_REMAP;
     static const uint32_t remap     = GPIO_PartialRemap_USART3;
     USART_TypeDef * id;
-    static const uint32_t apb1      = USART3_PART__REMAP_APB1;
-    static const uint32_t apb2      = USART3_PART__REMAP_APB2;
+    static const uint32_t apb1      = USART3_PART_REMAP_APB1;
+    static const uint32_t apb2      = USART3_PART_REMAP_APB2;
     static const uint8_t irqChannel = USART3_IRQn;
 } SUsart6;
 
@@ -96,8 +96,8 @@ typedef struct
     static const uint8_t port       = USART3_PORT_FULL_REMAP;
     static const uint32_t remap     = GPIO_FullRemap_USART3;
     USART_TypeDef * id;
-    static const uint32_t apb1      = USART3_FULL__REMAP_APB1;
-    static const uint32_t apb2      = USART3_FULL__REMAP_APB2;
+    static const uint32_t apb1      = USART3_FULL_REMAP_APB1;
+    static const uint32_t apb2      = USART3_FULL_REMAP_APB2;
     static const uint8_t irqChannel = USART3_IRQn;
 } SUsart7;
 #endif /* TYPEPERIPH_HPP_ */

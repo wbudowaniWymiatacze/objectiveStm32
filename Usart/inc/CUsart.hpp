@@ -93,13 +93,14 @@ void CUsart< usartX >::init( GPIO_InitTypeDef * gpiosConfig,
 
     m_usartState->remap( m_usartParams.remap );
 
+    // TODO: zmienić wywołanie inicjalizacji GPIO?
     // initialise GPIOs
     m_usartState->gpioInit( m_usartParams.port,
                             m_usartParams.rx,
                             gpiosConfig[ 0 ] );
     m_usartState->gpioInit( m_usartParams.port,
                             m_usartParams.tx,
-                            gpiosConfig[ 0 ] );
+                            gpiosConfig[ 1 ] );
 
     //initialise usart
     SUsartConfig * usartConfStruct = ( SUsartConfig * ) config;
