@@ -19,7 +19,7 @@
 
 int main()
 {
-    //SystemInit();
+    SystemInit();
     
     CGpioManager GM;
     
