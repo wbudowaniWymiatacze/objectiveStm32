@@ -8,13 +8,15 @@
 #ifndef SYSTEM_HPP
 #define	SYSTEM_HPP
 
+#include <boardDefs.hpp>
+
 class System {
 public:
     System();
     System(const System& orig);
     virtual ~System();
     
-    InitRccForDevice(uint32_t);
+    void InitRccForDevice(uint32_t);
     
 private:
 

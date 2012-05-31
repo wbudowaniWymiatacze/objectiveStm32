@@ -199,16 +199,16 @@ void USART::recCharHandler(char c)
 extern "C" void USART2_IRQHandler(void);
 void USART2_IRQHandler(void)
 {
-	extern LED YellowLED ;
-	extern USART Console ;
-	char b;
-	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
-	{
-		YellowLED.Toggle();
-
-		b=Console.readChar();
-		Console.recCharHandler(b);
-	}
+//	extern LED YellowLED ;
+//	extern USART Console ;
+//	char b;
+//	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
+//	{
+//		YellowLED.Toggle();
+//
+//		b=Console.readChar();
+//		Console.recCharHandler(b);
+//	}
 }
 
 I2C::I2C()

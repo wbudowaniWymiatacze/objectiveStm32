@@ -17,20 +17,9 @@
 
 
 
-LED GreenLED;
-LED YellowLED;
-USART Console;
-
 int main()
 {
     //SystemInit();
-
-//LEDS
-    //GreenLED.init(green);
-    YellowLED.init(yellow);
-
-//    GreenLED.On();
-    //YellowLED.On();
     
     CGpioManager GM;
     
@@ -38,8 +27,9 @@ int main()
     
     CGpio* Gpio = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_6, GPIO_Speed_10MHz);
     
-    CGpio* Gpio2 = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_6, GPIO_Speed_10MHz);
+    CGpio* Gpio2 = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_7);
     
+    Gpio2->init();
     Gpio->init();
     Gpio->set(true);
     

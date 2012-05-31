@@ -54,8 +54,6 @@ int CGpio::operator ==(CGpio const & G)
 
 void CGpio::realInit()
 {
-    extern LED YellowLED;
-    YellowLED.On();
     
     GPIO_InitTypeDef GPIO_InitStructure;
     
