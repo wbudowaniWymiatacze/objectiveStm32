@@ -45,7 +45,7 @@ void CRccManager::apb1Disable( uint32_t apb1Value )
 void CRccManager::apb2Enable( uint32_t apb2Value )
 {
     increaseUseCount( m_apb2UseCounter, apb2Value );
-    RCC_APB1PeriphClockCmd( apb2Value, ENABLE );
+    RCC_APB2PeriphClockCmd( apb2Value, ENABLE );
 }
 
 void CRccManager::apb2Disable( uint32_t apb1Value )

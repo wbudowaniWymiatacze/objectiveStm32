@@ -1,3 +1,4 @@
 #!/bin/bash
-openocd -f openocd.cfg &
+killall openocd
+openocd -f openocd.cfg 
 

@@ -21,7 +21,7 @@ int main()
 	CRccManager rccMngr;
 	SUsartConfig usartConfStruct;
 	USART_InitTypeDef & usartConf = usartConfStruct.usartConfig;
-	CUsart< SUsart5 > usart1( gpioMngr, rccMngr );
+	CUsart< SUsart4 > usart1( gpioMngr, rccMngr );
 
 	usartConf.USART_BaudRate = 115200;
 	usartConf.USART_WordLength = USART_WordLength_8b;
@@ -47,6 +47,15 @@ int main()
 
 	char buffer[] = { 'a', 'b', 'c', 'd' };
 	usart1.write( ( uint16_t * ) buffer, 4 );
+        while(1)
+        {
+            for (int i=0;i<7000000;i++);
+            usart1.write( ( uint16_t * ) "A", 1 );
+            usart1.write( ( uint16_t * ) "r", 1 );
+            usart1.write( ( uint16_t * ) "m", 1 );
+            usart1.write( ( uint16_t * ) "\r", 1 );
+            usart1.write( ( uint16_t * ) "\n", 1 );
+        }
 
 	return 0;
 

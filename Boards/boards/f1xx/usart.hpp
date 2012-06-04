@@ -37,8 +37,8 @@
 #define USART2_APB2							RCC_APB2Periph_GPIOA
 // USART2 remapped
 #define USART2_PORT_REMAP					3
-#define USART2_RX_PIN_REMAP					6
-#define USART2_TX_PIN_REMAP					5
+#define USART2_RX_PIN_REMAP					GPIO_Pin_6
+#define USART2_TX_PIN_REMAP					GPIO_Pin_5
 #define USART2_REMAP_APB1					RCC_APB1Periph_USART2
 #define USART2_REMAP_APB2					RCC_APB2Periph_AFIO | RCC_APB2Periph_GPIOD
 
