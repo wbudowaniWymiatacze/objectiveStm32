@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#./scripts/run_openocd.sh &
+
+sleep 5
+
 cd ..
 cd objectiveStm32
 

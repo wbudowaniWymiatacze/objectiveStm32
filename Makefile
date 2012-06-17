@@ -54,8 +54,9 @@ INC_DIRS += System/inc
 INC_DIRS += Gpio/inc
 INC_DIRS += Rcc/inc
 INC_DIRS += Usart/inc
-INC_DIRS += Interface
+#INC_DIRS += Interface
 INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
+INC_DIRS += Peripherals
 
 # library directories (absolute or relative paths to additional folders with
 # libraries)
@@ -76,6 +77,7 @@ SRC_DIRS += Gpio/src
 SRC_DIRS += Rcc/src
 SRC_DIRS += Usart/src
 SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
+SRC_DIRS += Peripherals
 
 # extension of C++ files
 CXX_EXT = cpp

@@ -14,8 +14,6 @@
             <df name="f107">
               <in>STM32F107VCxx_Desc.hpp</in>
             </df>
-            <df name="mediumDensity">
-            </df>
             <in>gpio.hpp</in>
             <in>rcc.hpp</in>
             <in>usart.hpp</in>
@@ -32,7 +30,6 @@
           <in>CGpioInput.hpp</in>
           <in>CGpioManager.hpp</in>
           <in>CGpioOutput.hpp</in>
-          <in>gpioPortAddress.hpp</in>
         </df>
         <df name="src">
           <in>CGpio.cpp</in>
@@ -46,6 +43,10 @@
         <in>hdr_gpio.h</in>
         <in>hdr_rcc.h</in>
         <in>hdr_special_registers.h</in>
+      </df>
+      <df name="Inc">
+        <df name="usart">
+        </df>
       </df>
       <df name="Interface">
         <in>CSingleton.hpp</in>
@@ -181,6 +182,14 @@
       </df>
       <df name="out">
       </df>
+      <df name="Peripherals">
+        <in>CLed.cpp</in>
+        <in>CLed.hpp</in>
+        <in>CPeriphalManager.cpp</in>
+        <in>CPeriphalManager.hpp</in>
+        <in>IPeripheral.hpp</in>
+        <in>PeripheralTypes.hpp</in>
+      </df>
       <df name="Rcc">
         <df name="inc">
           <in>CRccManager.hpp</in>
@@ -190,6 +199,24 @@
         </df>
       </df>
       <df name="scripts">
+      </df>
+      <df name="Src">
+        <df name="usart">
+        </df>
+      </df>
+      <df name="System">
+        <df name="inc">
+          <in>System.hpp</in>
+        </df>
+        <df name="src">
+          <in>System.cpp</in>
+        </df>
+      </df>
+      <df name="Usart">
+        <df name="inc">
+        </df>
+        <df name="src">
+        </df>
       </df>
       <in>main.cpp</in>
       <in>stm32-P107.cpp</in>
@@ -896,8 +923,6 @@
             tool="3"
             flavor="0">
       </item>
-      <item path="Gpio/inc/gpioPortAddress.hpp" ex="true" tool="3" flavor="0">
-      </item>
       <item path="Gpio/src/CGpio.cpp" ex="false" tool="1" flavor="4">
         <ccTool>
           <incDir>
@@ -910,7 +935,6 @@
         <ccTool>
           <incDir>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
-            <pElem>Interface</pElem>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
           </incDir>
         </ccTool>
@@ -924,6 +948,8 @@
       <item path="Interface/IPeripheral.hpp" ex="true" tool="3" flavor="0">
       </item>
       <item path="Interface/SPeriphConfig.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="Interface/TypePeriph.hpp" ex="true" tool="3" flavor="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_cl.s"
             ex="true"
@@ -1117,11 +1143,29 @@
           </incDir>
         </cTool>
       </folder>
+      <folder path="objectiveStm32/Peripherals">
+        <ccTool>
+          <incDir>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
+            <pElem>Gpio/inc</pElem>
+            <pElem>Peripherals</pElem>
+            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
       <folder path="objectiveStm32/Rcc">
         <ccTool>
           <incDir>
             <pElem>Rcc/inc</pElem>
             <pElem>Rcc/src</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="objectiveStm32/System">
+        <ccTool>
+          <incDir>
+            <pElem>System/inc</pElem>
+            <pElem>System/src</pElem>
           </incDir>
         </ccTool>
       </folder>
@@ -1137,7 +1181,7 @@
         <ccTool>
           <incDir>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
-            <pElem>Interface</pElem>
+            <pElem>Peripherals</pElem>
             <pElem>Rcc/inc</pElem>
             <pElem>Gpio/inc</pElem>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>

@@ -8,30 +8,41 @@
 
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
-#include <TypePeriph.hpp>
+#include <CGpio.hpp>
 
-#include <stm32-P107.hpp>
+#include <CPeriphalManager.hpp>
+#include <Peripherals/PeripheralTypes.hpp>
+#include <IPeripheral.hpp>
+#include <Peripherals/CLed.hpp>
 
-#include <CGpioOutput.hpp>
-
+#include "Peripherals/IPeripheral.hpp"
 
 
 
 int main()
 {
+
     SystemInit();
     
-    CGpioManager GM;
+    /*PERIPHERAL MANAGER TEST*/
+    CGpioManager GM;    
+    CPeriphalManager PM(&GM);
+   
+    TPeripheralConfigLed ledConfig;
+    ledConfig.apb1 = 0;
+    ledConfig.apb2 = RCC_APB2Periph_GPIOC;
+    ledConfig.gpioPin = GPIO_Pin_6;
+    ledConfig.gpioPort = GPIOC;
+    ledConfig.irqChannel = 0;
+    ledConfig.remap = 0;
     
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+    CLed * Led = PM.getPeripheral<CLed>(&ledConfig);
     
-    CGpio* Gpio = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_6, GPIO_Speed_10MHz);
+    CLed * Led2 = PM.getPeripheral<CLed>(&ledConfig);
     
-    CGpio* Gpio2 = GM.getGpio<CGpioOutput>(GPIOC,GPIO_Pin_7);
+    Led->init();
     
-    Gpio2->init();
-    Gpio->init();
-    Gpio->set(true);
+    Led->on();
     
     int i=0;
     while(1)
@@ -39,8 +50,8 @@ int main()
         if(i>100000)
         {
             i=0;
-            Gpio->toogle();
-            Gpio2->toogle();
+            Led->toogle();
+            Led2->toogle();
         }
         i++;
     }   

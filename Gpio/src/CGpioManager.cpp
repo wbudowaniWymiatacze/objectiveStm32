@@ -8,7 +8,6 @@
 #include <boardDefs.hpp>
 
 #include <CGpioManager.hpp>
-#include <TypePeriph.hpp>
 #include <list>
 #include <algorithm>
 
