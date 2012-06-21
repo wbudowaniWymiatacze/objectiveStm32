@@ -183,6 +183,8 @@
       <df name="out">
       </df>
       <df name="Peripherals">
+        <in>CI2C.cpp</in>
+        <in>CI2C.hpp</in>
         <in>CLed.cpp</in>
         <in>CLed.hpp</in>
         <in>CPeriphalManager.cpp</in>

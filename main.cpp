@@ -51,7 +51,7 @@ int main()
         {
             i=0;
             Led->toogle();
-            Led2->toogle();
+            //Led2->toogle();
         }
         i++;
     }   

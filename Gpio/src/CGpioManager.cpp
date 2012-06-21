@@ -24,6 +24,8 @@ void CGpioManager::releaseGpio( CGpio * gpio )
 
 bool CGpioManager::isGpioUsed(CGpio* gpio)
 {
+    //TODO: to replace by list.find(gpio) method ( needs to define compare object like in Device Manager )
+    
     TGpioList::iterator Iter;
     for(Iter=m_usedGPios.begin() ; Iter!=m_usedGPios.end();Iter++)
     {
