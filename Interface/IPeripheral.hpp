@@ -61,7 +61,7 @@ public:
      *
      * nData        amount of data to read. 2*nData bytes will be read
      */
-    virtual void read( uint16_t *   data,
+    virtual void read( uint8_t *   data,
                        uint8_t      nData ) = 0;
 
     /*
@@ -73,7 +73,7 @@ public:
      *
      * nData        amount of data to write. 2*nData bytes will be written
      */
-    virtual void write( uint16_t *  data,
+    virtual void write( uint8_t *  data,
                         uint8_t     nData ) = 0;
 
     /*

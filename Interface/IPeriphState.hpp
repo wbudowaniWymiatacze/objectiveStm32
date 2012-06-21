@@ -23,10 +23,10 @@ public:
     virtual void init( USART_TypeDef *      usartId,
                        USART_InitTypeDef &  periphConfig ) = 0;
     virtual void read( USART_TypeDef *  usartId,
-                       uint16_t *       data,
+                       uint8_t *       data,
                        uint8_t          nData ) = 0;
     virtual void write( USART_TypeDef * usartId,
-                        uint16_t *      data,
+                        uint8_t *      data,
                         uint8_t         nData ) = 0;
     virtual void interruptsConfig( NVIC_InitTypeDef & interruptsConfig ) = 0;
     virtual IPeriphState * nextState( bool    switchToNextState ) = 0;

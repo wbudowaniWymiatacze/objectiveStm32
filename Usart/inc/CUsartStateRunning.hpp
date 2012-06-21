@@ -67,14 +67,14 @@ public:
      * read data from USART input data buffer to the defined buffer
      */
     void read( USART_TypeDef *  usartId,
-               uint16_t *       data,
+               uint8_t *       data,
                uint8_t          nData );
 
     /*
      * write data to USART
      */
     void write( USART_TypeDef * usartId,
-                uint16_t *      data,
+                uint8_t *      data,
                 uint8_t         nData );
 
     /*
