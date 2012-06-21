@@ -21,7 +21,7 @@ class CUsartStateUsable : public IPeriphState {
 public:
 
     CUsartStateUsable( CGpioManager *   gpioManager,
-                         CRccManager *    rccManager ) :
+                       CRccManager *    rccManager ) :
     m_gpioManager( gpioManager ), m_rccManager( rccManager ) {}
 
     void remap( uint32_t    remapValue );
@@ -35,7 +35,7 @@ public:
 
     // TODO: zmienić na wywołanie z nr portu i pinu
     void gpioInit( uint8_t              port,
-                   uint8_t              pin,
+                   uint16_t              pin,
                    GPIO_InitTypeDef &   gpioConfig );
 
     /*
@@ -78,8 +78,8 @@ public:
     IPeriphState * nextState( bool  switchToNextState );
 
     IPeriphState * deinit( USART_TypeDef *    id,
-                            uint32_t           apb1,
-                            uint32_t           apb2 );
+                           uint32_t           apb1,
+                           uint32_t           apb2 );
 
     EPeripheralState getState();
 

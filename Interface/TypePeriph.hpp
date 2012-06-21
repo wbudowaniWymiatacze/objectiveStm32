@@ -13,8 +13,8 @@
 // USART1
 typedef struct
 {
-    static const uint8_t tx         = USART1_TX_PIN;
-    static const uint8_t rx         = USART1_RX_PIN;
+    static const uint16_t tx        = USART1_TX_PIN;
+    static const uint16_t rx        = USART1_RX_PIN;
     static const uint8_t port       = USART1_PORT;
     static const uint32_t remap     = 0;
     USART_TypeDef * id;
@@ -26,8 +26,8 @@ typedef struct
 // USART1 remapped
 typedef struct
 {
-    static const uint8_t tx         = USART1_TX_PIN_REMAP;
-    static const uint8_t rx         = USART1_RX_PIN_REMAP;
+    static const uint16_t tx        = USART1_TX_PIN_REMAP;
+    static const uint16_t rx        = USART1_RX_PIN_REMAP;
     static const uint8_t port       = USART1_PORT_REMAP;
     static const uint32_t remap     = GPIO_Remap_USART1;
     USART_TypeDef * id;
@@ -39,8 +39,8 @@ typedef struct
 // USART2
 typedef struct
 {
-    static const uint8_t tx         = USART2_TX_PIN;
-    static const uint8_t rx         = USART2_RX_PIN;
+    static const uint16_t tx        = USART2_TX_PIN;
+    static const uint16_t rx        = USART2_RX_PIN;
     static const uint8_t port       = USART2_PORT;
     static const uint32_t remap     = 0;
     USART_TypeDef * id;
@@ -52,8 +52,8 @@ typedef struct
 // USART2 remapped
 typedef struct
 {
-    static const uint8_t tx         = USART2_TX_PIN_REMAP;
-    static const uint8_t rx         = USART2_RX_PIN_REMAP;
+    static const uint16_t tx        = USART2_TX_PIN_REMAP;
+    static const uint16_t rx        = USART2_RX_PIN_REMAP;
     static const uint8_t port       = USART2_PORT_REMAP;
     static const uint32_t remap     = GPIO_Remap_USART2;
     USART_TypeDef * id;
@@ -65,8 +65,8 @@ typedef struct
 // USART3
 typedef struct
 {
-    static const uint8_t tx         = USART3_TX_PIN;
-    static const uint8_t rx         = USART3_RX_PIN;
+    static const uint16_t tx        = USART3_TX_PIN;
+    static const uint16_t rx        = USART3_RX_PIN;
     static const uint8_t port       = USART3_PORT;
     static const uint32_t remap     = 0;
     USART_TypeDef * id;
@@ -78,8 +78,8 @@ typedef struct
 // USART3 partially remapped
 typedef struct
 {
-    static const uint8_t tx         = USART3_TX_PIN_PART_REMAP;
-    static const uint8_t rx         = USART3_RX_PIN_PART_REMAP;
+    static const uint16_t tx        = USART3_TX_PIN_PART_REMAP;
+    static const uint16_t rx        = USART3_RX_PIN_PART_REMAP;
     static const uint8_t port       = USART3_PORT_PART_REMAP;
     static const uint32_t remap     = GPIO_PartialRemap_USART3;
     USART_TypeDef * id;
@@ -91,8 +91,8 @@ typedef struct
 // USART3 fully remapped
 typedef struct
 {
-    static const uint8_t tx         = USART3_TX_PIN_FULL_REMAP;
-    static const uint8_t rx         = USART3_RX_PIN_FULL_REMAP;
+    static const uint16_t tx        = USART3_TX_PIN_FULL_REMAP;
+    static const uint16_t rx        = USART3_RX_PIN_FULL_REMAP;
     static const uint8_t port       = USART3_PORT_FULL_REMAP;
     static const uint32_t remap     = GPIO_FullRemap_USART3;
     USART_TypeDef * id;

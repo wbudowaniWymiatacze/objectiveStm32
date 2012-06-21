@@ -20,23 +20,23 @@ public:
      * return true if pin on the port is free to use (not used by another
      * peripheral), false otherwise
      */
-    bool checkPortPinAvailability( uint8_t port, uint8_t pin );
+    bool checkPortPinAvailability( uint8_t port, uint16_t pin );
 
     /*
      * sets pin on the port unused by any peripheral
      */
-    void setPortPinUnused( uint8_t port, uint8_t pin );
+    void setPortPinUnused( uint8_t port, uint16_t pin );
 
     /*
      * sets pin on the port as used
      */
-    void setPortPinUsed( uint8_t port, uint8_t pin );
+    void setPortPinUsed( uint8_t port, uint16_t pin );
 
     /*
      * returns false if the GPIOs are already in use
      */
     bool getGpio( uint8_t port,
-          uint8_t pin );
+          uint16_t pin );
 
     /*
      * remap GPIOs
@@ -53,7 +53,7 @@ public:
      * set pins of given GPIOs as unused
      */
     void releaseGpio( uint8_t   port,
-                      uint8_t   pin );
+                        uint16_t   pin );
 
     CGpioManager & operator=( CGpioManager const & gpioManager );
     CGpioManager( CGpioManager const & gpioManager );

@@ -22,7 +22,7 @@ class CUsartStateUnusable : public IPeriphState {
 public:
 
     CUsartStateUnusable( CGpioManager * gpioManager,
-                             CRccManager *  rccManager ) :
+                         CRccManager *  rccManager ) :
     m_gpioManager( gpioManager ), m_rccManager( rccManager ), m_stateInfo( EPeripheralStateUnusable ) {}
 
     void remap( uint32_t    remapValue )
@@ -41,7 +41,7 @@ public:
      * so the function does nothing
      */
     void gpioInit( uint8_t              port,
-                   uint8_t              pin,
+                   uint16_t              pin,
                    GPIO_InitTypeDef &   gpioConfig )
     {
 
@@ -94,8 +94,8 @@ public:
     IPeriphState * nextState( bool  switchToNextState );
 
     IPeriphState * deinit( USART_TypeDef *    id,
-                            uint32_t           apb1,
-                            uint32_t           apb2 )
+                           uint32_t           apb1,
+                           uint32_t           apb2 )
     {
         return this;
     }

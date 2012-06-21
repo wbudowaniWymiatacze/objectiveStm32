@@ -29,8 +29,8 @@ void CUsartStateUsable::apbEnable( uint32_t apb1Value,
 
 
 void CUsartStateUsable::gpioInit( uint8_t               port,
-                                       uint8_t               pin,
-                                       GPIO_InitTypeDef &    gpioConfig )
+                                  uint16_t              pin,
+                                  GPIO_InitTypeDef &    gpioConfig )
 {
     gpioConfig.GPIO_Pin    = pin;
     m_gpioManager->initGpio( port, &gpioConfig );
@@ -38,7 +38,7 @@ void CUsartStateUsable::gpioInit( uint8_t               port,
 
 
 void CUsartStateUsable::init( USART_TypeDef *       usartId,
-                                   USART_InitTypeDef &   periphConfig )
+                              USART_InitTypeDef &   periphConfig )
 {
     // Write USART parameters
     USART_Init( usartId, &periphConfig );
@@ -64,7 +64,7 @@ IPeriphState * CUsartStateUsable::nextState( bool    switchToNextState )
     if ( switchToNextState == true )
     {
         IPeriphState * newState = new CUsartStateRunning( m_gpioManager,
-                                                           m_rccManager );
+                                                          m_rccManager );
         if( newState != 0 )
         {
             delete this;
@@ -77,8 +77,8 @@ IPeriphState * CUsartStateUsable::nextState( bool    switchToNextState )
 
 
 IPeriphState * CUsartStateUsable::deinit( USART_TypeDef * id,
-                                              uint32_t        apb1,
-                                              uint32_t        apb2 )
+                                          uint32_t        apb1,
+                                          uint32_t        apb2 )
 {
     // Disable USART
     USART_Cmd( id, DISABLE );
@@ -95,7 +95,7 @@ IPeriphState * CUsartStateUsable::deinit( USART_TypeDef * id,
     m_rccManager->apb2Disable( apb2 );
 
     IPeriphState * newState = new CUsartStateUnusable( m_gpioManager,
-                                                        m_rccManager );
+                                                       m_rccManager );
 
     if ( newState != 0 )
     {

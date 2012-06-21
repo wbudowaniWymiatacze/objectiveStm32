@@ -24,23 +24,23 @@ CGpioManager::CGpioManager()
     }
 }
 
-bool CGpioManager::checkPortPinAvailability( uint8_t port, uint8_t pin )
+bool CGpioManager::checkPortPinAvailability( uint8_t port, uint16_t pin )
 {
-    return m_portPinUsed[ port ][ pin ];
+    return m_portPinUsed[ port ][ __builtin_clz( pin ) ];
 }
 
-void CGpioManager::setPortPinUnused( uint8_t port, uint8_t pin )
+void CGpioManager::setPortPinUnused( uint8_t port, uint16_t pin )
 {
-    m_portPinUsed[ port ][ pin ] = false;
+    m_portPinUsed[ port ][ __builtin_clz( pin ) ] = false;
 }
 
-void CGpioManager::setPortPinUsed( uint8_t port, uint8_t pin )
+void CGpioManager::setPortPinUsed( uint8_t port, uint16_t pin )
 {
-    m_portPinUsed[ port ][ pin ] = true;
+    m_portPinUsed[ port ][ __builtin_clz( pin ) ] = true;
 }
 
 bool CGpioManager::getGpio( uint8_t port,
-                            uint8_t pin )
+                               uint16_t pin )
 {
 
     // check if the port and pin are used by another peripheral
@@ -63,13 +63,13 @@ void CGpioManager::remap( uint32_t remapValue )
 }
 
 void CGpioManager::initGpio( uint8_t            port,
-                             GPIO_InitTypeDef * gpioConfig )
+                                GPIO_InitTypeDef * gpioConfig )
 {
     GPIO_Init( m_gpioPortAddress[ port ], gpioConfig );
 }
 
 void CGpioManager::releaseGpio( uint8_t port,
-                                uint8_t pin )
+                                    uint16_t pin )
 {
     setPortPinUnused( port, pin );
 }

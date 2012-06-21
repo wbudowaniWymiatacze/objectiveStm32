@@ -21,8 +21,8 @@ void CUsartStateRunning::read( USART_TypeDef *  usartId,
 }
 
 void CUsartStateRunning::write( USART_TypeDef * usartId,
-                                     uint16_t *      data,
-                                     uint8_t         nData )
+                                uint16_t *      data,
+                                uint8_t         nData )
 {
     for( uint8_t n=0; n<nData; n++ )
     {
@@ -41,8 +41,8 @@ void CUsartStateRunning::interruptsConfig( NVIC_InitTypeDef & interruptsConfig )
 }
 
 IPeriphState * CUsartStateRunning::deinit( USART_TypeDef *    id,
-                                                uint32_t           apb1,
-                                                uint32_t           apb2 )
+                                           uint32_t           apb1,
+                                           uint32_t           apb2 )
 {
     CUsartStateUsable usartUsable = CUsartStateUsable( m_gpioManager,
                                                          m_rccManager );

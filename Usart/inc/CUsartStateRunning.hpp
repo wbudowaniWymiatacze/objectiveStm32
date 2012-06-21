@@ -47,8 +47,8 @@ public:
      * so the function does nothing
      */
     void gpioInit( uint8_t              port,
-                    uint8_t              pin,
-                    GPIO_InitTypeDef &   gpioConfig )
+                   uint16_t              pin,
+                   GPIO_InitTypeDef &   gpioConfig )
     {
 
     }
@@ -58,7 +58,7 @@ public:
      * so the function does nothing
      */
     void init( USART_TypeDef *      usartId,
-                USART_InitTypeDef &  periphConfig )
+               USART_InitTypeDef &  periphConfig )
     {
 
     }
@@ -92,8 +92,8 @@ public:
     }
 
     IPeriphState * deinit( USART_TypeDef *    id,
-                            uint32_t           apb1,
-                            uint32_t           apb2 );
+                           uint32_t           apb1,
+                           uint32_t           apb2 );
 
     EPeripheralState getState();
 

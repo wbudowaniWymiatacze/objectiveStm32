@@ -16,12 +16,12 @@ public:
     IPeriphState() {}
     virtual void remap( uint32_t    remapValue ) = 0;
     virtual void apbEnable( uint32_t    apb1Value,
-                               uint32_t    apb2Value ) = 0;
+                            uint32_t    apb2Value ) = 0;
     virtual void gpioInit( uint8_t              port,
-                              uint8_t              pin,
-                              GPIO_InitTypeDef &   gpioConfig ) = 0;
+                           uint16_t             pin,
+                           GPIO_InitTypeDef &   gpioConfig ) = 0;
     virtual void init( USART_TypeDef *      usartId,
-                         USART_InitTypeDef &  periphConfig ) = 0;
+                       USART_InitTypeDef &  periphConfig ) = 0;
     virtual void read( USART_TypeDef *  usartId,
                        uint16_t *       data,
                        uint8_t          nData ) = 0;

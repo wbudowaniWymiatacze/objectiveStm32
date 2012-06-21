@@ -17,113 +17,12 @@ uint16_t g_usartWriteBuffer[ 100 ];
 int main()
 {
     SystemInit();
-    
-    /////
 
-        GPIO_InitTypeDef GPIO_InitStructure;
-        
-    //LED
-        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE);
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_Init(GPIOE, &GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
-
-	GPIO_Init(GPIOE, &GPIO_InitStructure);
-        GPIO_SetBits(GPIOE, GPIO_Pin_6);
-        
-    //USART
-	USART_ClockInitTypeDef USART_ClockInitStructure;
-	USART_InitTypeDef USART_InitStructure;
-
-	unsigned long RCC_APB1Periph, RCC_APB2Periph;
-        
-        GPIO_TypeDef * USARTx_Port = GPIOA;
-	USART_TypeDef * USARTx     = USART1;
-	uint16_t GPIO_Pin_Tx       = GPIO_Pin_9;
-	uint16_t GPIO_Pin_Rx       = GPIO_Pin_10;
-	uint16_t USARTx_IRQn       = USART2_IRQn;
-        uint32_t USARTx_Remap      = 0;
-        
-	RCC_APB1Periph = 0;
-	RCC_APB2Periph = RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO | RCC_APB2Periph_USART1 ;
-
-
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph, ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph, ENABLE);
-
-
-	//Set USART Tx as AF push-pull
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_Tx;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(USARTx_Port, &GPIO_InitStructure);
-
-	//Set USART Rx as input floating
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_Rx;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-	GPIO_Init(USARTx_Port, &GPIO_InitStructure);
-
-
-	USART_ClockStructInit(&USART_ClockInitStructure);
-	USART_ClockInit(USARTx, &USART_ClockInitStructure);
-
-
-	USART_InitStructure.USART_BaudRate = 115200;
-	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-	USART_InitStructure.USART_StopBits = USART_StopBits_1;
-	USART_InitStructure.USART_Parity = USART_Parity_No;
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-
-	GPIO_PinRemapConfig(USARTx_Remap  ,ENABLE);
-
-	//Write USART parameters
-	USART_Init(USARTx, &USART_InitStructure);
-
-	//Enable USART
-	USART_Cmd(USARTx, ENABLE);
-	//hmmm
-	while( USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET);
-
-	USART_ITConfig(USARTx, USART_IT_RXNE, ENABLE);
-
-
-	NVIC_InitTypeDef NVIC_InitStructure;
-	NVIC_InitStructure.NVIC_IRQChannel = USARTx_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-        
-        
-        while(1)
-        {
-            
-            while( USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET);
-            USART_SendData(USARTx, (uint8_t) 'a');
-            
-            GPIO_SetBits(GPIOE, GPIO_Pin_6);
-            for(int i =0 ; i<1000000;i++);
-            GPIO_ResetBits(GPIOE, GPIO_Pin_6);
-            for(int i =0 ; i<1000000;i++);
-        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /////////////////
-    /*
 	CGpioManager gpioMngr;
 	CRccManager rccMngr;
 	SUsartConfig usartConfStruct;
 	USART_InitTypeDef & usartConf = usartConfStruct.usartConfig;
-	CUsart< SUsart4 > usart1( gpioMngr, rccMngr );
+	CUsart< SUsart1 > usart1( gpioMngr, rccMngr );
 
 	usartConf.USART_BaudRate = 115200;
 	usartConf.USART_WordLength = USART_WordLength_8b;
@@ -134,8 +33,8 @@ int main()
 
 	GPIO_InitTypeDef gpiosConfig[ 2 ];
 
-        //@todo TODO
-        // mode dla USART Rx i Tx są określone - wywalić konieczność ustawiania GPIO_Mode,
+    //@todo TODO
+    // mode dla USART Rx i Tx są określone - wywalić konieczność ustawiania GPIO_Mode,
 	// speed jako argument CUsart::init z wartością domyślną
 	gpiosConfig[ 0 ].GPIO_Pin = 0;                      // TODO: GPIO_Pin i tak jest później ignorowany - usunąć
 	gpiosConfig[ 0 ].GPIO_Speed = GPIO_Speed_50MHz;
@@ -147,77 +46,17 @@ int main()
 
 	usart1.init( gpiosConfig, &usartConfStruct );
 
-	char buffer[] = { 'a', 'b', 'c', 'd' };
-	usart1.write( ( uint16_t * ) buffer, 4 );
-        while(1)
-        {
-            for (int i=0;i<7000000;i++);
-            usart1.write( ( uint16_t * ) "A", 1 );
-            usart1.write( ( uint16_t * ) "r", 1 );
-            usart1.write( ( uint16_t * ) "m", 1 );
-            usart1.write( ( uint16_t * ) "\r", 1 );
-            usart1.write( ( uint16_t * ) "\n", 1 );
-        }
+    while(1)
+    {
+        for (int i=0;i<7000000;i++);
+        usart1.write( ( uint16_t * ) "A", 1 );
+        usart1.write( ( uint16_t * ) "r", 1 );
+        usart1.write( ( uint16_t * ) "m", 1 );
+        usart1.write( ( uint16_t * ) "\r", 1 );
+        usart1.write( ( uint16_t * ) "\n", 1 );
+    }
 
 	return 0;
-*/
-//    GPIO_InitTypeDef GPIO_InitStructure;
-//    USART_ClockInitTypeDef USART_ClockInitStructure;
-//    USART_InitTypeDef USART_InitStructure;
-//
-//    GPIO_TypeDef * portsArr[] = { GPIOA, GPIOB, GPIOC, GPIOD };
-//
-//    USART_TypeDef * usart = USART3;
-//    uint16_t txPin = USART3_TX_PIN_FULL_REMAP; // USART1_TX_PIN_REMAP
-//    GPIO_TypeDef * port = portsArr[ USART3_PORT_FULL_REMAP ]; //USART1_PORT_REMAP
-//    int remap = txPin != USART1_TX_PIN && txPin != USART2_TX_PIN && txPin != USART3_TX_PIN;
-//    GPIOMode_TypeDef gpioMode = GPIO_Mode_Out_PP;
-//    uint32_t remapConfig = GPIO_FullRemap_USART3;
-//
-//    RCC_APB1PeriphClockCmd( USART3_FULL_REMAP_APB1, ENABLE); //USART1_REMAP_APB1
-//    RCC_APB2PeriphClockCmd( USART3_FULL_REMAP_APB2, ENABLE);
-//
-//    if ( remap != 0 )
-//    {
-//        gpioMode = GPIO_Mode_AF_PP;
-//    }
-//
-//    GPIO_InitStructure.GPIO_Pin = txPin;
-//    GPIO_InitStructure.GPIO_Mode = gpioMode;
-//    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-//    GPIO_Init( port, &GPIO_InitStructure );
-//
-//    USART_ClockStructInit( &USART_ClockInitStructure );
-//    USART_ClockInit( usart, &USART_ClockInitStructure );
-//
-//    USART_InitStructure.USART_BaudRate = 115200;
-//    USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-//    USART_InitStructure.USART_StopBits = USART_StopBits_1;
-//    USART_InitStructure.USART_Parity = USART_Parity_No;
-//    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-//    USART_InitStructure.USART_Mode = USART_Mode_Tx;
-//
-//    if ( remap != 0 )
-//    {
-//        GPIO_PinRemapConfig( remapConfig, ENABLE );
-//    }
-//
-//    //Write USART parameters
-//    USART_Init( usart, &USART_InitStructure);
-//
-//    //Enable USART
-//    USART_Cmd( usart, ENABLE );
-//    //hmmm
-//    while( USART_GetFlagStatus( usart, USART_FLAG_TC ) == RESET )
-//        ;
-//
-//    char a = 'a';
-//    for( int i = 0; i< 10; i++ )
-//    {
-//        while( USART_GetFlagStatus( usart, USART_FLAG_TC ) == RESET)
-//            ;
-//        USART_SendData( usart, (uint16_t) a );
-//    }
 
 }
 
