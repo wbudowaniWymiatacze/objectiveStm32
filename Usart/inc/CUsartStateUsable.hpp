@@ -51,7 +51,9 @@ public:
                uint16_t *       data,
                uint8_t          nData )
     {
-
+        ( void ) usartId;
+        ( void ) data;
+        ( void ) nData;
     }
 
     /*
@@ -61,7 +63,9 @@ public:
                 uint16_t *      data,
                 uint8_t         nData )
     {
-
+        ( void ) usartId;
+        ( void ) data;
+        ( void ) nData;
     }
 
     /*

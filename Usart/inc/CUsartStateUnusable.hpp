@@ -27,13 +27,14 @@ public:
 
     void remap( uint32_t    remapValue )
     {
-
+        ( void ) remapValue;
     }
 
     void apbEnable( uint32_t    apb1Value,
                     uint32_t    apb2Value )
     {
-
+        ( void ) apb1Value;
+        ( void ) apb2Value;
     }
 
     /*
@@ -44,7 +45,9 @@ public:
                    uint16_t              pin,
                    GPIO_InitTypeDef &   gpioConfig )
     {
-
+        ( void ) port;
+        ( void ) pin;
+        ( void ) gpioConfig;
     }
 
     /*
@@ -54,7 +57,8 @@ public:
     void init( USART_TypeDef *      usartId,
                USART_InitTypeDef &  periphConfig )
     {
-
+        ( void ) usartId;
+        ( void ) periphConfig;
     }
 
     /*
@@ -64,7 +68,9 @@ public:
                uint16_t *       data,
                uint8_t          nData )
     {
-
+        ( void ) usartId;
+        ( void ) data;
+        ( void ) nData;
     }
 
     /*
@@ -74,7 +80,9 @@ public:
                 uint16_t *      data,
                 uint8_t         nData )
     {
-
+        ( void ) usartId;
+        ( void ) data;
+        ( void ) nData;
     }
 
     /*
@@ -82,7 +90,7 @@ public:
      */
     void interruptsConfig( NVIC_InitTypeDef & interruptsConfig )
     {
-
+        ( void ) interruptsConfig;
     }
 
     /*
@@ -97,6 +105,9 @@ public:
                            uint32_t           apb1,
                            uint32_t           apb2 )
     {
+        ( void ) id;
+        ( void ) apb1;
+        ( void ) apb2;
         return this;
     }
 

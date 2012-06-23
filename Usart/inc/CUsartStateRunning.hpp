@@ -29,7 +29,7 @@ public:
      */
     void remap( uint32_t    remapValue )
     {
-
+        ( void ) remapValue;
     }
 
     /*
@@ -39,7 +39,8 @@ public:
     void apbEnable( uint32_t    apb1Value,
                     uint32_t    apb2Value )
     {
-
+        ( void ) apb1Value;
+        ( void ) apb2Value;
     }
 
     /*
@@ -50,7 +51,9 @@ public:
                    uint16_t              pin,
                    GPIO_InitTypeDef &   gpioConfig )
     {
-
+        ( void ) port;
+        ( void ) pin;
+        ( void ) gpioConfig;
     }
 
     /*
@@ -60,7 +63,8 @@ public:
     void init( USART_TypeDef *      usartId,
                USART_InitTypeDef &  periphConfig )
     {
-
+        ( void ) usartId;
+        ( void ) periphConfig;
     }
 
     /*
