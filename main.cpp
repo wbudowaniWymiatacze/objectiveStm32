@@ -52,7 +52,7 @@ int main()
     char buffer[] = { "artur" };
     uint16_t buffer16[ strlen( buffer ) ];
     // convert to format proper for CUsart::write()
-    for( int idx=0; idx<strlen( buffer ); idx++)
+    for( int idx=0; idx< ( int ) strlen( buffer ); idx++)
     {
         buffer16[ idx ] = ( uint16_t ) buffer[ idx ];
     }
@@ -60,7 +60,7 @@ int main()
 
     while(1)
     {
-        for (int i=0;i<7000000;i++);
+        for (int i=0;i< ( int ) 7000000;i++);
         usart1.write( ( uint16_t * ) "A", 1 );
         usart1.write( ( uint16_t * ) "r", 1 );
         usart1.write( ( uint16_t * ) "m", 1 );
