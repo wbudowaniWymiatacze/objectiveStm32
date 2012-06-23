@@ -48,7 +48,7 @@ public:
      * read does nothing in this state
      */
     void read( USART_TypeDef *  usartId,
-               uint8_t *       data,
+               uint16_t *       data,
                uint8_t          nData )
     {
 
@@ -58,7 +58,7 @@ public:
      * read does nothing in this state
      */
     void write( USART_TypeDef * usartId,
-                uint8_t *      data,
+                uint16_t *      data,
                 uint8_t         nData )
     {
 

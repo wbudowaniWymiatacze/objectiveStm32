@@ -11,9 +11,6 @@
 #include <CUsart.hpp>
 #include <TypePeriph.hpp>
 
-#include <stdio.h>
-#include <stdlib.h>
-
 uint16_t g_usartReadBuffer[ 100 ];
 uint16_t g_usartWriteBuffer[ 100 ];
 
@@ -49,17 +46,14 @@ int main()
 
 	usart1.init( gpiosConfig, &usartConfStruct );
 
-	char buffer[] = { "artur\r\n" };
-    usart1.write( ( uint8_t * ) buffer, 7 );
-
     while(1)
     {
         for (int i=0;i<7000000;i++);
-        usart1.write( ( uint8_t * ) "A", 1 );
-        usart1.write( ( uint8_t * ) "r", 1 );
-        usart1.write( ( uint8_t * ) "m", 1 );
-        usart1.write( ( uint8_t * ) "\r", 1 );
-        usart1.write( ( uint8_t * ) "\n", 1 );
+        usart1.write( ( uint16_t * ) "A", 1 );
+        usart1.write( ( uint16_t * ) "r", 1 );
+        usart1.write( ( uint16_t * ) "m", 1 );
+        usart1.write( ( uint16_t * ) "\r", 1 );
+        usart1.write( ( uint16_t * ) "\n", 1 );
     }
 
 	return 0;

@@ -11,7 +11,7 @@
 #include <EPeripheralState.hpp>
 
 void CUsartStateRunning::read( USART_TypeDef *  usartId,
-                               uint8_t *       data,
+                               uint16_t *       data,
                                uint8_t          nData )
 {
     for( uint8_t n=0; n<nData; n++ )
@@ -21,7 +21,7 @@ void CUsartStateRunning::read( USART_TypeDef *  usartId,
 }
 
 void CUsartStateRunning::write( USART_TypeDef * usartId,
-                                uint8_t *      data,
+                                uint16_t *      data,
                                 uint8_t         nData )
 {
     for( uint8_t n=0; n<nData; n++ )

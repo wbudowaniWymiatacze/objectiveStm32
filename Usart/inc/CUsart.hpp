@@ -29,9 +29,9 @@ public:
             CRccManager & rccManager );
     void init( GPIO_InitTypeDef *   gpiosConfig,
                SPeriphConfig *      config );
-    void read( uint8_t *   data,
+    void read( uint16_t *   data,
                uint8_t      nData );
-    void write( uint8_t *  data,
+    void write( uint16_t *  data,
                 uint8_t     nData );
     void configureInterrupts( uint16_t  interruptSource );
     void deconfigureInterrupts( uint16_t    interruptSource );
@@ -111,7 +111,7 @@ void CUsart< usartX >::init( GPIO_InitTypeDef * gpiosConfig,
 }
 
 template < typename usartX >
-void CUsart< usartX >::read( uint8_t * data,
+void CUsart< usartX >::read( uint16_t * data,
                              uint8_t    nData )
 {
     m_usartState->read( m_usartParams.id,
@@ -120,7 +120,7 @@ void CUsart< usartX >::read( uint8_t * data,
 }
 
 template < typename usartX >
-void CUsart< usartX >::write( uint8_t *    data,
+void CUsart< usartX >::write( uint16_t *    data,
                               uint8_t       nData )
 {
     m_usartState->write( m_usartParams.id,
