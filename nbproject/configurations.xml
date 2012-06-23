@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="79">
+<configurationDescriptor version="80">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df name="objectiveStm32" root=".">
       <df name="Boards">
@@ -28,7 +28,6 @@
         <in>boardDefs.hpp</in>
       </df>
       <df name="eclipse">
-        <in>eclipseProjectSettings.xml</in>
       </df>
       <df name="Gpio">
         <df name="inc">
@@ -44,10 +43,6 @@
         <in>hdr_gpio.h</in>
         <in>hdr_rcc.h</in>
         <in>hdr_special_registers.h</in>
-      </df>
-      <df name="Inc">
-        <df name="usart">
-        </df>
       </df>
       <df name="Interface">
         <in>CSingleton.hpp</in>
@@ -180,7 +175,6 @@
           <df name="f107">
           </df>
           <df name="f107vb">
-            <in>f107vc.mk.mk</in>
           </df>
         </df>
       </df>
@@ -195,10 +189,6 @@
         </df>
       </df>
       <df name="scripts">
-      </df>
-      <df name="Src">
-        <df name="usart">
-        </df>
       </df>
       <df name="Usart">
         <df name="inc">
@@ -242,7 +232,7 @@
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>${MAKE} -f Makefile f107vc</buildCommand>
+          <buildCommand>${MAKE} -f Makefile f103vb</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath>out/objectiveStm32.elf</executablePath>
           <cTool>
@@ -576,14 +566,15 @@
               <pElem>Boards/numberOfPorts</pElem>
               <pElem>Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x</pElem>
               <pElem>Libraries/STM32F10x_StdPeriph_Driver/inc</pElem>
-              <pElem>Boards/boards/f1xx/f107</pElem>
+              <pElem>Boards/boards/f1xx/f103</pElem>
               <pElem>Boards/boards/f1xx</pElem>
               <pElem>.</pElem>
               <pElem>Libraries/CMSIS/CM3/CoreSupport</pElem>
+              <pElem>Interface</pElem>
             </incDir>
             <preprocessorList>
-              <Elem>STM32F107VCXX=1</Elem>
-              <Elem>STM32F10X_CL=1</Elem>
+              <Elem>STM32F103VBXX=1</Elem>
+              <Elem>STM32F10X_MD=1</Elem>
               <Elem>USE_STDPERIPH_DRIVER=1</Elem>
               <Elem>__ACCUM_EPSILON__=0x1P-15K</Elem>
               <Elem>__ACCUM_FBIT__=15</Elem>
