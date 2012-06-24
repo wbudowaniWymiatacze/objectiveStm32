@@ -9,13 +9,10 @@
 #include <CGpioManager.hpp>
 #include <CRccManager.hpp>
 #include <CUsart.hpp>
-#include <TypePeriph.hpp>
+#include <UsartParams.hpp>
 
 #include <stdio.h>
 #include <string.h>
-
-uint16_t g_usartReadBuffer[ 100 ];
-uint16_t g_usartWriteBuffer[ 100 ];
 
 int main()
 {
@@ -25,7 +22,7 @@ int main()
     CRccManager rccMngr;
     SUsartConfig usartConfStruct;
     USART_InitTypeDef & usartConf = usartConfStruct.usartConfig;
-    CUsart< SUsart1 > usart1( gpioMngr, rccMngr );
+    CUsart usart1( gpioMngr, rccMngr, CUsartParams< 0 >::m_usartParams );
 
     usartConf.USART_BaudRate = 115200;
     usartConf.USART_WordLength = USART_WordLength_8b;
@@ -67,8 +64,8 @@ int main()
         usart1.write( ( uint16_t * ) "\r", 1 );
         usart1.write( ( uint16_t * ) "\n", 1 );
     }
-
-	return 0;
+    
+    return 0;
 
 }
 

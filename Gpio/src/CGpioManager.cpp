@@ -8,7 +8,7 @@
 #include <boardDefs.hpp>
 
 #include <CGpioManager.hpp>
-#include <TypePeriph.hpp>
+#include <UsartParams.hpp>
 
 CGpioManager::CGpioManager()
 {

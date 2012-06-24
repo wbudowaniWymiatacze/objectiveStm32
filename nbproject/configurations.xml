@@ -50,7 +50,7 @@
         <in>IPeriphState.hpp</in>
         <in>IPeripheral.hpp</in>
         <in>SPeriphConfig.hpp</in>
-        <in>TypePeriph.hpp</in>
+        <in>UsartParams.hpp</in>
       </df>
       <df name="Libraries">
         <df name="CMSIS">
@@ -204,6 +204,7 @@
           <in>CUsartStateRunning.cpp</in>
           <in>CUsartStateUnusable.cpp</in>
           <in>CUsartStateUsable.cpp</in>
+          <in>UsartParams.cpp</in>
         </df>
       </df>
       <in>main.cpp</in>
