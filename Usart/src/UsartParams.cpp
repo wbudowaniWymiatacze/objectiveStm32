@@ -1,3 +1,8 @@
+/*
+ * Specifies parameters for different USARTs available on a board. Parameters
+ * used in here are defined in Boards/board/<STM family>/usart.hpp
+ */
+
 #include <boardDefs.hpp>
 
 #include <UsartParams.hpp>
