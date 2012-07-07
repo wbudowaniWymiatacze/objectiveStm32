@@ -33,9 +33,6 @@ int main()
 
     GPIO_InitTypeDef gpiosConfig[ 2 ];
 
-//@todo TODO
-// mode dla USART Rx i Tx są określone - wywalić konieczność ustawiania GPIO_Mode,
-    // speed jako argument CUsart::init z wartością domyślną
     gpiosConfig[ 0 ].GPIO_Pin = 0;                      // TODO: GPIO_Pin i tak jest później ignorowany - usunąć
     gpiosConfig[ 0 ].GPIO_Speed = GPIO_Speed_50MHz;
     gpiosConfig[ 0 ].GPIO_Mode = GPIO_Mode_IN_FLOATING;

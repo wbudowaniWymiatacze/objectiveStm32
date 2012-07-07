@@ -37,7 +37,6 @@ void CUsart::init( GPIO_InitTypeDef *   gpiosConfig,
 
     m_usartState->remap( m_usartParams.remap );
 
-    // TODO: zmienić wywołanie inicjalizacji GPIO?
     // initialise GPIOs
     m_usartState->gpioInit( m_usartParams.port,
                             m_usartParams.rx,

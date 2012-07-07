@@ -32,8 +32,6 @@ public:
     /*
      * initialise needed GPIO
      */
-
-    // TODO: zmienić na wywołanie z nr portu i pinu
     void gpioInit( uint8_t              port,
                    uint16_t              pin,
                    GPIO_InitTypeDef &   gpioConfig );
