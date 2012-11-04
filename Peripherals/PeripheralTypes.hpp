@@ -37,7 +37,6 @@ struct PeripheralTypes
 
 typedef struct SPeripheralConfig
 {
-    EPeripheralConfig type; 
     GPIO_TypeDef*     gpioPort; 
     uint32_t          remap; 
     uint32_t          apb1;     
@@ -46,11 +45,11 @@ typedef struct SPeripheralConfig
     
     bool operator<( const SPeripheralConfig a)
     {
-        return (apb1<a.apb1) && (apb2<a.apb2) && (gpioPort<a.gpioPort) && (remap < a.remap);
+        return (apb1<a.apb1) || (apb2<a.apb2) || (gpioPort<a.gpioPort) || (remap < a.remap);
     }
     
     SPeripheralConfig():
-        type(None), gpioPort(0), remap(0), apb1(0), apb2(0), irqChannel(0)
+        gpioPort(0), remap(0), apb1(0), apb2(0), irqChannel(0)
     {
         
     }
@@ -62,14 +61,10 @@ typedef struct TPeripheralConfigLed : public SPeripheralConfig
 {
     uint16_t         gpioPin;
     
-    TPeripheralConfigLed()
-    {
-        type = Led;
-    }
-    
     bool operator<( const TPeripheralConfigLed a)
     {
-        return (apb1<a.apb1) && (apb2<a.apb2) && (gpioPort<a.gpioPort) && (remap < a.remap) && (gpioPin < a.gpioPin);
+        //TODO SPeripheralConfig < SPeripheralConfig
+        return (SPeripheralConfig) *this < (SPeripheralConfig) a || (gpioPin < a.gpioPin);
     }
 }TPeripheralConfigLed;
 

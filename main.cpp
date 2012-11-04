@@ -35,12 +35,17 @@ int main()
     
     CLed * Led = PM.getPeripheral<CLed>(ledConfig);
     
-    ledConfig.gpioPin = GPIO_Pin_6;
+    ledConfig.gpioPin = GPIO_Pin_7;
     
     CLed * Led2 = PM.getPeripheral<CLed>(ledConfig);
     
+    ledConfig.gpioPin = GPIO_Pin_6;
+    
+    CLed * Led3 = PM.getPeripheral<CLed>(ledConfig);
+    
     Led->init();
     Led2->init();
+    Led3->init();
     
     Led->on();
     
@@ -52,6 +57,7 @@ int main()
             i=0;
             Led->toogle();
             Led2->toogle();
+            Led3->toogle();
         }
         i++;
     }   

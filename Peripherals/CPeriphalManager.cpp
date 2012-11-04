@@ -37,6 +37,6 @@ void CPeriphalManager::enableAPB2(uint32_t apb2)
 template<>
 CLed * CPeriphalManager::getPeripheral<CLed>(SPeripheralConfig& config)
 {
-    return getPeripheralImpl<CLed,PeripheralTypes<CLed>::TPeriphMap>((config),LedPeriphMap);
+    return getPeripheralImpl<CLed,PeripheralTypes<CLed>::TPeriphMap>(config,LedPeriphMap);
     
 }

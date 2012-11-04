@@ -53,13 +53,13 @@ TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf, TPerip
     
     if (Iter != map.end())
     {
-      return static_cast<TPeripheral*>(map[config]);
+      return static_cast<TPeripheral*>(Iter->second);
     }
    
     enableAPB1(config.apb1);
     enableAPB2(config.apb2);
 
-    TPeripheral* Periph = new CLed(GM,config);
+    TPeripheral* Periph = new TPeripheral(GM,config);
 
     map[config] = Periph;
     
