@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="79">
+<configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df name="objectiveStm32" root=".">
       <df name="Boards">
@@ -214,12 +214,6 @@
           <in>System.cpp</in>
         </df>
       </df>
-      <df name="Usart">
-        <df name="inc">
-        </df>
-        <df name="src">
-        </df>
-      </df>
       <in>main.cpp</in>
       <in>stm32-P107.cpp</in>
       <in>stm32-P107.hpp</in>
@@ -245,6 +239,8 @@
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>arm-none-eabi|GNU</compilerSet>
       </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
@@ -918,14 +914,14 @@
       <item path="Boards/boards/f1xx/connectivityLine/startup.S"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Boards/boards/f1xx/f103/STM32F103VBxx_Desc.hpp"
             ex="true"
             tool="3"
-            flavor="0">
+            flavor2="0">
       </item>
-      <item path="Gpio/src/CGpio.cpp" ex="false" tool="1" flavor="4">
+      <item path="Gpio/src/CGpio.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
           <incDir>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
@@ -933,7 +929,7 @@
           </incDir>
         </ccTool>
       </item>
-      <item path="Gpio/src/CGpioManager.cpp" ex="false" tool="1" flavor="4">
+      <item path="Gpio/src/CGpioManager.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
           <incDir>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
@@ -941,177 +937,177 @@
           </incDir>
         </ccTool>
       </item>
-      <item path="Interface/CSingleton.hpp" ex="true" tool="3" flavor="0">
+      <item path="Interface/CSingleton.hpp" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="Interface/EPeripheralState.hpp" ex="true" tool="3" flavor="0">
+      <item path="Interface/EPeripheralState.hpp" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="Interface/IPeriphState.hpp" ex="true" tool="3" flavor="0">
+      <item path="Interface/IPeriphState.hpp" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="Interface/IPeripheral.hpp" ex="true" tool="3" flavor="0">
+      <item path="Interface/IPeripheral.hpp" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="Interface/SPeriphConfig.hpp" ex="true" tool="3" flavor="0">
+      <item path="Interface/SPeriphConfig.hpp" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="Interface/TypePeriph.hpp" ex="true" tool="3" flavor="0">
+      <item path="Interface/TypePeriph.hpp" ex="true" tool="3" flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_cl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_hd.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_hd_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_ld.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_ld_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_md.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_md_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_xl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_cl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_hd.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_hd_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_ld.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_ld_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_md.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_md_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_xl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_cl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_hd.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_hd_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_ld.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_ld_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_md.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_md_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/gcc_ride7/startup_stm32f10x_xl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_cl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_hd.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_hd_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_ld.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_ld_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_md.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_md_vl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <item path="Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/iar/startup_stm32f10x_xl.s"
             ex="true"
             tool="4"
-            flavor="0">
+            flavor2="0">
       </item>
       <folder path="objectiveStm32/Gpio">
         <ccTool>
@@ -1171,15 +1167,15 @@
           </incDir>
         </ccTool>
       </folder>
-      <item path="hdr/hdr_bitband.h" ex="true" tool="3" flavor="0">
+      <item path="hdr/hdr_bitband.h" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="hdr/hdr_gpio.h" ex="true" tool="3" flavor="0">
+      <item path="hdr/hdr_gpio.h" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="hdr/hdr_rcc.h" ex="true" tool="3" flavor="0">
+      <item path="hdr/hdr_rcc.h" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="hdr/hdr_special_registers.h" ex="true" tool="3" flavor="0">
+      <item path="hdr/hdr_special_registers.h" ex="true" tool="3" flavor2="0">
       </item>
-      <item path="main.cpp" ex="false" tool="1" flavor="4">
+      <item path="main.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
           <incDir>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
@@ -1190,7 +1186,7 @@
           </incDir>
         </ccTool>
       </item>
-      <item path="stm32-P107.cpp" ex="false" tool="1" flavor="4">
+      <item path="stm32-P107.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
           <incDir>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>

@@ -18,6 +18,8 @@ IPeripheral(GM){
 
 CLed::~CLed() 
 {
+    GM->releaseGpio(pin);
+    pin = NULL;
 }
 
 
@@ -28,6 +30,7 @@ void CLed::init()
 
 void CLed::deinit() 
 {
+
 }
 
 void CLed::on()

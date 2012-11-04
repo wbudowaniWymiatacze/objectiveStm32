@@ -17,7 +17,7 @@ GM(GM)
 
 CPeriphalManager::CPeriphalManager(const CPeriphalManager& orig) 
 {
-    CPeriphalManager a=orig;
+    GM = orig.GM;
 }
 
 CPeriphalManager::~CPeriphalManager() 
@@ -33,10 +33,24 @@ void CPeriphalManager::enableAPB2(uint32_t apb2)
 {
     RCC_APB2PeriphClockCmd(apb2, ENABLE);
 }
+void CPeriphalManager::disableAPB1(uint32_t apb1)
+{
+     RCC_APB1PeriphClockCmd(apb1, DISABLE);
+}
+void CPeriphalManager::disableAPB2(uint32_t apb2)
+{
+    RCC_APB2PeriphClockCmd(apb2, DISABLE);
+}
 
 template<>
 CLed * CPeriphalManager::getPeripheral<CLed>(SPeripheralConfig& config)
 {
-    return getPeripheralImpl<CLed,PeripheralTypes<CLed>::TPeriphMap>(config,LedPeriphMap);
+    return getPeripheralImpl<CLed,PeripheralTypes<CLed>::TPeriphMap>(config,LedPeriphMap);   
+}
+
+template<>
+void CPeriphalManager::delPeripheral<CLed>(CLed* periph)
+{
+    delPeripheralImpl<CLed,PeripheralTypes<CLed>::TPeriphMap>(periph,LedPeriphMap);
     
 }

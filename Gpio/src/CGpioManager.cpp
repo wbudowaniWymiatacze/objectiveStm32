@@ -20,6 +20,7 @@ CGpioManager::CGpioManager()
 void CGpioManager::releaseGpio( CGpio * gpio )
 {
     m_usedGPios.remove(gpio);
+    delete gpio;
 }
 
 bool CGpioManager::isGpioUsed(CGpio* gpio)

@@ -33,7 +33,7 @@ int main()
     ledConfig.gpioPin = GPIO_Pin_6;
     ledConfig.gpioPort = GPIOC;
     
-    CLed * Led = PM.getPeripheral<CLed>(ledConfig);
+    CLed * Led1 = PM.getPeripheral<CLed>(ledConfig);
     
     ledConfig.gpioPin = GPIO_Pin_7;
     
@@ -43,11 +43,19 @@ int main()
     
     CLed * Led3 = PM.getPeripheral<CLed>(ledConfig);
     
-    Led->init();
+    Led1->init();
     Led2->init();
     Led3->init();
     
-    Led->on();
+    
+    
+    Led1->on();
+    
+    PM.delPeripheral<CLed>(Led1);
+    PM.delPeripheral<CLed>(Led3);
+    
+    Led1 = PM.getPeripheral<CLed>(ledConfig);
+    Led1->init();
     
     int i=0;
     while(1)
@@ -55,9 +63,9 @@ int main()
         if(i>900000)
         {
             i=0;
-            Led->toogle();
+            Led1->toogle();
             Led2->toogle();
-            Led3->toogle();
+
         }
         i++;
     }   

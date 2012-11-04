@@ -17,12 +17,15 @@ class IPeripheral
 {
 public:
     
-    IPeripheral(CGpioManager * GM):GM(GM){};
+    IPeripheral(CGpioManager * GM):GM(GM),reference(1){};
 
     virtual ~IPeripheral() {}
-    
-private :
+
+protected:
     CGpioManager * GM;
+private :  
+    int reference;
+    
     
 };
 
