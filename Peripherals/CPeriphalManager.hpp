@@ -51,7 +51,6 @@ class CPeriphalManager
     PeripheralTypes<CLed>::TPeriphMap LedPeriphMap;
     PeripheralTypes<CI2C>::TPeriphMap I2CPeriphMap;
   
-    //TODO remove referenceCounter ?
     std::map<IPeripheral*,int> referenceCounter;
 };
 
@@ -64,7 +63,6 @@ TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf, TPerip
     
     if (iter != map.end())
     {
-        //TODO remove referenceCounter ?
         referenceCounter[iter->second]++; 
         return static_cast<TPeripheral*>(iter->second);
     }
@@ -74,7 +72,6 @@ TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf, TPerip
 
     TPeripheral* periph = new TPeripheral(GM,config);
     
-    //TODO remove referenceCounter ?
     referenceCounter[periph] = 1;
     map[config] = periph;
     
