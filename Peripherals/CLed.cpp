@@ -7,12 +7,12 @@
 
 #include "CLed.hpp"
 
-CLed::CLed(CGpioManager * GM,SPeripheralConfig * config ):
+CLed::CLed(CGpioManager* GM,SPeripheralConfig& config ):
 IPeripheral(GM){
         
-    TPeripheralConfigLed * A = (TPeripheralConfigLed*)config;
+    TPeripheralConfig&  A = static_cast<TPeripheralConfigLed&>(config);
     
-    pin = GM->getGpio<CGpioOutput>(A->gpioPort,A->gpioPin);
+    pin = GM->getGpio<CGpioOutput>(A.gpioPort,A.gpioPin);
     
 }
 

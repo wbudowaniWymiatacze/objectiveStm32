@@ -14,6 +14,8 @@
 
 class CI2C : public IPeripheral {
   public:
+    typedef TPeripheralConfigI2C TPeripheralConfig;
+      
     CI2C(CGpioManager * GM,SPeripheralConfig* config);
     virtual ~CI2C();
     void init();

@@ -15,7 +15,9 @@
 class CLed : public IPeripheral
 {
 public:
-    CLed(CGpioManager * GM,SPeripheralConfig* config);
+    typedef TPeripheralConfigLed TPeripheralConfig;
+    
+    CLed(CGpioManager * GM,SPeripheralConfig& config);
     virtual ~CLed();
     void init();
     void deinit();

@@ -9,22 +9,17 @@
 #define	CPERIPHALMANAGER_HPP
 
 #include <IPeripheral.hpp>
+#include <CLed.hpp>
+#include <CI2C.hpp>
 #include <PeripheralTypes.hpp>
 #include <CGpioManager.hpp>
 #include <map>
 
-class cmp
-{
-public:
-    bool operator()(SPeripheralConfig x,SPeripheralConfig y)
-    {
-        return x < y;
-    }
-};
+
 
 class CPeriphalManager 
 {
-    typedef std::map < SPeripheralConfig, IPeripheral*,cmp> TPeriphMap;
+
     
   public:
     CPeriphalManager(CGpioManager * GM);
@@ -32,7 +27,10 @@ class CPeriphalManager
     virtual ~CPeriphalManager();
     
     template<typename TPeripheral>
-    TPeripheral* getPeripheral(SPeripheralConfig* config);
+    TPeripheral* getPeripheral(SPeripheralConfig& config);
+    
+    template<typename TPeripheral, typename TPeriphMap>
+    TPeripheral* getPeripheralImpl(SPeripheralConfig& conf, TPeriphMap& map);
     
   private:
       
@@ -40,34 +38,35 @@ class CPeriphalManager
     void enableAPB2(uint32_t apb2);
            
     CGpioManager * GM;
-    TPeriphMap PeriphMap;
-
+    
+    PeripheralTypes<CLed>::TPeriphMap LedPeriphMap;
+    PeripheralTypes<CI2C>::TPeriphMap I2CPeriphMap;
+    
 };
 
-template<typename TPeripheral>
-TPeripheral * CPeriphalManager::getPeripheral(SPeripheralConfig* config)
+template<typename TPeripheral, typename TPeriphMap>
+TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf, TPeriphMap& map)
 {
+    typedef typename TPeripheral::TPeripheralConfig TPeripheralConfig;
+    TPeripheralConfig& config = static_cast<TPeripheralConfig&>(conf);
+    typename TPeriphMap::iterator Iter = map.find(config);
     
-    TPeripheral * Periph;
-
-    
-    TPeriphMap::iterator Iter = PeriphMap.find(*config);
-    
-    if (Iter != PeriphMap.end())
+    if (Iter != map.end())
     {
-        return static_cast<TPeripheral*>(PeriphMap[*config]);
-    }    
+      return static_cast<TPeripheral*>(map[config]);
+    }
    
-    enableAPB1(config->apb1);
-    enableAPB2(config->apb2);
+    enableAPB1(config.apb1);
+    enableAPB2(config.apb2);
 
-    Periph = new TPeripheral(GM,config);
+    TPeripheral* Periph = new CLed(GM,config);
 
-    PeriphMap[*config] = static_cast<IPeripheral*>(Periph);
+    map[config] = Periph;
     
     return Periph;
     
 }
+
 
 
 #endif	/* CPERIPHALMANAGER_HPP */

@@ -33,3 +33,10 @@ void CPeriphalManager::enableAPB2(uint32_t apb2)
 {
     RCC_APB2PeriphClockCmd(apb2, ENABLE);
 }
+
+template<>
+CLed * CPeriphalManager::getPeripheral<CLed>(SPeripheralConfig& config)
+{
+    return getPeripheralImpl<CLed,PeripheralTypes<CLed>::TPeriphMap>((config),LedPeriphMap);
+    
+}
