@@ -80,6 +80,12 @@ typedef struct TPeripheralConfigI2C : public SPeripheralConfig
     I2C_TypeDef *    i2c;
     uint16_t         gpioPinScl;
     uint16_t         gpioPinSda;
+    
+     bool operator<( const TPeripheralConfigI2C a)
+    {
+        //TODO SPeripheralConfig < SPeripheralConfig
+        return (SPeripheralConfig) *this < (SPeripheralConfig) a || (gpioPinScl < a.gpioPinScl) || (gpioPinSda < a.gpioPinSda);
+    }
 }TPeripheralConfigI2C;
 
 #endif	/* PERIPHERALTYPES_HPP */

@@ -35,8 +35,9 @@ class CPeriphalManager
     
   private:
       
-    template<typename TPeripheral, typename TPeriphMap>
-    TPeripheral* getPeripheralImpl(SPeripheralConfig& conf, TPeriphMap& map);
+    template<typename TPeripheral>
+    TPeripheral* getPeripheralImpl(SPeripheralConfig& conf, 
+                                   typename PeripheralTypes<TPeripheral>::TPeriphMap& map);
     
     template<typename TPeripheral, typename TPeriphMap>
     void delPeripheralImpl(TPeripheral* periph, TPeriphMap& map);
@@ -54,10 +55,13 @@ class CPeriphalManager
     std::map<IPeripheral*,int> referenceCounter;
 };
 
-template<typename TPeripheral, typename TPeriphMap>
-TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf, TPeriphMap& map)
+template<typename TPeripheral>
+TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf,
+                                                 typename PeripheralTypes<TPeripheral>::TPeriphMap& map)
 {
     typedef typename TPeripheral::TPeripheralConfig TPeripheralConfig;
+    typedef typename PeripheralTypes<TPeripheral>::TPeriphMap TPeriphMap;
+    
     TPeripheralConfig& config = static_cast<TPeripheralConfig&>(conf);
     typename TPeriphMap::iterator iter = map.find(config);
     
@@ -69,6 +73,7 @@ TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf, TPerip
    
     enableAPB1(config.apb1);
     enableAPB2(config.apb2);
+    GPIO_PinRemapConfig(config.remap, ENABLE);
 
     TPeripheral* periph = new TPeripheral(GM,config);
     
@@ -95,6 +100,8 @@ void CPeriphalManager::delPeripheralImpl(TPeripheral* periph, TPeriphMap& map)
                 delete periph;
                 map.erase(iter);
                 referenceCounter.erase(periph);
+                GPIO_PinRemapConfig(config.remap, DISABLE);
+                
             }            
             break;
         }

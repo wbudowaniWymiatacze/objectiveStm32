@@ -17,6 +17,8 @@
 
 #include "Peripherals/IPeripheral.hpp"
 
+#include "ExternalModules/KamodRGB.hpp"
+
 
 
 int main()
@@ -33,29 +35,31 @@ int main()
     ledConfig.gpioPin = GPIO_Pin_6;
     ledConfig.gpioPort = GPIOC;
     
-    CLed * Led1 = PM.getPeripheral<CLed>(ledConfig);
+    CLed* led = PM.getPeripheral<CLed>(ledConfig);
     
-    ledConfig.gpioPin = GPIO_Pin_7;
+    TPeripheralConfigI2C i2cConfig;
     
-    CLed * Led2 = PM.getPeripheral<CLed>(ledConfig);
-    
-    ledConfig.gpioPin = GPIO_Pin_6;
-    
-    CLed * Led3 = PM.getPeripheral<CLed>(ledConfig);
-    
-    Led1->init();
-    Led2->init();
-    Led3->init();
-    
+    i2cConfig.i2c        = I2C1;
+    i2cConfig.gpioPort   = GPIOB;
+    i2cConfig.gpioPinScl = GPIO_Pin_8;
+    i2cConfig.gpioPinSda = GPIO_Pin_9;
+    i2cConfig.apb1       = RCC_APB1Periph_I2C1;
+    i2cConfig.apb2       = RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO ;
+    i2cConfig.remap      = GPIO_Remap_I2C1;
+
     
     
-    Led1->on();
+    CI2C* i2c = PM.getPeripheral<CI2C>(i2cConfig);
     
-    PM.delPeripheral<CLed>(Led1);
-    PM.delPeripheral<CLed>(Led3);
+    i2c->init();
     
-    Led1 = PM.getPeripheral<CLed>(ledConfig);
-    Led1->init();
+    KamodRGB leds(0,i2c);
+    
+    leds.light(KRed,255);
+    
+    led->init();
+    
+    led->on();
     
     int i=0;
     while(1)
@@ -63,9 +67,7 @@ int main()
         if(i>900000)
         {
             i=0;
-            Led1->toogle();
-            Led2->toogle();
-
+            led->toogle();
         }
         i++;
     }   

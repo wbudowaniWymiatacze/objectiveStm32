@@ -24,15 +24,23 @@
         </df>
         <in>boardDefs.hpp</in>
       </df>
+      <df name="ExternalModules">
+        <in>KamodMEMS2.cpp</in>
+        <in>KamodMEMS2.hpp</in>
+        <in>KamodRGB.cpp</in>
+        <in>KamodRGB.hpp</in>
+      </df>
       <df name="Gpio">
         <df name="inc">
           <in>CGpio.hpp</in>
+          <in>CGpioI2C.hpp</in>
           <in>CGpioInput.hpp</in>
           <in>CGpioManager.hpp</in>
           <in>CGpioOutput.hpp</in>
         </df>
         <df name="src">
           <in>CGpio.cpp</in>
+          <in>CGpioI2C.cpp</in>
           <in>CGpioInput.cpp</in>
           <in>CGpioManager.cpp</in>
           <in>CGpioOutput.cpp</in>

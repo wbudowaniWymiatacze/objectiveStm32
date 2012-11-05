@@ -10,19 +10,19 @@
 
 #include <IPeripheral.hpp>
 #include <PeripheralTypes.hpp>
-#include "CGpioOutput.hpp"
+#include <CGpioI2C.hpp>
 
 class CI2C : public IPeripheral {
   public:
     typedef TPeripheralConfigI2C TPeripheralConfig;
       
-    CI2C(CGpioManager * GM,SPeripheralConfig* config);
+    CI2C(CGpioManager * GM,SPeripheralConfig& config);
     virtual ~CI2C();
     void init();
     void deinit();
     
-    void sendBytes(unsigned char addr, unsigned char * b ,unsigned char len);
-    void sendBytes2(unsigned char addr, unsigned char * b, unsigned char len);
+    void sendBytesAndStop(unsigned char addr, unsigned char * b ,unsigned char len);
+    void sendBytes(unsigned char addr, unsigned char * b, unsigned char len);
     void readBytes(unsigned char addr, unsigned char * b, unsigned char len);
     
   private:
