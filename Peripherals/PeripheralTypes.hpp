@@ -8,6 +8,7 @@
 #ifndef PERIPHERALTYPES_HPP
 #define	PERIPHERALTYPES_HPP
 
+#include <boardDefs.hpp>
 #include <map>
 
 enum EPeripheralConfig
@@ -37,6 +38,7 @@ struct PeripheralTypes
 
 typedef struct SPeripheralConfig
 {
+    EPeripheralConfig type;
     GPIO_TypeDef*     gpioPort; 
     uint32_t          remap; 
     uint32_t          apb1;     
@@ -49,7 +51,7 @@ typedef struct SPeripheralConfig
     }
     
     SPeripheralConfig():
-        gpioPort(0), remap(0), apb1(0), apb2(0), irqChannel(0)
+        type(None), gpioPort(0), remap(0), apb1(0), apb2(0), irqChannel(0)
     {
         
     }
@@ -66,6 +68,10 @@ typedef struct TPeripheralConfigLed : public SPeripheralConfig
         //TODO SPeripheralConfig < SPeripheralConfig
         return (SPeripheralConfig) *this < (SPeripheralConfig) a || (gpioPin < a.gpioPin);
     }
+    TPeripheralConfigLed()
+    {
+        type = Led;
+    }
 }TPeripheralConfigLed;
 
 typedef struct TPeripheralConfigUsart : public SPeripheralConfig
@@ -73,6 +79,11 @@ typedef struct TPeripheralConfigUsart : public SPeripheralConfig
     USART_TypeDef *  usart;
     uint16_t         gpioPinTx;
     uint16_t         gpioPinRx;
+    
+    TPeripheralConfigUsart()
+    {
+        type = Usart;
+    }
 }TPeripheralConfigUsart;
 
 typedef struct TPeripheralConfigI2C : public SPeripheralConfig
@@ -85,6 +96,11 @@ typedef struct TPeripheralConfigI2C : public SPeripheralConfig
     {
         //TODO SPeripheralConfig < SPeripheralConfig
         return (SPeripheralConfig) *this < (SPeripheralConfig) a || (gpioPinScl < a.gpioPinScl) || (gpioPinSda < a.gpioPinSda);
+    }
+     
+    TPeripheralConfigI2C()
+    {
+        type = I2C;
     }
 }TPeripheralConfigI2C;
 

@@ -62,12 +62,15 @@ int main()
     led->on();
     
     int i=0;
+    int j = 0;
     while(1)
     {
         if(i>900000)
         {
             i=0;
             led->toogle();
+            leds.light(KBlue,j%255);
+            j++;
         }
         i++;
     }   

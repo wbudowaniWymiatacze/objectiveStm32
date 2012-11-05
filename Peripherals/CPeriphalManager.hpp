@@ -12,6 +12,7 @@
 #include <CLed.hpp>
 #include <CI2C.hpp>
 #include <PeripheralTypes.hpp>
+#include <PeripheralMapsStorage.hpp>
 #include <CGpioManager.hpp>
 #include <map>
 #include <typeinfo>
@@ -34,14 +35,6 @@ class CPeriphalManager
     void delPeripheral(TPeripheral* periph);
     
   private:
-      
-    template<typename TPeripheral>
-    TPeripheral* getPeripheralImpl(SPeripheralConfig& conf, 
-                                   typename PeripheralTypes<TPeripheral>::TPeriphMap& map);
-    
-    template<typename TPeripheral, typename TPeriphMap>
-    void delPeripheralImpl(TPeripheral* periph, TPeriphMap& map);
-      
     void enableAPB1(uint32_t apb1);
     void enableAPB2(uint32_t apb2);
     void disableAPB1(uint32_t apb1);
@@ -49,18 +42,18 @@ class CPeriphalManager
            
     CGpioManager * GM;
     
-    PeripheralTypes<CLed>::TPeriphMap LedPeriphMap;
-    PeripheralTypes<CI2C>::TPeriphMap I2CPeriphMap;
+    PeripheralMapsStorage PeriphMap;
   
     std::map<IPeripheral*,int> referenceCounter;
 };
 
 template<typename TPeripheral>
-TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf,
-                                                 typename PeripheralTypes<TPeripheral>::TPeriphMap& map)
+TPeripheral* CPeriphalManager::getPeripheral(SPeripheralConfig& conf)
 {
     typedef typename TPeripheral::TPeripheralConfig TPeripheralConfig;
     typedef typename PeripheralTypes<TPeripheral>::TPeriphMap TPeriphMap;
+    
+    TPeriphMap map = (TPeriphMap&)PeriphMap;
     
     TPeripheralConfig& config = static_cast<TPeripheralConfig&>(conf);
     typename TPeriphMap::iterator iter = map.find(config);
@@ -83,12 +76,18 @@ TPeripheral* CPeriphalManager::getPeripheralImpl(SPeripheralConfig& conf,
     return periph;
 }
 
-template<typename TPeripheral, typename TPeriphMap>
-void CPeriphalManager::delPeripheralImpl(TPeripheral* periph, TPeriphMap& map)
+//TODO change to one argument template like in get...
+template<typename TPeripheral>
+void CPeriphalManager::delPeripheral(TPeripheral* periph)
 {
     typedef typename TPeripheral::TPeripheralConfig TPeripheralConfig;
+    typedef typename PeripheralTypes<TPeripheral>::TPeriphMap TPeriphMap;
+    
+    TPeriphMap& map = (TPeriphMap&)PeriphMap;
     TPeripheralConfig config;
+
     typename TPeriphMap::iterator iter;
+
     for(iter = map.begin();iter!=map.end();iter++)
     {
         if(iter->second == periph)

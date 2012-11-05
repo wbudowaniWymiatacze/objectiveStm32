@@ -41,29 +41,3 @@ void CPeriphalManager::disableAPB2(uint32_t apb2)
 {
     RCC_APB2PeriphClockCmd(apb2, DISABLE);
 }
-
-template<>
-CLed * CPeriphalManager::getPeripheral<CLed>(SPeripheralConfig& config)
-{
-    return getPeripheralImpl<CLed>(config,LedPeriphMap);   
-}
-
-template<>
-CI2C * CPeriphalManager::getPeripheral<CI2C>(SPeripheralConfig& config)
-{
-    return getPeripheralImpl<CI2C>(config,I2CPeriphMap);   
-}
-
-template<>
-void CPeriphalManager::delPeripheral<CLed>(CLed* periph)
-{
-    delPeripheralImpl<CLed,PeripheralTypes<CLed>::TPeriphMap>(periph,LedPeriphMap);
-    
-}
-//TODO change to one argument template like in get...
-template<>
-void CPeriphalManager::delPeripheral<CI2C>(CI2C* periph)
-{
-    delPeripheralImpl<CI2C,PeripheralTypes<CI2C>::TPeriphMap>(periph,I2CPeriphMap);
-    
-}

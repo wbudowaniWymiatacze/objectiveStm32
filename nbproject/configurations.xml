@@ -198,6 +198,8 @@
         <in>CPeriphalManager.cpp</in>
         <in>CPeriphalManager.hpp</in>
         <in>IPeripheral.hpp</in>
+        <in>PeripheralMapsStorage.cpp</in>
+        <in>PeripheralMapsStorage.hpp</in>
         <in>PeripheralTypes.hpp</in>
       </df>
       <df name="Rcc">
