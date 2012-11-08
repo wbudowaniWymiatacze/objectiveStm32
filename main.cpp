@@ -18,6 +18,7 @@
 #include "Peripherals/IPeripheral.hpp"
 
 #include "ExternalModules/KamodRGB.hpp"
+#include "ExternalModules/KamodMEMS2.hpp"
 
 
 
@@ -54,23 +55,23 @@ int main()
     i2c->init();
     
     KamodRGB leds(0,i2c);
-    
+    KamodMEMS2 mems(58,i2c);
+        
     leds.light(KRed,255);
     
     led->init();
     
     led->on();
-    
     int i=0;
-    int j = 0;
     while(1)
     {
         if(i>900000)
         {
-            i=0;
             led->toogle();
-            leds.light(KBlue,j%255);
-            j++;
+            i = mems.getx();
+            leds.light(KBlue,i);
+            
+            i=0;
         }
         i++;
     }   

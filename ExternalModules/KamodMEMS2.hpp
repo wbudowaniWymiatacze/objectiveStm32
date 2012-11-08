@@ -8,7 +8,7 @@
 #ifndef KAMODMEMS2_HPP
 #define	KAMODMEMS2_HPP
 
-#include "stm32-P107.hpp"
+#include <CI2C.hpp>
 
 
 #define LIS35_I2CADDR 56 
@@ -49,14 +49,16 @@
 class KamodMEMS2 {
   public:
     KamodMEMS2();
-    KamodMEMS2(unsigned char ad, I2C i2c);
-    void init(unsigned char  ad, I2C i2c);
+    KamodMEMS2(unsigned char ad, CI2C* i2c);
+    void init(unsigned char  ad, CI2C* i2c);
     unsigned char  getx();
     unsigned char  gety();
     unsigned char  getz();
     
   private:
-    I2C i2c;
+      unsigned char getRegisterVal(unsigned char regAddr );
+      void writeToRegister(unsigned char regAddr, unsigned char val);
+    CI2C* i2c;
     u8 addr;
 
 };

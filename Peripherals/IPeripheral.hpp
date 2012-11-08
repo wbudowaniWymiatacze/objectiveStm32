@@ -15,19 +15,18 @@
 
 class IPeripheral
 {
-public:
+    friend class CPeriphalManager;
     
-    IPeripheral(CGpioManager * GM):GM(GM),reference(1){};
-
+public: 
+    IPeripheral(CGpioManager * GM):GM(GM),referenceCounter(1){};
     virtual ~IPeripheral() {}
 
 protected:
     CGpioManager * GM;
-private :  
-    int reference;
     
+private :  
+    int referenceCounter; 
     
 };
-
 
 #endif /* IPERIPHERAL_HPP_ */

@@ -10,7 +10,7 @@
 
 #include <IPeripheral.hpp>
 #include <PeripheralTypes.hpp>
-#include "CGpioOutput.hpp"
+#include <CGpioOutput.hpp>
 
 class CLed : public IPeripheral
 {

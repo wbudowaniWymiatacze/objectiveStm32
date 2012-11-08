@@ -6,30 +6,55 @@
  */
 
 #include "KamodMEMS2.hpp"
-#include "stm32-P107.hpp"
 
 KamodMEMS2::KamodMEMS2() 
 {
    
 }
 
-KamodMEMS2::KamodMEMS2(unsigned char  ad, I2C i) 
+KamodMEMS2::KamodMEMS2(unsigned char  ad, CI2C* i) 
 {
-    init( ad,  i);
+    init(ad, i);
 }
 
-void KamodMEMS2::init(unsigned char ad, I2C i)
+void KamodMEMS2::init(unsigned char ad, CI2C* i)
 {
     addr=ad;
     i2c=i;
-    unsigned char B[2] = {LIS35_REG_CR1, LIS35_REG_CR1_XEN | LIS35_REG_CR1_YEN | LIS35_REG_CR1_ZEN | LIS35_REG_CR1_ACTIVE | LIS35_REG_CR1_FULL_SCALE};
-    i2c.sendBytes(addr,B,2);
+    unsigned char cr1Val = LIS35_REG_CR1_XEN | 
+                           LIS35_REG_CR1_YEN | 
+                           LIS35_REG_CR1_ZEN | 
+                           LIS35_REG_CR1_ACTIVE | 
+                           LIS35_REG_CR1_FULL_SCALE;
+    
+    writeToRegister(LIS35_REG_CR1, cr1Val);
 }
 
 unsigned char  KamodMEMS2::getx()
 {
-    unsigned char  B=LIS35_REG_OUTX;
-    i2c.sendBytes2(addr,&B,1);
-    i2c.readBytes(addr, &B, 1);
-    return B;
+    return getRegisterVal(LIS35_REG_OUTX);
+}
+
+unsigned char  KamodMEMS2::gety()
+{
+    return getRegisterVal(LIS35_REG_OUTY);
+}
+
+unsigned char  KamodMEMS2::getz()
+{
+    return getRegisterVal(LIS35_REG_OUTZ);
+}
+
+unsigned char KamodMEMS2::getRegisterVal(unsigned char regAddr )
+{
+    unsigned char  B=regAddr;
+    i2c->sendBytes(addr,&B,1);
+    i2c->readBytes(addr, &B, 1);
+    return B; 
+}
+
+void KamodMEMS2::writeToRegister(unsigned char regAddr, unsigned char val)
+{
+    unsigned char B[2] = {regAddr, val};
+    i2c->sendBytesAndStop(addr,B,2);
 }

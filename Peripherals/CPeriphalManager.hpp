@@ -44,7 +44,6 @@ class CPeriphalManager
     
     PeripheralMapsStorage PeriphMap;
   
-    std::map<IPeripheral*,int> referenceCounter;
 };
 
 template<typename TPeripheral>
@@ -60,7 +59,7 @@ TPeripheral* CPeriphalManager::getPeripheral(SPeripheralConfig& conf)
     
     if (iter != map.end())
     {
-        referenceCounter[iter->second]++; 
+        iter->second->referenceCounter++;
         return static_cast<TPeripheral*>(iter->second);
     }
    
@@ -70,7 +69,6 @@ TPeripheral* CPeriphalManager::getPeripheral(SPeripheralConfig& conf)
 
     TPeripheral* periph = new TPeripheral(GM,config);
     
-    referenceCounter[periph] = 1;
     map[config] = periph;
     
     return periph;
@@ -93,12 +91,11 @@ void CPeriphalManager::delPeripheral(TPeripheral* periph)
         if(iter->second == periph)
         {
             config = iter->first;
-            referenceCounter[periph]--;
-            if(0 == referenceCounter[periph])
+            iter->second->referenceCounter--;
+            if(0 == iter->second->referenceCounter)
             {
                 delete periph;
                 map.erase(iter);
-                referenceCounter.erase(periph);
                 GPIO_PinRemapConfig(config.remap, DISABLE);
                 
             }            
@@ -137,8 +134,4 @@ void CPeriphalManager::delPeripheral(TPeripheral* periph)
     
 }
 
-
-
-
 #endif	/* CPERIPHALMANAGER_HPP */
-
