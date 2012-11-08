@@ -20,7 +20,10 @@
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
 
-
+void ordinaryDelay()
+{
+    for(int i=0;i<10000;i++);
+}
 
 int main()
 {
@@ -53,6 +56,7 @@ int main()
     CI2C* i2c = PM.getPeripheral<CI2C>(i2cConfig);
     
     i2c->init();
+    ordinaryDelay();
     
     KamodRGB leds(0,i2c);
     KamodMEMS2 mems(58,i2c);
