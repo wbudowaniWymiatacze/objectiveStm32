@@ -20,9 +20,9 @@
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
 
-void ordinaryDelay()
+void ordinaryDelay(int val = 10000)
 {
-    for(int i=0;i<10000;i++);
+    for(int i=0;i<val;i++);
 }
 
 int main()
@@ -61,23 +61,20 @@ int main()
     KamodRGB leds(0,i2c);
     KamodMEMS2 mems(58,i2c);
         
-    leds.light(KRed,255);
+    leds.light(KAmber,255);
     
     led->init();
     
     led->on();
-    int i=0;
     while(1)
     {
-        if(i>900000)
-        {
-            led->toogle();
-            i = mems.getx();
-            leds.light(KBlue,i);
-            
-            i=0;
-        }
-        i++;
+        led->toogle();
+        leds.light(KAmber,0);
+        ordinaryDelay(900000);
+        leds.light(KAmber,255);
+        leds.light(KBlue, mems.getx());
+        leds.light(KGreen,mems.gety());
+        leds.light(KRed,  mems.getz());
     }   
 }
 
