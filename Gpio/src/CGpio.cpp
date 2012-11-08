@@ -44,7 +44,7 @@ bool CGpio::get()
 
 void CGpio::init()
 {
-    
+    realInit();
 }
 
 int CGpio::operator ==(CGpio const & G)

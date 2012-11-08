@@ -11,6 +11,7 @@
 #include <IPeripheral.hpp>
 #include <CLed.hpp>
 #include <CI2C.hpp>
+#include <CUsart.hpp>
 #include <PeripheralTypes.hpp>
 #include <PeripheralMapsStorage.hpp>
 #include <CGpioManager.hpp>

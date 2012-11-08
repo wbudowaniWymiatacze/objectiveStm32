@@ -13,7 +13,7 @@
 
 CGpioManager::CGpioManager()
 {
-    m_emptyGpio = new CGpio();
+    m_emptyGpio = new CGpioEmpty();
 }
 
 
@@ -23,6 +23,13 @@ void CGpioManager::releaseGpio( CGpio * gpio )
     delete gpio;
 }
 
+CGpio * CGpioManager::getGpio(GPIO_TypeDef*     port,
+                              uint16_t          pin, 
+                              GPIOSpeed_TypeDef speed,
+                              GPIOMode_TypeDef  mode)
+{
+    return reserveGpio(new CGpio(port, pin, speed,mode));
+}
 bool CGpioManager::isGpioUsed(CGpio* gpio)
 {
     //TODO: to replace by list.find(gpio) method ( needs to define compare object like in Device Manager )
@@ -38,12 +45,22 @@ bool CGpioManager::isGpioUsed(CGpio* gpio)
     
     return false;
     
-    //result = std::find( m_usedGPios.begin(), m_usedGPios.end( ), gpio );
-    //if  ( result == m_usedGPios.end() )
-    //    return false;
-    //else
-    //    return true;
+}
+CGpio* CGpioManager::reserveGpio(CGpio* gpio)
+{
+    bool portPinUsed = isGpioUsed(gpio);
     
+    if ( portPinUsed == true )
+    {
+        delete gpio;
+        gpio = m_emptyGpio;
+    }
+    else
+    {
+        m_usedGPios.push_front(gpio);
+    }        
+
+    return gpio;
 }
 
 CGpioManager & CGpioManager::operator=( CGpioManager const & gpioManager )

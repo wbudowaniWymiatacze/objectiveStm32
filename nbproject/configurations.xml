@@ -33,6 +33,7 @@
       <df name="Gpio">
         <df name="inc">
           <in>CGpio.hpp</in>
+          <in>CGpioEmpty.hpp</in>
           <in>CGpioI2C.hpp</in>
           <in>CGpioInput.hpp</in>
           <in>CGpioManager.hpp</in>
@@ -40,6 +41,7 @@
         </df>
         <df name="src">
           <in>CGpio.cpp</in>
+          <in>CGpioEmpty.cpp</in>
           <in>CGpioI2C.cpp</in>
           <in>CGpioInput.cpp</in>
           <in>CGpioManager.cpp</in>
@@ -197,6 +199,8 @@
         <in>CLed.hpp</in>
         <in>CPeriphalManager.cpp</in>
         <in>CPeriphalManager.hpp</in>
+        <in>CUsart.cpp</in>
+        <in>CUsart.hpp</in>
         <in>IPeripheral.hpp</in>
         <in>PeripheralMapsStorage.cpp</in>
         <in>PeripheralMapsStorage.hpp</in>

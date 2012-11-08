@@ -7,7 +7,7 @@
 
 #include <CI2C.hpp>
 
-CI2C::CI2C(CGpioManager * GM,SPeripheralConfig& config ): 
+CI2C::CI2C(CGpioManager * GM,SPeripheralConfig& config): 
 IPeripheral(GM)
 {
     TPeripheralConfigI2C& A = (TPeripheralConfigI2C&)config;

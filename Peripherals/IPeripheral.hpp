@@ -20,6 +20,7 @@ class IPeripheral
 public: 
     IPeripheral(CGpioManager * GM):GM(GM),referenceCounter(1){};
     virtual ~IPeripheral() {}
+    virtual void init() = 0;
 
 protected:
     CGpioManager * GM;
