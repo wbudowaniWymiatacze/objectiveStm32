@@ -30,19 +30,19 @@ void KamodMEMS2::init(unsigned char ad, CI2C* i)
     writeToRegister(LIS35_REG_CR1, cr1Val);
 }
 
-unsigned char  KamodMEMS2::getx()
+int  KamodMEMS2::getx()
 {
-    return getRegisterVal(LIS35_REG_OUTX);
+    return  convertToInt(getRegisterVal(LIS35_REG_OUTX));
 }
 
-unsigned char  KamodMEMS2::gety()
+int  KamodMEMS2::gety()
 {
-    return getRegisterVal(LIS35_REG_OUTY);
+    return  convertToInt(getRegisterVal(LIS35_REG_OUTY));
 }
 
-unsigned char  KamodMEMS2::getz()
+int  KamodMEMS2::getz()
 {
-    return getRegisterVal(LIS35_REG_OUTZ);
+    return convertToInt(getRegisterVal(LIS35_REG_OUTZ));
 }
 
 unsigned char KamodMEMS2::getRegisterVal(unsigned char regAddr )
@@ -57,4 +57,9 @@ void KamodMEMS2::writeToRegister(unsigned char regAddr, unsigned char val)
 {
     unsigned char B[2] = {regAddr, val};
     i2c->sendBytesAndStop(addr,B,2);
+}
+
+int KamodMEMS2::convertToInt(unsigned char val)
+{
+    return (val & 0x0F) * (val>>7 > 0 ? -1 : 1);
 }

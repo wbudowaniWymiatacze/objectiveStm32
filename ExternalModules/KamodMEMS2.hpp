@@ -51,13 +51,14 @@ class KamodMEMS2 {
     KamodMEMS2();
     KamodMEMS2(unsigned char ad, CI2C* i2c);
     void init(unsigned char  ad, CI2C* i2c);
-    unsigned char  getx();
-    unsigned char  gety();
-    unsigned char  getz();
+    int  getx();
+    int  gety();
+    int  getz();
     
   private:
       unsigned char getRegisterVal(unsigned char regAddr );
       void writeToRegister(unsigned char regAddr, unsigned char val);
+      int convertToInt(unsigned char val);
     CI2C* i2c;
     u8 addr;
 
