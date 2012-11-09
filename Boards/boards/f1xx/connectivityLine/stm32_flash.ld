@@ -98,11 +98,11 @@ SECTIONS
 		. = ALIGN(4);
 		*(.ARM.extab* .gnu.linkonce.armextab.*);	/* exception unwinding information */
 		. = ALIGN(4);
-		*(.gcc_except_table);						/* information used for stack unwinding during exception */
+		*(.gcc_except_table);				/* information used for stack unwinding during exception */
 		. = ALIGN(4);
-		*(.eh_frame_hdr);							/* additional information about .ex_frame section */
+		*(.eh_frame_hdr);				/* additional information about .ex_frame section */
 		. = ALIGN(4);
-		*(.eh_frame);								/* information used for stack unwinding during exception */
+		*(.eh_frame);					/* information used for stack unwinding during exception */
 
 		. = ALIGN(4);
 		KEEP(*(.init));

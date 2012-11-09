@@ -32,7 +32,9 @@ public:
 template<typename TPeripheral>
 struct PeripheralTypes
 {
-    typedef std::map <typename TPeripheral::TPeripheralConfig, TPeripheral*,cmp<typename TPeripheral::TPeripheralConfig> > TPeriphMap;
+    typedef std::map <typename TPeripheral::TPeripheralConfig,
+                      TPeripheral*,
+                      cmp<typename TPeripheral::TPeripheralConfig> > TPeriphMap;
 };
 
 
@@ -45,7 +47,10 @@ typedef struct SPeripheralConfig
     
     bool operator<( const SPeripheralConfig a)
     {
-        return (apb1<a.apb1) || (apb2<a.apb2) || (gpioPort<a.gpioPort) || (remap < a.remap);
+        return (apb1<a.apb1) ||
+               (apb2<a.apb2) || 
+               (gpioPort<a.gpioPort) || 
+               (remap < a.remap);
     }
     
     SPeripheralConfig():
@@ -63,8 +68,8 @@ typedef struct TPeripheralConfigLed : public SPeripheralConfig
     
     bool operator<( const TPeripheralConfigLed a)
     {
-        //TODO SPeripheralConfig < SPeripheralConfig
-        return (SPeripheralConfig) *this < (SPeripheralConfig) a || (gpioPin < a.gpioPin);
+        return (SPeripheralConfig) *this < (SPeripheralConfig) a || 
+               (gpioPin < a.gpioPin);
     }
 
 }TPeripheralConfigLed;
@@ -75,6 +80,14 @@ typedef struct TPeripheralConfigUsart : public SPeripheralConfig
     uint16_t         gpioPinTx;
     uint16_t         gpioPinRx;
     
+    bool operator<( const TPeripheralConfigUsart a)
+    {
+        return (SPeripheralConfig) *this < (SPeripheralConfig) a || 
+               (usart     < a.usart) ||
+               (gpioPinTx < a.gpioPinTx) ||
+               (gpioPinRx < a.gpioPinRx);
+    }
+    
 }TPeripheralConfigUsart;
 
 typedef struct TPeripheralConfigI2C : public SPeripheralConfig
@@ -83,10 +96,11 @@ typedef struct TPeripheralConfigI2C : public SPeripheralConfig
     uint16_t         gpioPinScl;
     uint16_t         gpioPinSda;
     
-     bool operator<( const TPeripheralConfigI2C a)
+    bool operator<( const TPeripheralConfigI2C a)
     {
-        //TODO SPeripheralConfig < SPeripheralConfig
-        return (SPeripheralConfig) *this < (SPeripheralConfig) a || (gpioPinScl < a.gpioPinScl) || (gpioPinSda < a.gpioPinSda);
+        return (SPeripheralConfig) *this < (SPeripheralConfig) a ||
+               (gpioPinScl < a.gpioPinScl) ||
+               (gpioPinSda < a.gpioPinSda);
     }
      
 }TPeripheralConfigI2C;

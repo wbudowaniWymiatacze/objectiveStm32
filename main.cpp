@@ -7,18 +7,15 @@
 #include <boardDefs.hpp>
 
 #include <CGpioManager.hpp>
-#include <CRccManager.hpp>
-#include <CGpio.hpp>
 
 #include <CPeriphalManager.hpp>
-#include <Peripherals/PeripheralTypes.hpp>
+#include <PeripheralTypes.hpp>
 #include <IPeripheral.hpp>
-#include <Peripherals/CLed.hpp>
-#include <Peripherals/CUsart.hpp>
+#include <CLed.hpp>
+#include <CUsart.hpp>
 
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
-
 
 #include <cstdio> 
 
@@ -70,11 +67,8 @@ int main()
     CUsart* Usart = PM.getPeripheral<CUsart>(usartConfig);
     
     Usart->init();
-    
-    Usart->sendChar('\r');
-    Usart->sendChar('\n');
-    Usart->sendString("[x, y, z]");
-    Usart->sendChar('\n');
+
+    Usart->sendString("\r\n[x, y, z]\n");
     
     KamodRGB leds(0,i2c);
     KamodMEMS2 mems(58,i2c);

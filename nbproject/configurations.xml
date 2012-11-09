@@ -229,8 +229,6 @@
         </df>
       </df>
       <in>main.cpp</in>
-      <in>stm32-P107.cpp</in>
-      <in>stm32-P107.hpp</in>
       <in>syscalls.c</in>
       <in>vectors.c</in>
     </df>
@@ -1195,15 +1193,6 @@
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
             <pElem>Peripherals</pElem>
             <pElem>Rcc/inc</pElem>
-            <pElem>Gpio/inc</pElem>
-            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
-          </incDir>
-        </ccTool>
-      </item>
-      <item path="stm32-P107.cpp" ex="false" tool="1" flavor2="4">
-        <ccTool>
-          <incDir>
-            <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2/bits</pElem>
             <pElem>Gpio/inc</pElem>
             <pElem>../../../CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/include/c++/4.5.2/arm-none-eabi/thumb2</pElem>
           </incDir>
