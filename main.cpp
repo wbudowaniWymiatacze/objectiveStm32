@@ -13,6 +13,7 @@
 #include <IPeripheral.hpp>
 #include <CLed.hpp>
 #include <CUsart.hpp>
+#include <CButton.hpp>
 
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
@@ -32,6 +33,14 @@ int main()
     /*PERIPHERAL MANAGER TEST*/
     CGpioManager GM;    
     CPeriphalManager PM(&GM);
+    
+    TPeripheralConfigButton buttonConfig;
+    buttonConfig.apb2 = RCC_APB2Periph_GPIOC;
+    buttonConfig.gpioPin = GPIO_Pin_13;
+    buttonConfig.gpioPort = GPIOC;
+    
+    CButton* tamper = PM.getPeripheral<CButton>(buttonConfig);
+    tamper->init();
    
     TPeripheralConfigLed ledConfig;
     ledConfig.apb2 = RCC_APB2Periph_GPIOC;
@@ -91,7 +100,8 @@ int main()
         leds.light(KBlue, mems.getx());
         leds.light(KGreen,mems.gety());
         leds.light(KRed,  mems.getz());
-        
+        if(!tamper->isPressed())
+            continue;
         Usart->sendString("\r               \r");
         sprintf(out,"[%d, %d, %d]",mems.getx(), mems.gety(), mems.getz());
         Usart->sendString(out);

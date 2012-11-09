@@ -74,6 +74,8 @@ typedef struct TPeripheralConfigLed : public SPeripheralConfig
 
 }TPeripheralConfigLed;
 
+typedef TPeripheralConfigLed TPeripheralConfigButton;
+
 typedef struct TPeripheralConfigUsart : public SPeripheralConfig
 {
     USART_TypeDef *  usart;

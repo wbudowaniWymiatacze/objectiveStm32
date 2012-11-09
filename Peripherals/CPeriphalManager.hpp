@@ -12,6 +12,7 @@
 #include <CLed.hpp>
 #include <CI2C.hpp>
 #include <CUsart.hpp>
+#include <CButton.hpp>
 #include <PeripheralTypes.hpp>
 #include <PeripheralMapsStorage.hpp>
 #include <CGpioManager.hpp>
@@ -36,8 +37,8 @@ class CPeriphalManager
     void delPeripheral(TPeripheral* periph);
     
   private:
-    void enableAPB1(uint32_t apb1);
-    void enableAPB2(uint32_t apb2);
+    void enableAPB1(uint32_t  apb1);
+    void enableAPB2(uint32_t  apb2);
     void disableAPB1(uint32_t apb1);
     void disableAPB2(uint32_t apb1);
            

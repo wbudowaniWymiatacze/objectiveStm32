@@ -12,6 +12,7 @@
 #include <CLed.hpp>
 #include <CI2C.hpp>
 #include <CUsart.hpp>
+#include <CButton.hpp>
 
 class PeripheralMapsStorage {
 public:
@@ -23,6 +24,10 @@ public:
     {
         return LedPeriphMap;
     }
+    operator PeripheralTypes<CButton>::TPeriphMap&()
+    {
+        return ButtonPeriphMap;
+    }
     operator PeripheralTypes<CI2C>::TPeriphMap&()
     {
         return I2CPeriphMap;
@@ -33,9 +38,10 @@ public:
     }
     
 private:
-    PeripheralTypes<CLed>::TPeriphMap LedPeriphMap;
-    PeripheralTypes<CI2C>::TPeriphMap I2CPeriphMap;
-    PeripheralTypes<CUsart>::TPeriphMap CUsartPeriphMap;
+    PeripheralTypes<CLed>::TPeriphMap    LedPeriphMap;
+    PeripheralTypes<CButton>::TPeriphMap ButtonPeriphMap;
+    PeripheralTypes<CI2C>::TPeriphMap    I2CPeriphMap;
+    PeripheralTypes<CUsart>::TPeriphMap  CUsartPeriphMap;
 
 };
 
