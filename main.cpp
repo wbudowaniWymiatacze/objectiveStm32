@@ -18,10 +18,9 @@
 
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
-#include "stm32-P107.hpp"
 
-#include <stdlib.h>
-#include <stdio.h>
+
+#include <cstdio> 
 
 void ordinaryDelay(int val = 10000)
 {
@@ -75,7 +74,6 @@ int main()
     Usart->sendChar('\r');
     Usart->sendChar('\n');
     Usart->sendString("[x, y, z]");
-    Usart->sendString("[x, y, z]");
     Usart->sendChar('\n');
     
     KamodRGB leds(0,i2c);
@@ -86,25 +84,25 @@ int main()
     led->init();
     
     led->on();
+    char out[15];
+    
     while(1)
     {
         led->toogle();
         leds.light(KAmber,0);
+        
         ordinaryDelay(900000);
+        
         leds.light(KAmber,255);
         leds.light(KBlue, mems.getx());
         leds.light(KGreen,mems.gety());
         leds.light(KRed,  mems.getz());
-        //TODO itoa needed !!!
-//        Usart->sendChar('\r');
-//        Usart->sendChar(mems.getx());
-//        Usart->sendChar(' ');
-//        Usart->sendChar(mems.gety());
-//        Usart->sendChar(' ');
-//        Usart->sendChar(mems.getz());
-
         
+        Usart->sendString("\r               \r");
+        sprintf(out,"[%d, %d, %d]",mems.getx(), mems.gety(), mems.getz());
+        Usart->sendString(out);
     }   
+    
 }
 
 
