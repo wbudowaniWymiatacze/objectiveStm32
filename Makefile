@@ -57,6 +57,7 @@ INC_DIRS += Usart/inc
 #INC_DIRS += Interface
 INC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
 INC_DIRS += Peripherals
+INC_DIRS += Interrupts
 INC_DIRS += ExternalModules
 
 # library directories (absolute or relative paths to additional folders with
@@ -79,6 +80,7 @@ SRC_DIRS += Rcc/src
 SRC_DIRS += Usart/src
 SRC_DIRS += $(ST_LIB)/Libraries/CMSIS/CM3/CoreSupport/
 SRC_DIRS += Peripherals
+SRC_DIRS += Interrupts
 SRC_DIRS += ExternalModules
 
 # extension of C++ files

@@ -9,6 +9,7 @@
 #define BOARDDEFS_HPP_
 
 #include <misc.h>
+#include <core_cm3.h>
 
 #ifdef STM32F103VBXX
 

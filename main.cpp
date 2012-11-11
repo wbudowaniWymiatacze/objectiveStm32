@@ -4,6 +4,8 @@
  *  Created on: Jan 21, 2012
  *      Author: artur
  */
+
+#include <stm32f10x.h>
 #include <boardDefs.hpp>
 
 #include <CGpioManager.hpp>
@@ -17,6 +19,7 @@
 
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
+#include "Interrupts/InterruptsHandler.hpp"
 
 #include <cstdio> 
 
@@ -25,15 +28,18 @@ void ordinaryDelay(int val = 10000)
     for(int i=0;i<val;i++);
 }
 
+CLed* GlobalLed;
+
 int main()
 {
 
     SystemInit();
-    
+    ordinaryDelay();
+
     /*PERIPHERAL MANAGER TEST*/
     CGpioManager GM;    
     CPeriphalManager PM(&GM);
-    
+
     TPeripheralConfigButton buttonConfig;
     buttonConfig.apb2 = RCC_APB2Periph_GPIOC;
     buttonConfig.gpioPin = GPIO_Pin_13;
@@ -48,6 +54,12 @@ int main()
     ledConfig.gpioPort = GPIOC;
     
     CLed* led = PM.getPeripheral<CLed>(ledConfig);
+    led->init();
+    
+    ledConfig.gpioPin = GPIO_Pin_7;
+    
+    GlobalLed = PM.getPeripheral<CLed>(ledConfig);
+    GlobalLed->init();
     
     TPeripheralConfigI2C i2cConfig;
     
@@ -77,18 +89,25 @@ int main()
     
     Usart->init();
 
-    Usart->sendString("\r\n[x, y, z]\n");
+    Usart->sendString("\r\nSTART\n\r");
     
     KamodRGB leds(0,i2c);
+    Usart->sendString("KamodRGB Enabled\n\r");
     KamodMEMS2 mems(58,i2c);
-        
+    Usart->sendString("KamodMEMS2 Enabled\n\r");
+    ordinaryDelay();
+    
     leds.light(KAmber,255);
-    
-    led->init();
-    
+  
     led->on();
-    char out[15];
     
+    GlobalLed->on();
+    
+    SysTick_Config(10000000);
+    
+            
+            
+    char out[15];
     while(1)
     {
         led->toogle();
@@ -108,5 +127,8 @@ int main()
     }   
     
 }
+
+
+
 
 

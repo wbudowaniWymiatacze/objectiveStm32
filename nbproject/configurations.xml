@@ -66,6 +66,11 @@
         <in>SPeriphConfig.hpp</in>
         <in>TypePeriph.hpp</in>
       </df>
+      <df name="Interrupts">
+        <in>InterruptHandler.hpp</in>
+        <in>InterruptsHandler.cpp</in>
+        <in>InterruptsHandler.hpp</in>
+      </df>
       <df name="Libraries">
         <df name="CMSIS">
           <df name="CM3">
