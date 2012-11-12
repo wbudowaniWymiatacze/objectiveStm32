@@ -52,7 +52,7 @@ template<typename TPeripheral>
 TPeripheral* CPeriphalManager::getPeripheral(SPeripheralConfig& conf)
 {
     typedef typename TPeripheral::TPeripheralConfig TPeripheralConfig;
-    typedef typename PeripheralTypes<TPeripheral>::TPeriphMap TPeriphMap;
+    typedef typename PeripheralMapTypes<TPeripheral>::TPeriphMap TPeriphMap;
     
     TPeriphMap map = (TPeriphMap&)PeriphMap;
     
@@ -80,7 +80,7 @@ template<typename TPeripheral>
 void CPeriphalManager::delPeripheral(TPeripheral* periph)
 {
     typedef typename TPeripheral::TPeripheralConfig TPeripheralConfig;
-    typedef typename PeripheralTypes<TPeripheral>::TPeriphMap TPeriphMap;
+    typedef typename PeripheralMapTypes<TPeripheral>::TPeriphMap TPeriphMap;
     
     TPeriphMap& map = (TPeriphMap&)PeriphMap;
     TPeripheralConfig config;

@@ -68,6 +68,7 @@
       </df>
       <df name="Interrupts">
         <in>InterruptHandler.hpp</in>
+        <in>InterruptTypes.hpp</in>
         <in>IsrDispatcher.cpp</in>
         <in>IsrDispatcher.hpp</in>
       </df>

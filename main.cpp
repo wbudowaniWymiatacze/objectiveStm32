@@ -20,6 +20,7 @@
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
 #include "Interrupts/IsrDispatcher.hpp"
+#include "stm32f10x_exti.h"
 
 #include <cstdio> 
 
@@ -28,14 +29,18 @@ void ordinaryDelay(int val = 10000)
     for(int i=0;i<val;i++);
 }
 
-CLed* GlobalLed;
 
-class GlobalLedToogler : public InterruptHandler
+class LedToogler : public InterruptHandler
 {
+public:
+    LedToogler( CLed* led): led(led){}
+    
     void handle()
     {
-        GlobalLed->toogle();
+        led->toogle();
     }
+private:
+    CLed* led;
 };
 
 int main()
@@ -61,13 +66,13 @@ int main()
     ledConfig.gpioPin = GPIO_Pin_6;
     ledConfig.gpioPort = GPIOC;
     
-    CLed* led = PM.getPeripheral<CLed>(ledConfig);
-    led->init();
+    CLed* greenLed = PM.getPeripheral<CLed>(ledConfig);
+    greenLed->init();
     
     ledConfig.gpioPin = GPIO_Pin_7;
     
-    GlobalLed = PM.getPeripheral<CLed>(ledConfig);
-    GlobalLed->init();
+    CLed* yellowLed = PM.getPeripheral<CLed>(ledConfig);
+    yellowLed->init();
     
     TPeripheralConfigI2C i2cConfig;
     
@@ -94,33 +99,40 @@ int main()
     usartConfig.gpioPort  = GPIOD;
     
     CUsart* Usart = PM.getPeripheral<CUsart>(usartConfig);
-    
     Usart->init();
-
     Usart->sendString("\r\nSTART\n\r");
+
+
     
 //    KamodRGB leds(0,i2c);
 //    Usart->sendString("KamodRGB Enabled\n\r");
 //    KamodMEMS2 mems(58,i2c);
 //    Usart->sendString("KamodMEMS2 Enabled\n\r");
-//    ordinaryDelay();
-    
-    led->on();
-    
-    GlobalLed->on();
-    
-    GlobalLedToogler glt;
+
     IsrDispatcher isrDisp;
+    LedToogler yellowLedToogler(yellowLed);
+    LedToogler greenLedToogler(greenLed);
     
-    isrDisp.registerInterrupt(SysTick_IRQn,glt);
     
-    SysTick_Config(10000000);
+    TInterruptConfigExt tamperInterruptConfig;
+    tamperInterruptConfig.preemptionPriority = 0;
+    tamperInterruptConfig.subpriority        = 0;
+    tamperInterruptConfig.channel            = EXTI15_10_IRQn;  
+    tamperInterruptConfig.portSource = GPIO_PortSourceGPIOC;
+    tamperInterruptConfig.pinSource  = GPIO_PinSource13;
+    tamperInterruptConfig.line       = EXTI_Line13;
+    tamperInterruptConfig.trigger    = EXTI_Trigger_Rising;
+    
+    isrDisp.registerInterrupt(EXTI15_10_IRQn,yellowLedToogler);
+    isrDisp.enableInterruptExt(tamperInterruptConfig);    
+    
+    isrDisp.registerInterrupt(SysTick_IRQn,greenLedToogler);
+    isrDisp.enableInterruptSysTick(1000000);
        
     
     while(1)
     {
-        led->toogle();
-        ordinaryDelay(900000);        
+       
     }   
     
 }

@@ -11,14 +11,6 @@
 #include <boardDefs.hpp>
 #include <map>
 
-enum EPeripheralConfig
-{
-    None = 0 ,
-    Led,
-    Usart,
-    I2C   
-};
-
 template<typename TPeripheralConfig>
 class cmp
 {
@@ -30,7 +22,7 @@ public:
 };
 
 template<typename TPeripheral>
-struct PeripheralTypes
+struct PeripheralMapTypes
 {
     typedef std::map <typename TPeripheral::TPeripheralConfig,
                       TPeripheral*,

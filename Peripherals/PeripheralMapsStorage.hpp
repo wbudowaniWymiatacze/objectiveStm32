@@ -20,28 +20,28 @@ public:
     PeripheralMapsStorage(const PeripheralMapsStorage& orig);
     virtual ~PeripheralMapsStorage();
     
-    operator PeripheralTypes<CLed>::TPeriphMap&()
+    operator PeripheralMapTypes<CLed>::TPeriphMap&()
     {
         return LedPeriphMap;
     }
-    operator PeripheralTypes<CButton>::TPeriphMap&()
+    operator PeripheralMapTypes<CButton>::TPeriphMap&()
     {
         return ButtonPeriphMap;
     }
-    operator PeripheralTypes<CI2C>::TPeriphMap&()
+    operator PeripheralMapTypes<CI2C>::TPeriphMap&()
     {
         return I2CPeriphMap;
     }
-    operator PeripheralTypes<CUsart>::TPeriphMap&()
+    operator PeripheralMapTypes<CUsart>::TPeriphMap&()
     {
         return CUsartPeriphMap;
     }
     
 private:
-    PeripheralTypes<CLed>::TPeriphMap    LedPeriphMap;
-    PeripheralTypes<CButton>::TPeriphMap ButtonPeriphMap;
-    PeripheralTypes<CI2C>::TPeriphMap    I2CPeriphMap;
-    PeripheralTypes<CUsart>::TPeriphMap  CUsartPeriphMap;
+    PeripheralMapTypes<CLed>::TPeriphMap    LedPeriphMap;
+    PeripheralMapTypes<CButton>::TPeriphMap ButtonPeriphMap;
+    PeripheralMapTypes<CI2C>::TPeriphMap    I2CPeriphMap;
+    PeripheralMapTypes<CUsart>::TPeriphMap  CUsartPeriphMap;
 
 };
 

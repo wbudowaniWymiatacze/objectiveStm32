@@ -13,23 +13,29 @@
 #include <PeripheralTypes.hpp>
 #include <map>
 
+#include "InterruptTypes.hpp"
+
 class IsrDispatcher {
 public:
-    typedef std::map<IRQn_Type,InterruptHandler*> TvectorMap;
+    typedef std::map<IRQn_Type,InterruptHandler*> TMapHandlers;
+    typedef std::map<IRQn_Type,uint32_t>          TMapExtLines;
     
-    IsrDispatcher();
+    IsrDispatcher(uint32_t NVIC_PriorityGroup = NVIC_PriorityGroup_1);
     IsrDispatcher(const IsrDispatcher& orig);
     virtual ~IsrDispatcher();
     
     static void runInterrupt(IRQn_Type i);
     static void registerInterrupt(IRQn_Type idx, InterruptHandler& hand);
 
+    void enableInterruptExt(TInterruptConfigExt& config);
+    void enableInterruptSysTick(uint32_t ms);
+    
 
-    static TvectorMap vectorMap;
-
+private:
+    static TMapHandlers vectorMap;
+    static TMapExtLines extLinesMap;
+    uint32_t SysTickFreq; //Hz
 };
-
-//extern "C" void SysTick_Handler();
 
 
 
