@@ -19,7 +19,7 @@
 
 #include "ExternalModules/KamodRGB.hpp"
 #include "ExternalModules/KamodMEMS2.hpp"
-#include "Interrupts/InterruptsHandler.hpp"
+#include "Interrupts/IsrDispatcher.hpp"
 
 #include <cstdio> 
 
@@ -29,6 +29,14 @@ void ordinaryDelay(int val = 10000)
 }
 
 CLed* GlobalLed;
+
+class GlobalLedToogler : public InterruptHandler
+{
+    void handle()
+    {
+        GlobalLed->toogle();
+    }
+};
 
 int main()
 {
@@ -91,39 +99,28 @@ int main()
 
     Usart->sendString("\r\nSTART\n\r");
     
-    KamodRGB leds(0,i2c);
-    Usart->sendString("KamodRGB Enabled\n\r");
-    KamodMEMS2 mems(58,i2c);
-    Usart->sendString("KamodMEMS2 Enabled\n\r");
-    ordinaryDelay();
+//    KamodRGB leds(0,i2c);
+//    Usart->sendString("KamodRGB Enabled\n\r");
+//    KamodMEMS2 mems(58,i2c);
+//    Usart->sendString("KamodMEMS2 Enabled\n\r");
+//    ordinaryDelay();
     
-    leds.light(KAmber,255);
-  
     led->on();
     
     GlobalLed->on();
     
-    SysTick_Config(10000000);
+    GlobalLedToogler glt;
+    IsrDispatcher isrDisp;
     
-            
-            
-    char out[15];
+    isrDisp.registerInterrupt(SysTick_IRQn,glt);
+    
+    SysTick_Config(10000000);
+       
+    
     while(1)
     {
         led->toogle();
-        leds.light(KAmber,0);
-        
-        ordinaryDelay(900000);
-        
-        leds.light(KAmber,255);
-        leds.light(KBlue, mems.getx());
-        leds.light(KGreen,mems.gety());
-        leds.light(KRed,  mems.getz());
-        if(!tamper->isPressed())
-            continue;
-        Usart->sendString("\r               \r");
-        sprintf(out,"[%d, %d, %d]",mems.getx(), mems.gety(), mems.getz());
-        Usart->sendString(out);
+        ordinaryDelay(900000);        
     }   
     
 }

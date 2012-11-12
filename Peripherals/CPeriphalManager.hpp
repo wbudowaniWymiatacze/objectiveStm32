@@ -76,7 +76,6 @@ TPeripheral* CPeriphalManager::getPeripheral(SPeripheralConfig& conf)
     return periph;
 }
 
-//TODO change to one argument template like in get...
 template<typename TPeripheral>
 void CPeriphalManager::delPeripheral(TPeripheral* periph)
 {

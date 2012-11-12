@@ -13,13 +13,13 @@
 #include <PeripheralTypes.hpp>
 #include <map>
 
-class InterruptsHandler {
+class IsrDispatcher {
 public:
     typedef std::map<IRQn_Type,InterruptHandler*> TvectorMap;
     
-    InterruptsHandler();
-    InterruptsHandler(const InterruptsHandler& orig);
-    virtual ~InterruptsHandler();
+    IsrDispatcher();
+    IsrDispatcher(const IsrDispatcher& orig);
+    virtual ~IsrDispatcher();
     
     static void runInterrupt(IRQn_Type i);
     static void registerInterrupt(IRQn_Type idx, InterruptHandler& hand);

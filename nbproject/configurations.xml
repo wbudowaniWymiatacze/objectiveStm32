@@ -68,8 +68,8 @@
       </df>
       <df name="Interrupts">
         <in>InterruptHandler.hpp</in>
-        <in>InterruptsHandler.cpp</in>
-        <in>InterruptsHandler.hpp</in>
+        <in>IsrDispatcher.cpp</in>
+        <in>IsrDispatcher.hpp</in>
       </df>
       <df name="Libraries">
         <df name="CMSIS">
