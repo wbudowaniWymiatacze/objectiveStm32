@@ -35,7 +35,6 @@ void IsrDispatcher::runInterrupt(IRQn_Type i)
 void IsrDispatcher::registerInterrupt(IRQn_Type i,InterruptHandler& hand)
 {
     vectorMap[i]= &hand;
-
 }
 
 void IsrDispatcher::enableInterruptExt(TInterruptConfigExt& conf)
@@ -63,7 +62,7 @@ void IsrDispatcher::enableInterruptExt(TInterruptConfigExt& conf)
 void IsrDispatcher::enableInterruptSysTick(uint32_t ms)
 {
     // SysTickFreq*(us/1000) should be fit on 24 bits!!
-    SysTick_Config(SysTickFreq*(us/1000));
+    SysTick_Config(SysTickFreq*(ms/1000));
 }
 
 extern "C" {
