@@ -59,10 +59,10 @@ void IsrDispatcher::enableInterruptExt(TInterruptConfigExt& conf)
 
 }
 
-void IsrDispatcher::enableInterruptSysTick(uint32_t ms)
+void IsrDispatcher::enableInterruptSysTick(uint32_t us)
 {
     // SysTickFreq*(us/1000) should be fit on 24 bits!!
-    SysTick_Config(SysTickFreq*(ms/1000));
+    SysTick_Config(SysTickFreq*(us/1000000));
 }
 
 extern "C" {

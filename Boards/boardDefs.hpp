@@ -27,6 +27,7 @@
  #include "boards/f1xx/gpio.hpp"
  #include "boards/f1xx/usart.hpp"
  #include "boards/f1xx/rcc.hpp"
+ #include <stm32f10x_spi.h>
 #endif
 
 
