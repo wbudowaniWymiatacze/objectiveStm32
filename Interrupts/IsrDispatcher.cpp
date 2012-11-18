@@ -14,8 +14,8 @@ IsrDispatcher::TMapExtLines IsrDispatcher::extLinesMap;
 IsrDispatcher::IsrDispatcher(uint32_t NVIC_PriorityGroup) {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup);
     
-    SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);
     SysTickFreq = 72000000/8;
+    SysTick_CLKSource = SysTick_CLKSource_HCLK_Div8;
 }
 
 IsrDispatcher::~IsrDispatcher() {
@@ -25,7 +25,7 @@ void IsrDispatcher::runInterrupt(IRQn_Type i)
 {
     TMapHandlers::iterator iter = vectorMap.find(i);
     if(iter != vectorMap.end())
-        vectorMap[i]->handle();
+        vectorMap[i]->handleInterrupt();
     
     TMapExtLines::iterator iterExt = extLinesMap.find(i);
     if(iterExt != extLinesMap.end())
@@ -59,10 +59,10 @@ void IsrDispatcher::enableInterruptExt(TInterruptConfigExt& conf)
 
 }
 
-void IsrDispatcher::enableInterruptSysTick(uint32_t ms)
+void IsrDispatcher::enableInterruptSysTick(float ms)
 {
-    // SysTickFreq*(us/1000) should be fit on 24 bits!!
-    SysTick_Config(SysTickFreq*(ms/1000));
+    SysTick_Config((SysTickFreq/1000)*ms);
+    SysTick_CLKSourceConfig(SysTick_CLKSource);
 }
 
 extern "C" {

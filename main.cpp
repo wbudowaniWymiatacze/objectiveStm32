@@ -35,7 +35,7 @@ class LedToogler : public InterruptHandler
 public:
     LedToogler( CLed* led): led(led){}
     
-    void handle()
+    void handleInterrupt()
     {
         led->toogle();
     }
@@ -127,7 +127,7 @@ int main()
     isrDisp.enableInterruptExt(tamperInterruptConfig);    
     
     isrDisp.registerInterrupt(SysTick_IRQn,greenLedToogler);
-    isrDisp.enableInterruptSysTick(1000000);
+    isrDisp.enableInterruptSysTick(500);
        
     
     while(1)

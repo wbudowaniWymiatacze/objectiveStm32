@@ -8,7 +8,7 @@
 #ifndef INTERRUPTSHANDLER_HPP
 #define	INTERRUPTSHANDLER_HPP
 
-#include <stm32f10x.h>
+#include <boardDefs.hpp>
 #include <InterruptHandler.hpp>
 #include <PeripheralTypes.hpp>
 #include <map>
@@ -28,13 +28,14 @@ public:
     static void registerInterrupt(IRQn_Type idx, InterruptHandler& hand);
 
     void enableInterruptExt(TInterruptConfigExt& config);
-    void enableInterruptSysTick(uint32_t ms);
+    void enableInterruptSysTick(float ms);
     
 
 private:
     static TMapHandlers vectorMap;
     static TMapExtLines extLinesMap;
     uint32_t SysTickFreq; //Hz
+    uint32_t SysTick_CLKSource;
 };
 
 
