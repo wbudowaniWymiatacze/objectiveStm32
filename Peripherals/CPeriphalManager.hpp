@@ -31,7 +31,7 @@ class CPeriphalManager
     virtual ~CPeriphalManager();
     
     template<typename TPeripheral>
-    TPeripheral* getPeripheral(SPeripheralConfig& config);
+    TPeripheral* getPeripheral(typename TPeripheral::TPeripheralConfig& config);
     
     template<typename TPeripheral>
     void delPeripheral(TPeripheral* periph);
@@ -49,12 +49,12 @@ class CPeriphalManager
 };
 
 template<typename TPeripheral>
-TPeripheral* CPeriphalManager::getPeripheral(SPeripheralConfig& conf)
+TPeripheral* CPeriphalManager::getPeripheral(typename TPeripheral::TPeripheralConfig& conf)
 {
     typedef typename TPeripheral::TPeripheralConfig TPeripheralConfig;
     typedef typename PeripheralMapTypes<TPeripheral>::TPeriphMap TPeriphMap;
     
-    TPeriphMap map = (TPeriphMap&)PeriphMap;
+    TPeriphMap& map = (TPeriphMap&)PeriphMap;
     
     TPeripheralConfig& config = static_cast<TPeripheralConfig&>(conf);
     typename TPeriphMap::iterator iter = map.find(config);

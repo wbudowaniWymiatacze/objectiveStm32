@@ -24,10 +24,7 @@
 
 #include <cstdio> 
 
-void ordinaryDelay(int val = 10000)
-{
-    for(int i=0;i<val;i++);
-}
+void ordinaryDelay(int val = 10000);
 
 
 class LedToogler : public InterruptHandler
@@ -46,8 +43,8 @@ private:
 int main()
 {
 
-    SystemInit();
-    ordinaryDelay();
+   SystemInit();
+    //ordinaryDelay();
 
     /*PERIPHERAL MANAGER TEST*/
     CGpioManager GM;    
@@ -132,9 +129,17 @@ int main()
     
     while(1)
     {
-       
+        CLed* yellowLed2 = PM.getPeripheral<CLed>(ledConfig);
+        yellowLed2->toogle();
+        ordinaryDelay(999999);
     }   
     
+}
+
+
+void ordinaryDelay(int val)
+{
+    for(int i=0;i<val;i++);
 }
 
 
