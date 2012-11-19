@@ -11,7 +11,7 @@
 class InterruptHandler
 {
 public:
-    virtual void handle() = 0;
+    virtual void handleInterrupt() = 0;
 };
 
 

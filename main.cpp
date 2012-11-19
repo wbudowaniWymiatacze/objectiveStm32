@@ -86,7 +86,7 @@ class LedToogler : public InterruptHandler
 public:
     LedToogler( CLed* led): led(led){}
     
-    void handle()
+    void handleInterrupt()
     {
         led->toogle();
     }
