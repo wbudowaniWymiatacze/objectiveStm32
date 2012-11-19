@@ -1,0 +1,13 @@
+1. Create SPI PeripheralDevice
+
+2. Create interface f.e.: "CommunicationDevice" with following methods:
+    - startCommunication,
+    - sendByte,
+    - sendBytes,
+    - receiveByte,
+    - receiveBytes,
+    - stopCommunication.
+
+3. Adjust I2C, SPI and USART to inheritance from above interface.
+
+4. Adjust ExternalModules (especially KamodMems2) to work with new interface.

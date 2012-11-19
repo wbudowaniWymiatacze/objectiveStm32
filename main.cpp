@@ -156,7 +156,7 @@ int main()
     isrDisp.enableInterruptExt(tamperInterruptConfig);    
     
     isrDisp.registerInterrupt(SysTick_IRQn,greenLedToogler);
-    isrDisp.enableInterruptSysTick(1000000);
+    isrDisp.enableInterruptSysTick(500);
     
     Usart->sendString("\r\nSTART?\n\r");
     
@@ -221,23 +221,28 @@ int main()
 
 /************************* SPI Functions **********************************************/
 
-void SPI_Transmit(char cData)
-{ 
-    SPI_I2S_SendData(SPI3, cData);
+/* This is specific for LIS35DE communication protocol*/
+void SPI_Opearation(char send)
+{
+    while (SPI_I2S_GetFlagStatus(SPI3, SPI_I2S_FLAG_TXE) == RESET) { ; }
+    
+    SPI_I2S_SendData(SPI3, send);
 
     while (SPI_I2S_GetFlagStatus(SPI3, SPI_I2S_FLAG_RXNE) == RESET) { ; }
 
-    SPI_I2S_ReceiveData(SPI3);
+    return SPI_I2S_ReceiveData(SPI3);
+    
+}
+
+void SPI_Transmit(char cData)
+{ 
+    SPI_Opearation(cData);
 }
 
 
 char SPI_Receive(void)
 {
-    SPI_I2S_SendData(SPI3, 0xFF);
-
-    while (SPI_I2S_GetFlagStatus(SPI3, SPI_I2S_FLAG_RXNE) == RESET) { ; }
-
-    return SPI_I2S_ReceiveData(SPI3);
+    return SPI_Opearation(0xFF);
 }
 
 void SPI_CS_Enable(void)
